@@ -28,9 +28,22 @@ export default defineConfig({
         link: "https://juejin.cn/user/3395724659925656/posts?sort=popular",
       },
     ],
+    // 编辑配置
+    editLink: {
+      pattern:
+        "https://github.com/hljinjiang/blogs-surprise/blob/main/docs/:path",
+      text: "Edit this page on GitHub",
+    },
+    // 底部配置
     footer: {
       message: "Released under the MIT License.",
       copyright: "Copyright © 2022-present Surprise",
+    },
+    // 最后更新时间
+    lastUpdatedText: "最近更新时间： 2022/8/11 上午3：14：47",
+    carbonAds: {
+      code: "your-carbon-code",
+      placement: "your-carbon-placement",
     },
   },
 });
