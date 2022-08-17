@@ -39,11 +39,12 @@ export default defineConfig({
       message: "Released under the MIT License.",
       copyright: "Copyright © 2022-present Surprise",
     },
-    // 最后更新时间
-    lastUpdatedText: "最近更新时间： 2022/8/11 上午3：14：47",
-    carbonAds: {
-      code: "your-carbon-code",
-      placement: "your-carbon-placement",
+    // 文档页脚
+    docFooter: {
+      prev: "Pagina prior",
+      next: "Proxima pagina",
     },
+    // 最后更新时间
+    lastUpdatedText: "最近更新时间： 2022/8/11 上午3：14：41",
   },
 });
