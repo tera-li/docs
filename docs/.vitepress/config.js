@@ -28,5 +28,9 @@ export default defineConfig({
         link: "https://juejin.cn/user/3395724659925656/posts?sort=popular",
       },
     ],
+    footer: {
+      message: "Released under the MIT License.",
+      copyright: "Copyright © 2022-present Surprise",
+    },
   },
 });
