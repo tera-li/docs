@@ -1,7 +1,20 @@
 import { defineConfig } from "vitepress";
 export default defineConfig({
+  // 左侧标题，｜ 左侧文字
   title: "leftMenu",
+  // 浏览器标签，｜ 右侧文字
+  titleTemplate: "home",
+  // 页面描述，自动注入meta
   description: "Just playing around.",
+  // 页面头部，自动注入
+  head: [["link", { rel: "shortcut icon", href: "../static/aperture.svg" }]],
+  // 语言，<html lang="en-US">
+  lang: "en-US",
+  // 最后更新时间，可在themeConfig自定义配置
+  lastUpdated: true,
+  // 打包目录生成
+  // outDir: "../public",
+  // 主题配置
   themeConfig: {
     // 左侧logo
     logo: "../static/aperture.svg",
@@ -45,6 +58,6 @@ export default defineConfig({
       next: "Proxima pagina",
     },
     // 最后更新时间
-    lastUpdatedText: "最近更新时间： 2022/8/11 上午3：14：41",
+    lastUpdatedText: "最近更新时间 ",
   },
 });
