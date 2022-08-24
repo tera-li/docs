@@ -5,7 +5,7 @@ titleTemplate: Vite & Vue powered static site generator.
 head:
   - - meta
     - name: description
-      content: JinJiang's Blog，瑾江的博客
+      content: JinJiang's Blog，瑾江的博客，surprise，前端，前端技术博客
   - - meta
     - name: keywords
       content: JinJiang,Blog,瑾江的博客,surprise,前端,前端技术博客
