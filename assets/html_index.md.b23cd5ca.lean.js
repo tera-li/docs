@@ -1,0 +1,1 @@
+import{_ as t,c as s,o as l,d as p}from"./app.fbb55110.js";const d=JSON.parse('{"title":"HTML","description":"","frontmatter":{},"headers":[],"relativePath":"html/index.md","lastUpdated":1661323412000}'),o={name:"html/index.md"},n=p("",99),a=[n];function e(r,i,c,g,y,D){return l(),s("div",null,a)}const u=t(o,[["render",e]]);export{d as __pageData,u as default};
