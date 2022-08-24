@@ -1,14 +1,17 @@
 ---
 title: VitePress
 titleTemplate: Vite & Vue powered static site generator.
-# description: description111
+# description: description
 head:
   - - meta
     - name: description
       content: JinJiang's Blog，瑾江的博客
   - - meta
     - name: keywords
-      content: JinJiang's Blog，瑾江的博客
+      content: JinJiang,Blog,瑾江的博客,surprise,前端,前端技术博客
+  - - meta
+    - name: google-site-verification
+    - content: WsLa9IEnN2TZzy4k0HF1GNYCghbHHtSDM80dokpEi3E
 layout: home
 hero:
   name: JinJiang's Blog
