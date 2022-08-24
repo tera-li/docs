@@ -13,6 +13,7 @@ head:
     - name: google-site-verification
     - content: WsLa9IEnN2TZzy4k0HF1GNYCghbHHtSDM80dokpEi3E
 layout: home
+aside: true
 hero:
   name: JinJiang's Blog
   text: Blog & Record the life.
@@ -20,10 +21,10 @@ hero:
   actions:
     - theme: brand
       text: Get Started
-      link: /guide/what-is-vitepress
+      link: /html/index
     - theme: alt
-      text: View on GitHub1
-      link: https://github.com/vuejs/vitepress
+      text: Get Started
+      link: /html/index
 ---
 
 <!--
