@@ -1,15 +1,26 @@
 ---
 title: VitePress
 titleTemplate: Vite & Vue powered static site generator.
-description: description
+# description: description111
 head:
   - - meta
     - name: description
-      content: hello
+      content: JinJiang's Blog，瑾江的博客
   - - meta
     - name: keywords
-      content: super duper SEO
-layout: doc
+      content: JinJiang's Blog，瑾江的博客
+layout: home
+hero:
+  name: JinJiang's Blog
+  text: Blog & Record the life.
+  tagline: Blog content is continuously updated...
+  actions:
+    - theme: brand
+      text: Get Started
+      link: /guide/what-is-vitepress
+    - theme: alt
+      text: View on GitHub1
+      link: https://github.com/vuejs/vitepress
 ---
 
 <!--
@@ -23,7 +34,3 @@ layout: home
   hero: 定义主要内容布局，首页
   features: 描述某特性
  -->
-
-# Hello
-
-### h3

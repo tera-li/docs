@@ -21,7 +21,7 @@ export default defineConfig({
     // logo: "../assets/aperture.svg",
     // 顶部导航
     nav: [
-      { text: "Home", link: "/" },
+      { text: "Web", link: "/html/index" },
       { text: "Home", link: "/" },
       { text: "Home", link: "/" },
       { text: "Home", link: "/" },

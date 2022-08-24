@@ -46,15 +46,13 @@
     - src：可选。表示包含要执行代码的外部文件。
     - type：可选。可以看成是language的替代属性；表示编写代码使用的脚本语言的内容类型（也称为MIME类型）。
 7. **\<body>\</body>** ：定义文档的主体
-
-
-**块级标签：** 独占一行，不和其他元素待在一行
-
+8. **块级标签：** ：独占一行，不和其他元素待在一行
+```
 div，p，h1~h6，ul\>li，ol\>li，dl\>dt\>dd，table，form，pre
-
 object（定义内嵌对象）
-
 audio，video，article，aside，footer，canvas，header，section
+```
+
 
 **行内标签：** 能和其他元素待在一行
 
