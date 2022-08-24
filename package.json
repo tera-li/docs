@@ -1,6 +1,6 @@
 {
   "name": "blogs_surprise",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "blogs",
   "main": "index.js",
   "author": "surprise",
@@ -12,7 +12,7 @@
     "docs:serve": "vitepress serve docs"
   },
   "devDependencies": {
-    "vitepress": "^1.0.0-alpha.9",
+    "vitepress": "^1.0.0-alpha.10",
     "vue": "^3.2.37"
   }
 }

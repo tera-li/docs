@@ -1,7 +1,7 @@
 import { defineConfig } from "vitepress";
 export default defineConfig({
   // 左侧标题，｜ 左侧文字
-  title: "leftMenu",
+  title: "BLOG",
   base: "/blogs-surprise",
   // 浏览器标签，｜ 右侧文字
   titleTemplate: "home",
@@ -25,6 +25,20 @@ export default defineConfig({
       { text: "Home", link: "/" },
       { text: "Home", link: "/" },
       { text: "Home", link: "/" },
+    ],
+    sidebar: [
+      {
+        text: "HTML",
+        items: [{ text: "html", link: "/html/index" }],
+      },
+      {
+        text: "CSS",
+        items: [{ text: "css", link: "/css/index" }],
+      },
+      {
+        text: "JavaScript",
+        items: [{ text: "css", link: "/javascript/index" }],
+      },
     ],
     // 社交链接
     socialLinks: [
