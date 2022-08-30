@@ -120,7 +120,7 @@ onsubmit：在提交表单之前调用
 
 **六、表单提交**
 
-<!-- ![clipboard.png](Aspose.Words.1be046b9-43b4-40fc-8138-bf1a378f39d7.001.png) -->
+<!-- ![clipboard.png](./assets/Aspose.Words.1be046b9-43b4-40fc-8138-bf1a378f39d7.001.png) -->
 
 阻止浏览器默认表单提交**event.preventDefault()**
 
@@ -131,9 +131,9 @@ onsubmit：在提交表单之前调用
 **六、表单中select**
 
 
-<!-- ![clipboard.png](Aspose.Words.1be046b9-43b4-40fc-8138-bf1a378f39d7.002.png) -->
+<!-- ![clipboard.png](./assets/Aspose.Words.1be046b9-43b4-40fc-8138-bf1a378f39d7.002.png) -->
 
-<!-- ![clipboard.png](Aspose.Words.1be046b9-43b4-40fc-8138-bf1a378f39d7.003.png) -->
+<!-- ![clipboard.png](./assets/Aspose.Words.1be046b9-43b4-40fc-8138-bf1a378f39d7.003.png) -->
 
 **multiple**表示多选
 

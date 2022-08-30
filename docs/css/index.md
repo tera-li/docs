@@ -105,7 +105,7 @@ round：和repeat相似，不能以整数平铺，会根据情况伸缩 space：
 
 background：定义背景图像 （image，position，size，repeat，attachment，origin，clip，color） 1、image 背景图像：url（）或渐变。
 
-<!-- ![](Aspose.Words.51080e53-b624-496e-a2bf-85f790ccec0c.001.png) -->
+<!-- ![](./assets/Aspose.Words.51080e53-b624-496e-a2bf-85f790ccec0c.001.png) -->
 
 2、repeat 背景图像如何填充
 
@@ -539,9 +539,9 @@ transform: skewY(180deg);
 
 perspective: 200px; 必须定义perspective才能是3D图像
 
-<!-- ![](Aspose.Words.51080e53-b624-496e-a2bf-85f790ccec0c.002.png) -->
+<!-- ![](./assets/Aspose.Words.51080e53-b624-496e-a2bf-85f790ccec0c.002.png) -->
 
-<!-- ![](Aspose.Words.51080e53-b624-496e-a2bf-85f790ccec0c.003.png) -->
+<!-- ![](./assets/Aspose.Words.51080e53-b624-496e-a2bf-85f790ccec0c.003.png) -->
 
 transform-origin：设置对象以某个原点进⾏转换
 
@@ -617,7 +617,7 @@ to（100%）
 
 a. steps(5)：会将整个动画时⻓平均分割，以帧的⽅式过渡（表示动画没有过渡效果）
 
-<!-- ![](Aspose.Words.51080e53-b624-496e-a2bf-85f790ccec0c.004.png) -->
+<!-- ![](./assets/Aspose.Words.51080e53-b624-496e-a2bf-85f790ccec0c.004.png) -->
 
 **19、打印**
 
@@ -895,7 +895,7 @@ screen and (max-width:500px) @charset：指定该样式表使用的字符编码 
 
 \1. to top right：径向渐变的中⼼点在右上⻆
 
-<!-- ![](Aspose.Words.51080e53-b624-496e-a2bf-85f790ccec0c.005.png) -->
+<!-- ![](./assets/Aspose.Words.51080e53-b624-496e-a2bf-85f790ccec0c.005.png) -->
 
 1 background: linear-gradient( 2    135deg,  // 旋转135°开始渐变 3    transparent 0,
 

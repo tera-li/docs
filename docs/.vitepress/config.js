@@ -51,7 +51,11 @@ export default defineConfig({
           },
           {
             text: "JavaScript",
-            items: [{ text: "js", link: "/javascript/index" }],
+            items: [
+              { text: "js", link: "/javascript/index" },
+              { text: "js-proto", link: "/javascript/js-proto" },
+              { text: "js-browser", link: "/javascript/js-browser" },
+            ],
           },
         ],
       },
