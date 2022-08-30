@@ -28,7 +28,7 @@ export default defineConfig({
     ],
     sidebar: [
       {
-        text: "前端基础",
+        text: "前端三把斧",
         collapsible: true,
         items: [
           {
