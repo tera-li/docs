@@ -786,7 +786,7 @@ return { done: true }
 
 Object作用域
 
-![clipboard.png](./assets/Aspose.Words.5db4df40-537c-4891-ba1b-10352a7ab14e.002.png)
+<!-- ![clipboard.png](./assets/Aspose.Words.5db4df40-537c-4891-ba1b-10352a7ab14e.002.png) -->
 
 内部函数执行新赋值Object的name值，函数执行结束后将销毁
 

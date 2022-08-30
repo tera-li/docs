@@ -8,7 +8,7 @@
 
 <!-- 内嵌式 <style type="text/css"></style> -->
 
-外部式 <link href="index.css" type="text/css" rel="stylesheet" media="screen" /> link 连接⼀个外部样式表
+<!-- 外部式 <link href="index.css" type="text/css" rel="stylesheet" media="screen" /> link 连接⼀个外部样式表 -->
 
 rel=“stylesheet” 定义外部加载的样式表
 
