@@ -1,10 +1,10 @@
 import { defineConfig } from "vitepress";
 export default defineConfig({
   // 左侧标题，｜ 左侧文字
-  title: "BLOG",
+  title: "Docs",
   base: "/docs-surprise",
   // 浏览器标签，｜ 右侧文字
-  titleTemplate: "home",
+  titleTemplate: false,
   // 页面描述，自动注入meta
   description: "Just playing around.",
   // 页面头部，自动注入
@@ -56,6 +56,7 @@ export default defineConfig({
               { text: "js-proto", link: "/javascript/js-proto" },
               { text: "js-browser", link: "/javascript/js-browser" },
               { text: "js-dom", link: "/javascript/js-dom" },
+              { text: "js-feat", link: "/javascript/js-feat" },
             ],
           },
         ],
