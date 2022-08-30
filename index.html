@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style></style>
-    <script></script>
+    <script>
+      const BasicVarGen = function () {
+        this.s0 = "IAmString";
+        this.s1 = "IAmString";
+        return function () {
+          var aaaa = "123123";
+        };
+      };
+      BasicVarGen();
+    </script>
   </head>
   <body></body>
 </html>

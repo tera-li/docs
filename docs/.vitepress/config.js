@@ -31,10 +31,23 @@ export default defineConfig({
         text: "前端基础",
         collapsible: true,
         items: [
-          { text: "HTML", items: [{ text: "html基础", link: "/html/index" }] },
+          {
+            text: "HTML",
+            items: [
+              { text: "html", link: "/html/index" },
+              { text: "html-meta", link: "/html/html-meta" },
+              { text: "html-form", link: "/html/html-form" },
+            ],
+          },
           {
             text: "CSS",
-            items: [{ text: "css", link: "/css/index" }],
+            items: [
+              { text: "css", link: "/css/index" },
+              { text: "css-compatibility", link: "/css/css-compatibility" },
+              { text: "css-flex", link: "/css/css-flex" },
+              { text: "css-svg", link: "/css/css-svg" },
+              { text: "css-special", link: "/css/css-special" },
+            ],
           },
           {
             text: "JavaScript",
