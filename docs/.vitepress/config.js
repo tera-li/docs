@@ -79,7 +79,7 @@ export default defineConfig({
     // 编辑配置
     editLink: {
       pattern:
-        "https://github.com/hljinjiang/blogs-surprise/blob/main/docs/:path",
+        "https://github.com/hljinjiang/docs-surprise/blob/main/docs/:path",
       text: "Edit this page on GitHub",
     },
     // 底部配置
