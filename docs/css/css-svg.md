@@ -16,6 +16,6 @@ mask遮罩层可以创建svg一样的icon
 
 需要一个背景层background，遮罩层mask
 
-![clipboard.png](Aspose.Words.3977232e-ffcf-403c-85cf-3e9042a62826.006.png)
+<!-- ![clipboard.png](Aspose.Words.3977232e-ffcf-403c-85cf-3e9042a62826.006.png) -->
 
 url(https://user-gold-cdn.xitu.io/2018/10/18/1668599f2b92301d?w=500&h=295&f=gif&s=296531) 50% 50% no-repeat;
