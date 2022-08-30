@@ -57,6 +57,12 @@ export default defineConfig({
               { text: "js-browser", link: "/javascript/js-browser" },
               { text: "js-dom", link: "/javascript/js-dom" },
               { text: "js-feat", link: "/javascript/js-feat" },
+              { text: "js-event", link: "/javascript/js-event" },
+              {
+                text: "js-dataCommunication",
+                link: "/javascript/js-dataCommunication",
+              },
+              { text: "js-dataType", link: "/javascript/js-dataType" },
             ],
           },
         ],
