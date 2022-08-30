@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   // 左侧标题，｜ 左侧文字
   title: "BLOG",
-  base: "/blogs-surprise",
+  base: "/docs-surprise",
   // 浏览器标签，｜ 右侧文字
   titleTemplate: "home",
   // 页面描述，自动注入meta
