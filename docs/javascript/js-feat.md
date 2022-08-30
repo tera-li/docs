@@ -4,6 +4,7 @@
 
 **一、let和const**
 
+```
 let：声明变量，只在let命令的代码块内有效
 
 不能重复声明：（let a = 1;let a = 2;），var可以声明多次
@@ -11,6 +12,7 @@ let：声明变量，只在let命令的代码块内有效
 不存在变量提升（变量是undefined），var会变量提升（值是undefined）
 
 const：声明常量，只在let命令的代码块有效，一旦声明常量值就不能改变
+```
 
 **二、解构赋值**
 
@@ -23,7 +25,7 @@ const：声明常量，只在let命令的代码块有效，一旦声明常量值
 **当目标有值时，就会赋值给源（变量）**
 
 **数组模型的解构（Array）**
-
+```
 let [a,b,c] = [1,2,3]：基本解构 // a=1,b=2,c=3
 
 let [a,[b,c]] = [1,[2,3]]：可嵌套 // a=1,b=2,c=3
@@ -43,9 +45,11 @@ let [a = 3, b = a] = [] // a=3,b=3
 let [a = 3, b = a] = [1] // a=1,b=1
 
 let [a = 3, b = a] = [1,2]// a=1,b=2
+```
 
 **数组模型的解构（Object）**
 
+```
 let {a,b} = {a:'aaa', b: 'bbb'}：基本解构 // a='aaa',b='bbb'
 
 `    `let {a:b} = {a:'bbb'} // b='bbb'
@@ -63,11 +67,12 @@ let {a,b ...rest} = {a:10,b:20,c:30,d:40}：剩余运算符
 let {a=10,b=5} = {a:3}：解构默认值 // a=3,b=5
 
 let {a:aa=10,b:bb=5} = {a:3} // aa=3,bb=5
+```
 
 **三、Symbol**
 
 原始数据类型Symbol，表示独一无二的值
-
+```
 const symbol1 = Symbol();
 
 typeof symbol1 // symbol
@@ -87,6 +92,7 @@ let a = Symbol.for('aaa')
 Symbol.keyFor(a) // "aaa"
 
 获取全局symbol注册表中的关联键（相当于**查找**声明值 a的描述）
+```
 
 **方法**
 
@@ -142,6 +148,7 @@ weakMap是Map的子集，”弱映射“，相对于Map的区别是，键只能�
 
 **Set对象存储值总是唯一的，对象之间引用不恒等，即时值相同也能存储**
 
+```
 new Set()：通过实例对象创建set对象
 
 add(value)：存储值
@@ -161,6 +168,7 @@ o = {a:1, b:2}，add({a:1, b:2})：set能存储这两条数据
 ` `交集：new Set([...a].filter(x => b.has(x)))：查找b集合有a集合的值
 
 ` `差集：new Set([...a].filter(x => !b.has(x)))：查找b集合没有a集合的值
+```
 
 **weakSet方法**
 
@@ -276,6 +284,7 @@ log2(number)：对数，计算2为底的x的对数
 
 **对象字面量**
 
+```
 const [age,name] = [12,'join']；const person = {age, name} // person = {age: 12}
 
 sayHi() === sayHi:function()：方法面简写
@@ -283,6 +292,7 @@ sayHi() === sayHi:function()：方法面简写
 \* sayHi() === sayHi:function\* ()：generator函数
 
 ["he"+"llo"]() === hello()：属性名表达式
+```
 
 **拓展运算符**
 
@@ -307,8 +317,9 @@ is(value1,value2)：比较两个值是否严格相等(相当于===，NaN===NaN /
 entries(value)：
 
 处理值为数组时
-
+```
 Object.entries([1,2]) // [['0',1],['1',2]]
+```
 
 通过entries后，将数组每个值放入数组，形成二维数组
 
@@ -324,7 +335,9 @@ fromEntries(value)：
 
 与entries相反，将二维数组转换为对象
 
+```
 Object.fromEntries([[1,2]]) // {1: 2}
+```
 
 将二维数组的第一个值作为key，第二个值作为value
 
@@ -341,19 +354,20 @@ Array.of(...numberArrs)：返回[values]
 from(array，mapFn，thisArg)：
 
 将类数组对象或可迭代对象转换为新的、浅拷贝数组，第二个参数对每个元素进行处理
-
+```
 mapFn：Array.from([1,2,3],(n)=>n \* 2) // [2,4,6]
 
 thisArg：Array.from([1,2,3],(n)=>return this.do(n),map)
 
 let map = {do(n){return n \* 2}} // [2,4,6]
+```
 
 第三个参数为mapFn指向执行的对象
 
 **类数组对象**
-
+```
 from({0:1, 1:2, 2:3, length:3})：
-
+```
 // [1,2,3]，没有length属性，则返回空数组，属性名必须为数值，否则返回undefined
 
 **可迭代对象**
@@ -365,9 +379,9 @@ let map = new Map()，set('key0','value0'),set('key1','value1')
 Array.from(map)： // [['key0','value0'],['key1','value1']]
 
 **Set**
-
+```
 let arr = [1,2,3]；let set = new Set(arr)；Array.from(set)：// [1,2,3]
-
+```
 **字符串**
 
 let str = 'abc'；Array.from(str)：// ['a','b','c']
@@ -375,13 +389,14 @@ let str = 'abc'；Array.from(str)：// ['a','b','c']
 **方法**
 
 **查找**
-
+```
 arr.find(item => item > 2)：查找数组中符合条件的元素，若有多个元素，则返回第一个元素
 
 arr.findIndex(item => item = 1)：查找数组中符合条件的元素，同上，则返回第一个元素索引
+```
 
 **填充**
-
+```
 fill(value，index，lastindex)：将**一定范围索引**的数组元素内容填充为单个指定的值
 
 copyWithin(index,copyindex,copylastindex)：将一定范围索引的数组元素修改为另一指定范围索引的元素
@@ -389,9 +404,9 @@ copyWithin(index,copyindex,copylastindex)：将一定范围索引的数组元素
 [1,2,3,4].copyWithin(0,2,4)：// [3,4,3,4]
 
 [1,2,3,4].copyWithin(-2,0)：// [1,2,1,2]
-
+```
 **遍历**
-
+```
 entries()：遍历键值对
 
 for (let [key, value] of ['a', 'b'].entries())：[0, 'a'],[1, 'b']
@@ -401,6 +416,7 @@ let entries = ['a','b'].entries()；entries.next().value：// [0,'a'] [1,'b']
 keys()：遍历键名，同上，返回键名
 
 values()：遍历键值，同上，返回值
+```
 
 **包含**
 
@@ -408,6 +424,7 @@ includes(value,index)：数组是否包含指定值，第二个值为搜索索�
 
 **嵌套数组转一维数组**
 
+```
 flat(number)：[1,[2,[3]]] // [1,2,3] 自动跳过空格，number指定转换数组层次
 
 Infinity：该参数会转换所有嵌套数组层次
@@ -415,7 +432,7 @@ Infinity：该参数会转换所有嵌套数组层次
 flatMap()：先对数组中每个元素进行处理，在进行flat()方法
 
 flatMap(n => [n \* 2])
-
+```
 **数组缓冲区**
 
 **数组缓冲区是内存中的一段地址**
@@ -423,13 +440,13 @@ flatMap(n => [n \* 2])
 **定型数组的基础**
 
 **实际字节数在创建时确定，之后只可修改其中的数据，不可修改大小**
-
+```
 new ArrayBuffer(10)：通过构造函数创建
 
 byteLength： 长度：// 10
 
 slice(1,3)：长度 // 2
-
+```
 **视图**：用来操作内存的接口
 
 可以操作数组缓冲区或缓冲字节的子集，并按照其中一种数值数据类型来读取和写入数据
@@ -468,6 +485,7 @@ length：// 10
 
 **扩展运算符可用于浅拷贝**
 
+```
 let arr = [1,2] === [...arr] === [1,2]
 
 [...[1,2],...[3,4]] // [1,2,3,4]
@@ -475,6 +493,7 @@ let arr = [1,2] === [...arr] === [1,2]
 let obj = { a:1,b:2 }
 
 {...obj} // { a:1,b:2 }
+```
 
 **十、函数**
 
@@ -491,7 +510,7 @@ fn(name,age=16)：当调用参数第二个没传值时，使用默认参数
 fn(...values)：使用...表示不确定参数个数，返回参数数组
 
 **箭头函数**
-
+```
 var f = x => x === var f = function(x){return x};
 
 f(1)：当{}代码块中只有一行语句时，并且需要返回结果时，可以省略
@@ -499,7 +518,7 @@ f(1)：当{}代码块中只有一行语句时，并且需要返回结果时，�
 var f = (a,b) => a+b
 
 f(1,2)
-
+```
 当需要箭头函数返回对象时，为了区分代码块，要用()将对象包括起来
 
 var f = (a,b) => ({a:a, b:b})：返回对象
@@ -519,7 +538,7 @@ var Person1 = {     'age': 18,     'sayHello': function () {         console.log
 **通过next方法进行迭代，返回当前为对象并指向下一个位置**
 
 **返回值包含value（当前属性值），done（遍历是否结束）**
-
+```
 const items = ["zero", "one", "two"];     const it = items[Symbol.iterator]();
 
 `    `it.next();
@@ -535,6 +554,7 @@ const items = ["zero", "one", "two"];     const it = items.keys()
 const items = ["zero", "one", "two"];     const it = items.values()
 
 `    `it.next(); // ["zero", "one", "two"]		// 返回数组的value的数组
+```
 
 可迭代的值：Array,String,Map,Set,Dom元素(正在进行中)
 
@@ -595,17 +615,17 @@ new Example()；
 new Example instancof Example(类)：constructor**默认返回this对象**
 
 **new Example的构造函数的property是否出现在 Example的原型链上**
-
+```
 static sun(a,b)；Example.sun(1,2)：调用静态方法
 
 sun(a,b)；let exam = new Example()；exam.sun(1,2)：实例化对象调用**原型方法**传参
 
 constructor(){this.sum = (a,b) => {console.log(a + b)}}：实例方法
-
+```
 **类的实例化**
 
 **new 关键字，class的实例化必须通过new 关键字**
-
+```
 let exam1 = new Example(1,2)；let exam2 = new Example(3,1)
 
 exam1.\_proto\_ == exam2.proto  // true 可以共享原型对象
@@ -613,7 +633,7 @@ exam1.\_proto\_ == exam2.proto  // true 可以共享原型对象
 exam1\_proto\_.sub = function() {return this.a - this.b}：调用constructor定义的属性
 
 exam1.sub()：可以直接调用
-
+```
 **类修饰**
 
 **decorator是一个函数，修改类的行为，在代码编译时产生作用**
@@ -682,7 +702,7 @@ export{var1,var2,var3}：大括号指定输出一组变量，明确导出的接�
 
 import {var1,var2,var3} from 'test.js'：引入对应的接口
 
-在html中使用<script type=”module“ src="test.js"> </script> 引入
+<!-- 在html中使用<script type=”module“ src="test.js"> </script> 引入 -->
 
 **as的用法**
 
@@ -755,7 +775,7 @@ race([p1,p2,p3])：只要一个promise对象实例状态发生变化，就率先
 yield [1,2,3]，可以是个数组，迭代将循环1，2，3并输出
 
 **生成器函数中的方法：**
-
+```
 next()：调用相对应的yield值，返回{value：'值'，done：‘遍历是否结束’}
 
 return(‘value’)：返回指定value，done为true，提前使遍历结束，之后的next将没有值
@@ -765,6 +785,8 @@ throw(err)：使用接收throw抛出的异常，使遍历提前结束
 但是在生成器中处理了throw，通过try{}catch(e){}处理，将跳过此次迭代
 
 再次调用迭代器，还会继续输出迭代值
+```
+```
 
 function\* g1() {
 
@@ -817,6 +839,7 @@ console.log(iterator.next());
 // { value: 5, done: false }
 
 // { value: undefined, done: true }
+```
 
 **十六、async函数(ES7)**
 
