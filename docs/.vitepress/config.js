@@ -15,6 +15,11 @@ export default defineConfig({
   lastUpdated: true,
   // 打包目录生成
   // outDir: "../public",
+  // markdown配置
+  markdown: {
+    theme: "material-palenight",
+    lineNumbers: true,
+  },
   // 主题配置
   themeConfig: {
     // 左侧logo
@@ -63,6 +68,8 @@ export default defineConfig({
                 link: "/javascript/js-dataCommunication",
               },
               { text: "js-dataType", link: "/javascript/js-dataType" },
+              { text: "js-webComponent", link: "/javascript/js-webComponent" },
+              { text: "js-design", link: "/javascript/js-design" },
             ],
           },
         ],
