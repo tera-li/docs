@@ -14,7 +14,7 @@
 
 **示例**
 
-**<my-element first="123">123</my-element>**
+<!-- **<my-element first="123">123</my-element>** -->
 
 ```
 <script type="text/javascript">
