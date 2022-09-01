@@ -26,10 +26,10 @@ export default defineConfig({
     // logo: "../assets/aperture.svg",
     // 顶部导航
     nav: [
-      { text: "Web", link: "/html/index" },
-      { text: "Home", link: "/" },
-      { text: "Home", link: "/" },
-      { text: "Home", link: "/" },
+      { text: "HTML", link: "/html/index" },
+      { text: "CSS", link: "/css/index" },
+      { text: "JS", link: "/javascript/index" },
+      // { text: "Home", link: "/" },
     ],
     sidebar: [
       {
