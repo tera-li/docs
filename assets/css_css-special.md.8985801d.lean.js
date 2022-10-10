@@ -1,1 +1,0 @@
-import{_ as e,c as p,o as t,b as o}from"./app.cecedbec.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"css/css-special.md","lastUpdated":1661925951000}'),c={name:"css/css-special.md"},s=o("",19),a=[s];function i(d,r,n,l,_,w){return t(),p("div",null,a)}const h=e(c,[["render",i]]);export{m as __pageData,h as default};
