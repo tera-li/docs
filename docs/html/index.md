@@ -46,75 +46,103 @@
     - src：可选。表示包含要执行代码的外部文件。
     - type：可选。可以看成是language的替代属性；表示编写代码使用的脚本语言的内容类型（也称为MIME类型）。
 7. **\<body>\</body>** ：定义文档的主体
-8. **块级标签：** ：独占一行，不和其他元素待在一行
+8. **块级标签** ：独占一行，不和其他元素待在一行
 ```
 div，p，h1~h6，ul\>li，ol\>li，dl\>dt\>dd，table，form，pre
 object（定义内嵌对象）
 audio，video，article，aside，footer，canvas，header，section
 ```
-## 123123
-
-
-**行内标签：** 能和其他元素待在一行
-
+9. **行内标签** ：能和其他元素待在一行
+```
 span，a，strong，em，b，big，i，small，sub，sup，code，
-
 button，input，label，select，textarea，img
-
-**文本标签：** strong(着重点粗体)，em(着重点斜体)，i(斜体)，b(粗体)，small(比父元素小的字号)
-
+```
+10. **文本标签：** 
+```
+strong(着重点粗体)，em(着重点斜体)，i(斜体)，b(粗体)，small(比父元素小的字号)
 p(标签引用)，blockquote(长引用)，sup(上标)，sub(下标)，del(删除线)
-
 pre(预格式化文本)，code(代码样式)，abbr(缩写)，dfn(标记特殊术语)
-
 addres(定义联系信息或地址)，mark(凸显文字，使其文字背景为黄色)
+a(定义超链接)
+```
+11. **列表：**
+```
+<dl>
+  <dt>Firefox</dt>
+  <dt>Mozilla Firefox</dt>
+  <dt>Fx</dt>
+  <dd>A free, open source, cross-platform, graphical web browser
+      developed by the Mozilla Corporation and hundreds of volunteers.</dd>
+</dl>
+```
+12. **无序列表：**
+```
+<ul>
+    <li>列表项1</li>
+    <li>列表项2</li>
+    <li>列表项3</li>
+</ul>
+```
+13. **有序列表：** 
+```
+<h4>有序列表</h4>
+<ol>
+    <li>列表项1</li>
+    <li>列表项2</li>
+    <li>列表项3</li>
+</ol>
 
-**a href="page.html#name"(\*\***跳转到 \***\*page\*\*** 页面的 \***\*id\*\*** 为 \***\*name\*\*** 的标签\***\*)**
+reversed(对列表进行降序)，start(列表开始点)，type(开头符号类型：1，I，A)
+```
+14. **表格：** 
+```
+<table border="1">
+  <tr>
+    <th>Month</th>
+    <th>Savings</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+  </tr>
+</table>
 
-**标签属性：** dir="rtl || ltr" // 书写方式从右到左，从左到右
-
-**列表：** dl-\>dt-\>dd
-
-**无序列表：** ul-\>li
-
-**有序列表：** ol-\>li（reversed(对列表进行降序)，start(列表开始点)，type(开头符号类型：1，I，A)）
-
-value：设置有序编号
-
-**表格：** table-\>tr-\>th-\>td（tr,th：表示列，td：表示行）
-
-caption(表格标题)，align(对齐方式)，border(边框宽度)，bordercolor
-
+<thead>  <tbody>  <tfoot>
+caption(表格标题)，align(对齐方式)，border(边框宽度)
 cellspacing(表格内框宽度)，cellpadding(表内文字与边框的距离)
-
 bgcolor(背景颜色)，background(背景图像)，
+td(rowspan(合并行)，colspan(合并列))
+```
+15. **音频：** 
+```
+<audio controls>
+  <source src="horse.mp3" type="audio/mpeg">
+  <source src="horse.ogg" type="audio/ogg">
+  Your browser does not support this audio format.
+</audio>
 
-\<thead\>\<tbody\>\<tfoot\> 标记
-
-td（rowspan(合并行)，colspan(合并列)）
-
-**音频：** audio（属性：controls(控件)，height，width，autoplay(视频就绪后自动播放)
-
+属性：controls(控件)，height，width，autoplay(视频就绪后自动播放)
 loop(视频播放结束重新播放)，muted(声音静音)，src(音频文件的 URL)
-
-preload(预加载，是否加载视频:none(不载入)，auto(载入整个音频)，meta(只载入元数据))）
-
+preload(预加载，是否加载视频:none(不载入)，auto(载入整个音频)，meta(只载入元数据))
 poster（海报图像，加载视频显示的第一帧图片）
+```
+16. **视频：** 
+```
 
-**视频：** video（）属性和 audio 相同
+```
 
-1. 属性：（video 和 audio 相同）
-2. ele.autoplay：获取 video 的 autoplay 属性或设置该属性（设置自动播放）
-3. ele.controls：获取 video 的 controls 属性或设置该属性（设置控件）
-4. ele.currentLoop：获取该媒体已经播放的循环次数
-5. ele.loop：获取 video 的 loop 属性或设置该属性（设置播放循环）
-6. ele.played：获取目前为止已经播放的时间范围（range）
-7. ele.currentTime：获取 video 已经播放的秒数时间或设置该属性（设置播放时间）
-8. ele.duration：获取该媒体 video 的总秒数时间
-9. ele.playbackRate：获取 video 当前的播放速率或设置该属性（设置播放速率）
-10. ele.ended：表示该媒体是否播放完毕
-11. ele.muted：获取 video 的 muted 属性或设置该属性（设置是否禁音）
-12. 方法：
+2. 属性：（video 和 audio 相同）
+3. ele.autoplay：获取 video 的 autoplay 属性或设置该属性（设置自动播放）
+4. ele.controls：获取 video 的 controls 属性或设置该属性（设置控件）
+5. ele.currentLoop：获取该媒体已经播放的循环次数
+6. ele.loop：获取 video 的 loop 属性或设置该属性（设置播放循环）
+7. ele.played：获取目前为止已经播放的时间范围（range）
+8. ele.currentTime：获取 video 已经播放的秒数时间或设置该属性（设置播放时间）
+9.  ele.duration：获取该媒体 video 的总秒数时间
+10. ele.playbackRate：获取 video 当前的播放速率或设置该属性（设置播放速率）
+11. ele.ended：表示该媒体是否播放完毕
+12. ele.muted：获取 video 的 muted 属性或设置该属性（设置是否禁音）
+13. 方法：
 
 # **HTML5**
 
