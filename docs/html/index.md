@@ -1,4 +1,4 @@
-#   HTML
+# HTML
 
 **是什么？** 超文本标记语言
 
@@ -19,26 +19,41 @@
   <body></body>
 </html>
 ```
-1. **\<!DOCTYPE html\>** ：文档声明，html5标准网页声明
-2. **\<head></head\>** ：定义文档的头部，可以放置一些元素
-3. **\<meta />** ：描述 html 文档的元数据
-    - name 供浏览器进行解析，如解决浏览器兼容问题
-      - title 浏览器标题
-      - keywords 网站关键字
-      - description 描述
-      - author 网页开发者信息，作者
-      - copyright 版权信息
-      - viewport 视口，定义移动端缩放
-        1. width：正整数或 device-width，视口宽度
-        2. height：正整数或 device-height，视口高度
-        3. initial-scale：（0~10）初始缩放值
-        4. minimum-scale：（0~10）缩小最小比例
-        5. maximum-scale：（0~10）放大最大比例
-        6. user-scaleble：（yes/no）是否允许用户手动缩放页面
-        7. scheme 指定翻译属性值得方案
-4. **\<style /\>** ：html文档定义样式信息
-    - type="text/css" ：规定样式表的 MIME 类型
-    - MIME 类型 MIME (Multipurpose Internet Mail Extensions) 是描述消息内容类型的标准，用来表示文档、文件或字节流的性质和格式
+## HTML常见标签及属性
+
+1. **\<!DOCTYPE html\>**
+```
+文档声明，html5标准网页声明
+```
+2. **\<head></head\>**
+```
+定义文档的头部，可以放置一些元素
+```
+3. **\<meta />**
+```
+描述 html 文档的元数据
+
+name 供浏览器进行解析，如解决浏览器兼容问题
+  - title 浏览器标题
+  - keywords 网站关键字
+  - description 描述
+  - author 网页开发者信息，作者
+  - copyright 版权信息
+  - viewport 视口，定义移动端缩放
+    1. width：正整数或 device-width，视口宽度
+    2. height：正整数或 device-height，视口高度
+    3. initial-scale：（0~10）初始缩放值
+    4. minimum-scale：（0~10）缩小最小比例
+    5. maximum-scale：（0~10）放大最大比例
+    6. user-scaleble：（yes/no）是否允许用户手动缩放页面
+    7. scheme 指定翻译属性值得方案
+```
+4. **\<style /\>**
+```
+  html文档定义样式信息
+  - type="text/css" ：规定样式表的 MIME 类型
+  - MIME 类型 MIME (Multipurpose Internet Mail Extensions) 是描述消息内容类型的标准，用来表示文档、文件或字节流的性质和格式
+```
 5. **\<link /\>** ：定义文档与外部资源的关系、链接样式表
 6. **\<script /\>** ：定义客户端脚本
     - async：可选。表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本有效。
@@ -128,21 +143,25 @@ poster（海报图像，加载视频显示的第一帧图片）
 ```
 16. **视频：** 
 ```
+<video controls>
+  <source src="horse.mp3" type="video/mpeg">
+  <source src="horse.ogg" type="video/ogg">
+  Your browser does not support this video format.
+</video>
 
+ele.autoplay：获取 video 的 autoplay 属性或设置该属性（设置自动播放）
+ele.controls：获取 video 的 controls 属性或设置该属性（设置控件）
+ele.currentLoop：获取该媒体已经播放的循环次数
+ele.loop：获取 video 的 loop 属性或设置该属性（设置播放循环）
+ele.played：获取目前为止已经播放的时间范围（range）
+ele.currentTime：获取 video 已经播放的秒数时间或设置该属性（设置播放时间）
+ele.duration：获取该媒体 video 的总秒数时间
+ele.playbackRate：获取 video 当前的播放速率或设置该属性（设置播放速率）
+ele.ended：表示该媒体是否播放完毕
+ele.muted：获取 video 的 muted 属性或设置该属性（设置是否禁音）
 ```
 
-2. 属性：（video 和 audio 相同）
-3. ele.autoplay：获取 video 的 autoplay 属性或设置该属性（设置自动播放）
-4. ele.controls：获取 video 的 controls 属性或设置该属性（设置控件）
-5. ele.currentLoop：获取该媒体已经播放的循环次数
-6. ele.loop：获取 video 的 loop 属性或设置该属性（设置播放循环）
-7. ele.played：获取目前为止已经播放的时间范围（range）
-8. ele.currentTime：获取 video 已经播放的秒数时间或设置该属性（设置播放时间）
-9.  ele.duration：获取该媒体 video 的总秒数时间
-10. ele.playbackRate：获取 video 当前的播放速率或设置该属性（设置播放速率）
-11. ele.ended：表示该媒体是否播放完毕
-12. ele.muted：获取 video 的 muted 属性或设置该属性（设置是否禁音）
-13. 方法：
+1.  方法：
 
 # **HTML5**
 
