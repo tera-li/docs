@@ -42,42 +42,55 @@ name 供浏览器进行解析，如解决浏览器兼容问题
   - viewport 视口，定义移动端缩放
     1. width：正整数或 device-width，视口宽度
     2. height：正整数或 device-height，视口高度
-    3. initial-scale：（0~10）初始缩放值
-    4. minimum-scale：（0~10）缩小最小比例
-    5. maximum-scale：（0~10）放大最大比例
-    6. user-scaleble：（yes/no）是否允许用户手动缩放页面
+    3. initial-scale：(0~10)初始缩放值
+    4. minimum-scale：(0~10)缩小最小比例
+    5. maximum-scale：(0~10)放大最大比例
+    6. user-scaleble：(yes/no)是否允许用户手动缩放页面
     7. scheme 指定翻译属性值得方案
 ```
 4. **\<style /\>**
 ```
-  html文档定义样式信息
-  - type="text/css" ：规定样式表的 MIME 类型
-  - MIME 类型 MIME (Multipurpose Internet Mail Extensions) 是描述消息内容类型的标准，用来表示文档、文件或字节流的性质和格式
+html文档定义样式信息
+  - type="text/css"：规定样式表的 MIME 类型
+  - MIME 类型 MIME (Multipurpose Internet Mail Extensions) 是 描述消息内容类型的标准，用来表示文档、文件或字节流的性质和格式
 ```
-5. **\<link /\>** ：定义文档与外部资源的关系、链接样式表
-6. **\<script /\>** ：定义客户端脚本
-    - async：可选。表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本有效。
-    - defer：可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本有效。
-    - src：可选。表示包含要执行代码的外部文件。
-    - type：可选。可以看成是language的替代属性；表示编写代码使用的脚本语言的内容类型（也称为MIME类型）。
-7. **\<body>\</body>** ：定义文档的主体
-8. **块级标签** ：独占一行，不和其他元素待在一行
+5. **\<link /\>**
 ```
-div，p，h1~h6，ul\>li，ol\>li，dl\>dt\>dd，table，form，pre
+定义文档与外部资源的关系、链接样式表
+```
+6. **\<script /\>**
+```
+定义客户端脚本
+  - async：可选。表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本有效
+  - defer：可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本有效
+  - src：可选。表示包含要执行代码的外部文件
+  - type：可选。可以看成是language的替代属性；表示编写代码使用的脚本语言的内容类型（也称为MIME类型）
+```
+7. **\<body>\</body>**
+```
+定义文档内容显示的主体
+```
+8. **块级标签**
+```
+独占一行，不与其他元素所处一行
+
+div,p,h1~h6,ul>li,ol>li,dl>dt>dd,table,form,pre
+header,footer,main,aside,section,audio,video,article,canvas
 object（定义内嵌对象）
-audio，video，article，aside，footer，canvas，header，section
 ```
-9. **行内标签** ：能和其他元素待在一行
+9. **行内标签** ：
 ```
-span，a，strong，em，b，big，i，small，sub，sup，code，
-button，input，label，select，textarea，img
+与其他行内元素所处一行
+
+span,a,strong,em,b,big,i,small,sub,sup,code
+button,input,label,select,textarea,img
 ```
 10. **文本标签：** 
 ```
-strong(着重点粗体)，em(着重点斜体)，i(斜体)，b(粗体)，small(比父元素小的字号)
-p(标签引用)，blockquote(长引用)，sup(上标)，sub(下标)，del(删除线)
-pre(预格式化文本)，code(代码样式)，abbr(缩写)，dfn(标记特殊术语)
-addres(定义联系信息或地址)，mark(凸显文字，使其文字背景为黄色)
+strong(着重点粗体),em(着重点斜体),i(斜体),b(粗体),small(小号字)
+p(标签引用),blockquote(长引用),sup(上标),sub(下标),del(删除线)
+pre(预格式化文本),code(代码样式),abbr(缩写),dfn(标记特殊术语)
+addres(定义联系信息或地址),mark(凸显文字,使其文字背景为黄色)
 a(定义超链接)
 ```
 11. **列表：**
