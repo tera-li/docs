@@ -39,7 +39,7 @@ export default defineConfig({
           {
             text: "HTML",
             items: [
-              { text: "html", link: "/html/index" },
+              { text: "html", link: "/html/" },
               { text: "html-meta", link: "/html/html-meta" },
               { text: "html-form", link: "/html/html-form" },
             ],
@@ -47,7 +47,7 @@ export default defineConfig({
           {
             text: "CSS",
             items: [
-              { text: "css", link: "/css/index" },
+              { text: "css", link: "/css/" },
               { text: "css-compatibility", link: "/css/css-compatibility" },
               { text: "css-flex", link: "/css/css-flex" },
               { text: "css-svg", link: "/css/css-svg" },
@@ -57,7 +57,7 @@ export default defineConfig({
           {
             text: "JavaScript",
             items: [
-              { text: "js", link: "/javascript/index" },
+              { text: "js", link: "/javascript/" },
               { text: "js-proto", link: "/javascript/js-proto" },
               { text: "js-browser", link: "/javascript/js-browser" },
               { text: "js-dom", link: "/javascript/js-dom" },
