@@ -103,10 +103,10 @@ export default defineConfig({
       copyright: "Copyright © 2022-present Surprise",
     },
     // 文档页脚
-    docFooter: {
-      prev: "Pagina prior",
-      next: "Proxima pagina",
-    },
+    // docFooter: {
+    //   prev: "prev page",
+    //   next: "next page",
+    // },
     // 最后更新时间
     lastUpdatedText: "最近更新时间 ",
   },
