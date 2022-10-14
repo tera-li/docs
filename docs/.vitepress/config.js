@@ -17,7 +17,7 @@ export default defineConfig({
   // outDir: "../public",
   // markdown配置
   markdown: {
-    theme: "material-palenight",
+    theme: "material-default",
     lineNumbers: true,
   },
   // 主题配置
@@ -26,7 +26,7 @@ export default defineConfig({
     // logo: "../assets/aperture.svg",
     // 顶部导航
     nav: [
-      { text: "HTML", link: "/html/index" },
+      { text: "HTML", link: "/html/" },
       { text: "CSS", link: "/css/index" },
       { text: "JS", link: "/javascript/index" },
       // { text: "Home", link: "/" },
@@ -40,7 +40,6 @@ export default defineConfig({
             text: "HTML",
             items: [
               { text: "html", link: "/html/" },
-              { text: "html-meta", link: "/html/html-meta" },
               { text: "html-form", link: "/html/html-form" },
             ],
           },
