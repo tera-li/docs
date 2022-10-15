@@ -214,7 +214,7 @@ dialog (对话框或窗口)、embed (外部交互内容或插件，URL)、
 figure (媒介内容的分组，规定独立的流内容(图像，图标，照片))、
 figcaption (figure 元素的标题)、keygen (生成密钥)
 ```
-## Meta
+## Meta以及SEO优化
 ```
 HTML的标识元数据内容，只能在head中
 提供的是文档级别的元数据，应用整个页面
@@ -240,34 +240,13 @@ HTML的标识元数据内容，只能在head中
     -- 告诉文档使用哪种字符编码
 ```
 
-<meta charset="UTF-8">
-
-itemprop
-
-提供用户定义的元数据
-
-content
-
-包含值
-
-**seo优化**
-
-设置title
-
-设置keywords
-
-设置description
-
+**SEO优化**
+```
+设置title、keywords、description，相关网页的描述
 图片alt加上key
-
-html标签，如header、footer、article、aside
-
-h标签合理使用，h1标签权重对高
-
-内容为王，原创被搜索到的几率更高
-
+使用语义化html标签，如header、footer、article、aside
+h标题标签合理使用，h1标签权重对高
+页面内容权重，原创被搜索到的几率更高
 内链优化、外链优化
-
 使用长尾关键词，对关键词进行扩展
-
-[SEO For Developers — A Quick Overview | by Vitali Zaidman | Welldone Software | Medium](https://medium.com/welldone-software/seo-for-developers-a-quick-overview-5b5b7ce34679)
+```
