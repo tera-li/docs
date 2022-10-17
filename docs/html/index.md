@@ -250,57 +250,31 @@ h标题标签合理使用，h1标签权重对高
 使用长尾关键词，对关键词进行扩展
 ```
 ## Form表单
-**Form**
-
-**表示文档中的一个区域，用于向Web服务器提交信息**
-
 **一、From属性**
-
-accept-charset=’ISO-8859-1‘：规定表单提交时使用的字符编码
-
-action=’URL‘：表单提交时，向何处发送表单数据
-
-autocomplete：表单是否应该启用自动完成功能（预测对字段的输入）
-
-enctype：表单数据发送到服务器之前如何对其进行编码（post时使用）
-
-**application/x-www-form-urlencoded**：默认，**发送前对所有字符编码，原生form表单**
-
-**multipart/form-data**：**上传文件时，使用的方式**
-
-**application/json**：使用序列化后的JSON字符串，**数据上传方式**
-
-**text/plain**：将空格编码“+”符号，但不编码特殊字符
-
+```
+accept-charset='ISO-8859-1'：规定表单提交时使用的字符编码
+action='URL'：表单提交时，向何处发送表单数据
 method：发送表单数据的HTTP方法（get，post）
-
-name：规定表单的名称key，用于在JavaScript中引用元素，表单数据
-
-novalidate=Boolean：规定提交表单时不对表单数据进行验证
-
+enctype='multipart/form-data'：表单数据发送到服务器之前如何对其进行编码（post时使用）
+  -- application/x-www-form-urlencoded：默认，发送前对所有字符编码，原生form表单
+  -- multipart/form-data：上传文件时，使用的方式
+  -- application/json**：使用序列化后的JSON字符串，数据上传方式
+  -- text/plain：将空格编码“+”符号，但不编码特殊字符
+name='form'：规定表单的名称key，用于在JavaScript中引用元素，表单数据
+novalidate=‘true’：规定提交表单时不对表单数据进行验证
+autocomplete='on'：表单是否应该启用自动完成功能（预测对字段的输入）
 target：打开action URL的方式
-
-\_blank：在新窗口打开
-
-\_self：在同一框架中打开（默认）
-
-\_parent：在父框架中打开
-
-\_top：在整个窗口中打开
-
-fieldset：存在于form表单中的标签，组合form表单中的输入框
-
-fieldset属性：
-
-disabled：禁用该fieldset（包含的输入框全部禁用）
-
-form：来自哪个表单（form 必须定义id 和 该form相同）
-
-name：fieldset的name属性值
-
-legend：定义fieldset元素的标题
-
-align：legend属性（top，bottom，left，right）定义标题位置
+  -- _blank：在新窗口打开
+  -- _self：在同一框架中打开（默认）
+  -- _parent：在父框架中打开
+  -- _top：在整个窗口中打开
+fieldset：存在于form表单中的标签，组合form表单中的输入框进行分组
+  -- disabled：禁用该fieldset（包含的输入框全部禁用）
+  -- form：来自哪个表单（form 必须定义id 和 该form相同）
+  -- name：fieldset的name属性值
+  -- legend：定义fieldset元素的标题
+  -- align：legend属性（top，bottom，left，right）定义标题位置
+```
 
 **二、form对象收集**
 
