@@ -3,8 +3,16 @@
     <title>Document</title>
     <!-- 内嵌式 -->
     <style type="text/css">
+      div {
+        height: 10000px;
+      }
+      h1 {
+        position: sticky;
+        top: 20px;
+      }
       p {
         color: red;
+        width: min-content;
       }
     </style>
     <!-- 外部式 link 连接⼀个外部样式表 -->
@@ -12,6 +20,18 @@
   </head>
   <body>
     <!-- 行内样式 -->
-    <p style="color: red">行内样式申明</p>
+    <div>
+      <p style="color: red; margin-top: 100px">
+        <span style="display: none">123123123</span>
+        <span>123123</span>
+        <span>123123</span>
+      </p>
+      <h1>sticky</h1>
+      <p style="color: red; margin-top: 100px">
+        <span style="display: none">123123123</span>
+        <span>123123</span>
+        <span>123123</span>
+      </p>
+    </div>
   </body>
 </html>

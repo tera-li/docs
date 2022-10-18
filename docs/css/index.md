@@ -34,77 +34,89 @@ media="screen"：定义外部加载的样式表在什么设备上使⽤
   -- all：适⽤于所有设备
   -- 和 @media print媒体规则效果等相同
 ```
-## CSS常用属性
-
-## 元素尺⼨
+## CSS 元素尺⼨
 ```css
-
-```
-width：定义元素宽度（px或百分⽐）
-
-1. win-content**：使块元素中的内容固有最⼩宽度**
-2. max-content**：使块元素中的内容固有最⼤宽度（与上⽆异）**
-3. fill-availlabel**：⾃动填满剩余空间（默认）**
-4. div**元素，宽度默认占⽐⼀⾏，与屏幕宽度对等**
-5. **设置** win-content**后，** div**元素宽度与内容宽度对等（** div**还是独占⼀⾏）**
-
-min-width：定义元素最⼩宽度（px或百分⽐）
-
-max-width：定义元素最⼤宽度（px或百分⽐）
-
-height：定义元素宽度（px或百分⽐）
-
-min-width：定义元素最⼩宽度（px或百分⽐）
-
-max-height：定义元素最⼤宽度（px或百分⽐） margin：定义元素的外边距（top，right，bottom，left） padding：定义元素内边距（top，right，bottom，left）
-**1、定位**
-
-```css
-h1 {
-   position: static;
+p {
+   /*
+   width: 定义元素宽度
+      win-content: 采用内部元素最小宽度值最大的那个元素的宽度作为最终容器的宽度
+      max-content: 采用内部元素最大宽度值的那个元素的宽度作为最终容器的宽度
+      fit-content: 元素宽度收缩为内容宽度
+      fill-availlabel: 自动填满剩余的空间
+   min-width：定义元素最⼩宽度
+   max-width：定义元素最⼤宽度
+   height: 定义元素高度
+   margin：定义元素的外边距 (top，right，bottom，left)
+   padding：定义元素内边距 (top，right，bottom，left)
+   */
+   width: 100px | 100% | 100rem | 100vw | win-content | max-content | fill-availlabel;
+   min-width: 100px | 100% | 100rem | 100vw;
+   max-width: 100px | 100% | 100rem | 100vw;
+   height: 100px | 100% | 100rem | 100vw;
+   min-height: 100px | 100% | 100rem | 100vw;
+   max-height: 100px | 100% | 100rem | 100vw;
+   margin: 1px 1px 1px 1px;
+   padding: 1px 1px 1px 1px;
 }
 ```
-position（static，relative，absolute，fixed，sticky）
+## CSS 元素布局
+```css
+/*
+   display: 设置元素如何显示
+      none: 隐藏元素，不会占据空间
+      inline: 内联元素
+      block: 块级元素
+      inline-block: 内联块元素
+      list-item: 列表项⽬
+      inline-table: 内联表格
+      flex: 弹性布局
+      inline-flex: 内联弹性布局
+   visibility: 设置元素如何显示
+      visible: 显示元素
+      hidden: 隐藏元素，会占据空间
+*/
+display: none | inline | block | inline-block | flex | inline-flex;
+visibility: visible | hidden;
+/*
+   float: 设置元素浮动
+      none: 元素不浮动
+      left: 元素浮动在左边
+      right: 元素浮动在右边
+   clear: 设置元素浮动方式
+      none: 允许元素两边都有浮动
+      both: 不允许元素有浮动
+      left: 不允许元素左边有浮动
+      right: 不允许元素右边浮动
+*/
+float: none | left | right;
+clear: none | both | left | right;
+/*
+   overflow: 控制内容溢出元素框时显示的方式
+      visible: 内容不会被修剪，会呈现在元素框之外
+      hidden: 内容会被修剪，并且其余内容是不可见
+      scroll: 内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容
+      auto: 如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容
+   overflow-x: 指定控制内容溢出元素X轴的处理方式
+   overflow-y: 指定控制内容溢出元素Y轴的处理方式
+*/
+overflow: visible | hidden | scroll | auto;
+overflow-x: visible | hidden | scroll | auto;
+overflow-y: visible | hidden | scroll | auto;
+/*
+   position: 设置元素定位
+      static：默认，遵循常规流
+      relative: 相对定位，相对于⽗元素的位置
+      absolute: 绝对定位，参照⽗元素定位
+      fixed: 固定定位，以窗⼝为参考进⾏定位，不会随着滚动条滚动
+      sticky: 粘性定位，基于用户的滚动位置来定位；在 position:relative 与 position:fixed 定位之间切换；当页面滚动超出元素目标区域则切换为fixed
+   z-index: 设置元素的堆叠顺序
+*/
+position: static | relative | absolute | fixed | sticky;
+z-index：100;
+```
 
-static：默认，遵循常规流
-
-relative：相对定位，相对于⽗元素的位置 absolute：绝对定位，参照祖先元素定位 fixed：固定定位，以窗⼝为参考进⾏定位，不会随着滚动条滚动
-
-sticky：
-
-z-index：定义position的层叠级别 left、top、right、bottom：距离各个⽅位的距离（px或百分）
-
-clip：
-
-**2、布局**
-
-display：定义元素类型
-
-none：隐藏元素。inline：内联元素。block：块级元素。inline-block：内联块元素
-
-list-item：列表项⽬。table：块元素级的表格。inline-table：内联块元素的表格。
-
-flex：弹性伸缩盒显示。inline-flex：内联块级弹性伸缩盒显示 float：定义元素浮动
-
-none：元素不浮动。left：元素浮动在左边。right：元素浮动在右边 clear：定义元素是否清除浮动
-
-none：允许两边都有浮动。both：不允许有浮动 left：不允许左边有浮动。right：不允许右边浮动
-
-visibility：定义元素是否可⻅
-
-visible：可⻅。hidden：隐藏。
-
-collapse：隐藏表格的⾏或列，对于其他元素相当于hidden overflow：定义内容溢出的处理⽅式
-
-overflow-x：指定x轴横向
-
-overflow-y：指定y轴竖向
-
-visible：不做处理，内容可能会超出容器 hidden：隐藏溢出内容 scroll：隐藏溢出内容，超出内容通过滚动条⽅式呈现 auto：对溢出内容按需呈现滚动条
-
-
-**4、背景与边框**
-
+## CSS 背景与边框
+```css
 boder：定义边框样式（宽度，样式，颜⾊）
 
 box-shadow：定义元素阴影
@@ -158,14 +170,17 @@ auto：原本⼤⼩ cover：等⽐完全覆盖容器，有可能超出容器**�
 3. polygon(50% 0%,100% 50%,50% 100%,0% 50%)：
 1. 定义多边形每个⻆的 position
 1. 填充规则，如何填充多边形
+```
 
-**5、颜⾊**
+
+## CSS 字体与颜⾊
+```css
+**5、**
 
 color：定义元素或对象的颜⾊
 
 opacity：定义元素不透明度（0~1）⼦元素拥有相同透明度
-
-**6、字体** font：定义⽂本特性（style，variant，weight，size，family，stretch，size-adjust）
+**6、** font：定义⽂本特性（style，variant，weight，size，family，stretch，size-adjust）
 
 1、style：⽂本样式
 
@@ -256,7 +271,7 @@ vertical-align：⾏内元素在框内的对⻬⽅式
 2、none：不会根据设备进⾏调整
 
 3、百分⽐
-
+```
 **8、⽂本装饰**
 
 text-decoration：元素⽂本装饰
