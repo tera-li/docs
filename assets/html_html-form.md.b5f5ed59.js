@@ -1,1 +1,0 @@
-import{_ as t,c as e,o as a}from"./app.95f45e14.js";const _=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"html/html-form.md","lastUpdated":1666009546000}'),r={name:"html/html-form.md"};function o(s,m,c,n,l,p){return a(),e("div")}const f=t(r,[["render",o]]);export{_ as __pageData,f as default};
