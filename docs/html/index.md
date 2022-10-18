@@ -316,6 +316,6 @@ type属性：
 
 **四、阻止表单默认提交**
 ```
-在form标签上，onsubmit="return false"
-在form中使用<input type="text" onsubmit="event.preventDefault()" />
+在form中使用 <input type="text" onsubmit="event.preventDefault()" />
+在form中使用 <input type="text" onsubmit="return false" />
 ```

@@ -38,10 +38,7 @@ export default defineConfig({
         items: [
           {
             text: "HTML",
-            items: [
-              { text: "html", link: "/html/" },
-              { text: "html-form", link: "/html/html-form" },
-            ],
+            link: "/html/",
           },
           {
             text: "CSS",
