@@ -43,7 +43,7 @@ export default defineConfig({
           {
             text: "CSS",
             items: [
-              { text: "css", link: "/css/" },
+              { text: "CSS", link: "/css/" },
               { text: "css-compatibility", link: "/css/css-compatibility" },
               { text: "css-flex", link: "/css/css-flex" },
               { text: "css-svg", link: "/css/css-svg" },

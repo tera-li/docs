@@ -1,21 +1,17 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style></style>
-    <script>
-      const BasicVarGen = function () {
-        this.s0 = "IAmString";
-        this.s1 = "IAmString";
-        return function () {
-          var aaaa = "123123";
-        };
-      };
-      BasicVarGen();
-    </script>
+    <!-- 内嵌式 -->
+    <style type="text/css">
+      p {
+        color: red;
+      }
+    </style>
+    <!-- 外部式 link 连接⼀个外部样式表 -->
+    <link href="./index.css" type="text/css" rel="stylesheet" media="screen" />
   </head>
-  <body></body>
+  <body>
+    <!-- 行内样式 -->
+    <p style="color: red">行内样式申明</p>
+  </body>
 </html>

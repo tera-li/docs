@@ -1,28 +1,69 @@
-**Css**
+# CSS
 
-**是什么？**层叠样式表
+**是什么？** 层叠样式表
 
-**作⽤？**定义如何显示HTML元素
+**作⽤？** 用来描述 HTML 文档的呈现，定义如何显示HTML元素
 
-**如何使⽤？**⾏内式 style="color: red"
+**如何使⽤？** 
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <!-- 内嵌式 -->
+    <style type="text/css">
+      p {
+         color: red;
+      }
+    </style>
+    <!-- 外部式 link 连接⼀个外部样式表 -->
+    <link href="./index.css" type="text/css" rel="stylesheet" media="screen" />
+  </head>
+  <body>
+   <!-- 行内样式 -->
+    <p style="color: red">行内样式申明</p>
+  </body>
+</html>
 
-<!-- 内嵌式 <style type="text/css"></style> -->
+href="./index.css"：连接外部文件  
+rel="stylesheet"：定义链接文件和HTML文档之间的关系为样式表  
+type="text/css"：MIME 类型是 "text/css"，它规定样式表  
+media="screen"：定义外部加载的样式表在什么设备上使⽤  
+  -- screen：计算机屏幕
+  -- print：打印机预览 /打印⻚⾯
+  -- all：适⽤于所有设备
+  -- 和 @media print媒体规则效果等相同
+```
+## CSS常用属性
 
-<!-- 外部式 <link href="index.css" type="text/css" rel="stylesheet" media="screen" /> link 连接⼀个外部样式表 -->
+## 元素尺⼨
+```css
 
-rel=“stylesheet” 定义外部加载的样式表
+```
+width：定义元素宽度（px或百分⽐）
 
-media：定义外部加载的样式表在什么设备上使⽤
+1. win-content**：使块元素中的内容固有最⼩宽度**
+2. max-content**：使块元素中的内容固有最⼤宽度（与上⽆异）**
+3. fill-availlabel**：⾃动填满剩余空间（默认）**
+4. div**元素，宽度默认占⽐⼀⾏，与屏幕宽度对等**
+5. **设置** win-content**后，** div**元素宽度与内容宽度对等（** div**还是独占⼀⾏）**
 
-1. screen：计算机屏幕
-1. print：打印机预览 /打印⻚⾯
-1. all：适⽤于所有设备
-1. 和 @media print媒体规则效果等相同
+min-width：定义元素最⼩宽度（px或百分⽐）
 
-**⼀、属性**
+max-width：定义元素最⼤宽度（px或百分⽐）
 
+height：定义元素宽度（px或百分⽐）
+
+min-width：定义元素最⼩宽度（px或百分⽐）
+
+max-height：定义元素最⼤宽度（px或百分⽐） margin：定义元素的外边距（top，right，bottom，left） padding：定义元素内边距（top，right，bottom，left）
 **1、定位**
 
+```css
+h1 {
+   position: static;
+}
+```
 position（static，relative，absolute，fixed，sticky）
 
 static：默认，遵循常规流
@@ -61,25 +102,6 @@ overflow-y：指定y轴竖向
 
 visible：不做处理，内容可能会超出容器 hidden：隐藏溢出内容 scroll：隐藏溢出内容，超出内容通过滚动条⽅式呈现 auto：对溢出内容按需呈现滚动条
 
-**3、尺⼨**
-
-width：定义元素宽度（px或百分⽐）
-
-1. win-content**：使块元素中的内容固有最⼩宽度**
-1. max-content**：使块元素中的内容固有最⼤宽度（与上⽆异）**
-1. fill-availlabel**：⾃动填满剩余空间（默认）**
-1. div**元素，宽度默认占⽐⼀⾏，与屏幕宽度对等**
-1. **设置** win-content**后，** div**元素宽度与内容宽度对等（** div**还是独占⼀⾏）**
-
-min-width：定义元素最⼩宽度（px或百分⽐）
-
-max-width：定义元素最⼤宽度（px或百分⽐）
-
-height：定义元素宽度（px或百分⽐）
-
-min-width：定义元素最⼩宽度（px或百分⽐）
-
-max-height：定义元素最⼤宽度（px或百分⽐） margin：定义元素的外边距（top，right，bottom，left） padding：定义元素内边距（top，right，bottom，left）
 
 **4、背景与边框**
 
