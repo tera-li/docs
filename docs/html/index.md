@@ -214,6 +214,7 @@ dialog (对话框或窗口)、embed (外部交互内容或插件，URL)、
 figure (媒介内容的分组，规定独立的流内容(图像，图标，照片))、
 figcaption (figure 元素的标题)、keygen (生成密钥)
 ```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element
 ## Meta以及SEO优化
 ```
 HTML的标识元数据内容，只能在head中
@@ -239,6 +240,8 @@ HTML的标识元数据内容，只能在head中
   -- charset
     -- 告诉文档使用哪种字符编码
 ```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta  
+
 **SEO优化**
 ```
 设置title、keywords、description，相关网页的描述
@@ -275,100 +278,44 @@ fieldset：存在于form表单中的标签，组合form表单中的输入框进�
   -- legend：定义fieldset元素的标题
   -- align：legend属性（top，bottom，left，right）定义标题位置
 ```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form  
 
-**二、form对象收集**
-
-elements：包含表单中所有元素的数组（指定对应form元素，返回每个input的集合）
-
-**三、Form对象方法/事件**
-
+**二、Form对象方法/事件**
+```
 reset()：重置一个表单（指定对应form元素）
-
 submit()：提交一个表单（指定对应form元素）
-
 onreset：在重置表单元素之前调用
-
 onsubmit：在提交表单之前调用
+```
+**三、input**
+```
+type属性：
+  -- text：默认值，单行文本区域（maxlength，minlength，pattern，placeholder，readonly只读，size文本宽度，spellcheck控制是否可以检查文本框的拼写）
+  -- number：数字（value，placeholder，step=“10”按钮步进10，min，max，list预定义值，datalist id，option输出，required）
+  -- password：密码文本（autocomplete自动补全密码，required，maxlength，minlength，size，pattern，inputmode：numeric定义可能输入类型：在移动设备会选择数字键盘
+  -- email：邮箱地址（multiple可以输入多个元素，placeholder，size，value，maxlength，minlength）
+  -- tel：电话号码，拥有动态键盘的设备会显示数字键盘（placeholder，size，minlength，maxlength，value，required，pattern）
+  -- search：搜索字符串单行文本框，支持的浏览器会有清除文本框按钮（list和datalist，maxlength，minlength，pattern，placeholder，readonly，size，spellcheck）
+  -- radio：单选按钮（定义多个相同name的值，只会选择其中一个，value）
+  -- checkbox：复选框（checked，value）
+  -- button：按钮（在HTML使用button）
+  -- color：颜色（value十六进制，disabled，name，autofocus(bool)，autocomplete）
+  -- file：文件（accept文件类型image，multiple，需要对form表单设置enctype编码）
+  -- image：带图像的submit按钮（src，alt，width，height，required，）
+  -- range：进度条之类的范围控件（list和datalist，max，min，step）
+  -- submit：提交表单按钮（value）
+  -- reset：重置表单按钮
+  -- hidden：不显示的控件，但仍会提交（value，name）
+  -- date：日期（年月日，value，min，max）
+  -- month：日期（年月，value，max，min，readonly，step）
+  -- datetime-local：日期（年月日时分，min，max，required）
+  -- time：时间（value，max，min，readonly，step）
+  -- week：年和周数（value，max，min，readonly，step）
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input  
 
-**四、input**
-
-**type属性**
-
-**text**：默认值，单行文本区域（maxlength，minlength，pattern，placeholder，readonly只读，size文本宽度，spellcheck控制是否可以检查文本框的拼写）
-
-**number**：数字（value，placeholder，step=“10”按钮步进10，min，max，list预定义值，datalist id，option输出，required）
-
-**password**：密码文本（autocomplete自动补全密码，required，maxlength，minlength，size，pattern，inputmode：numeric定义可能输入类型：在移动设备会选择数字键盘（inputmode属性值：<https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/inputmode>））
-
-**email**：邮箱地址（multiple可以输入多个元素，placeholder，size，value，maxlength，minlength）
-
-**tel**：电话号码，拥有动态键盘的设备会显示数字键盘（placeholder，size，minlength，maxlength，value，required，pattern）
-
-**search**：搜索字符串单行文本框，支持的浏览器会有清除文本框按钮（list和datalist，maxlength，minlength，pattern，placeholder，readonly，size，spellcheck）
-
-**radio**：单选按钮（定义多个相同name的值，只会选择其中一个，value）
-
-**checkbox**：复选框（checked，value）
-
-**button**：按钮（在HTML使用button）
-
-**color**：颜色（value十六进制，disabled，name，autofocus(bool)，autocomplete）
-
-**file**：文件（accept文件类型image/\*，multiple，需要对form表单设置enctype编码）
-
-**image**：带图像的submit按钮（src，alt，width，height，required，）
-
-**range**：进度条之类的范围控件（list和datalist，max，min，step）
-
-**submit**：提交表单按钮（value）
-
-**reset**：重置表单按钮（不推荐）
-
-**hidden**：不显示的控件，但仍会提交（value，name）
-
-**date**：日期（年月日，value，min，max）
-
-**month**：日期（年月，value，max，min，readonly，step）
-
-**datetime**-local：日期（年月日时分，min，max，required）
-
-**time**：时间（value，max，min，readonly，step）
-
-**week**：年和周数（value，max，min，readonly，step）
-
-**五、阻止表单提交**
-
+**四、阻止表单默认提交**
+```
 在form标签上，onsubmit="return false"
-
-在form中使用<input  type="text" onsubmit="event.preventDefault()" />
-
-也可把onsubmit写入函数中使用event.preventDefault()
-
-**六、表单提交**
-
-<!-- ![clipboard.png](./assets/Aspose.Words.1be046b9-43b4-40fc-8138-bf1a378f39d7.001.png) -->
-
-阻止浏览器默认表单提交**event.preventDefault()**
-
-获取表单内容迭代处理
-
-最后进行ajax提交
-
-**六、表单中select**
-**multiple**表示多选
-
-**size**表示下拉列表中的可见行数
-
-**optgroup**对选项进行分组
-
-**options**获取**select**标签的选择集合
-
-**.form**获取**select**标签所在的**form**对象
-
-**七、表单中input**
-
-属性
-
-方法
-
-ele.select()：选中input的文本value，可以使用addeventlistener监听这个方法触发
+在form中使用<input type="text" onsubmit="event.preventDefault()" />
+```
