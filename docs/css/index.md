@@ -37,18 +37,18 @@ media="screen"：定义外部加载的样式表在什么设备上使⽤
 ## CSS 元素尺⼨
 ```css
 p {
-   /*
-   width: 定义元素宽度
+    /*
+    width: 定义元素宽度
       win-content: 采用内部元素最小宽度值最大的那个元素的宽度作为最终容器的宽度
       max-content: 采用内部元素最大宽度值的那个元素的宽度作为最终容器的宽度
       fit-content: 元素宽度收缩为内容宽度
       fill-availlabel: 自动填满剩余的空间
-   min-width：定义元素最⼩宽度
-   max-width：定义元素最⼤宽度
-   height: 定义元素高度
-   margin：定义元素的外边距 (top，right，bottom，left)
-   padding：定义元素内边距 (top，right，bottom，left)
-   */
+    min-width：定义元素最⼩宽度
+    max-width：定义元素最⼤宽度
+    height: 定义元素高度
+    margin：定义元素的外边距 (top，right，bottom，left)
+    padding：定义元素内边距 (top，right，bottom，left)
+    */
    width: 100px | 100% | 100rem | 100vw | win-content | max-content | fill-availlabel;
    min-width: 100px | 100% | 100rem | 100vw;
    max-width: 100px | 100% | 100rem | 100vw;
@@ -61,8 +61,9 @@ p {
 ```
 ## CSS 元素布局
 ```css
-/*
-   display: 设置元素如何显示
+p {
+    /*
+    display: 设置元素如何显示
       none: 隐藏元素，不会占据空间
       inline: 内联元素
       block: 块级元素
@@ -71,275 +72,116 @@ p {
       inline-table: 内联表格
       flex: 弹性布局
       inline-flex: 内联弹性布局
-   visibility: 设置元素如何显示
+    visibility: 设置元素如何显示
       visible: 显示元素
       hidden: 隐藏元素，会占据空间
-*/
-display: none | inline | block | inline-block | flex | inline-flex;
-visibility: visible | hidden;
-/*
-   float: 设置元素浮动
+    */
+    display: none | inline | block | inline-block | flex | inline-flex;
+    visibility: visible;
+    /*
+    float: 设置元素浮动
       none: 元素不浮动
       left: 元素浮动在左边
       right: 元素浮动在右边
-   clear: 设置元素浮动方式
+    clear: 设置元素浮动方式
       none: 允许元素两边都有浮动
       both: 不允许元素有浮动
       left: 不允许元素左边有浮动
       right: 不允许元素右边浮动
-*/
-float: none | left | right;
-clear: none | both | left | right;
-/*
-   overflow: 控制内容溢出元素框时显示的方式
+    */
+    float: none | left | right;
+    clear: none | both | left | right;
+    /*
+    overflow: 控制内容溢出元素框时显示的方式
       visible: 内容不会被修剪，会呈现在元素框之外
       hidden: 内容会被修剪，并且其余内容是不可见
       scroll: 内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容
       auto: 如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容
-   overflow-x: 指定控制内容溢出元素X轴的处理方式
-   overflow-y: 指定控制内容溢出元素Y轴的处理方式
-*/
-overflow: visible | hidden | scroll | auto;
-overflow-x: visible | hidden | scroll | auto;
-overflow-y: visible | hidden | scroll | auto;
-/*
-   position: 设置元素定位
+    overflow-x: 指定控制内容溢出元素X轴的处理方式
+    overflow-y: 指定控制内容溢出元素Y轴的处理方式
+    */
+    overflow: visible | hidden | scroll | auto;
+    overflow-x: visible | hidden | scroll | auto;
+    overflow-y: visible | hidden | scroll | auto;
+    /*
+    position: 设置元素定位
       static：默认，遵循常规流
       relative: 相对定位，相对于⽗元素的位置
       absolute: 绝对定位，参照⽗元素定位
       fixed: 固定定位，以窗⼝为参考进⾏定位，不会随着滚动条滚动
       sticky: 粘性定位，基于用户的滚动位置来定位；在 position:relative 与 position:fixed 定位之间切换；当页面滚动超出元素目标区域则切换为fixed
-   z-index: 设置元素的堆叠顺序
-*/
-position: static | relative | absolute | fixed | sticky;
-z-index：100;
+    z-index: 设置元素的堆叠顺序
+    */
+    position: static | relative | absolute | fixed | sticky;
+    z-index：100;   
+}
 ```
-
+参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Introduction
 ## CSS 背景与边框
 ```css
-boder：定义边框样式（宽度，样式，颜⾊）
-
-box-shadow：定义元素阴影
-
-（x轴⽔平偏移，y轴垂直偏移，阴影模糊半径，阴影⼤⼩，阴影颜⾊） （正值：阴影在右侧，底部，模糊+，向四周扩散，颜⾊） （负值：阴影在左侧，顶部，最⼩为0，向⾥收缩，颜⾊）
-
-border-radius：定义元素圆⻆
-
-（x/y，⽔平半轴，垂直半轴）
-
-（border-top-left-radius，border-top-right-radius）
-
-（border-bottom-left-radius，border-bottom-right-radius） border-image：定义边框图像
-
-（source，slice，width，outset，repeat） （1、图像路径：url()或渐变。2、分割（上右下左，百分⽐）。3、图像厚度（number）） （4、向外偏移的距离（number）。5、定义分割图像怎样填充边框图像区域） repeat：stretch：使⽤拉伸⽅式填充边框图像区域
-
-repeat：重复平铺来填充边框图像，超出边框截断图像
-
-round：和repeat相似，不能以整数平铺，会根据情况伸缩 space：与repeat相似，不能以整数平铺，会⽤空⽩间隙填充在图像周围
-
-background：定义背景图像 （image，position，size，repeat，attachment，origin，clip，color） 1、image 背景图像：url（）或渐变。
-
-<!-- ![](./assets/Aspose.Words.51080e53-b624-496e-a2bf-85f790ccec0c.001.png) -->
-
-2、repeat 背景图像如何填充
-
-（repeat-x，repeat-y，repeat，no-repeat，round，space） （横向平铺，纵向平铺，横向和纵向，不平铺(只显示⼀张) round：不能以整数平铺，会根据情况伸缩 space：不能以整数平铺，会⽤空⽩间隙填充在图像周围）
-
-3、attachment 定义滚动时背景图像相对于谁固定
-
-（fixed：相对于视⼝viewport固定。scroll，local）
-
-4、position 背景图⽚在元素中出现的位置（top，right，bottom，left，px或百分⽐） 5、origin 指定的背景图像计算‘background-position’ 时参考原点（位置）
-
-border-box：从border区域开始显示，
-
-padding-box：从padding区域开始显示， content-box：从content区域开始显示背景图像
-
-6、size 背景图像的尺⼨（px或百分⽐）
-
-auto：原本⼤⼩ cover：等⽐完全覆盖容器，有可能超出容器**，⾼度过⻓，会超出容器并裁剪** contain：等⽐缩放⾼度和宽度与容器相等，始终在容器内**，会留⽩**
-
-7、clip 背景图像向外裁剪的区域（除指定区域的内容绘制，以外的内容不绘制背景区域） border-box：从border区域开始向外裁剪， padding-box：从padding区域开始向外裁剪， content-box：从content区域开始向外裁剪图像 text：按照前景内容或⽂字作为裁剪区域，向外裁剪
-
-**clip-path**：裁剪元素，创建元素可显示区域，区域内显示，区域外隐藏
-
-1. circle(50%)：裁剪为原型，值为半径
-1. ellipse(x,y at x%,y%)：
-1. 裁剪为指定 x轴， y轴的半径
-1. x%， y%指定原型中⼼点位置
-3. polygon(50% 0%,100% 50%,50% 100%,0% 50%)：
-1. 定义多边形每个⻆的 position
-1. 填充规则，如何填充多边形
+p {
+    /*
+    border: 设置元素边框
+    border-radius: 定义元素圆⻆
+    border-image: 定义边框图像
+    */
+    border: 1px solid black;
+    border-radius: 5px;
+    border-image: url("./xxx.png");
+    /*
+    box-shadow: 设置元素阴影
+      inset: 从外层的阴影（开始时）改变阴影内侧阴影
+      x-shadow: 必需的。水平阴影的位置。允许负值
+      y-shadow: 必需的。垂直阴影的位置。允许负值
+      blur: 模糊距离
+      spread: 阴影的大小
+      color: 阴影的颜色
+    */
+    box-shadow: inset 1px 1px 1px 1px rebeccapurple;
+    background: #7f8497 | url("./xxx.png");
+}
 ```
-
-
+参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders
 ## CSS 字体与颜⾊
 ```css
-**5、**
-
-color：定义元素或对象的颜⾊
-
-opacity：定义元素不透明度（0~1）⼦元素拥有相同透明度
-**6、** font：定义⽂本特性（style，variant，weight，size，family，stretch，size-adjust）
-
-1、style：⽂本样式
-
-normal：正常字体
-
-italic：斜体
-
-oblique：倾斜的斜体 2、variant：定义字体为⼩型的⼤写字⺟（small-caps） 3、weight：定义字体粗细（normal，bold（700），number（100~900））
-
-（bolder：定义⽐继承值更重的值。lighter：定义⽐继承更轻的值） 4、family：字体名称
-
-5、streth：元素⽂字是否横向拉伸变形
-
-6、size-adjust：定义元素的 aspect 值，⽤以保持⾸选字体的 x-height **7、⽂本** text-transform：⽂本如何转换⼤⼩写（none，capitalize，uppercase，lowercase）
-
-1、none：⽆转换
-
-2、capitalize：每个单词第⼀个字⺟转换为⼤写 3、uppercase：每个单词转换为⼤写
-
-4、lowercase：每个单词转换为⼩写                  white-space：元素是否保留⽂本空格、换⾏、是否⾃动换⾏
-
-1、normal：默认
-
-2、pre：原封不动保留输⼊的状态
-
-3、nowrap：强制⽂本在同⼀⾏内显示
-
-4、pre-warp：与pre⼀致，超出边界会⾃动换⾏
-
-5、pre-line：与normal⼀致，会保留⽂本输⼊时的换⾏ tab-size：定义内容制表符的⻓度（number）2等于⼀个字符
-
-\1. 必须在 pre元素中使⽤才会使 tab的⻓度等于规定的⻓度
-
-word-break：内容⽂本的换⾏⾏为
-
-1、normal：默认规则换⾏⾏为
-
-2、kepp-all：对中⽂，韩⽂，⽇⽂不允许换⾏
-
-3、break-all：允许任意字符换⾏ 4、break-word：允许换⾏，保持单词为整体单位，当⼀⾏放不下时，换⾏到第⼆⾏
-
-overflow-warp：break-word效果与之相同 word-wrap：允许⻓单词或者⻓URL换⾏到下⼀⾏
-
-1、normal：允许的断字段换⾏（默认）
-
-2、break-word：⻓单词或URL地址内部进⾏换⾏ text-align：内容⽔平对⻬⽅式
-
-1、left、center、right
-
-2、justify：内容两端对⻬
-
-3、start：内容对⻬开始边界
-
-4、end：内容对⻬结束边界
-
-5、match-parent：会继承start或end，表现为left或right
-
-6、justify-all：与justify相同，不同的是最后⼀⾏也会两端对⻬ text-align-last：块⽂本内容的最后⼀⾏（与text-align相同） text-justify：⽤什么⽅式实现⽂本内容两端对⻬ word-spacing：单词之间的额外间隙（单词空格的宽度）
-
-1、px或百分⽐间隔
-
-letter-spacing：字符之间的额外间隙
-
-1、px
-
-text-indent：块内⽂本内容的缩进
-
-1、px或百分⽐
-
-vertical-align：⾏内元素在框内的对⻬⽅式
-
-1、baseline：当前盒的基线与⽗级盒基线对⻬ 2、sub：降低到⽗级盒的下标位置
-
-3、super：提升到⽗级盒的上标位置 4、text-top：当前盒top和⽗级内容区的top对⻬ 5、text-bottom：当前盒的bottom盒⽗级内容区的bottom对⻬ 6、middle：当前盒的垂直中⼼和⽗级盒的基线加上⽗级的半x-height对⻬ 7、top：当前盒的top与⾏盒的top对⻬ 8、bottom：当前盒的bottom与⾏盒的bottom对⻬
-
-9、px，0 === baseline，把当前盒提升或降低 line-height：元素中⾏框的最⼩⾼度
-
-1、normal：允许内容丁凯或溢出指定的容器边界
-
-2、px，不允许负值
-
-3、百分⽐，基于⽂本font-size进⾏换算
-
-4、number，⽤乘积因⼦指定⾏⾼                      text-size-adjust：定义移动端⻚⾯中元素⽂本⼤⼩如何调整
-
-1、auto：根据设备尺⼨进⾏调整
-
-2、none：不会根据设备进⾏调整
-
-3、百分⽐
+p {
+    /*
+    color: 
+      red: 设置字体颜色
+    opacity: 
+      0~1: 设置不透明级别
+    font-style:
+      italic: 设置字体样式斜体
+    font-weight:
+      100~900: 设置字体粗细
+    font-size: 设置字体大小
+    font-family: 设置元素字体
+    text-align: 设置文本的对齐方式
+    line-height: 设置文本行高
+    letter-spacing: 设置 字与字 的距离
+    word-spacing: 设置 单词段字之间 的距离
+    text-decoration: 设置文本的修饰
+    text-decoration-color: 设置文本修饰线的颜色
+    text-decoration-style: 设置文本的修饰形状
+    direction: 文本的方向
+    */
+    color: red | #333333;
+    opacity: 0 | 1;
+    font-style: normal | italic | oblique;
+    font-weight: 100 | 900 | bold;
+    font-size: 10px;
+    font-family: Georgia, serif;
+    text-align: center | left | right | justify;
+    line-height: 10px | 2.5;
+    letter-spacing: 2px;
+    word-spacing: 4px;
+    text-decoration: overline | line-through | underline ;
+    text-decoration-color: red;
+    text-decoration-style: solid | double | dotted | wavy;
+    direction: ltr | rtl;
+}
 ```
-**8、⽂本装饰**
-
-text-decoration：元素⽂本装饰
-
-1、none：⽆装饰
-
-2、underline：下划线
-
-3、overline：上划线
-
-4、line-through：贯穿线
-
-5、blink：闪烁
-
-text-decoration-line：元素⽂本装饰线条（同上）
-
-text-decoration-color：装饰条颜⾊
-
-text-decoration-style：装饰条的形状
-
-1、solid：实线
-
-2、double：双线
-
-3、dotted：虚线
-
-4、dashed：虚线
-
-5、wavy：波浪线
-
-text-decoration-skip：元素装饰线跳过的内容
-
-1、none：不跳过
-
-2、objects：跳过原⼦内联级盒（如图⽚或内联块）
-
-3、spaces：跳过空⽩
-
-4、ink：跳过字符绘制处
-
-5、edges：⽤户代理应当将装饰线的起始、结束为⽌在⽂本内容边缘更靠内的为⽌，使得两个 紧密相邻的元素的下划线不会显示为⼀条下划线（对于中⽂，下划线是标点符号） text-underline-position：元素装饰线的位置
-
-text-shadow：⽂字是否有阴影
-
-（x轴⽔平偏移，y轴垂直偏移，阴影模糊度，颜⾊）
-
-（px，px，px，color）
-
-**9、书写模式**
-
-direction：⽂本流的⽅向
-
-1、ltr：从左到右
-
-2、rtl：从右到左
-
-unicode-bidi：同⼀个⻚⾯存在从不同⽅向读进的⽂本显示
-
-1、normal：对象不打开附加的嵌⼊层，对于内联元素，隐式重排跨对象边界进⾏⼯作
-
-2、embed：对象打开附加的嵌⼊层，direction指定嵌⼊层
-
-3、bidi-override：严格按照direction属性的值重排序 writing-mode：对象的内容块固有的书写⽅向
-
-1、lr-tb：⽅向是--左右，上下
-
-2、tb-rl：⽅向是--上下，右左 3、horizontal-tb：⽔平⽅向⾃上⽽下 4、vertical-rl：垂直⽅向⾃右⽽左 5、vertical-lr：垂直⽅向⾃左⽽右
-
+参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Fundamentals  
 **10、列表**
 
 list-style：列表样式
