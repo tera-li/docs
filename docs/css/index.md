@@ -182,7 +182,7 @@ p {
 }
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Fundamentals  
-## CSS选择器与媒体查询
+## CSS 选择器与媒体查询
 ```css
 * { /*通配选择器*/ }
 h1 { /*标签选择器*/ }
@@ -217,7 +217,7 @@ h1 ~ p { /*通用兄弟选择器*/ }
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors
 
-## CSS取值与单位
+## CSS 取值与单位
 ```css
 p {
     /* 长度单位
