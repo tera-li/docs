@@ -287,7 +287,7 @@ submit()：提交一个表单（指定对应form元素）
 onreset：在重置表单元素之前调用
 onsubmit：在提交表单之前调用
 ```
-**三、input**
+**三、Input**
 ```html
 type属性：
   -- text：默认值，单行文本区域（maxlength，minlength，pattern，placeholder，readonly只读，size文本宽度，spellcheck控制是否可以检查文本框的拼写）

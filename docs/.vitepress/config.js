@@ -27,7 +27,7 @@ export default defineConfig({
     // 顶部导航
     nav: [
       { text: "HTML", link: "/html/" },
-      { text: "CSS", link: "/css/index" },
+      { text: "CSS", link: "/css/" },
       { text: "JS", link: "/javascript/index" },
       // { text: "Home", link: "/" },
     ],
@@ -42,13 +42,7 @@ export default defineConfig({
           },
           {
             text: "CSS",
-            items: [
-              { text: "CSS", link: "/css/" },
-              { text: "css-compatibility", link: "/css/css-compatibility" },
-              { text: "css-flex", link: "/css/css-flex" },
-              { text: "css-svg", link: "/css/css-svg" },
-              { text: "css-special", link: "/css/css-special" },
-            ],
+            link: "/css/",
           },
           {
             text: "JavaScript",
