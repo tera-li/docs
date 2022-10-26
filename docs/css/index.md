@@ -309,7 +309,32 @@ p {
 ```
 ## CSS Flex布局
 ```css
+1. 可以简便、完整、响应式地实现各种页面布局
+2. 弹性布局，为盒状模型提供最大的灵活性
 .box {
   display: flex;
+  /* 决定主轴的方向 (默认主轴为row水平方向) */
+  flex-direction: row | row-reverse | column | column-reverse;
+  /* 主轴 (横轴上的对齐方式) */
+  justify-content: center | flex-start | flex-end | space-between | space-around;
+  /* 子项是否都排在一条主轴上 (默认nowrap不换行) */
+  flex-wrap: nowrap | wrap | wrap-reverse;
+  /* 集合flex-direction和flex-wrap属性值的简写 */
+  flex-flow: flex-direction flex-wrap;
+  /* 子项相对于主轴的垂直交叉轴如何对齐，主轴为横轴，交叉轴则为垂直交叉 */
+  align-items: flex-start | center | flex-end | stretch | baseline;
+  /* 定义多根交叉轴线的对齐方式 */
+  align-content: flex-start | center | flex-end | stretch | baseline;
+}
+.box-items {
+  /* flex-grow | flex-shrink | flex-basis的简写 */
+  flex: 1;
+  /* 定义项目的放大比例，0为不放大 */
+  flex-grow: <number>; /* default 0 */
+  /* 定义项目的缩小比例，1为不缩小 */
+  flex-shrink: <number>; /* default 1 */
+  /* 定义了在分配多余空间之前，项目占据的主轴空间，初始化元素大小，如设置为固定值，则该项目占据固定空间 */
+  flex-basis: <length> | auto; /* default auto */
 }
 ```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox
