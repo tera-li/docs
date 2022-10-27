@@ -29,12 +29,12 @@
 ```
 ## Js String
 ```js
-// 定义字符串
+/* 定义字符串 */
 var str = new String('hello world')
 var str = 'hello world'
 var str = "hello world"
 ```
-- **查找字符串**
+- **访问字符串**
 ```js
 var str = 'hello world'
 /* 返回字符串的长度 */
@@ -47,6 +47,15 @@ str.lastIndexOf('xx')
 str.search('xx')
 /* 传入字符串或正则表达式，搜索匹配返回相关信息的数组，无则返回null，传入字符会隐式调用new RegExp(obj) */
 str.match(/llo/)
+/* 返回索引指定下标的字符 */
+str.charAt(1)
+str[0]
+/* 返回索引指定下标的UTF-16代码单元 */
+str.charCodeAt(1)
+/* 解析为UTF-16的字符串 */
+str.fromCharCode(67)
+/* 返回String对象的原始值 */
+str.valueOf()
 ```
 - **操作字符串**
 ```js
@@ -65,13 +74,6 @@ str.replace('l', (e) => e + 'x')
 str.toUpperCase()
 /* 字符串全部转换为小写 */
 str.toLowerCase()
-/* 返回索引指定下标的字符 */
-str.charAt(1)
-str[0]
-/* 返回索引指定下标的UTF-16代码单元 */
-str.charCodeAt(1)
-/* 解析为UTF-16的字符串 */
-str.fromCharCode(67)
 /* 将字符串以指定符号分割字符串并放入数组，第二个参数为返回数组的最大长度 */
 str.split(' ', 3)
 /* 包装方法，非标准方法，有些浏览器可能不支持 */
@@ -90,75 +92,81 @@ str.repeat(3)
 str.concat('1','2')
 /* ：删除字符串两端的空白符 */
 str.trim()
-/* 返回String对象的原始值 */
-str.valueOf()
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String  
 
 ## Js Array
-
-**什么是数组？特殊变量，能够一次存放一个及多个值**
-
-**创建数组**
-
-1、var arr = [arr1,arr2,arr3,...]
-
-2、var arr = new Array(arr1,arr2,arr3,...)：第一种方法更简洁，执行速度更快
-
-3、var arr = Array.from(arr1)：通过给定对象(拥有length属性)创建一个数组
-
-1、const iter = { \*[Symbol.iterator] () { yidld 1; yidld2 } }
-
-2、Array.from(iter(迭代对象))：输出迭代对象数组
-
-**访问数组元素**
-
-1、arr.length：数组的长度
-
-2、var item = arr[0]：0是数组元素下标的开始，0代表第一个元素
-
-3、arr.length - 1：访问最后数组的最后一个元素
-
-4、arr.indexOf()：返回数组中指定元素的位置，
-
-5、arr.lastindexOf()：返回数组中指定元素，最后出现的位置
-
-4、**arr.entries()**：返回一个数组的迭代对象，可以通过next()迭代
-
-5、**arr.keys()**：返回一个数组包含组键的可迭代对象，可以通过next()迭代
-
-3、arr.valueOf()：返回Array对象的原始值
-
-**改变数组元素**
-
-1、arr[0] = ’array‘：改变下标为0的数组元素
-
-2、arr.fill(value，start，end)：用一个固定值替换数组的元素
-
-（1）填充的值，开始填充的位置，停止填充位置
-
-3、arr.copyWithin(target， start， end)
-
-（1）复制到指定位置，复制元素起始位置，停止复制的索引位置
-
-4、arr.join("" or "|" or "and"...)：通过指定字符把数组的元素转换为一个字符串
-
-5、arr.toString()：将数组转换为字符串，用逗号隔开
-
-6、arr.reverse()：颠倒数组中元素的顺序
-
-7、slice(start，end)：设置开始和结束索引（接受负数），不设置第二个参数，将截取剩余全部部分
-
-（1）start（包含），end（不包含）
-
-8、sort(function(a,b){return a-b })：对数组进行升序或降序排序，可以定义一个函数接收参数来排序
-
-**遍历数组元素**
-
-1、for循环：for(初始化值，表达式，后置循环表达式)
-
-2、while()：
-
+```js
+/* 定义数组 */
+var arr = [item1, item2, item3,...]
+var arr = new Array(item1, item2, item3,...)
+var arr = Array.from(arr1)
+```
+- **访问数组元素**
+```js
+var arr = [1, 2, 3]
+/* 返回数组的长度 */
+arr.length = 3
+/* 返回索引指定下标的元素 */
+arr[0]
+/* 返回匹配给定元素的第一个索引 */
+arr.indexOf(1)
+/* 返回匹配给定元素的最后一个索引 */
+arr.lastIndexOf(1)
+/* 返回Array对象的原始值 */
+arr.valueOf()
+```
+- **操作数组**
+```js
+var arr = [1, 2, 3]
+/* 改变下标为0的数组元素 */
+arr[0] = 'array'
+/* 截取数组的开始下标和结束下标之间的元素 */
+arr.slice(0, 1)
+/* 颠倒数组中元素的顺序 */
+arr.reverse()
+/* 返回一个数组的迭代对象，可以通过next()迭代 */
+arr.entries()
+/* 返回一个数组包含组键的可迭代对象，可以通过next()迭代 */
+arr.keys()
+/* 返回一个数组包含组值的可迭代对象，可以通过next()迭代 */
+arr.values()
+/* 用一个固定值替换指定范围的数组元素 
+   填充的值，开始索引，结束索引
+*/
+arr.fill(value, start, end)
+/* 浅复制数组的一部分到同一数组中的另一个位置
+   复制到指定索引，复制元素起始位置，停止复制的索引位置 
+*/
+arr.copyWithin(target, start, end)
+/* 通过指定字符把数组的元素分割为一个字符串 */
+arr.join('|')
+/* 将数组转换为字符串，用逗号隔开
+   内部调用join函数进行返回
+   如果join方法不可用，则调用Object.prototype.toString()，返回[object Array]
+*/
+arr.toString()
+/* 对数组进行升序或降序排序 */
+arr.sort()
+/* 升序 */
+arr.sort((a,b) => a - b)
+/* 降序 */
+arr.sort((a,b) => b - a)
+```
+- **遍历数组元素**
+```js
+var arr = [1, 2, 3]
+/* 基础for循环 */
+1. for (let i = 0; i < arr.length; i++) {}
+/* 基础while循环 */
+2. var n = 0; while (n < 3) { n++; }
+/* 基础do while循环 */
+3. var i = 0; do { i += 1; } while (i < 5);
+/* for in 循环 */
+4. for (var value in arr) {}
+/* for of 循环 */
+5. for (var value of arr) {}
+```
 3、arr.foreach(function(item,index,arr))：循环数组，调用每个数组元素，传递给回调函数
 
 4、arr.map(function(item,index,arr))：循环处理每个数组元素，返回一个新数组
