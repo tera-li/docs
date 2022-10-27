@@ -4,7 +4,7 @@
 
 **作⽤？** 用来描述 HTML 文档的呈现，定义如何显示HTML元素
 
-**如何使⽤？** 
+**应用？** 
 ```html
 <!DOCTYPE html>
 <html lang="en">

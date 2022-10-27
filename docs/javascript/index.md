@@ -1,33 +1,39 @@
-**JavaScript**
+# JavaScript
 
-是什么？动态脚本语言，解释性或即时编译型语言
+**是什么？** 动态脚本语言，解释性或即时编译型语言
+```html
+1. 解释型: 不需要预先编译，将代码解释成机器码并立即执行，脚本逐行解释执行
+2. 即时编译型: 在运行前进行编译得到结果执行
+3. 脚本语言: 逐行解释执行代码
+4. 动态性: 动态修改对象的属性
+5. 跨平台性: 不依赖与操作系统，只需要浏览器支持
+```
+**作用？** 能够对页面行为事件作出反应，以及创建动态更新的内容
 
-（解释型）不需要预先编译，将代码解释成机器码并立即执行，脚本逐行解释执行
-
-（即时编译型）在运行前进行编译得到结果执行
-
-（脚本语言）逐行解释执行代码
-
-（动态性）动态修改对象的属性
-
-（跨平台性）不依赖与操作系统，只需要浏览器支持
-
-作用？能够改变HTML内容，属性，样式，对事件作出反应
-
-应用？
-
-1、在head或body标签内插入script标签
-
-2、通过src引入外部js
-
-**一、String**
-
-**通过“string”定义字符串**
-
-**创建** new String()
-
-` `string
-
+**应用？** 
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="这是一个网页" />
+    <!-- 通过src引入外部JavaScript脚本 -->
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <!-- 在body标签内插入script标签使用 -->
+    <script></script>
+  </body>
+</html>
+```
+## Js String
+```js
+// 定义字符串
+var str = new String('hello world')
+var str = 'hello world'
+var str = "hello world"
+```
 **查找字符串**
 
 1、length：字符串长度
