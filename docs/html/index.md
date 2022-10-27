@@ -214,7 +214,8 @@ dialog (对话框或窗口)、embed (外部交互内容或插件，URL)、
 figure (媒介内容的分组，规定独立的流内容(图像，图标，照片))、
 figcaption (figure 元素的标题)、keygen (生成密钥)
 ```
-参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element  
+
 ## Meta以及SEO优化
 ```html
 HTML的标识元数据内容，只能在head中

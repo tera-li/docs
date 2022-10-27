@@ -116,7 +116,8 @@ p {
     z-index：100;   
 }
 ```
-参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Introduction
+参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Introduction  
+
 ## CSS 背景与边框
 ```css
 p {
@@ -141,7 +142,8 @@ p {
     background: #7f8497 | url("./xxx.png");
 }
 ```
-参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders
+参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders  
+
 ## CSS 字体与颜⾊
 ```css
 p {
@@ -182,6 +184,7 @@ p {
 }
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Fundamentals  
+
 ## CSS 选择器与媒体查询
 ```css
 * { /*通配选择器*/ }
@@ -215,7 +218,7 @@ h1 ~ p { /*通用兄弟选择器*/ }
   }
 }
 ```
-参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors
+参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors  
 
 ## CSS 取值与单位
 ```css
@@ -337,4 +340,4 @@ p {
   flex-basis: <length> | auto; /* default auto */
 }
 ```
-参考链接：https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox  

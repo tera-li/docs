@@ -34,101 +34,68 @@ var str = new String('hello world')
 var str = 'hello world'
 var str = "hello world"
 ```
-**查找字符串**
+- **查找字符串**
+```js
+var str = 'hello world'
+/* 返回字符串的长度 */
+str.length = 11
+/* 查询字符所处字符串中首次出现的索引，无则返回-1 */
+str.indexOf('xx')
+/* 查询字符所处字符串中最后出现的索引，无则返回-1 */
+str.lastIndexOf('xx')
+/* 传入字符串或正则表达式，搜索匹配返回索引，无则返回-1，传入字符会隐式调用new RegExp(obj) */
+str.search('xx')
+/* 传入字符串或正则表达式，搜索匹配返回相关信息的数组，无则返回null，传入字符会隐式调用new RegExp(obj) */
+str.match(/llo/)
+```
+- **操作字符串**
+```js
+var str = 'hello world'
+/* 设置开始和结束索引(接受负数)，不设置第二个参数，将截取剩余全部部分 */
+/* start(包含)，end(不包含)，end设置负数，则将计算为end = strLength + end */
+str.slice(0, 5)
+/* 同上，不接受负数 */
+str.substring(0, 5)
+/* str.replace(regexp|substr, newSubStr|function) */
+/* 匹配param0: 正则对象|字面量，替换param1: 字面量|函数 */
+str.replace('l', 'x')
+str.replace(/l/, 'x')
+str.replace('l', (e) => e + 'x')
+/* 字符串全部转换为大写 */
+str.toUpperCase()
+/* 字符串全部转换为小写 */
+str.toLowerCase()
+/* 返回索引指定下标的字符 */
+str.charAt(1)
+str[0]
+/* 返回索引指定下标的UTF-16代码单元 */
+str.charCodeAt(1)
+/* 解析为UTF-16的字符串 */
+str.fromCharCode(67)
+/* 将字符串以指定符号分割字符串并放入数组，第二个参数为返回数组的最大长度 */
+str.split(' ', 3)
+/* 包装方法，非标准方法，有些浏览器可能不支持 */
+1. str.big(): 大号字体
+2. str.small(): 小号字体
+3. str.bold(): 粗体字体
+4. str.italics(): 斜体字体
+5. str.fixed(): 打字机文本字体
+6. str.blink(): 使用闪动字符串字体
+7. str.sub(): 下标字符串字体
+8. str.sup(): 上标字符串字体
+9. str.link(): 字符串字体显示为链接
+/* 复制字符串指定次数，并链接在一起 */
+str.repeat(3)
+/* 连接两个或多个字符串 */
+str.concat('1','2')
+/* ：删除字符串两端的空白符 */
+str.trim()
+/* 返回String对象的原始值 */
+str.valueOf()
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String  
 
-1、length：字符串长度
-
-2、str.indexOf('xx')：查找字符串，从前到尾，返回首次出现的索引（位置）
-
-3、str.lastindexOf('xx')：查找字符串，从尾到前，返回最后一次出现的索引（位置）
-
-（1）indexOf()和lastindexOf()未找到均返回-1
-
-（2）接受第二个参数，number，表示检索的起始位置
-
-4、search()：与indexOf()作用一样，但是可以设置正则表达式，搜索能力更强
-
-5、marth()：与indexOf()作用一样，但返回值是指定搜索的值
-
-**提取部分字符串**
-
-1、slice(start，end)：设置开始和结束索引（接受负数），不设置第二个参数，将截取剩余全部部分
-
-（1）start（包含），end（不包含）
-
-2、str.substring(start，end)：和slice方法一样（不接受负数）
-
-3、str.substr(start，end)：和slice方法一样（第二个参数表示为长度）
-
-**替换字符串内容**
-
-1、str.replace(“要匹配的值”，“要替换的值”)：只替换首个匹配（对大小写敏感）
-
-（1）接受正则表达式匹配
-
-**转换为大写和小写**
-
-1、str.toUpperCase()：转换为大写
-
-2、str.toLowerCase()：转换为小写
-
-3、str.toLocaleUpperCase()：根据本地语言环境转换为大写
-
-4、str.toLocaleLowerCase()：根据本地语言环境转换为小写
-
-**提取字符串字符**
-
-1、str.charAt(number)：返回字符串指定下标的字符
-
-2、str.charCodeAt(number)：返回字符串指定下标的unicode编码
-
-3、str.fromCharCode(number)：返回数字对于的Unicode编码字符
-
-4、str[0]：属性访问字符串下标返回指定字符（不能对其str赋值改变字符）
-
-**把字符串转换为数组**
-
-1、str.split("|" or " " or "，"，number)：
-
-（1）以指定的符号分割字符串放入数组，第二个参数为返回数组的最大长度
-
-**包装方法（非标准方法，有些浏览器可能不支持）**
-
-1、str.big()：大号字体
-
-2、str.small()：小号字体
-
-3、str.bold()：粗体字体
-
-4、str.italics()：斜体字体
-
-5、str.fixed()：打字机文本字体
-
-6、str.blink()：使用闪动字符串字体
-
-7、str.sub()：下标字符串字体
-
-8、str.sup()：上标字符串字体
-
-9、str.link()：字符串字体显示为链接
-
-样式
-
-10、str.fontcolor()：改变字符串字体颜色
-
-11、str.fontsize()：改变字符串字体大小
-
-**其他方法**
-
-1、str.repeat(number)：复制字符串指定次数，并链接在一起
-
-2、str.concat(str1,str2)：连接两个或多个字符串
-
-3、str.trim()：删除字符串两端的空白符
-
-3、str.valueOf()：返回String对象的原始值
-
-**二、Array**
+## Js Array
 
 **什么是数组？特殊变量，能够一次存放一个及多个值**
 
