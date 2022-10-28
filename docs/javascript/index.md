@@ -157,30 +157,47 @@ arr.sort((a,b) => b - a)
 ```js
 var arr = [1, 2, 3]
 /* 基础for循环 */
-1. for (let i = 0; i < arr.length; i++) {}
+for (let i = 0; i < arr.length; i++) {}
 /* 基础while循环 */
-2. var n = 0; while (n < 3) { n++; }
+var n = 0; while (n < 3) { n++; }
 /* 基础do while循环 */
-3. var i = 0; do { i += 1; } while (i < 5);
+var i = 0; do { i += 1; } while (i < 5);
 /* for in 循环 */
-4. for (var value in arr) {}
+for (var value in arr) {}
 /* for of 循环 */
-5. for (var value of arr) {}
+for (var value of arr) {}
+/* foreach循环，对数组的每个元素执行一次给定的函数 
+   箭头函数内部无法获取指定的this，普通函数可以获取指定的this*/
+arr.forEach((item,index,arr) => {}, this)
+/* map循环，创建一个新数组，这个新数组由原数组中的每个元素都调用一次提供的函数后的返回值组成 */
+arr.map((item,index,arr) => {}, this)
+/* 测试一个数组内的所有元素是否都能通过某个指定函数的测试，返回一个布尔值 */
+arr.every((item,index,arr) => {}, this)
+/* 测试数组中是不是至少有 1 个元素通过了被提供的函数测试，返回一个布尔值 */
+arr.some((value,index,arr) => {}, this)
+/* 创建给定数组一部分的浅拷贝，其包含通过所提供函数实现的测试的所有元素 */
+arr.filter((item,index,arr) => {}, this)
+
+3、arr.find(function(item,index,arr))：接收一个回调函数，返回值为通过指定条件的第一个值
+/* reduce循环计算，
+   数组中的每个元素按序执行一个由您提供的 callback 函数，
+   每一次运行 callback 会将先前元素的计算结果作为参数传入，最后将其结果汇总为单个返回值 
+
+   previousValue: 上一次调用 callbackFn 时的返回值。在第一次调用时，若指定了初始值 initialValue，其值则为 initialValue，否则为数组索引为 0 的元素 array[0]
+   currentValue: 数组中正在处理的元素。在第一次调用时，若指定了初始值 initialValue，其值则为数组索引为 0 的元素 array[0]，否则为 array[1]
+   currentIndex: 数组中正在处理的元素的索引
+   array: 用于遍历的数组
+   initialValue: 初始值
+   */
+arr.reduce((
+  previousValue,
+  currentValue,
+  currentIndex,
+  array
+  ) => {}, initialValue
+)
+
 ```
-3、arr.foreach(function(item,index,arr))：循环数组，调用每个数组元素，传递给回调函数
-
-4、arr.map(function(item,index,arr))：循环处理每个数组元素，返回一个新数组
-
-5、arr.reduce(function(total,value,index,arr), initvalue)：
-
-接收一个函数作为累加器，数组中每个值(从左到右)开始缩减，最终计算为一个值
-
-（1）（初始值或者是计算后的累积值，当前处理元素，索引，数组对象）
-
-（2）initvalue初始值(作为计算的第一个元素，若没有则使用数组中的第一个元素)
-
-（3）arr.reduce()从右到左
-
 **添加删除数组元素**
 
 1、push()：末尾添加新元素（返回数组新长度，添加一个或多个元素）
@@ -197,13 +214,6 @@ var arr = [1, 2, 3]
 
 **检测数组**
 
-1、arr.every(function(value，index，arr))：判断数组是否全都符合指定条件
-
-1、arr.some(function(value，index，arr))：判断数组是否满足指定条件
-
-2、arr.filter(function(item,index,arr))：接收一个回调函数，返回值为过滤成功的值
-
-3、arr.find(function(item,index,arr))：接收一个回调函数，返回值为通过指定条件的第一个值
 
 4、arr.findIndex(function(item,index,arr))：作用同上，返回值为通过指定条件的第一个值的下标
 
