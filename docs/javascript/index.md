@@ -90,8 +90,10 @@ str.split(' ', 3)
 str.repeat(3)
 /* 连接两个或多个字符串 */
 str.concat('1','2')
-/* ：删除字符串两端的空白符 */
+/* 删除字符串两端的空白符 */
 str.trim()
+/* 判断一个字符串是否包含在另一个字符串中，根据情况返回 true 或 false */
+str.includes('To be')
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String  
 
@@ -109,9 +111,9 @@ var arr = [1, 2, 3]
 arr.length = 3
 /* 返回索引指定下标的元素 */
 arr[0]
-/* 返回匹配给定元素的第一个索引 */
+/* 返回匹配给定元素的第一个索引，若没有找到则返回 -1 */
 arr.indexOf(1)
-/* 返回匹配给定元素的最后一个索引 */
+/* 返回匹配给定元素的最后一个索引，若没有找到则返回 -1 */
 arr.lastIndexOf(1)
 /* 返回Array对象的原始值 */
 arr.valueOf()
@@ -152,6 +154,18 @@ arr.sort()
 arr.sort((a,b) => a - b)
 /* 降序 */
 arr.sort((a,b) => b - a)
+/* 判断一个数组是否包含一个指定的值，根据情况返回 true 或 false */
+arr.includes(item)
+/* 将一个或多个元素添加到数组的末尾，并返回该数组的新长度 */
+arr.push(item)
+/* 从数组中删除最后一个元素，并返回该元素的值 */
+arr.pop()
+/* 将一个或多个元素添加到数组的开头，并返回该数组的新长度 */
+arr.unshift(item)
+/* 从数组中删除第一个元素，并返回该元素的值 */
+arr.shift()
+/* 通过删除或替换现有元素或者原地添加新的元素来修改数组，并以数组形式返回被删除的内容 */
+arr.splice(start,deleteCount,item,item1...)
 ```
 - **遍历数组元素**
 ```js
@@ -177,8 +191,11 @@ arr.every((item,index,arr) => {}, this)
 arr.some((value,index,arr) => {}, this)
 /* 创建给定数组一部分的浅拷贝，其包含通过所提供函数实现的测试的所有元素 */
 arr.filter((item,index,arr) => {}, this)
+/* 返回数组中满足提供的测试函数的第一个元素的值，否则返回 undefined */
+arr.find((item,index,arr) => {}, this)
+/* 返回数组中满足提供的测试函数的第一个元素的索引，若没有找到对应元素则返回 -1 */
+arr.findIndex((item,index,arr) => {}, this)
 
-3、arr.find(function(item,index,arr))：接收一个回调函数，返回值为通过指定条件的第一个值
 /* reduce循环计算，
    数组中的每个元素按序执行一个由您提供的 callback 函数，
    每一次运行 callback 会将先前元素的计算结果作为参数传入，最后将其结果汇总为单个返回值 
@@ -196,31 +213,10 @@ arr.reduce((
   array
   ) => {}, initialValue
 )
-
 ```
-**添加删除数组元素**
-
-1、push()：末尾添加新元素（返回数组新长度，添加一个或多个元素）
-
-2、pop()：末尾删除新元素（返回删除的元素，改变长长度）
-
-3、unshift()：首部添加元素（返回数组新长度，添加一个或多个元素）
-
-4、shift()：首部删除元素（返回删除的元素，改变长长度）
-
-5、splice(index,howmany,item,item1...)：对数组进行添加删除元素
-
-（1）下标定义在哪个位置插入或删除，删除多少元素(0表示不删除)，需要添加到的数组的元素
-
-**检测数组**
-
-
-4、arr.findIndex(function(item,index,arr))：作用同上，返回值为通过指定条件的第一个值的下标
-
-5、arr.includes(item)：判断一个数组是否包含指定值，返回true or false
-
-**判断识别数组**
-
+- **判断识别数组**
+```js
+// todo
 使用typeof会返回’object‘
 
 1、Array.isArray(arr)：true or false
@@ -228,18 +224,22 @@ arr.reduce((
 2、自定义isArray：arr.constructor.toString().indexOf("Array") > -1
 
 3、使用instanceof元素符：arr instanceof Array
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array  
 
-**三、Boolean**
+## JS Boolean
+```js
+/* 定义布尔值 */
+var bool = new Boolean()
+var bool = false | true;
+/* 返回表示指定的布尔对象的字符串 */
+bool.toString()
+/* 返回一个Boolean对象的原始值 */
+bool.valueOf()
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Boolean  
 
-**作用？**将非布尔值转换为布尔值（true或false），检测对象是true还是false
-
-**创建布尔** var bool = new Boolean(0)
-
-1、toString()：将布尔值转换为字符串，并返回结果
-
-2、valueOf()：返回Boolean对象的原始值
-
-**四、Number**
+## JS Number
 
 **作用？**对数字的一些操作
 
