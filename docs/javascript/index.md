@@ -97,6 +97,86 @@ str.includes('To be')
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String  
 
+## JS Number
+```js
+/* 定义数字 */
+var num = new Number(100)
+var num = 100
+```
+- **Number对象属性**
+```js
+/* 表示在 JavaScript 中最大的安全整数，2^53 - 1，9007199254740991 */
+Number.MAX_SAFE_INTEGER
+/* 表示在 JavaScript 中最小的安全整数，-(2^53 - 1)，-9007199254740991 */
+Number.MIN_SAFE_INTEGER
+/* 表示正无穷大，Infinity */
+Number.POSITIVE_INFINITY
+/* 表示负无穷大，-Infinity */
+Number.NEGATIVE_INFINITY
+/* 表示“非数字”（Not-A-Number），和 NaN 相同 */
+Number.NaN
+```
+- **Number对象方法**
+```js
+/* 检测传入的参数是否是一个有穷数，返回一个布尔值，Infinity */
+Number.isFinite(0)
+/* 判断给定的参数是否为整数，返回一个布尔值 */
+Number.isInteger(5.5)
+/* 确定传递的值是否为 NaN，返回一个布尔值(全局isNaN会将传入的值转换为数字，再进行比较，isNaN("123qwe") === Number.isNaN(Number("123qwe"))) */
+Number.isNaN('NaN')
+/* 把一个字符串解析成浮点数 */
+Number.parseFloat('123.123')
+/* 依据指定基数radix，表示进制的基数，解析字符串并返回一个整数 */
+Number.parseInt('123.123', radix)
+/* 使用定点表示法来格式化一个数值 */
+Number.toFixed(2)
+/* 返回指定 Number 对象的字符串表示形式 */
+Number.toString()
+/* 返回一个被 Number 对象包装的原始值 */
+Number.valueOf()
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number  
+
+## JS Boolean
+```js
+/* 定义布尔值 */
+var bool = new Boolean()
+var bool = false | true;
+/* 返回表示指定的布尔对象的字符串 */
+bool.toString()
+/* 返回一个Boolean对象的原始值 */
+bool.valueOf()
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Boolean  
+
+## JS null
+```js
+/* 特指对象的值未设置 */
+var foo = null;
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/null  
+
+## JS undefined
+```js
+/* 表示对象未下定义 */
+var foo;
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined  
+
+## JS Symbol
+```js
+/* 表示对象未下定义 */
+var sym = Symbol('sym');
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol  
+
+## JS BigInt
+```js
+/* 表示任意大的整数 */
+var bigNum = BigInt(9007199254740991);
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/BigInt  
+
 ## Js Array
 ```js
 /* 定义数组 */
@@ -227,60 +307,9 @@ arr.reduce((
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array  
 
-## JS Boolean
-```js
-/* 定义布尔值 */
-var bool = new Boolean()
-var bool = false | true;
-/* 返回表示指定的布尔对象的字符串 */
-bool.toString()
-/* 返回一个Boolean对象的原始值 */
-bool.valueOf()
-```
-参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Boolean  
-
-## JS Number
-```js
-/* 定义数字 */
-var num = new Number(100)
-var num = 100
-```
-- **Number对象属性**
-```js
-/* 表示在 JavaScript 中最大的安全整数，2^53 - 1，9007199254740991 */
-Number.MAX_SAFE_INTEGER
-/* 表示在 JavaScript 中最小的安全整数，-(2^53 - 1)，-9007199254740991 */
-Number.MIN_SAFE_INTEGER
-/* 表示正无穷大，Infinity */
-Number.POSITIVE_INFINITY
-/* 表示负无穷大，-Infinity */
-Number.NEGATIVE_INFINITY
-/* 表示“非数字”（Not-A-Number），和 NaN 相同 */
-Number.NaN
-```
-- **Number对象方法**
-```js
-/* 检测传入的参数是否是一个有穷数，返回一个布尔值，Infinity */
-Number.isFinite(0)
-/* 判断给定的参数是否为整数，返回一个布尔值 */
-Number.isInteger(5.5)
-/* 确定传递的值是否为 NaN，返回一个布尔值(全局isNaN会将传入的值转换为数字，再进行比较，isNaN("123qwe") === Number.isNaN(Number("123qwe"))) */
-Number.isNaN('NaN')
-/* 把一个字符串解析成浮点数 */
-Number.parseFloat('123.123')
-/* 依据指定基数radix，表示进制的基数，解析字符串并返回一个整数 */
-Number.parseInt('123.123', radix)
-/* 使用定点表示法来格式化一个数值 */
-Number.toFixed(2)
-/* 返回指定 Number 对象的字符串表示形式 */
-Number.toString()
-/* 返回一个被 Number 对象包装的原始值 */
-Number.valueOf()
-```
-参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number  
-
 ## JS Date
-
+```js
+```
 **作用？**对日期的操作
 
 **创建** var d = new Date(0);
