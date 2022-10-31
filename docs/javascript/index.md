@@ -240,24 +240,24 @@ bool.valueOf()
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Boolean  
 
 ## JS Number
-
-**作用？**对数字的一些操作
-
-**创建** var number = new Number(100)
-
-` `number
-
-**Number对象属性**
-
-1、MAX\_VALUE：表示最大数，表示无穷大
-
-2、MAX\_VALUE：表示最小数，表示无穷小
-
-3、POSITIVE\_INFINITY：表示负无穷大，infinity
-
-4、NEGTIVE\_INFINITY：表示负无穷大，-infinity
-
-5、NaN：非数字，用于指示某个值不是数字
+```js
+/* 定义数字 */
+var num = new Number(100)
+var num = 100
+```
+- **Number对象属性**
+```js
+/* 表示在 JavaScript 中最大的安全整数，2^53 - 1，9007199254740991 */
+Number.MAX_SAFE_INTEGER
+/* 表示在 JavaScript 中最小的安全整数，-(2^53 - 1)，-9007199254740991 */
+Number.MIN_SAFE_INTEGER
+/* 表示正无穷大，Infinity */
+Number.POSITIVE_INFINITY
+/* 表示负无穷大，-Infinity */
+Number.NEGATIVE_INFINITY
+/* 表示“非数字”（Not-A-Number），和 NaN 相同 */
+Number.NaN
+```
 
 **Number对象方法**
 
