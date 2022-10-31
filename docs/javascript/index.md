@@ -258,26 +258,28 @@ Number.NEGATIVE_INFINITY
 /* 表示“非数字”（Not-A-Number），和 NaN 相同 */
 Number.NaN
 ```
+- **Number对象方法**
+```js
+/* 检测传入的参数是否是一个有穷数，返回一个布尔值，Infinity */
+Number.isFinite(0)
+/* 判断给定的参数是否为整数，返回一个布尔值 */
+Number.isInteger(5.5)
+/* 确定传递的值是否为 NaN，返回一个布尔值(全局isNaN会将传入的值转换为数字，再进行比较，isNaN("123qwe") === Number.isNaN(Number("123qwe"))) */
+Number.isNaN('NaN')
+/* 把一个字符串解析成浮点数 */
+Number.parseFloat('123.123')
+/* 依据指定基数radix，表示进制的基数，解析字符串并返回一个整数 */
+Number.parseInt('123.123', radix)
+/* 使用定点表示法来格式化一个数值 */
+Number.toFixed(2)
+/* 返回指定 Number 对象的字符串表示形式 */
+Number.toString()
+/* 返回一个被 Number 对象包装的原始值 */
+Number.valueOf()
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number  
 
-**Number对象方法**
-
-1、Nnmber.isFinite(0)：检测参数是否为无穷大
-
-（1）不会将值转换为number对象，如果不是number对象，则返回false
-
-2、Number.toExponential()：可把对象的值Number对象转换成指数计数法
-
-（1）6000000000 = 6 \* 10000000000 = 6e + 10
-
-3、Number.toFixed(2)：可把Number四舍五入到指定小数点位数的数字
-
-4、Number.toPrecision(2)：可在对象的值超出指定位数时将其转换为指数计数法
-
-5、Number.toString()：把数字转换为字符串
-
-6、Number.valueOf()：返回一个Number的基本数值
-
-**五、Date**
+## JS Date
 
 **作用？**对日期的操作
 
