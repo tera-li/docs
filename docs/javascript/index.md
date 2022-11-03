@@ -296,14 +296,16 @@ arr.reduce((
 ```
 - **判断识别数组**
 ```js
-// todo
-使用typeof会返回’object‘
+var arr = [1, 2, 3]
 
-1、Array.isArray(arr)：true or false
+typeof arr === 'object'
 
-2、自定义isArray：arr.constructor.toString().indexOf("Array") > -1
+Array.isArray(arr) === true
 
-3、使用instanceof元素符：arr instanceof Array
+arr instanceof Array === true
+
+arr.constructor.toString().indexOf("Array") > -1
+
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array  
 
