@@ -298,19 +298,36 @@ arr.reduce((
 ```js
 var arr = [1, 2, 3]
 
-typeof arr === 'object'
+// typeof arr === 'object' === true
 
 Array.isArray(arr) === true
 
+/*
+   检测构造函数的 prototype(原型) 属性是否出现在某个实例对象的原型链上
+   Array.prototype === arr.__proto__
+*/
 arr instanceof Array === true
 
-arr.constructor.toString().indexOf("Array") > -1
+/* function Array() { [native code] }，返回构造函数对象的字符串 */
+arr.constructor.toString().indexOf("Array") > -1 === true
+/*
+   Object对象的toString() 返回 "[object type]"
+   其中 type 返回的是调用对象的类型，使用call让toString方法执行对象指定为Array
+   将返回指定对象的type [object Array]
+*/
+Object.prototype.toString.call(arr).indexOf("Array") > -1 === true
 
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array  
 
 ## JS Date
 ```js
+/* 定义日期时间 */
+new Date();
+new Date(value);
+new Date(dateString);
+new Date(year, monthIndex [, day [, hours [, minutes [, seconds [, milliseconds]]]]]);
+
 ```
 **作用？**对日期的操作
 
