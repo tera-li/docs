@@ -322,112 +322,41 @@ Object.prototype.toString.call(arr).indexOf("Array") > -1 === true
 
 ## JS Date
 ```js
-/* 定义日期时间 */
-new Date();
-new Date(value);
-new Date(dateString);
-new Date(year, monthIndex [, day [, hours [, minutes [, seconds [, milliseconds]]]]]);
-
+/* 定义日期时间，返回当地时间 */
+var date = new Date();
+var date = new Date(1667433600000);
+var date = new Date('2022-11-03');
+var date = new Date(2022,10,3,8,9,8,7);
 ```
-**作用？**对日期的操作
+- **访问日期时间**
+```js
+var date = new Date();
+/* 返回指定日期的年份 */
+date.getFullYear()
+/* 返回指定日期的月份 0~11 */
+date.getMonth()
+/* 返回指定日期一个月中的哪一日 */
+date.getDate()
+/* 返回指定日期中一周的第几天 */
+date.getDay()
+/* 返回指定日期对象的小时 */
+date.getHours()
+/* 返回指定日期对象的分钟数 */
+date.getMinutes()
+/* 返回指定日期对象的秒数 */
+date.getSeconds()
+/* 返回指定日期对象的毫秒数 */
+date.getMilliseconds()
+/* 返回一个时间的格林威治时间数值 */
+date.getTime()
+/* 返回协调世界时（UTC）相对于当前时区的时间差值，单位为分钟 */
+date.getTimezoneOffset()
+/* 返回该日期对象的字符串，可以格式化日期字符串 */
+date.toLocaleString("zh-cn", { hour12: false })
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date  
 
-**创建** var d = new Date(0);
-
-0时间是 1970年1月1日 00:00:00 UTC
-
-` `var d = new Date(2020, 11, 29, 13, 45, 50)
-
-` `年，月（1月是0，12月是11），日，小时，分，秒
-
-**获取时间（Date对象）**
-
-1、getFullYear()：获取以四位数字返回的年份（xxxx）
-
-2、getMonth()：获取月份（0~11）
-
-3、getDate()：获取一个月的某一天（1~31）
-
-4、getDay()：获取一周中的某一天（0~6）星期天为0
-
-5、getHours()：获取小时（0~23）
-
-6、getMinutes()：获取分钟数（0~59）
-
-7、getSeconds()：获取秒数（0~59）
-
-8、getMilliseconds()：获取毫秒
-
-（1）在get后面加上UTC是根据标准世界时间来
-
-9、**getTime**()：获取1970年1月1日至今的毫秒数（当前时间的毫秒数）
-
-10、getTimezoneOffset()：返回本地时间与格林威治标准时间的分钟差
-
-**设置时间（Date对象）**
-
-1、setFullYear()：获取以四位数字返回的年份（xxxx）
-
-2、setMonth()：获取月份（0~11）
-
-3、setDate()：获取一个月的某一天（1~31）
-
-4、setDay()：获取一周中的某一天（0~6）星期天为0
-
-5、setHours()：获取小时（0~23）
-
-6、setMinutes()：获取分钟数（0~59）
-
-7、setSeconds()：获取秒数（0~59）
-
-8、setMilliseconds()：获取毫秒
-
-（1）在set后面加上UTC是根据标准世界时间来
-
-9、setTime()：获取1970年1月1日至今的毫秒数
-
-**方法**
-
-1、Date.**parse**("2020,5,21 3:22:33")：
-
-（1）解析一个日期时间字符串，返回距离1970年1月1日的毫秒数
-
-2、Date.toDateString()：
-
-（1）把Date对象的**日期**部分转换为字符串，并返回结果（部分）
-
-3、Date.toTimeString()：
-
-（1）把Date对象的**时间**部分转换为字符串，并返回结果（部分）
-
-4、Date.toString()：
-
-（1）把Date对象的**全部**部分转换为字符串，并返回结果（部分）
-
-5、Date.toLocaleDateString()：
-
-（1）根据本地时间，把Date对象的**日期**部分转换为字符串，并返回结果（部分）
-
-6、Date.toLocaleTimeString()：
-
-（1）根据本地时间，把Date对象的**时间**部分转换为字符串，并返回结果（部分）
-
-7、Date.toLocaleString()：
-
-（1）根据本地时间，把Date对象**全部**转换为字符串，并返回结果（全部）
-
-8、Date.toISOString()：
-
-（1）使用ISO标准，把Date对象转换为字符串（全部 YYYY-MM-DDTHH:HH:mm:ss:sssZ）
-
-9、Date.toJSON()：
-
-（1）转换为字符串，并格式化为JSON数据格式（全部YYYY-MM-DDTHH:HH:mm:ss:sssZ）
-
-10、UTC(2020,5)：根据世界时返回1970年1月1日到指定日期的毫秒数
-
-11、valueOf()：返回对象的原始值（毫秒数）
-
-**六、Math**
+## JS Math
 
 **作用？**用于执行数学任务
 
