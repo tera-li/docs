@@ -158,14 +158,14 @@ var foo = null;
 
 ## JS undefined
 ```js
-/* 表示对象未下定义 */
+/* 表示对象未定义 */
 var foo;
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/undefined  
 
 ## JS Symbol
 ```js
-/* 表示对象未下定义 */
+/* 原始数据类型 Symbol ，表示独一无二的值，最大的用法是用来定义对象的唯一属性名。 */
 var sym = Symbol('sym');
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol  
@@ -358,196 +358,43 @@ date.toLocaleString("zh-cn", { hour12: false })
 
 ## JS Math
 
-**作用？**用于执行数学任务
-
-Math不像String这类对象，Math是没有构造函数的，但是原型上有，因此不需要new
-
-**属性**
-
-1、Math.E：代表算术常量，自然数的底数，近似于2.718
-
-2、Math.LN2：返回2的自然对数（约0.693）
-
-3、Math.LN10：返回10的自然对数（约2.302）
-
-4、Math.LOG2E：返回2为底的e的对数（约1.4426950408889634）
-
-5、Math.LOG10E：返回10为底的e的对数（约0.434）
-
-6、Math.PI：返回圆周率（约3.14159）
-
-7、SQRT1\_2：返回2的平方根的倒数（约0.707）
-
-8、SQRT2：返回2的平方根（1.414）
-
-**方法**
-
-1、Math.abs(x)：返回x的绝对值
-
-2、Math.acos(x)：返回x的反余弦值
-
-3、Math.asin(x)：返回x的反正弦值
-
-4、Math.atan(x)：以介于 -PI/2 与 PI/2 弧度之间的数值来返回 x 的反正切值
-
-5、Math.atan(x)：返回从 x 轴到点 (x,y) 的角度（介于 -PI/2 与 PI/2 弧度之间）
-
-6、Math.cos(x)：返回数的余弦
-
-7、Math.exp(x)：返回Ex 的指数
-
-8、Math.log(x)：返回数的自然对数（底为e）
-
-9、Math.sin(x)：返回数的正弦
-
-10、Math.tan(x)：返回角的正切
-
-**常用方法**
-
-11、**Math.max**(a,b,c,d,e)：返回其中的最高值
-
-12、**Math.min**(a,b,c,d,e)：返回其中的最低值
-
-13、**Math.pow**(x,y)：返回x的y次幂
-
-14、**Math.random**()：返回0~1之间的随机数
-
-15、**Math.sqrt**(x)：返回数的平方根
-
-16、**Math.round**(x)：四舍五入
-
-17、**Math.floor**(x)：对x进行下舍入
-
-18、**Math.ceil**(x)：对x进行上舍入
-
-**七、RegExp**
-
-**作用？**正则表达式：描述字符模式的对象
-
-`    `用于对字符串模式匹配及检索替换
-
-**创建** var patt = new RegExp('xxx','g)
-
-` `var patt = /pattern/modifiers
-
-（1）表达式的模式，修饰符：指定全局匹配，区分大小写，多行匹配
-
-**修饰符（区分大小写和全局匹配）**
-
-1、g：全局匹配（不设置会匹配第一个后停止匹配）
-
-2、i：对大小写不敏感匹配
-
-3、m：执行多行匹配
-
-**方括号（查找某个范围的字符）**
-
-1、[abc]：查找方括号之间的任何字符（[a-h]，[a,b,?]）
-
-2、[^abc]：查找不在方括号之间的任何字符（[a-h]，[a,b,?]）
-
-3、[0-9]：查找0到9的数字
-
-4、[a-z]：查找小写a到小写z的字符
-
-5、[A-Z]：查找大写A到大写Z的字符
-
-6、[A-z]：查找大写A到小写z的字符（相当于全部英文字符）
-
-7、(red|blue|green)：查找任何指定的选项（匹配red or blue or green字符）
-
-**元字符（拥有特殊含义的字符）**
-
-1、.：查找单个字符，除了换行符（/./g）
-
-2、\w：查找单词字符（a，b，c）
-
-3、\W：查找非单词字符（！，&，%）
-
-4、\d：查找数字
-
-5、\D：查找非数字
-
-6、\s：查找空白符
-
-7、\S：查找非空白符
-
-8、\b：匹配单词边界（/\babos/：匹配abos开头或结尾的单词）
-
-9、\B：匹配非单词边界（/\Babos/：匹配abos开头或结尾或中间位置的单词）
-
-10、\0：查找NULL字符（\0 NULL符）
-
-11、\n：查找换行符（\n 换行符）
-
-12、\f：查找换页符（\f 换页符）
-
-13、\r：查找回车符（\r 回车符）
-
-14、\t：查找制表符（\t 制表符）
-
-15、\v：查找垂直制表符（\v 垂直制表符）
-
-16、\xxx：查找以八进制数xxx规定的字符（/\127/）
-
-17、\xdd：查找以十六进制数dd规定的字符（/\x57/）
-
-18、\uxxxx：查找以十六进制数xxxx规定的字符（/\u0057/）
-
-**量词**
-
-1、n+：匹配至少一个字符串（a+：aaa，/\w+/：所有单词）
-
-2、n\*：匹配包含0个或多个n的字符串
-
-3、n？：匹配包含0个或一个n的字符串
-
-4、n{X}：匹配X个n的序列的字符串（a{2}：匹配aa，不匹配a）
-
-4、n{X,}：匹配至少X个n的序列的字符串（a{2,}：匹配aa，aaa，不匹配a）
-
-5、n{X,Y}：
-
-（1）匹配至少模式n连续出现至少X次，最多Y次（n{1,3}：匹配n，nnn）
-
-6、n$：匹配以n结尾的字符串（/\w$/：匹配已单词结尾）
-
-7、^n：匹配以n开头的字符串（/\^w/：匹配已单词开头）
-
-8、?=n：匹配紧跟n的字符串（/is(?=all)/：匹配is all，all紧跟is）
-
-9、?!n：匹配不是紧跟n的字符串（/is(?!all)/：‘is all is’，匹配is，后面没有紧跟all）
-
-**RegExp方法**
-
-1、**regexp.exec(string)**：检索字符串指定位置，找到**返回匹配值**（未找到返回null）
-
-2、**regexp.test(string)**：检索字符串指定位置（返回true或false）
-
-3、toString：返回正则表达式的字符串
-
-**支持正则表达式的String对象方法**
-
-1、**search(regexp)**：检索与正则表达式相匹配的值（返回索引值，未找到返回-1）
-
-2、**match(regexp)**：找到一个或多个正则表达式的匹配（返回匹配的数组值，未找到返回null）
-
-3、**replace(/blue/g,"red")**：替换匹配成功的字符串（匹配到blue会替换为red）
-
-4、**split(/s/)**：把字符串分割为字符串数组（匹配为空的地方分割）
-
-**对象属性**
-
-1、global：判断是否设置“g”修饰符
-
-2、ignoreCase：判断是否设置“i”修饰符
-
-3、multiline：判断是否设置了“m”修饰符
-
-4、lastIndex：规定下次正则匹配的起始位置
-
-5、source：返回正则表达式的匹配模式（/\w/：返回\w）
-
+- **Math**
+```js
+/* 圆周率 */
+Math.PI
+/* 向上取整 */
+Math.ceil(4.15)
+/* 向下取整 */
+Math.floor(4.95)
+/* 四舍五入取整 */
+Math.round(4.55)
+/* 返回一个浮点数，伪随机数在范围0～1。(包括 0)(排除 1) */
+Math.random()
+/* 返回作为输入参数的最大数字 */
+Math.max(1, 3, 2)
+/* 返回作为输入参数的最小数字 */
+Math.min(1, 3, 2)
+/* 返回一个数字的绝对值 */
+Math.abs(-999)
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math  
+
+## JS RegExp
+```js
+/* 定义正则 */
+var reg = new RegExp(/hello/,'g')
+/* 一个指定字符串中执行一个搜索匹配。返回 [] || null */
+reg.exec('hello')
+/* 执行一个检索，用来查看正则表达式与指定的字符串是否匹配。返回 true || false */
+reg.test('hello')
+
+var str = 'hello'
+/* 执行正则表达式和 String 对象之间的一个搜索匹配。返回索引 || -1 */
+str.search(/hello/g)
+/* 返回一个字符串匹配正则表达式的结果。返回 [] || null */
+str.match(/hello/g)
+
+```
 **八、全局属性、函数**
 
 **属性**
