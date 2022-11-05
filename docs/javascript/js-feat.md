@@ -1,3 +1,4 @@
+# JavaScript New Features
 ## ES6(ES2015)
 - **let与const**
 ```js
@@ -43,58 +44,30 @@ a
 a // 1
 ```
 
-**二、解构赋值**
-
-**对赋值运算符的扩展**
-
-**解构的源，解构赋值表达式的右边部分**
-
-**解构的目标，解构赋值表达式的左边部分**
-
-**当目标有值时，就会赋值给源（变量）**
-
-**数组模型的解构（Array）**
-```
-let [a,b,c] = [1,2,3]：基本解构 // a=1,b=2,c=3
-
-let [a,[b,c]] = [1,[2,3]]：可嵌套 // a=1,b=2,c=3
-
-let [a,  ,c] = [1,2,3]：可忽略 // a=1,c=3
-
-let [a = 1, b] = []：不完全解构 // a=1,b=undefined
-
-let [a, ...b] = [1,2,3]：剩余运算符 // a=1,b=[2,3]
-
-let [a,b,c,d] = 'qwer'：字符串 // a='q',b='w',c='e',r='d'
-
-let [a = 2] = [undefined]：解构默认值 // a=2
-
+- **解构赋值**
+```js
+let [a,b,c] = [1,2,3] // a=1,b=2,c=3
+let [a,[b,c]] = [1,[2,3]] // a=1,b=2,c=3
+let [a,  ,c] = [1,2,3] // a=1,c=3
+let [a = 1,b] = [] // a=1,b=undefined
+let [a, ...b] = [1,2,3] // 剩余运算符 a=1,b=[2,3]
+let [a,b,c,d] = 'qwer' // a='q',b='w',c='e',r='d'
+let [a = 2] = [undefined] // 解构默认值 a=2
 let [a = 3, b = a] = [] // a=3,b=3
-
 let [a = 3, b = a] = [1] // a=1,b=1
-
 let [a = 3, b = a] = [1,2]// a=1,b=2
-```
 
-**数组模型的解构（Object）**
+// 对象模型的解构
+let {a,b} = {a:'aaa', b:'bbb'} // a='aaa',b='bbb'
+let {a:b} = {a:'bbb'} // b='bbb'
 
-```
-let {a,b} = {a:'aaa', b: 'bbb'}：基本解构 // a='aaa',b='bbb'
+let obj = {p: ['hello', {y:'world'}] }     
+let {p: [x, { y }] } = obj // x="hello",y="world"
+let {p: [x] } = obj // x="hello"
 
-`    `let {a:b} = {a:'bbb'} // b='bbb'
+let {a,b,...rest} = {a:10,b:20,c:30,d:40} // a=10,b=20,rest={c:30,d:40}
 
-let obj = {p: ['hello', {y: 'world'}] }：可嵌套可忽略     let {p: [x, { y }] } = obj // x="hello",y="world"
-
-`    `let {p: [x, {  }] } = obj // x="hello"
-
-let obj = {p: [{y: 'world'}] }：不完全解构     let {p: [{ y }, x ] } = obj // y="world",x=undefined
-
-let {a,b ...rest} = {a:10,b:20,c:30,d:40}：剩余运算符
-
-`    `// a=10,b=20,rest={c:30,d:40}
-
-let {a=10,b=5} = {a:3}：解构默认值 // a=3,b=5
-
+let {a=10,b=5} = {a:3} // a=3,b=5
 let {a:aa=10,b:bb=5} = {a:3} // aa=3,bb=5
 ```
 
