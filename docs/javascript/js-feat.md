@@ -71,39 +71,50 @@ let {a=10,b=5} = {a:3} // a=3,b=5
 let {a:aa=10,b:bb=5} = {a:3} // aa=3,bb=5
 ```
 
-**三、Symbol**
+- **Symbol**
 
-原始数据类型Symbol，表示独一无二的值
+```js
+// 原始数据类型Symbol，表示独一无二的值，最大的用法是用来定义对象的唯一属性名
+const sy = Symbol();
+typeof sy // symbol
+
+const sy1 = Symbol(42);
+sy1 === 42 // false
+
+const sy2 = Symbol('foo');
+Symbol('foo') === sy2 // false
+
+// 1. 使用场景，作为属性名
+let sy = Symbol("key1");
+let syObject = {
+  [sy]: "kk"
+};
+console.log(syObject);    // {Symbol(key1): "kk"}
+// 取值可以用Object.getOwnPropertySymbols() 和 Reflect.ownKeys()
+
+// 2. 使用场景，定义常量
+const COLOR_RED = Symbol("red");
+const COLOR_YELLOW = Symbol("yellow");
+const COLOR_BLUE = Symbol("blue");
+function getConstantName(color) {
+    switch (color) {
+        case COLOR_RED :
+            return "COLOR_RED";
+        case COLOR_YELLOW :
+            return "COLOR_YELLOW";
+        case COLOR_BLUE:
+            return "COLOR_BLUE";
+        default:
+            throw new ColorException("Can't find this color");
+    }
+}
+getConstantName(COLOR_YELLOW)
+
+// 3. 全局Symbol注册表
+let yellow1 = Symbol.for("Yellow");
+// 获取全局 symbol 注册表中某个symbol关联的键
+Symbol.keyFor(yellow1);    // "Yellow"
 ```
-const symbol1 = Symbol();
-
-typeof symbol1 // symbol
-
-const symbol2 = Symbol(42);
-
-symbol2 === 42 // false
-
-const symbol3 = Symbol('foo');
-
-Symbol('foo') === symbol3 // false
-
-let a = Symbol.for('aaa')
-
-传入一个字符串，作为symbol注册表中的描述（相对于**创建**声明值 a的描述）
-
-Symbol.keyFor(a) // "aaa"
-
-获取全局symbol注册表中的关联键（相当于**查找**声明值 a的描述）
-```
-
-**方法**
-
-for(key)：使用给定key在全局symbol注册表中创建新的symbol
-
-keyFor(sym)：从全局symbol注册表中，为给定symbol检索共享的symbol key
-
-只有检测到通过for注册的key，返回key值
-
 **四、Map(weakMap)与Set**
 
 **Map方法**
