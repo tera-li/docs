@@ -1,17 +1,46 @@
-**ES6（ES2015）**
-
-**全称ECMAScript 6.0，时JavaScript版本标准，2015.06发版**
-
-**一、let和const**
-
-```
-let：声明变量，只在let命令的代码块内有效
-
-不能重复声明：（let a = 1;let a = 2;），var可以声明多次
-
-不存在变量提升（变量是undefined），var会变量提升（值是undefined）
-
-const：声明常量，只在let命令的代码块有效，一旦声明常量值就不能改变
+## ES6(ES2015)
+- **let与const**
+```js
+{
+    /* 
+        不存在变量提升
+        报错 Cannot access 'a' before initialization
+    */
+    console.log(a)
+    let a = 0;
+    a   // 0
+    /* 
+        不能重复声明
+        SyntaxError: Identifier 'a' has already been declared
+    */
+    let a = 1
+}
+{
+    /*
+        常量不允许改变
+        TypeError: Assignment to constant variable
+    */
+    const a = 1
+    a = 1
+    /*
+        const声明变量必须初始化值
+        SyntaxError: Missing initializer in const declaration
+    */
+    const b
+}
+/* 
+    只在let与const代码块内有效
+    ReferenceError: a is not defined
+*/
+a
+{
+    /* var 会存在变量提升，但是值不会提升，所以 a = undefined */
+    console.log(a)
+    /* var 声明后变量会绑定在window全局对象上 */
+    var a = 1
+}
+/* var不会形成代码块作用域 */
+a // 1
 ```
 
 **二、解构赋值**

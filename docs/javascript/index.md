@@ -441,12 +441,4 @@ try {
    console.log('执行：finally')
 }
 ```
-**3、throw，try，catch**
-
-（1）try：测试代码块是否错误
-
-（2）catch：处理语句错误（catch（err）{ }）
-
-（3）throw：创建自定义错误（throw “值为空”）
-
-（4）finally：无论代码块是否错误都将执行该语句
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Error  
