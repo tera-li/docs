@@ -245,161 +245,50 @@ Object.is({q:1},{q:1});  // false
 Object.entries({name: 2}) // [['name',2]]
 Object.fromEntries([['name',2]]) // {name: 2}
 ```
-**九、数组**
+- **数组**
+```js
+// 将参数中所有值作为元素形成数组
+Array.of(1, 2, 3, 4); // [1, 2, 3, 4]
+// 将类数组对象或可迭代对象转化为数组
+Array.from([1, 2], (n) => n * 2); // [2, 4]
+// 转换 Map
+let map = new Map();
+map.set('key0', 'value0');
+map.set('key1', 'value1');
+console.log(Array.from(map)); // [['key0', 'value0'],['key1', 'value1']]
+// 转换 set
+let arr = [1, 2, 3];
+let set = new Set(arr);
+console.log(Array.from(set)); // [1, 2, 3]
+// 转换字符串
+let str = 'abc';
+console.log(Array.from(str)); // ["a", "b", "c"]
+// 扩展方法
+arr.find(item => item > 2)
+arr.findIndex(item => item = 1)
+arr.fill(0,1,2)
+arr.copyWithin(0,2,4)
+arr.entries()
+arr.keys()
+arr.values()
+arr.includes('arr')
+// 嵌套数组转一维数组
+arr.flat(1)
+// 先处理再转换
+arr.flatMap(n => [n * 2])
 
-**创建Array**
-
-Array.of(values)：返回[values]
-
-创建一个具有可变数量参数的新数组实例
-
-Array.of(...numberArrs)：返回[values]
-
-from(array，mapFn，thisArg)：
-
-将类数组对象或可迭代对象转换为新的、浅拷贝数组，第二个参数对每个元素进行处理
+// 创建数组缓冲区
+new ArrayBuffer(10)
+// 操作视图，视图是用来操作内存的接口
+let buffer = new ArrayBuffer(10);
+dataView = new DataView(buffer); 
+dataView.setInt8(0,1);
+dataView.getInt8(0); // 1
+// 定型数组，制使用特定的数据类型
+let buffer = new ArrayBuffer(10),
+new Int8Array(buffer);
 ```
-mapFn：Array.from([1,2,3],(n)=>n \* 2) // [2,4,6]
-
-thisArg：Array.from([1,2,3],(n)=>return this.do(n),map)
-
-let map = {do(n){return n \* 2}} // [2,4,6]
-```
-
-第三个参数为mapFn指向执行的对象
-
-**类数组对象**
-```
-from({0:1, 1:2, 2:3, length:3})：
-```
-// [1,2,3]，没有length属性，则返回空数组，属性名必须为数值，否则返回undefined
-
-**可迭代对象**
-
-**Map**
-
-let map = new Map()，set('key0','value0'),set('key1','value1')
-
-Array.from(map)： // [['key0','value0'],['key1','value1']]
-
-**Set**
-```
-let arr = [1,2,3]；let set = new Set(arr)；Array.from(set)：// [1,2,3]
-```
-**字符串**
-
-let str = 'abc'；Array.from(str)：// ['a','b','c']
-
-**方法**
-
-**查找**
-```
-arr.find(item => item > 2)：查找数组中符合条件的元素，若有多个元素，则返回第一个元素
-
-arr.findIndex(item => item = 1)：查找数组中符合条件的元素，同上，则返回第一个元素索引
-```
-
-**填充**
-```
-fill(value，index，lastindex)：将**一定范围索引**的数组元素内容填充为单个指定的值
-
-copyWithin(index,copyindex,copylastindex)：将一定范围索引的数组元素修改为另一指定范围索引的元素
-
-[1,2,3,4].copyWithin(0,2,4)：// [3,4,3,4]
-
-[1,2,3,4].copyWithin(-2,0)：// [1,2,1,2]
-```
-**遍历**
-```
-entries()：遍历键值对
-
-for (let [key, value] of ['a', 'b'].entries())：[0, 'a'],[1, 'b']
-
-let entries = ['a','b'].entries()；entries.next().value：// [0,'a'] [1,'b']
-
-keys()：遍历键名，同上，返回键名
-
-values()：遍历键值，同上，返回值
-```
-
-**包含**
-
-includes(value,index)：数组是否包含指定值，第二个值为搜索索引
-
-**嵌套数组转一维数组**
-
-```
-flat(number)：[1,[2,[3]]] // [1,2,3] 自动跳过空格，number指定转换数组层次
-
-Infinity：该参数会转换所有嵌套数组层次
-
-flatMap()：先对数组中每个元素进行处理，在进行flat()方法
-
-flatMap(n => [n \* 2])
-```
-**数组缓冲区**
-
-**数组缓冲区是内存中的一段地址**
-
-**定型数组的基础**
-
-**实际字节数在创建时确定，之后只可修改其中的数据，不可修改大小**
-```
-new ArrayBuffer(10)：通过构造函数创建
-
-byteLength： 长度：// 10
-
-slice(1,3)：长度 // 2
-```
-**视图**：用来操作内存的接口
-
-可以操作数组缓冲区或缓冲字节的子集，并按照其中一种数值数据类型来读取和写入数据
-
-DataView类型是一种通用的数组缓冲区视图，支持所有8种数值类型数据
-
-new DataView(buffer)：通过构造函数创建
-
-**方法**：
-
-setInt8(0,1)：设置
-
-getInt8(0)：获取 // 1
-
-**定型数组**
-
-**数组缓冲区的特定类型的视图**
-
-**可以强制使用特定的数据类型，而不是使用通用的DataView对象来操作数组缓冲区**
-
-new Int8Array(buffer)：通过数组缓冲区生成
-
-new **Int32Array**(10)：通过构造函数，不传参数将分配不到空间
-
-byteLength：// 40
-
-length：// 10
-
-可接受参数包括数组，可迭代对象(Set，Map)，数组，类数组对象
-
-定型数组可用entries()，keys()，values()迭代
-
-**扩展运算符**
-
-**取出参数对象中的所有可遍历属性，拷贝到当前对象中，可以是放入到数组或对象**
-
-**扩展运算符可用于浅拷贝**
-
-```
-let arr = [1,2] === [...arr] === [1,2]
-
-[...[1,2],...[3,4]] // [1,2,3,4]
-
-let obj = { a:1,b:2 }
-
-{...obj} // { a:1,b:2 }
-```
-
-**十、函数**
+- **函数**
 
 **默认参数**
 
