@@ -115,45 +115,53 @@ let yellow1 = Symbol.for("Yellow");
 // 获取全局 symbol 注册表中某个symbol关联的键
 Symbol.keyFor(yellow1);    // "Yellow"
 ```
-**四、Map(weakMap)与Set**
+- **Map与Set**
+```js
+/* 
+    Maps 和 Objects 的区别
+    1. 一个 Object 的键只能是字符串或者 Symbols，但一个 Map 的键可以是任意值。
+    2. Map 中的键值是有序的（FIFO 原则），而添加到对象中的键则不是。
+    3. Map 的键值对个数可以从 size 属性获取，而 Object 的键值对个数只能手动计算。
+    4. Object 都有自己的原型，原型链上的键名有可能和你自己在对象上的设置的键名产生冲突。
+*/
+var map = new Map()
+map.set('key','value')
+map.get('key')
+// Map迭代
+for(var [key, value] of Map)
+Map.forEach((value,key)=>{})
+// Map与Array互转
+var kvArray = [["key1", "value1"], ["key2", "value2"]];
+// Map 构造函数可以将一个 二维 键值对数组转换成一个 Map 对象
+var myMap = new Map(kvArray);
+// 使用 Array.from 函数可以将一个 Map 对象转换成一个二维键值对数组
+var outArray = Array.from(myMap);
+// Map合并
+new Map([...new Map(), ...new Map()])
 
-**Map方法**
+/*
+    Set 对象存储的值总是唯一的，所以需要判断两个值是否恒等。有几个特殊值需要特殊对待：
+    1. +0 与 -0 在存储判断唯一性的时候是恒等的，所以不重复；
+    2. undefined 与 undefined 是恒等的，所以不重复；
+    3. NaN 与 NaN 是不恒等的，但是在 Set 中只能存一个，不重复。
+*/
+var set = new Set()
+set.add('value')
+set.has('value')
+set.keys()
+set.values()
+set.forEach()
+set.entries()
+set.delete()
+set.clear()
 
-**Map对象保存键值对，任何值（对象或原始值）都可以作为一个键或一个值**
+// Array 转 Set
+var arr = ["value1", "value2", "value3"]
+var mySet = new Set(arr);
+// Set 转 Array
+[...mySet]
+```
 
-**Map和object的区别：**
-
-**objec的键值个数需要手动计算，Map可以从size获取个数**
-
-**object的键只能是字符串或symbols，但Map的键可以是任何值**
-
-**objec的键没有顺序，而Map的键值时有序的**
-
-**object有自己的原型，原型链上的键名可能和你在对象上设置的键名产生冲突**
-
-new Map()：通过实例对象创建
-
-set(key,value)：设置对象的key和value（key可以是对象，函数，NaN）
-
-get(key)：按照key来获取对应的value
-
-**Map迭代**：for...of：for(var [key, value] of Map)
-
-` `forEach：Map.forEach((value,key)=>{})
-
-**Map对象操作**：Map与Array转换：使用Array.from，转换成一个二维键值对数组
-
-` `Map克隆：使用new Map(myMap)，构造函数生成实例，迭代出新的对象
-
-` `Map合并：new Map([...first, ...second])，解构赋值，剩余运算符合并
-
-**weakMap方法**
-
-weakMap是Map的子集，”弱映射“，相对于Map的区别是，键只能是**Object**或继承自**Object**的类型，若不是Object类型的key，将抛出TypeError
-
-原始值可以包装成对象，再作为key
-
-如：new String('key')
 
 **Set方法**
 
