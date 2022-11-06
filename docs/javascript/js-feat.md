@@ -161,48 +161,41 @@ var mySet = new Set(arr);
 // Set 转 Array
 [...mySet]
 ```
+- **Proxy与Reflect**
+```js
+/* 
+    Proxy 可以对目标对象的读取、函数调用等操作进行拦截，然后进行操作处理。
+    它不直接操作对象，而是像代理模式。
+    通过对象的代理对象进行操作，在进行这些操作时，可以添加一些需要的额外操作。
+*/
+let target = {
+    name: 'Tom',
+    age: 24
+}
+let handler = {
+    // 用于拦截对象的读取属性操作
+    get: function(target, key) { return target[key] },
+    // 设置属性值操作的捕获器
+    set: function(target, key, value) { target[key] = value },
+    // 用于拦截函数的调用
+    apply: function(target, thisArg, argumentsList) { return target(argumentsList) },
+    // 用于拦截 new 操作符
+    construct: function(target, args) { return new target(...args) }
+}
+let proxy = new Proxy(target, handler)
+proxy.name     // 实际执行 handler.get
+proxy.age = 25 // 实际执行 handler.set
 
-
-**Set方法**
-
-**Set对象允许你存储任何类型的唯一值，无论原始值或者是对象引用**
-
-**Set对象存储值总是唯一的，对象之间引用不恒等，即时值相同也能存储**
-
+/*
+    Reflect 提供操作JavaScript的方法
+*/
+var obj = { x: 1, y: 2 };
+Reflect.get(obj, "x"); // 1
+Reflect.has(obj, "x")
+Reflect.set(obj, "prop", "value"); // true
+// 一个由目标对象自身的属性键组成的数组
+Reflect.ownKeys(obj)
 ```
-new Set()：通过实例对象创建set对象
-
-add(value)：存储值
-
-o = {a:1, b:2}，add({a:1, b:2})：set能存储这两条数据
-
-**类型转换：**Array转Set：new Set([arr1,arr2,arr3])
-
-` `Set转Array： [...set]
-
-` `String转Set：new Set('hello')
-
-**作用：**去重：new Set([1,2,3,1,1,2])
-
-` `并集：new Set([...a,...b])
-
-` `交集：new Set([...a].filter(x => b.has(x)))：查找b集合有a集合的值
-
-` `差集：new Set([...a].filter(x => !b.has(x)))：查找b集合没有a集合的值
-```
-
-**weakSet方法**
-
-weakSet是Set的子集，“弱集合”，相对于Set的区别是，键只能是**Object**或继承自**Object**的类型，若不是Object类型的key，将抛出TypeError
-
-原始值可以包装成对象，再作为key
-
-如：new String('key')
-
-**五、Reflect与Proxy**
-
-reflect与proxy为操作对象引入的API[Reflect与Proxy.note](note://EBAFC845DD8E4FEBA665674978CE3AB3)
-
 **六、字符串**
 
 **方法**
