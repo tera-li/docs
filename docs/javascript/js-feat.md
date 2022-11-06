@@ -211,133 +211,40 @@ str.padEnd(10,'o') // stringoooo
 // 模板字符串
 `hello, ${str}` // hello, string
 ```
-**七、数值**
+- **对象**
+```js
+// 对象字面量
+const [age,name] = [12,'join']
+const person = {age, name} // {age: 12, name: 'join'}
 
-**表示**
+const person = {
+  * myGenerator() {
+    yield 'hello world';
+  },
+  sayHi(){
+    console.log("Hi");
+  },
+  ["he"+"llo"](){
+    return "Hi";
+  }
+}
+// 拓展运算符
+let age = {age: 15};
+let name = {name: "Amy"};
+let person = {...age, ...name}; // {age: 15, name: 'Amy'}
+// 对象新方法
+let target = {a: 1};
+let object2 = {b: 2};
+Object.assign(target,object2); // {a: 1, b: 2}
 
-0b或0B：二进制表示法（0b11 === 3）
+Object.is("q","q");      // true
+Object.is(1,1);          // true
+Object.is([1],[1]);      // false
+Object.is({q:1},{q:1});  // false
 
-0o或0O：八进制表示法（0o11 === 9）
-
-**常量**
-
-Number.EPSILON：表示1与大于1的最小浮点数之间的差
-
-0.1 + 0.2 === 0.3 // false
-
-Math.abs（0.1-0.3+0.2）< Number.EPSILON
-
-**最大/最小安全整数**
-
-**安全整数，js无法精确表示整数，安全整数范围在2的53(-53)次方之间**
-
-**最大安全整数：**
-
-2的53次方-1
-
-**最小安全整数：**
-
-2的-53次方-1
-
-**Nmuber新方法**
-
-isFinite()：检测一个数值是否为有限（没有隐式转换(数据类型转换)）
-
-parseInt()：从全局移植到number对象上的方法，将字符串或数字转换为指定位数整数
-
-parseFloat(string/number)：同上，将字符串或数字转换为浮点数(无法解析返回NaN)
-
-isInteger(value)：判断给定参数是否为整数
-
-isSafeInteger()：判断数值是否在安全范围内
-
-**Math方法的扩展**
-
-**cbrt()：**计算一个数的立方根（非数值=NaN）
-
-imul(number,number)：计算两个数的相乘
-
-hypot(number...)：计算所有参数的平方和的平方根（true=1,false、null=0,非数值=NaN）
-
-clz32(number)：返回数字的32位无符号整数形式的前导0的个数
-
-**trunc(number)：**返回数字的整数部分(-0.5=-0,非数值=NaN)
-
-fround(number)：获取数字的32位单精度浮点数形式
-
-**sign(number)：**判断数字的符号（正、负、0）
-
-expm1(number)：对数，计算e的x次方减1的结果===Math.exp(x) -1
-
-log1p(number)：对数，计算1+x的自然对数===Math.log(1+x)
-
-log10(number)：对数，计算以10为底的x的对数
-
-log2(number)：对数，计算2为底的x的对数
-
-指数运算符：（\*\*）右结合，从右至左计算
-
-**八、对象**
-
-**对象字面量**
-
+Object.entries({name: 2}) // [['name',2]]
+Object.fromEntries([['name',2]]) // {name: 2}
 ```
-const [age,name] = [12,'join']；const person = {age, name} // person = {age: 12}
-
-sayHi() === sayHi:function()：方法面简写
-
-\* sayHi() === sayHi:function\* ()：generator函数
-
-["he"+"llo"]() === hello()：属性名表达式
-```
-
-**拓展运算符**
-
-{...name, ...age}：取出所有参数对象所有可遍历属性然后拷贝到当前对象
-
-{...name，name:'join'}：如果拓展元素符对象里面存在相同属性，后面的属性会覆盖前面的属性
-
-**新方法**
-
-assign(target,object2,object3)：将源对象所有可枚举属性复制到目标对象中(目标对象，源对象)
-
-assign与...扩展运算符进行合并对象时的差别
-
-文档：[JavaScript Object Spread (javascripttutorial.net)](https://www.javascripttutorial.net/es-next/javascript-object-spread/)
-
-assign合并时，会调用合并对象的setter 属性属性；...不会访问
-
-assign合并只读属性时，会报错；...不会报错，会把只读属性的值进行覆盖
-
-is(value1,value2)：比较两个值是否严格相等(相当于===，NaN===NaN // false，而is返回true)
-
-entries(value)：
-
-处理值为数组时
-```
-Object.entries([1,2]) // [['0',1],['1',2]]
-```
-
-通过entries后，将数组每个值放入数组，形成二维数组
-
-每个数组第一个值始终是’0‘，’1‘，’2‘，依次叠加
-
-处理值为对象时：
-
-Object.entries({user: 'name', pass: 'word'}) // [['user','name'],['pass',''word]]
-
-通过entries后，将对象每个key，value放入数组，形成二维数组
-
-fromEntries(value)：
-
-与entries相反，将二维数组转换为对象
-
-```
-Object.fromEntries([[1,2]]) // {1: 2}
-```
-
-将二维数组的第一个值作为key，第二个值作为value
-
 **九、数组**
 
 **创建Array**
