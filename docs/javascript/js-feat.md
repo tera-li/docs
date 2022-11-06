@@ -43,7 +43,6 @@ a
 /* var不会形成代码块作用域 */
 a // 1
 ```
-
 - **解构赋值**
 ```js
 let [a,b,c] = [1,2,3] // a=1,b=2,c=3
@@ -70,9 +69,7 @@ let {a,b,...rest} = {a:10,b:20,c:30,d:40} // a=10,b=20,rest={c:30,d:40}
 let {a=10,b=5} = {a:3} // a=3,b=5
 let {a:aa=10,b:bb=5} = {a:3} // aa=3,bb=5
 ```
-
 - **Symbol**
-
 ```js
 // 原始数据类型Symbol，表示独一无二的值，最大的用法是用来定义对象的唯一属性名
 const sy = Symbol();
@@ -196,38 +193,24 @@ Reflect.set(obj, "prop", "value"); // true
 // 一个由目标对象自身的属性键组成的数组
 Reflect.ownKeys(obj)
 ```
-**六、字符串**
-
-**方法**
-
-includes(string)：返回boolean，判断是否找到**参数字符串**
-
-startsWith(string)：返回boolean，判断**参数字符串**是否在字符串头部
-
-endsWith(string)：返回boolean，判断**参数字符串**是否在字符串尾部
-
-repeat(number)：将字符串**重复指定次数**
-
-**字符串补全**
-
-padStart(5,string)：返回新字符串，使用**指定长度**，**重复调用参数字符串**从头部补全原字符串
-
-padEnd(5,string)：返回新字符串，使用**指定长度**，**重复调用参数字符串**从尾部补全原字符串
-
-1、没有string参数用空格代替
-
-2、长度等于原字符串，则返回原字符串
-
-3、长度小于于原字符串 + 补全参数，则截取多余位数的字符
-
-**模板字符串**
-
-`string，${expression}`：表达式和变量和函数放入${}中，空格和换行都会保留
-
-**标签模板**
-
-alert`hello`  === alert('hello')
-
+- **字符串**
+```js
+var str = 'string'
+// 判断是否找到参数字符串
+str.includes('str') // true
+// 判断参数字符串是否在字符串头部
+str.startsWith('str') // true
+// 判断参数字符串是否在字符串尾部
+str.endsWith('ing') // true
+// 将指定字符串重复指定参数次数
+str.repeat(2) // stringstring
+// 返回新的字符串，表示用参数字符串从头部（左侧）补全原字符串
+str.padStart(10,'o') // oooostring
+// 返回新的字符串，表示用参数字符串从尾部（右侧）补全原字符串
+str.padEnd(10,'o') // stringoooo
+// 模板字符串
+`hello, ${str}` // hello, string
+```
 **七、数值**
 
 **表示**
