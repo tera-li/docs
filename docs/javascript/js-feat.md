@@ -289,93 +289,35 @@ let buffer = new ArrayBuffer(10),
 new Int8Array(buffer);
 ```
 - **函数**
+```js
+// 默认参数
+function fn(name,age=17){
+ console.log(name+","+age);
+}
+fn("Amy",18);  // Amy,18
+// 剩余参数接收
+function f(...values){
+    console.log(values.length);
+}
+f(1,2);      //2
 
-**默认参数**
-
-fn(name,age=16)：当调用参数第二个没传值时，使用默认参数
-
-或者参数undefined时，使用默认参数
-
-为**初始化赋值**的参数值无法作为其他参数的默认值
-
-**不定参数**
-
-fn(...values)：使用...表示不确定参数个数，返回参数数组
-
-**箭头函数**
+// 箭头函数
+var f = function(x) { return x };
+var f = x => x
 ```
-var f = x => x === var f = function(x){return x};
-
-f(1)：当{}代码块中只有一行语句时，并且需要返回结果时，可以省略
-
-var f = (a,b) => a+b
-
-f(1,2)
+- **Class类**
+```js
+/*
+    class 的本质是 function。
+    它可以看作一个语法糖，让对象原型的写法更加清晰、更像面向对象编程的语法。
+*/
+// 匿名类
+let example = class {}
+// 命名类
+let example = class Example {}
+// 类声明
+class Example {}
 ```
-当需要箭头函数返回对象时，为了区分代码块，要用()将对象包括起来
-
-var f = (a,b) => ({a:a, b:b})：返回对象
-
-箭头函数this指向外层this对象，可以使用对象包裹使用箭头函数
-
-**箭头函数的this指向定义该函数时的上下文**
-
-var Person1 = {     'age': 18,     'sayHello': function () {         console.log(this.age);     } };
-
-**十一、迭代器**
-
-**iterator：新的遍历机制，通过Symbol.iterator使用迭代器**
-
-**迭代器用于遍历数据结构元素的指针**
-
-**通过next方法进行迭代，返回当前为对象并指向下一个位置**
-
-**返回值包含value（当前属性值），done（遍历是否结束）**
-```
-const items = ["zero", "one", "two"];     const it = items[Symbol.iterator]();
-
-`    `it.next();
-
-const items = ["zero", "one", "two"];     const it = items.entries()
-
-`    `it.next(); // [0,‘zero’],[1,"one"]	// 返回数组的键值数组
-
-const items = ["zero", "one", "two"];     const it = items.keys()
-
-`    `it.next(); // [0,1,2]		// 返回数组的key的数组
-
-const items = ["zero", "one", "two"];     const it = items.values()
-
-`    `it.next(); // ["zero", "one", "two"]		// 返回数组的value的数组
-```
-
-可迭代的值：Array,String,Map,Set,Dom元素(正在进行中)
-
-**还可以通过for...of进行遍历**
-
-**for of 用于数组**
-
-**只能let value of arr**
-
-**for of 用于对象**
-
-**可以let [key, value] of obj**
-
-for...of用于替代for...in和forEach()
-
-**十二、Class类**
-
-**类作为对象的模板被引入，可以通过class关键字定义类**
-
-**class本质是function，使原型更加清晰，更像面向对象编程的语法**
-
-**定义**
-
-匿名类：let example = class {}：匿名类
-
-命名类：let example = class Example {}：命名类
-
-类声明：class Example {}：类声明
 
 **类不可重复声明，类定义不会提升，必须在访问前对类进行定义**
 
