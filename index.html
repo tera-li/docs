@@ -33,5 +33,55 @@
         <span>123123</span>
       </p>
     </div>
+    <script>
+      class Person {
+        a = "constructor";
+        constructor() {
+          console.log(this.a + " person");
+        }
+        getPerson() {
+          console.log("this is person" + this.a);
+        }
+      }
+      class Example extends Person {
+        // 类声明，继承父类
+        // 静态属性
+        static a = 2;
+        // 静态方法
+        static getName() {
+          console.log("name");
+        }
+        // 实例属性，定义在实例对象（ this ）上的属性
+        a = 3;
+        // constructor 方法是类的默认方法，创建类的实例化对象时被调用
+        constructor() {
+          /*
+            子类必须在constructor方法中调用super方法，否则新建实例时会报错。
+            这是因为子类自己的this对象，必须先通过父类的构造函数完成塑造，得到与父类同样的实例属性和方法，然后再对其进行加工，加上子类自己的实例属性和方法。
+            如果不调用super方法，子类就得不到this对象
+          */
+          super();
+          console.log(this.a);
+          this.getPerson();
+        }
+        // getter / setter
+        // get a() {
+        //   console.log("getter");
+        //   return this.a;
+        // }
+        // set a(a) {
+        //   console.log("setter");
+        //   this.a = a;
+        // }
+        getPerson() {
+          console.log("this is child" + this.a);
+        }
+      }
+      // Example.a;
+      // Example.getName();
+      // 类只能通过new实例化
+      const a = new Example();
+      console.log(a);
+    </script>
   </body>
 </html>

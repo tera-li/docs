@@ -315,115 +315,50 @@ var f = x => x
 let example = class {}
 // 命名类
 let example = class Example {}
-// 类声明
-class Example {}
+
+// target指向class本身
+function testable(target) {
+    target.isTestable = true;
+}
+// 装饰器，还在提案中
+@testable
+class Example extends Person { // 类声明，继承父类
+    // 静态属性
+    static a = 2;
+    // 静态方法
+    static getName() {
+        console.log('name')
+    }
+    // 实例属性，定义在实例对象（ this ）上的属性
+    a = 3
+    // constructor 方法是类的默认方法，创建类的实例化对象时被调用
+    constructor () {
+    /*
+    子类必须在constructor方法中调用super方法，否则新建实例时会报错。
+    这是因为子类自己的this对象，必须先通过父类的构造函数完成塑造，
+    得到与父类同样的实例属性和方法，然后再对其进行加工，加上子类自己的实例属性和方法。
+    如果不调用super方法，子类就得不到this对象
+    */
+        super()
+        console.log(this.a);
+        console.log(this.name)
+    }
+    // getter / setter
+    get a(){
+        console.log('getter');
+        return this.a;
+    }
+    set a(a){
+        console.log('setter');
+        this.a = a;
+    }
+}
+Example.a
+Example.getName()
+// 类只能通过new实例化
+new Example()
 ```
-
-**类不可重复声明，类定义不会提升，必须在访问前对类进行定义**
-
-**主体**
-
-prototype：**属性**，可以**添加方法**和属性
-
-Object.assign(Example.prototype,{// methods})：可以**添加方法**，通过复制源对象到目标对象中进行添加
-
-static a = 2：静态属性（暂不支持）
-
-Example.a = 2（目前可行）
-
-**static可以使函数或变量直接使用，不会被实例继承**
-
-**class.a || class.a()可以直接使用class类中的静态方法或变量**
-
-**父类的静态方法可以被子类继承，子类可以直接使用**
-
-Example.prototype.a = 2：**公共属性**
-
-let exam = class **Example：**通过exam.name获取class的名字（Example ）
-
-**方法**
-
-constructor()：**constructor方法是默认调用的方法**，创建类的**实例化对象**会默认调用方法
-
-new Example()；
-
-new Example instancof Example(类)：constructor**默认返回this对象**
-
-**new Example的构造函数的property是否出现在 Example的原型链上**
-```
-static sun(a,b)；Example.sun(1,2)：调用静态方法
-
-sun(a,b)；let exam = new Example()；exam.sun(1,2)：实例化对象调用**原型方法**传参
-
-constructor(){this.sum = (a,b) => {console.log(a + b)}}：实例方法
-```
-**类的实例化**
-
-**new 关键字，class的实例化必须通过new 关键字**
-```
-let exam1 = new Example(1,2)；let exam2 = new Example(3,1)
-
-exam1.\_proto\_ == exam2.proto  // true 可以共享原型对象
-
-exam1\_proto\_.sub = function() {return this.a - this.b}：调用constructor定义的属性
-
-exam1.sub()：可以直接调用
-```
-**类修饰**
-
-**decorator是一个函数，修改类的行为，在代码编译时产生作用**
-
-@testable；
-
-function testable(target){target.isTestable = true};
-
-class Example();
-
-Example.isTestable // true
-
-例子添加了静态属性，若要添加实例属性，需要在类的prototype上操作
-
-@writable;
-
-function writable(target,name,descriptor) {descriptor.writable = false;return descriptor}
-
-descriptor必须返回
-
-target=类的原型对象，name=修饰的属性名，descriptor=该属性的描述对象
-
-修饰器执行顺序，有多个修饰器时，由外向内进入，由内向外执行
-
-**封装与继承**
-
-getter/setter
-
-set a/get a：类实例化时会调用set方法，但不会调用get方法
-
-get方法不能单独出现，必须同级出现
-
-**extends**
-
-class Child extends Father {...}：通过extends实现类的继承
-
-**super**
-
-子类constructor方法必须要super()方法，比如使用了extends就需要使用super()
-
-只能出现在子类构造函数中，constructor中
-
-在普通方法中，super指向父类原型对象
-
-**接收的参数，是实现父类的constructor的属性**
-
-在静态方法中，super指向父类
-
-constructor的this使用都必须在super后面
-
-不能继承常规对象，只能定义class类
-
-解决办法：Object.setPrototypeOf(Child.prototype, Father)
-
-**十三、模块**
+- **模块**
 
 **之前实现模块化使用require**
 
