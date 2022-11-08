@@ -460,26 +460,42 @@ f.next(33)
 f.next('value')
 ```
 ## ES7(ES2016)
-
-**与异步操作有关的关键字，和promise，generator有很大关联**
-
-**async function name（传递给函数的参数）{return 函数主体}**
-
-**async函数总返回一个promise对象，使用then方法添加回调**
-
-**在async函数中return的值，都会是promise对象**
-
-**await关键字：**
-
-**等待一个promise返回值，只能在async function内部使用，非promise对象直接返回对应值**
-
-async function aa() {
-
-let x = await new Promise(resolve => {resolve('ok')})
-
-console.log(x) // ok
-
+- **async/await**
+```js
+/*
+    async 函数返回的是一个 Promise 对象，可以使用 then 方法添加回调函数
+*/
+async function helloAsync() {
+    return "helloAsync";
 }
+console.log(helloAsync())  // Promise {<resolved>: "helloAsync"}
+helloAsync().then(v=>{
+   console.log(v);         // helloAsync
+})
+
+function testAwait() {
+   return new Promise((resolve, reject) => {
+       setTimeout(() => {
+          resolve('testAwait');
+          reject('reject')
+       }, 1000);
+   });
+}
+async function helloAsync(){
+/*
+    必须等待await的函数返回Promise，处理完成后才会继续执行async function
+    await会解析Promise对象返回处理后的对象
+*/
+    try {
+        const res = await testAwait();
+        console.log('testAwait ' + res);
+    } catch(e) {
+        console.log(e)
+    }
+}
+helloAsync();
+// testAwait testAwait
+```
 Array.prototype.includes()
 
 arr.includes()
