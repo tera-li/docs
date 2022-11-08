@@ -460,6 +460,68 @@ f.next(33)
 f.next('value')
 ```
 ## ES7(ES2016)
+```js
+let arr = [1,2,3]
+arr.includes(1) // true
+
+let cubed = 2 ** 3;
+// same as: 2 * 2 * 2
+```
+## ES8(ES2017)
+```js
+// 操作对象
+Object.values / Object.entries
+let arr = { name: 'join', pwd: '123' }
+/* 获取对象的value组成的数组 */
+Object.values(arr) // ['join', '123']
+/* 获取对象的key与value组成的数组 */
+Object.entries(arr) // [['name', 'join'], ['pwd', '123']]
+
+// 获取对象的所有自身属性的描述符
+Object.getOwnPropertyDescriptors
+const obj = {
+    a: 123,
+    [Symbol('foo')]: 123,
+    get bar() { return 'abc' },
+};
+/*
+    返回对象属性的描述
+    configurable: true
+    enumerable: true
+    value: 123
+    writable: true
+*/
+Object.getOwnPropertyDescriptors(obj)
+
+// 操作String，字符串头部和尾部填充字符串
+String.prototype.padStart / String.prototype.padEnd
+let str = 'hello'
+str.padStart(10, 'o') // ooooohello
+str.padEnd(10, 'o') // helloooooo
+
+// 操作函数，逗号可以添加到函数的参数列表后面
+function foo( param1, param2, ) { console.log(param1, param2) }
+foo('abc', 'def', )
+
+// 共享内存(SharedArrayBuffer)和原子(Atomics)
+const worker = new Worker('worker.js');
+// To be shared
+var sab = new SharedArrayBuffer(1024);
+worker.postMessage(sab);
+// get shared
+new Int32Array(sab);
+
+// Atomics对 SharedArrayBuffer 和 ArrayBuffer 对象进行原子操作
+const buffer = new ArrayBuffer(16);
+const int32 = new Int32Array(buffer);
+int32[0] = 5;
+// 将指定位置上的数组元素与给定的值相加，并返回相加前该元素的值
+Atomics.add(int32, 0, 2)  // int32[0] = 7
+// 返回数组中指定元素的值
+Atomics.load(int32, 0)
+// 将给定的值存储在数组中的指定位置
+Atomics.store(int32, 0, 2)
+```
 - **async/await**
 ```js
 /*
@@ -496,354 +558,4 @@ async function helloAsync(){
 helloAsync();
 // testAwait testAwait
 ```
-Array.prototype.includes()
-
-arr.includes()
-
-判断数组是否包含一个元素（和indexOf相似，但是可以识别NaN）
-
-幂运算符\*\*
-
-ES5使用Math.pow(2,53)
-
-ES7直接使用2\*\*53
-
-3 \*\*= 2（9）
-
-**ES8（ES2017）**
-
-async/await
-
-是generator函数的语法糖
-
-async函数内使用await，异步编程，必须等待await返回异步任务
-
-Object.values()
-
-返回可枚举对象的所有值，返回一个数组
-
-Object.entries()
-
-返回可枚举对象的键值对数组，返回一个数组
-
-Object.getOwnPropertyDescriptors(obj, property)
-
-枚举对象每个属性参数，属性值，是否可枚举
-
-获取属性的描述符
-
-尾逗号
-
-允许函数接收参数使用尾逗号(a,b,c,)
-
-**ES9（ES2018）**
-
-for await (let item of arr)[ES9的for await of.note](note://EC43BCAF6F3E42889B99EAB13B974707)
-
-` `针对for of，迭代都是同步任务启动
-
-for await of，对迭代是异步执行
-
-promise.prototype.finally()
-
-不管promise什么状态都会执行的回调函数
-
-对模板字符串的扩展
-
-foo`/undfdfdf`;
-
-es9以前报错
-
-es9:[undefined, raw:['\undfdfdf']]
-
-es9可以从raw上获取原字符串
-
-**ES10（ES2019）**
-
-Object.fromEntries()
-
-和Object.entries正好相对，把保存在数组的二维数组键值对，转换为对象
-
-把Map对数据保存对象，转换为普通对象
-
-String.trimStart()
-
-去掉字符串左边的空格
-
-String.trimEnd()
-
-去掉字符串右边的空格
-
-Array.prototype.flat()
-
-按照指定的胜读递归遍历数组，并合并到子数组中
-
-arr.flat(number or infinity)
-
-Array.prototype.flatMap()
-
-实质和上面相同，多出一个map功能，循环数组元素处理单个元素，并且flat()
-
-Symbol.description()
-
-可以获取对应symbol的描述，定义的symbol
-
-Function.prototype.toString()
-
-返回一个函数的源代码
-
-catch Building
-
-es10允许在捕获异常时省略catch的参数
-
-**ES11（ES2020）**
-
-BigInt基本数据类型
-
-js最大的取值范围是2的53次方
-
-BigInt可以超出2的53次方
-
-可选链
-
-a?.b?.c?.d?.e其中的?表达式有值，就会继续查询问号后面的字段
-
-合并运算符??
-
-以前查询值会设置默认值（a || 1），但是当a等于0时，我们也期望输出0
-
-那么（a ?? 1），a等于0时会输出0，只有a为null或undefined时会输出右侧1的值
-
-Promise.all()
-
-接收一个promise对象数组，返回一个对象，包含所有promise返回值
-
-其中任何一个promise返回reject，就会停止运行
-
-RegExp
-
-matchAll()：必须接收一个带g标志的正则表达式，返回匹配到的可迭代器对象
-
-function getPromise(time) {
-
-`    `return new Promise((resolve, reject) => {
-
-`        `setTimeout(() => {
-
-`            `resolve(time)
-
-`        `}, time)
-
-`    `})
-
-}
-
-const asyncArr = [getPromise(1000), getPromise(200), getPromise(3000)]
-
-async function test() {
-
-`    `for await (let item of asyncArr) {
-
-`        `console.log(Date.now(), item);
-
-`    `}
-
-}
-
-test()
-
-**Reflect**
-
-操作对象的API（Reflect.has()）
-
-通过反射机制，可以访问、检测和修改对象的内部状态与行为
-
-方法
-
-has(target,key)：对象是否存在对应的key
-
-get(target,key)：获取对应对象的key值
-
-set(target,key,value)：改变对象对象的key值
-
-ownkeys(target)：返回对象的所有属性
-
-deleteProperty(target,key)：删除对象的属性
-
-construct(obj,[arguments])：相当于ner obj(arguments)
-
-**defineProperty**(obj,symbol,descriptor)：在一个对象上直接定义一个属性，或者修改属性的值，并返回此对象
-
-与Object.defineproperty作用相同，唯一不同的是返回true or false
-
-defineProperties(obj,{
-
-name: {
-
-value: 2,
-
-writable: true
-
-},
-
-...可枚举的属性描述符对象
-
-})
-
-直接在一个对象上定义一个或多个新的属性，或修改现有的属性
-
-writable：该属性值可写吗
-
-value：属性值
-
-configurable：对应属性类型可以被改变，或着被删除
-
-**Proxy**
-
-操作对象的API（new Proxy(target,handler)）
-
-相当于对对象的操作进行代理拦截，就是在访问对象前添加一层拦截，过滤操作
-
-target：包装的目标对象(obj)
-
-之后调用使用proxy调用属性
-
-handler：对象，包含函数（当对proxy对象进行一些操作时，可以触发对应函数）
-
-get(**target**,**key**,**proxy**)：参数为obj、key
-
-获取对象的属性时触发
-
-拦截
-
-proxy.property
-
-Reflect.get
-
-set(**target**,**key**,**value**,**proxy**)：参数为obj、key、value
-
-设置对象属性时触发
-
-拦截
-
-proxy.property = value
-
-Reflect.set
-
-has(target,key)：并使用in操作符的代理方法
-
-是否存在对象的属性
-
-拦截
-
-property in proxy
-
-Reflect.has
-
-defineProperty:(target,prop,descriptor)
-
-对定义属性或更改属性进行拦截
-
-拦截Object.defineProperty
-
-拦截Reflect.definpRroperty
-
-拦截obj.property = 'value'
-
-对以上方法可以进行拦截
-
-此方法必须返回true，来表明是否操作成功
-
-deleteProperty:(target,prop,descriptor)
-
-对定义属性或更改属性进行拦截
-
-拦截Reflect.deleteProperty
-
-拦截delete proxy[key]
-
-对以上方法可以进行拦截
-
-此方法必须返回true，来表明是否操作成功
-
-进行拦截后以上的修改属性，删除属性将无效，需要在proxy拦截方法里操作
-
-getOwnPropertyDescriptor(target, property)
-
-访问proxy对象的属性描述符
-
-拦截
-
-Object.getOwnPropertyDescriptor(target,property)
-
-Reflect.getOwnPropertyDescriptor(target, property)
-
-ownkeys(target)
-
-访问对象的proxy的key
-
-拦截
-
-Object.keys(proxy)
-
-Object.getOwnPropertyNames(proxy)
-
-Reflect.ownKeys(proxy)
-
-getPrototypeOf()
-
-访问proxy原型时触发，访问拦截对象的原型
-
-拦截
-
-Object.getPropertyOf(proxy)
-
-Reflect.getPropertyOf(proxy)
-
-setPrototypeOf()
-
-设置proxy原型时触发
-
-拦截
-
-Object.setPropertyOf(proxy, object)
-
-Reflect.setPropertyOf(proxy, object)
-
-**可撤销的代理**
-
-const { proxy,revoke } = Proxy.revocable(target, handler)
-
-revocable返回两个对象---proxy，revoke
-
-调用revoke()可撤销target的代理
-
-![clipboard.png](./assets/Aspose.Words.067368dd-e0e0-4e32-b5d1-33704aa64031.001.png)
-
-1
-
-**Object**
-
-**defineProperty**(obj,symbol(key),descriptor)：在一个对象上直接定义一个属性，或者修改属性的值，并返回此对象
-
-writable：该属性值可写吗
-
-`  `为**false**时，无法修改value的值
-
-value：属性值
-
-configurable：对应属性类型可以被改变，或着被**删除**
-
-为**false**时，使用delete obj.key，将会**无效**
-
-enumerable: 表示能否for循环此对象
-
-为**false**时，比如使用Object.keys(obj)，返回的将会是空数组【】
-
-get:()：当对象属性被读取时触发
-
-set:()：当对象被赋值时触发
-
-![clipboard.png](./assets/Aspose.Words.067368dd-e0e0-4e32-b5d1-33704aa64031.002.png)
-
-数据属性描述符
+参考链接：https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md
