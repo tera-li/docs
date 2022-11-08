@@ -5,19 +5,19 @@ titleTemplate: Vite & Vue powered static site generator.
 head:
   - - meta
     - name: description
-      content: JinJiang's Blog，瑾江的博客，surprise，前端，前端技术博客
+      content: JinJiang's Docs，瑾江的博客，surprise，前端，前端技术博客
   - - meta
     - name: keywords
-      content: JinJiang,Blog,瑾江的博客,surprise,前端,前端技术博客
+      content: JinJiang,Docs,瑾江的博客,surprise,前端,前端技术博客
   - - meta
     - name: google-site-verification
     - content: WsLa9IEnN2TZzy4k0HF1GNYCghbHHtSDM80dokpEi3E
 layout: home
 aside: true
 hero:
-  name: JinJiang's Blog
-  text: Blog & Record the life.
-  tagline: Blog content is continuously updated...
+  name: JinJiang's Docs
+  text: Docs & Record the life.
+  tagline: Docs content is continuously updated...
   actions:
     - theme: brand
       text: Get Started
