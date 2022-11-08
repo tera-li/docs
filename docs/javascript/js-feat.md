@@ -359,46 +359,38 @@ Example.getName()
 new Example()
 ```
 - **模块**
+```js
+/*
+    每一个模块只加载一次（是单例的）， 若再去加载同目录下同文件，直接从内存中读取
+    每个模块都有自己的上下文，每一个模块内声明的变量都是局部变量，不会污染全局作用域
+    自动开启严格模式
+*/
 
-**之前实现模块化使用require**
+let name = 'join'
+let pwd = '123456'
+// 导出 export.js
+export { name, pwd }
+// 导入 export.js
+import { name, pwd } from 'export.js'
 
-**ES6的模块化分为export（导出）与import（导入）两个模块**
+// export default 只能暴露出单个属性
+let a = "My name is Tom!";
+export default a;
+// 不需要加{}， 使用任意变量接收
+import b from "./xxx.js"; 
 
-**模块自动开启严格模式use strict**
+// 使用 as 重新定义导出变量名
+import { name as Name, pwd as Pwd } from 'export.js'
 
-**模块可以导入或导出各种类型的变量，如函数，对象，字符串，数字，布尔值，类**
-
-export{var1,var2,var3}：大括号指定输出一组变量，明确导出的接口
-
-import {var1,var2,var3} from 'test.js'：引入对应的接口
-
-<!-- 在html中使用<script type=”module“ src="test.js"> </script> 引入 -->
-
-**as的用法**
-
-export {var1 as name}：as重新定义了导出接口名称，import需要使用name定义别名
-
-import {var1 as name}：as规定导出的接口名称，import需要使用的name定义的别名
-
-**export default**
-
-当只export一个变量时，可以使用export default ，不用使用{}，可以用import任意变量接收
-
-**命名导出**export const bar = ‘小明’
-
-**默认导出**export { bar }
-
-**import()**
-
-1、import('./export.js')，动态引入js文件，并且执行
-
-**CommonJS（ES6之前的js模块化，但是只能用于nodejs）**
-
-module.exports = {} // 输出模块
-
-require()   // 引入模块
-
-**十四、Promise对象**
+// 单例模式，多次重复执行同一句 import 语句，那么只会执行一次
+import { a } "./xxx.js";
+import { a } "./xxx.js";
+// 相当于 import { a } "./xxx.js";
+import { a } from "./xxx.js";
+import { b } from "./xxx.js";
+// 相当于 import { a, b } from "./xxx.js";
+```
+- **Promise对象**
 
 **是异步编程的一种解决方案，promise是一个对象，可以获取异步操作的消息**
 
