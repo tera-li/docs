@@ -391,38 +391,41 @@ import { b } from "./xxx.js";
 // 相当于 import { a, b } from "./xxx.js";
 ```
 - **Promise对象**
+```js
+/*
+Promise的状态：
+    pending(进行中) - fulfilled(已成功)
+    pending(进行中) - rejected(已失败)
+    除了异步操作的结果，任何其他操作都无法改变这个状态
+*/
+const p1 = new Promise((resolve,reject) => {
+    resolve('success1');
+    resolve('success2');
+    reject('reject');
+});
+p1.then(
+    // 接收 resolve 的结果
+    (res) => {  console.log(res) },
+    // 接收 reject 的结果
+    (rej) => {  console.log(rej) }
+);
 
-**是异步编程的一种解决方案，promise是一个对象，可以获取异步操作的消息**
-
-**状态有三种：pending（进行中）fulfilled（已成功）rejected（已失败），无法改变状态结果**
-
-new Promise(resolve,reject)
-
-resolve()：成功的返回值
-
-reject()：失败的返回值
-
-.then(res=>{})：通过.then来接收成功或失败的返回值
-
-第一个参数接收成功的返回值
-
-第二个参数接收失败的返回值
-
-catch(err=> {})：对报错进行处理（throw new Error(value)）
-
-finally()：无论失败还是成功都会调用
-
-all([promise,promise1])：接收数组，接收promise对象实例，当所有成功或失败时才继续执行
-
-如果有失败，会返回失败的值
-
-不管成功失败，全部接收的话，可以在all()函数中使用以下方法
-
-[a,b,c].map((item) => item.catch(e => e))会把错误先抛出，后面就不会再抛出catch错误
-
-race([p1,p2,p3])：只要一个promise对象实例状态发生变化，就率先执行返回值
-
-**十五、generator函数（生成器函数）**
+const p2 = new Promise((resolve,reject) => {
+    resolve('success1');
+    resolve('success2');
+    reject('reject');
+});
+p2.then(res => console.log(res) )
+  .catch(error => console.log(error) )
+  .finally(() => { console.log('Experiment completed') })
+/*
+状态的缺点：
+    无法取消 Promise ，一旦新建它就会立即执行，无法中途取消。
+    如果不设置回调函数，Promise 内部抛出的错误，不会反应到外部。
+    当处于 pending 状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。
+*/
+```
+- **Generator 函数**
 
 **通过generator函数，使用yieid关键字，可以把函数的执行流挂起，为异步编程提供解决办法**
 
