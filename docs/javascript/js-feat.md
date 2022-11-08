@@ -426,87 +426,40 @@ p2.then(res => console.log(res) )
 */
 ```
 - **Generator 函数**
-
-**通过generator函数，使用yieid关键字，可以把函数的执行流挂起，为异步编程提供解决办法**
-
-**通过yield暂停计算，并在未来某个时刻继续调用输出**
-
-**generator函数与普通函数的区别：**
-
-在function后面有个 \*
-
-函数内部有yield表达式
-
-yield [1,2,3]，可以是个数组，迭代将循环1，2，3并输出
-
-**生成器函数中的方法：**
-```
-next()：调用相对应的yield值，返回{value：'值'，done：‘遍历是否结束’}
-
-return(‘value’)：返回指定value，done为true，提前使遍历结束，之后的next将没有值
-
-throw(err)：使用接收throw抛出的异常，使遍历提前结束
-
-但是在生成器中处理了throw，通过try{}catch(e){}处理，将跳过此次迭代
-
-再次调用迭代器，还会继续输出迭代值
-```
-```
-
-function\* g1() {
-
-`    `yield 2;
-
-`    `yield 3;
-
-`    `yield 4;
-
+```js
+/*
+其中 * 用来表示函数为 Generator 函数
+yield 用来定义函数内部的状态
+通过 yield 关键字，把函数的执行流挂起，为改变执行流程提供了可能，从而为异步编程提供解决方案
+通过next()调用函数执行至下一个yield
+*/
+function* callee() {
+    console.log('callee: ' + (yield));
 }
-
-let arr = [2,3,4]
-
-// yield\* [[expression]];
-
-// expression：返回一个可迭代对象的表达式。
-
-function\* g2() {
-
-`    `yield 1;
-
-`    `yield\* g1() || arr;
-
-`    `yield 5;
-
+function* func(){
+    console.log("one");
+    yield '1';
+    console.log("two");
+    yield '2'; 
+    console.log("three");
+    let x = yield '3'; 
+    console.log("four" + x);
+    /* 
+        yield* 表达式表示 yield 返回一个Generator对象，
+        用于在 Generator 函数内部，调用另一个 Generator 函数
+    */
+    yield* callee();
+    return '4';
 }
-
-let iterator = g2();
-
-console.log(iterator.next());
-
-console.log(iterator.next());
-
-console.log(iterator.next());
-
-console.log(iterator.next());
-
-console.log(iterator.next());
-
-console.log(iterator.next());
-
-// { value: 1, done: false }
-
-// { value: 2, done: false }
-
-// { value: 3, done: false }
-
-// { value: 4, done: false }
-
-// { value: 5, done: false }
-
-// { value: undefined, done: true }
+let f = func()
+f.next()
+f.next()
+f.next()
+// 可以传参数并获取
+f.next(33)
+f.next('value')
 ```
-
-**十六、async函数(ES7)**
+## ES7(ES2016)
 
 **与异步操作有关的关键字，和promise，generator有很大关联**
 
@@ -527,9 +480,6 @@ let x = await new Promise(resolve => {resolve('ok')})
 console.log(x) // ok
 
 }
-
-**ES7（ES2016）**
-
 Array.prototype.includes()
 
 arr.includes()
