@@ -775,6 +775,10 @@ console.log(a.duration); // 10
 const a = { duration: null, title: '' };
 a.duration ??= 10;
 console.log(a.duration); // 10
+
+- _(数字分隔符)
+// 方便数字代码阅读
+1_000_000_000 === 1000000000 // true
 ```
 
 参考链接：https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md
