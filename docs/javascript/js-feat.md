@@ -1,5 +1,5 @@
 # JavaScript New Features
-## ES6(ES2015)
+## ES6
 - **let与const**
 ```js
 {
@@ -424,6 +424,27 @@ p2.then(res => console.log(res) )
     如果不设置回调函数，Promise 内部抛出的错误，不会反应到外部。
     当处于 pending 状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。
 */
+
+- Promise.all
+// Promise集合中必须所有promise都是resolve成功状态，一旦有reject失败状态，则立马返回该reject
+// 返回list，都为成功状态
+const promise1 = Promise.resolve(3);
+const promise2 = 42;
+const promise3 = new Promise((resolve, reject) => setTimeout(resolve, 100, 'foo'));
+Promise.all([promise1, promise2, promise3]).then((values) => {
+  console.log(values);
+});
+// expected output: Array [3, 42, "foo"]
+
+- Promise.race
+// 返回一个 promise，一旦迭代器中的某个 promise 解决或拒绝，返回的 promise 就会解决或拒绝
+// 返回value，最快响应的resolve or reject的值
+const promise1 = new Promise((resolve, reject) => setTimeout(resolve, 500, 'one'));
+const promise2 = new Promise((resolve, reject) => setTimeout(resolve, 100, 'two'));
+Promise.race([promise1, promise2]).then((value) => {
+  console.log(value);
+});
+// expected output: "two"
 ```
 - **Generator 函数**
 ```js
@@ -459,7 +480,7 @@ f.next()
 f.next(33)
 f.next('value')
 ```
-## ES7(ES2016)
+## ES2016
 ```js
 let arr = [1,2,3]
 arr.includes(1) // true
@@ -467,7 +488,7 @@ arr.includes(1) // true
 let cubed = 2 ** 3;
 // same as: 2 * 2 * 2
 ```
-## ES8(ES2017)
+## ES2017
 ```js
 // 操作对象
 - Object.values / Object.entries
@@ -560,7 +581,7 @@ async function helloAsync(){
 helloAsync();
 // testAwait testAwait
 ```
-## ES9(ES2018)
+## ES2018
 ```js
 // 标记模板文字和转义序列
 // Uncaught SyntaxError: Invalid Unicode escape sequence
@@ -621,4 +642,75 @@ let p3 = new Promise(resolve => { setTimeout(() => { return resolve('p3')}, 3000
 const list = [p1, p2, p3]
 process(list)
 ```
+## ES2019
+```js
+- try {} catch {}
+// 更简易的try catch
+try {} catch(e) {}
+try {} catch {}
+
+- Symbol.prototype.description
+// 将定义字符串 作为 描述符
+const sym = Symbol('The description');
+sym.description // The description
+
+- Function.prototype.toString()
+// 函数toString现在返回精确字符，包括空格和注释
+function func() { /* 111*/  }
+func.toString() // before - function func() {}
+func.toString() // now - function func() { /* 111*/  }
+
+- Object.fromEntries
+// 与Object.entries()的反转
+Object.fromEntries([['a', 0], ['b', 1]]); // { a: 0, b: 1 }
+
+- String.prototype.trimStart / String.prototype.trimEnd
+// 去除字符串首尾空白字符
+'  1  '.trimStart(); // '1  '
+'  1  '.trimEnd();   // '  1'
+
+- Array.prototype.flat / Array.prototype.flatMap
+// 数组扁平化
+let arr = [1, 2, [3, 4]];
+arr.flat();               // [1, 2, 3, 4]
+let arr1 = [1, 2, 3, 4];
+arr1.flatMap(x => [x * 2]); // [2, 4, 6, 8]
+```
+## ES2020
+```js
+- String.prototype.matchAll
+// 返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器
+const str = 'test1test2';
+[...str.matchAll(/test/g)]
+
+- import()
+// 动态import
+// index.js
+export function func() { return 'index' }
+import("./index.js").then((res) => {
+    res.func()
+});
+
+- BigInt
+// 表示任意大的整数
+const x = Number.MAX_SAFE_INTEGER; // ↪ 9007199254740991, this is 1 less than 2^53
+const y = x + 1; // ↪ 9007199254740992, ok, checks out
+const z = x + 2; // ↪ 9007199254740992, wait, that’s the same as above!
+
+const previousMaxSafe = BigInt(Number.MAX_SAFE_INTEGER); // ↪ 9007199254740991
+const maxPlusOne = previousMaxSafe + 1n; // ↪ 9007199254740992n
+const theFuture = previousMaxSafe + 2n; // ↪ 9007199254740993n, this works now!
+
+- Promise.allSettled
+// 返回一个在所有给定的 promise 都已经fulfilled或rejected后的 promise，并带有一个对象数组，每个对象表示对应的 promise 结果
+// 返回list，所有承诺状态都存在
+const promise1 = Promise.resolve(3);
+const promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'foo'));
+const promises = [promise1, promise2];
+Promise.allSettled(promises).
+  then((results) => console.log(results));
+  // 【{status: 'fulfilled', value: 3},{status: 'rejected', reason: 'foo'}]
+```
+
+
 参考链接：https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md
