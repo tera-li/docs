@@ -470,7 +470,7 @@ let cubed = 2 ** 3;
 ## ES8(ES2017)
 ```js
 // 操作对象
-Object.values / Object.entries
+- Object.values / Object.entries
 let arr = { name: 'join', pwd: '123' }
 /* 获取对象的value组成的数组 */
 Object.values(arr) // ['join', '123']
@@ -478,7 +478,7 @@ Object.values(arr) // ['join', '123']
 Object.entries(arr) // [['name', 'join'], ['pwd', '123']]
 
 // 获取对象的所有自身属性的描述符
-Object.getOwnPropertyDescriptors
+- Object.getOwnPropertyDescriptors
 const obj = {
     a: 123,
     [Symbol('foo')]: 123,
@@ -494,16 +494,18 @@ const obj = {
 Object.getOwnPropertyDescriptors(obj)
 
 // 操作String，字符串头部和尾部填充字符串
-String.prototype.padStart / String.prototype.padEnd
+- String.prototype.padStart / String.prototype.padEnd
 let str = 'hello'
 str.padStart(10, 'o') // ooooohello
 str.padEnd(10, 'o') // helloooooo
 
 // 操作函数，逗号可以添加到函数的参数列表后面
+- param1, param2,
 function foo( param1, param2, ) { console.log(param1, param2) }
 foo('abc', 'def', )
 
 // 共享内存(SharedArrayBuffer)和原子(Atomics)
+- SharedArrayBuffer / Atomics
 const worker = new Worker('worker.js');
 // To be shared
 var sab = new SharedArrayBuffer(1024);
@@ -557,5 +559,66 @@ async function helloAsync(){
 }
 helloAsync();
 // testAwait testAwait
+```
+## ES9(ES2018)
+```js
+// 标记模板文字和转义序列
+// Uncaught SyntaxError: Invalid Unicode escape sequence
+- Template
+let temp = `\unicode`
+temp
+
+// 标记的模板文字应该允许嵌入语言，非法转义序列可以通过latex函数进行定义
+function latex(str) {
+    return str.raw[0]
+}
+latex`\unicode`
+
+- RegExp.dotAll / RegExp.flags
+// 引入/s 修饰符，使得。可以匹配任意单个字符
+/foo.bar/.test('foo\nbar'); // false
+/foo.bar/s.test('foo\nbar'); // true
+// 返回一个字符串，由当前正则表达式对象的标志组成
+/foo.bar/s.flags; // s
+
+- RegExp-Named-Groups
+// 正则表达式命名捕获组，(?<year>\d{4})已?<year>进行匹配
+let re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
+let result = re.exec('2015-01-02');
+// result.groups.year === '2015';
+// result.groups.month === '01';
+// result.groups.day === '02';
+
+let re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
+let result = '2015-01-02'.replace(re, '$<day>/$<month>/$<year>');
+// result === '02/01/2015'
+
+- Object Rest / Spread
+let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
+x; // 1
+y; // 2
+z; // { a: 3, b: 4 }
+
+let n = { x, y, ...z };
+n; // { x: 1, y: 2, a: 3, b: 4 }
+
+- Promise.finally
+// 最后无论如何都会执行
+Promise.resolve('resolve')
+    .then(res => console.log(res))
+    .finally(() => console.log('finally'))
+
+- await for...of
+// 在async异步方法里，for await循环等待Promise完成承诺后才会在循环体中做出操作
+async function process(list) {
+  for await (let i of list) {
+    console.log(i);
+  }
+}
+let p1 = new Promise(resolve => { setTimeout(() => { return resolve('p1')}, 1000) })
+let p2 = new Promise(resolve => { setTimeout(() => { return resolve('p2')}, 2000) })
+let p3 = new Promise(resolve => { setTimeout(() => { return resolve('p3')}, 3000) })
+const list = [p1, p2, p3]
+process(list)
 ```
 参考链接：https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md
