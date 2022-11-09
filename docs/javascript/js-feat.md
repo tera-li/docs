@@ -710,6 +710,37 @@ const promises = [promise1, promise2];
 Promise.allSettled(promises).
   then((results) => console.log(results));
   // 【{status: 'fulfilled', value: 3},{status: 'rejected', reason: 'foo'}]
+
+- globalThis
+// 包含全局的 this 值，类似于全局对象（global object）
+globalThis === window
+
+- ?. 可选链运算符
+// 当尝试访问可能不存在的对象属性时，会报错TypeError
+// 使用 ?. 访问不确定存在的属性时，若不存在则返回undefined，不会报错
+let adventurer = {
+  name: 'Alice',
+  cat: { name: 'Dinah' }
+};
+let dogName = adventurer.dog?.name;
+console.log(dogName);
+console.log(adventurer.someNonExistentMethod?.());
+
+- ?? 空值合并运算符
+// 当左侧的操作数为 null 或者 undefined 时，返回其右侧操作数，否则返回左侧操作数
+let foo = null ?? 'default string';
+console.log(foo); // expected output: "default string"
+
+const baz = 0 ?? 42;
+console.log(baz); // expected output: 0
+
+- import.meta
+// 暴露特定上下文的元数据属性的对象
+<script type="module">
+    import { func1 } from "./index.js";
+    func1();
+    console.log(import.meta);
+</script>
 ```
 
 
