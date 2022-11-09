@@ -742,6 +742,39 @@ console.log(baz); // expected output: 0
     console.log(import.meta);
 </script>
 ```
+## ES2021
+```js
+- String.prototype.replaceAll
+// 字符串匹配替换
+'defd'.replaceAll(/d/g, 'f'); // 'feff'
+'defd'.replaceAll(/d/g, (e) => 'f'); // 'feff'
 
+- Promise.any
+// 该方法用于获取首个resolve的 promise 的值，如果都是reject则会报错 All promises were rejected
+// 返回list，所有承诺状态都存在
+const promise1 = Promise.resolve(3);
+const promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'foo'));
+const promises = [promise1, promise2];
+Promise.any(promises).
+  then((results) => console.log(results));
+
+- x ||= y(逻辑或赋值)
+// 当左侧值为false时，将右侧的值赋值给左侧
+const a = { duration: false, title: '' };
+a.duration ||= 10;
+console.log(a.duration); // 10
+
+- x &&= y(逻辑与赋值)
+// 当左侧值为true时，将右侧的值赋值给左侧
+const a = { duration: true, title: '' };
+a.duration &&= 10;
+console.log(a.duration); // 10
+
+- x ??= y(逻辑空赋值)
+// 当左侧值为null or undefined时，将右侧的值赋值给左侧
+const a = { duration: null, title: '' };
+a.duration ??= 10;
+console.log(a.duration); // 10
+```
 
 参考链接：https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md
