@@ -847,5 +847,63 @@ indices: [[1, 5],[4, 5]]
 // 顶级 await 模块。在使用import引入模块时可以直接使用await
 let aaa = await import("./index.js");
 aaa.func();
+
+- Ergonomic brand checks for Private Fields
+// 检测类中私有字段是否存在
+class C {
+  #brand;
+
+  #method() {}
+
+  get #getter() {}
+
+  static isC(obj) {
+    return #brand in obj && #method in obj && #getter in obj;
+  }
+}
+C.isC(new C())
+
+- Array.prototype.at
+// 接收一个整数值并返回该索引对应的元素，允许正数和负数
+const arr = [1, 2, 3]
+console.log(arr[arr.length - 1]);  // 3
+console.log(arr.at(-1));           // 3
+
+- Object.hasOwn
+// 如果指定的对象自身有指定的属性，则静态方法 Object.hasOwn() 返回 true
+// Object.hasOwn() 旨在取代 Object.hasOwnProperty()
+let object = { a: 1, b: 2 }
+let hasOwnProperty = Object.prototype.hasOwnProperty
+if (hasOwnProperty.call(object, 'b')) {
+  console.log("has property b")
+}
+
+if (Object.hasOwn(object, "b")) {
+  console.log("has property b")
+}
+
+- Class Static Block
+// 类静态代码块
+class Translator {
+    static translations = {
+        yes: 'yes value',
+        no: 'no value',
+        maybe: 'maybe value',
+    };
+    static getStaticObject() {
+        // 可以获取类对象静态成员
+        console.log(this.translations)
+    };
+    static {
+        // 可以获取类对象
+        console.log(this)
+    };
+    constructor() {
+        // 获取类实例化对象，这里找不到静态成员
+        console.log(this)
+    }
+}
+new Translator()
+Translator.getStaticObject()
 ```
 参考链接：https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md
