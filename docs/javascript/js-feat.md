@@ -905,5 +905,36 @@ class Translator {
 }
 new Translator()
 Translator.getStaticObject()
+
+- Error Cause
+// Error Constructor 新增了一个可选的参数 options: cause，接受任意 JavaScript 值
+try {
+  throw new Error('Download raw resource failed', { cause: 'this is cause' });
+} catch (e) {
+  console.log(e);
+  console.log('Caused by', e.cause);
+}
+```
+## ES2023
+```js
+- Array find from last
+const array = [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }];
+// 返回满足条件的第一个元素或元素下标
+array.find(n => n.value > 2 ); // { value: 3 } || undefined
+array.findIndex(n => n.value > 2 ); // 2 || -1
+
+// 返回满足条件的最后一个元素或元素下标
+array.findLast(n => n.value > 2 ); // { value: 4 } || undefined
+array.findLastIndex(n => n.value > 2 ); // 3 || -1
+
+- Hashbang Grammar
+// 引入了#!命令，写在脚本文件的第一行
+#!/usr/bin/env node
+'use strict';
+console.log(1);
+/*
+    # 以前执行脚本 node hello.js
+    # 有了 hashbang 之后执行脚本 ./hello.js
+*/
 ```
 参考链接：https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md
