@@ -780,5 +780,72 @@ console.log(a.duration); // 10
 // 方便数字代码阅读
 1_000_000_000 === 1000000000 // true
 ```
+## ES2022
+```js
+- Private instance methods and accessors
+/* 类中的私有方法只能在类中调用 */
+class ClassWithPrivateAccessor {
+  #message;
+  str = 'str'
+  get #decoratedMessage() {
+    return `${this.#message}`;
+  }
+  set #decoratedMessage(msg) {
+    this.#message = msg;
+  }
+  #getMessage() {
+    return this.#message
+  }
+  constructor() {
+    this.#decoratedMessage = 'hello world';
+    console.log(this.#decoratedMessage); // hello world
+  }
+}
+const privateAccessor = new ClassWithPrivateAccessor();
+privateAccessor.str; // str
+privateAccessor.#message; // Error
+privateAccessor.#getMessage() // Error
 
+- Class Public Instance Fields & Private Instance Fields
+/* 类中的私有字段只能在类中调用 */
+class ClassWithPrivateFields {
+  #message = 'hello world';
+  str = 'str'
+  getMessage() {
+    return this.#message
+  }
+  constructor() {
+    console.log(this.#message); // hello world
+  }
+}
+const privateFields = new ClassWithPrivateFields();
+privateFields.str; // str
+privateFields.#message; // Error
+privateFields.getMessage(); // hello world
+
+- Static class fields and private static methods
+/* 类中静态字段和静态方法可以直接通过类访问 */
+class ClassWithStaticMethod {
+  static staticProperty = 'someValue';
+  static staticMethod() {
+    return 'static method has been called.';
+  }
+}
+ClassWithStaticMethod.staticProperty; // someValue
+ClassWithStaticMethod.staticMethod(); // static method has been called.
+
+- RegExp Match Indices
+// RegExp 增加/d标志，生成记录每个组捕获的开始和结束的下标
+const re1 = /a+(?<Z>z)?/d;
+const s1 = "xaaaz";
+re1.exec(s1);
+/*
+indices: [[1, 5],[4, 5]]
+*/
+
+- Top-level await
+// 顶级 await 模块。在使用import引入模块时可以直接使用await
+let aaa = await import("./index.js");
+aaa.func();
+```
 参考链接：https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md
