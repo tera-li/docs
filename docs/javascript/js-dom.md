@@ -1,15 +1,11 @@
-**DOM Document**
-
-**HTML DOM（document object model）每个元素都是节点**
-
-**当浏览器载入HTML文档时，它就会成为document对象**
-
-**document对象是HTML文档的根节点**
-
-**document对象可以从脚本中对HTML页面中的所有元素进行访问**
-
-**document对象是window的一部分，可以通过window.document访问**
-
+# DOM Document
+```js
+HTML DOM (document object model) 每个元素都是节点
+当浏览器载入HTML文档时，会创建document对象
+document对象是HTML文档的根节点
+document对象可以从脚本中对HTML页面中的所有元素进行访问操作
+document对象是window的一部分，可以通过window.document访问
+```
 **一、Document对象**
 
 **一、选中对象**
