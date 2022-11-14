@@ -49,9 +49,9 @@ export default defineConfig({
             items: [
               { text: "JavaScript Basics", link: "/javascript/" },
               { text: "JavaScript New Features", link: "/javascript/js-feat" },
+              { text: "JavaScript DOM", link: "/javascript/js-dom" },
               { text: "js-proto", link: "/javascript/js-proto" },
               { text: "js-browser", link: "/javascript/js-browser" },
-              { text: "js-dom", link: "/javascript/js-dom" },
               { text: "js-event", link: "/javascript/js-event" },
               {
                 text: "js-dataCommunication",

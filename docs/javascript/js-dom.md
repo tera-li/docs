@@ -1,90 +1,48 @@
 # DOM Document
 ```js
-HTML DOM (document object model) 每个元素都是节点
-当浏览器载入HTML文档时，会创建document对象
-document对象是HTML文档的根节点
-document对象可以从脚本中对HTML页面中的所有元素进行访问操作
-document对象是window的一部分，可以通过window.document访问
+HTML DOM (document object model) 
+文档对象模型 (DOM) 是 HTML 和 XML 文档的编程接口。
+
+它提供了对文档的结构化的表述，并定义了一种方式可以使从程序中对该结构进行访问，从而改变文档的结构，样式和内容
+DOM 将文档解析为一个由节点和对象（包含属性和方法的对象）组成的结构集合
+简言之，可以通过DOM访问操作文档对象
 ```
-**一、Document对象**
+## Document and Element
+```js
+- 匹配元素
+document.getElementById('id')                // 匹配ID元素，返回匹配到的第一个元素
+document.getElementsByClassName('container') // 匹配Class元素，返回HTMLCollection
+document.getElementsByTagName('p')           // 匹配标签名称，返回HTMLCollection
+document.getElementsByTagNameNS("http://www.w3.org/1999/xhtml", "p")   // 匹配指定命名空间和指定标签名称，返回HTMLCollection
+document.getElementsByName("up")             // 匹配元素的name属性值，返回NodeList
+document.querySelector('#nav-access')        // 匹配CSS选择器，返回匹配到的第一个元素
+document.querySelectorAll('.nav-access')     // 匹配CSS选择器，返回NodeList
 
-**一、选中对象**
+- 操作元素
+document.createElement('div')         // 创建一个由标签名称 tagName 指定的 HTML 元素 <div></div>
+document.createAttribute('name')      // 创建并返回一个新的属性节点
+document.createTextNode('div')        // 创建一个新的文本节点
+document.createComment('div')         // 创建并返回一个注释节点
+element.setAttributeNode(attribute);  // 设置指定的 Element 添加属性节点，attribute由createAttribute创建，并设置value为属性值
+element.setAttribute('name', 'value') // 设置指定元素上的某个属性值
+element.getAttribute('name')          // 匹配元素上指定的属性值
+element.removeAttribute('name')       // 删除元素上指定的属性
+element.remove()                      // 删除元素，从 DOM 树中删除
+element.before(element)               // 在 Element的节点前插入一组 Node 对象或 DOMString 对象
+element.append(element)               // 在 Element的最后一个子节点之后插入一组 Node 对象或 DOMString 对象
+element.after(element)                // 在 Element的节点后插入一组 Node 对象或 DOMString 对象
 
-getElementById：返回带有指定id的第一个对象（id（单个））
-
-getElementsByClassName：返回带有指定类名的元素集合（class（集合））
-
-getElementsByName：返回带有指定名称的对象集合（name（集合））
-
-getElementsByTagName：返回带有指定标签名的集合（标签名p,h1,div,\*（集合））
-
-针对HTMLcollection，有一个方法，可以获取集合中name属性对应的第一个元素
-
-如：images.**namedItem**['myname']
-
-![clipboard.png](./assets/Aspose.Words.18b3d0a4-4ec0-4714-a2e6-3aef21065cd3.001.png)
-
-querySelector：返回文档中匹配的css选择器的第一元素（#id，.class，p[class='xxx']）
-
-querySelectorAll：
-
-（1）返回匹配文档中匹配的css选择器所有元素（#id，.class，p[class='xxx']，div > p）
-
-body：文档的body元素，包括子元素
-
-.matches(".page")：接收css选择符参数，检测该元素会不会被queryselect和queryselectall方法返回。
-
-**二、创建对象**
-
-createAttribute：创建一个属性节点（var att = createAttribute(“class”)）
-
-（1）ele.setAttributeNode(att)：对元素添加新的属性节点
-
-（2）ele.setAttribute('属性'，‘属性值’)：对元素创建添加属性
-
-createComment：创建注释节点（插入到某个元素appendChild）
-
-createDocumentFragment：创建空的documentfragment对象，并返回此对象，
-
-创建了虚拟节点对象，可以增加删除某些内容插入，更安全的改变文档构
-
-createElement("BUTTON")：创建元素节点
-
-createTextNode("CLICK ME")：创建文本节点
-
-ele.remove()：移出该节点
-
-**DocumentFragment：相当于DOM的包装器**
-
-使用new DocumentFragment对该实例化对象进行**append等dom操作**
-
-返回的是一个DOM集合，**在页面会显示出这个集合**
-
-![clipboard.png](./assets/Aspose.Words.18b3d0a4-4ec0-4714-a2e6-3aef21065cd3.002.png)
-
-1
-
-![clipboard.png](./assets/Aspose.Words.18b3d0a4-4ec0-4714-a2e6-3aef21065cd3.003.png)
-
-![clipboard.png](./assets/Aspose.Words.18b3d0a4-4ec0-4714-a2e6-3aef21065cd3.004.png)
-
-![clipboard.png](./assets/Aspose.Words.18b3d0a4-4ec0-4714-a2e6-3aef21065cd3.005.png)
+- 访问对象
+document.activeElement                // 返回当前在 DOM 或者 shadow DOM 树中处于聚焦状态的Element
+document.baseURI                      // 返回 HTML 文档的基础URI
+document.cookie                       // 返回、设置与当前文档相关联的 cookie
+document.doctype                      // 返回文档声明内容 html
+document.documentElement              // 返回文档对象 document 的根元素
+```
+参考链接 1⃣️：https://developer.mozilla.org/zh-CN/docs/Web/API/Document  
+参考链接 2⃣️：https://developer.mozilla.org/zh-CN/docs/Web/API/Element
 
 **三、内容（属性）**
-
-activeElement：获取当前焦点元素
-
-anchors：获取当前页面所有锚的集合（a标签，拥有name属性的）
-
-baseURI：返回文档的绝对基础URI（统一资源标识符）
-
-cookie：设置或返回当前文档有关的cookie（设置 cookie='name=小林'）
-
-doctype：返回文档声明内容（html）
-
-documentElement：以一个元素对象返回一个文档的文档元素（HTML）
-
-documentURi：设置或返回文档的位置（http://www.http.com/jst）
 
 domain：返回文档的域名（www.http.com）
 
