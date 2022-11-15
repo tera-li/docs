@@ -38,61 +38,22 @@ document.baseURI                      // 返回 HTML 文档的基础URI
 document.cookie                       // 返回、设置与当前文档相关联的 cookie
 document.doctype                      // 返回文档声明内容 html
 document.documentElement              // 返回文档对象 document 的根元素
+document.forms                        // 返回当前文档中的 <form>元素的一个集合，返回HTMLCollection
+document.images                       // 返回当前文档中的 <image>元素的一个集合，返回HTMLCollection
+document.links                        // 返回一个文档中所有具有 href 属性值的 <area> 元素与 <a> 元素的集合
+document.scripts                      // 返回文档中所有的<script>元素的集合，返回HTMLCollection
+document.title                        // 返回、设置当前文档的标题 title
+document.readyState                   // 描述了document 的加载状态
+    1. loading          // 加载中，document还在加载
+    2. interactive      // 已加载，document已被解析，子资源如图像，样式表，框架等还在加载
+    3. complete         // 完成，document和子资源已完成加载，load状态事件即将被触发
+/* 若在一个已关闭（例如，已完成加载）的文档上调用 document.write，就会自动调用 document.open，这将清空该文档的内容 */
+document.write                        // 将一个文本字符串写入一个由 document.open() 打开的文档流 ( document.close() )
+document.writeln                      // 同上，每次写入会紧跟着一个换行符
+document.characterSet                 // 返回当前文档的字符编码 UTF-8/UTF-16
 ```
 参考链接 1⃣️：https://developer.mozilla.org/zh-CN/docs/Web/API/Document  
 参考链接 2⃣️：https://developer.mozilla.org/zh-CN/docs/Web/API/Element
-
-**三、内容（属性）**
-
-domain：返回文档的域名（www.http.com）
-
-embeds：返回文档中embeds元素的集合（embed标签的数量，引入插入外部url）
-
-forms：返回文档中所有forms表单的集合（form标签的数量）
-
-images：返回文档中所有img的集合（img标签的数量）
-
-implementation：返回处理该文档的DOMimplementation对象
-
-lastModified：返回文档最后被修改的日期和时间
-
-inputEncoding：返回文档的编码（UTF-8）
-
-links：计算文档所有链接的数组（a标签href，area标签）
-
-readyState：返回当前文档的状态（载入中...）
-
-（1）uninitialized：还未开始载入
-
-（2）loading：载入中
-
-（3）interactive：已加载
-
-（4）complete：载入完成
-
-referrrer：返回载入文档的文档的URL（href跳转页面的地址）
-
-scripts：返回文档中所有script元素的集合（script集合）
-
-title：文档的标题（title）
-
-URL：文档完整的URL地址
-
-write：向文档输出HTML表达式或JavaScript代码
-
-writeln：同上，不同的是在每个表达式之后会写一个换行符
-
-**compat**：检测当前文档的渲染模式是怪异模式/混杂模式/标准模式（默认标准模式）
-
-CSS1Compat：文档不是怪异模式（标准模式/准标准模式）
-
-BackCompat：文档是怪异模式
-
-characterSet：返回文档的字符集属性，并可以修改
-
-UTF-8/UTF-16
-
-document.characterSet = ''UTF-8
 
 **四、方法**
 
