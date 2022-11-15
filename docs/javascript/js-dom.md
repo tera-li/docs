@@ -23,7 +23,7 @@ document.createElement('div')         // 创建一个由标签名称 tagName 指
 document.createAttribute('name')      // 创建并返回一个新的属性节点
 document.createTextNode('div')        // 创建一个新的文本节点
 document.createComment('div')         // 创建并返回一个注释节点
-element.setAttributeNode(attribute);  // 设置指定的 Element 添加属性节点，attribute由createAttribute创建，并设置value为属性值
+element.setAttributeNode(attribute)   // 设置指定的 Element 添加属性节点，attribute由createAttribute创建，并设置value为属性值
 element.setAttribute('name', 'value') // 设置指定元素上的某个属性值
 element.getAttribute('name')          // 匹配元素上指定的属性值
 element.removeAttribute('name')       // 删除元素上指定的属性
@@ -32,7 +32,7 @@ element.before(element)               // 在 Element的节点前插入一组 Nod
 element.append(element)               // 在 Element的最后一个子节点之后插入一组 Node 对象或 DOMString 对象
 element.after(element)                // 在 Element的节点后插入一组 Node 对象或 DOMString 对象
 
-- 访问对象
+- 读取操作
 document.activeElement                // 返回当前在 DOM 或者 shadow DOM 树中处于聚焦状态的Element
 document.baseURI                      // 返回 HTML 文档的基础URI
 document.cookie                       // 返回、设置与当前文档相关联的 cookie
@@ -51,63 +51,31 @@ document.readyState                   // 描述了document 的加载状态
 document.write                        // 将一个文本字符串写入一个由 document.open() 打开的文档流 ( document.close() )
 document.writeln                      // 同上，每次写入会紧跟着一个换行符
 document.characterSet                 // 返回当前文档的字符编码 UTF-8/UTF-16
+document.designMode                   // 控制整个文档是否可编辑，on可编辑 || off不可编辑
+
+- 方法
+window.addEventListener / document.addEventListener / element.addEventListener
+// 将指定的监听器注册到 EventTarget 上，当该对象触发指定的事件时，指定的回调函数就会被执行
+addEventListener('click', (event) => { console.log(event) }, true) // useCapture默认为false，true为事件捕获时触发listener
+addEventListener('click', (event) => { console.log(event) }, {
+    capture: true,                  // true表示事件捕获时触发listener
+    once: true,                     // true表示只调用一次listener
+    passive: true,                  // true表示listener永远不会调用preventDefault()，浏览器会执行默认操作
+    signal: new AbortController(),  // AbortController.abort()方法被调用时，监听器会被移除
+})
+removeEventListener('click', (event) => { console.log(event) }, true) // 删除使用的addEventListener方法添加的事件
+document.open('text/html','replace')// 打开一个流，接收document.write()，输出流展示内容
+document.close()                    // 关闭一个打开的流，并显示数据
+
+- HTML Collection(HTML元素的集合，类似于数组列表)
+document.getElementsByTagName("p").length               // 返回子元素的数目
+document.getElementsByTagName("p").item(12)             // 返回元素集合指定索引的元素
+document.getElementsByTagName("p").namedItem('license') // 返回元素集合指定ID的元素
+for...in    // 可以迭代获取元素，需要通过hasOwnProperty区分是否是自身的属性
+for...of    // 可以迭代获取元素
 ```
 参考链接 1⃣️：https://developer.mozilla.org/zh-CN/docs/Web/API/Document  
 参考链接 2⃣️：https://developer.mozilla.org/zh-CN/docs/Web/API/Element
-
-**四、方法**
-
-addEventListener：添加事件句柄
-
-事件名，处理事件的函数，
-
-布尔值（true表示在事件捕获阶段调用事件，false表示在事件冒泡阶段）
-
-removeEventListener：移除事件句柄
-
-adoptNode：可以从另外的文档中获取子节点到当前文档
-
-（1）节点下所有子节点都会获取到，会删除拿取文档中的节点
-
-importNode(node,Boolean)：把一个节点从另一个文档复制到该文档以便应用
-
-（1）boolean为true的话会复制该节点的所有子孙节点
-
-open('text/html','replace')：打开一个流，接收document.write()，输出流展示内容
-
-close()：关闭一个打开的流，并显示数据
-
-normalize：合并相邻文本节点并删除空的文本节点（规范文档）
-
-**五、富文本交互**
-
-document.designMode = 'on' // 控制整个文档是否可以编辑（on可编辑 || off不可编辑）
-
-**DOM**
-
-**HTML Collection 时HTML元素的集合，类似于数组列表**
-
-**getElementsByTagName()方法返回指定标签名的HTML Collection**
-
-**DOM（HTML Collection）事件**
-
-item：返回指定索引的元素
-
-getElementsByTagName("p")[0]
-
-length：返回元素的数量
-
-getElementsByTagName("p").length
-
-namedItem：返回指定的ID或name属性的元素
-
-getElementsByTagName("p").namedItem('id')
-
-**2020-10-25**
-
-有些元素集合可以直接通过tag查找，如：table
-
-有些元素集合可以直接通过document.查找，如form、images
 
 **DOM**
 

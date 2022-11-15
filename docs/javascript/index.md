@@ -256,9 +256,9 @@ for (let i = 0; i < arr.length; i++) {}
 var n = 0; while (n < 3) { n++; }
 /* 基础do while循环 */
 var i = 0; do { i += 1; } while (i < 5);
-/* for in 循环 */
-for (var value in arr) {}
-/* for of 循环 */
+/* for in 循环，迭代自身和继承的prototype的属性，返回的是key */
+for (var key in arr) {}
+/* for of 循环，迭代定义要迭代的数据，可自定义迭代数据，返回的是value */
 for (var value of arr) {}
 /* foreach循环，对数组的每个元素执行一次给定的函数 
    箭头函数内部无法获取指定的this，普通函数可以获取指定的this*/
