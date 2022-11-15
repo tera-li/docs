@@ -70,7 +70,7 @@ let {a=10,b=5} = {a:3} // a=3,b=5
 let {a:aa=10,b:bb=5} = {a:3} // aa=3,bb=5
 ```
 - **Symbol**
-```js
+```js{11,19,37}
 // 原始数据类型Symbol，表示独一无二的值，最大的用法是用来定义对象的唯一属性名
 const sy = Symbol();
 typeof sy // symbol
@@ -391,7 +391,7 @@ import { b } from "./xxx.js";
 // 相当于 import { a, b } from "./xxx.js";
 ```
 - **Promise对象**
-```js
+```js{34,45}
 /*
 Promise的状态：
     pending(进行中) - fulfilled(已成功)
@@ -489,7 +489,7 @@ let cubed = 2 ** 3;
 // same as: 2 * 2 * 2
 ```
 ## ES2017
-```js
+```js{2,10,26,32,37}
 // 操作对象
 - Object.values / Object.entries
 let arr = { name: 'join', pwd: '123' }
@@ -582,7 +582,7 @@ helloAsync();
 // testAwait testAwait
 ```
 ## ES2018
-```js
+```js{3,13,20,32,41,47}
 // 标记模板文字和转义序列
 // Uncaught SyntaxError: Invalid Unicode escape sequence
 - Template
@@ -643,7 +643,7 @@ const list = [p1, p2, p3]
 process(list)
 ```
 ## ES2019
-```js
+```js{1,6,11,17,21,26}
 - try {} catch {}
 // 更简易的try catch
 try {} catch(e) {}
@@ -677,7 +677,7 @@ let arr1 = [1, 2, 3, 4];
 arr1.flatMap(x => [x * 2]); // [2, 4, 6, 8]
 ```
 ## ES2020
-```js
+```js{1,6,14,24,34,38,49,57}
 - String.prototype.matchAll
 // 返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器
 const str = 'test1test2';
@@ -743,7 +743,7 @@ console.log(baz); // expected output: 0
 </script>
 ```
 ## ES2021
-```js
+```js{1,6,15,21,27,33}
 - String.prototype.replaceAll
 // 字符串匹配替换
 'defd'.replaceAll(/d/g, 'f'); // 'feff'
@@ -781,7 +781,7 @@ console.log(a.duration); // 10
 1_000_000_000 === 1000000000 // true
 ```
 ## ES2022
-```js
+```js{1,25,42,53,62,67,82,88,101,125}
 - Private instance methods and accessors
 /* 类中的私有方法只能在类中调用 */
 class ClassWithPrivateAccessor {
@@ -916,7 +916,7 @@ try {
 }
 ```
 ## ES2023
-```js
+```js{1,11}
 - Array find from last
 const array = [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }];
 // 返回满足条件的第一个元素或元素下标

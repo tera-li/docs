@@ -1,14 +1,23 @@
-# DOM Document
-```js
-HTML DOM (document object model) 
-文档对象模型 (DOM) 是 HTML 和 XML 文档的编程接口。
-
-它提供了对文档的结构化的表述，并定义了一种方式可以使从程序中对该结构进行访问，从而改变文档的结构，样式和内容
-DOM 将文档解析为一个由节点和对象（包含属性和方法的对象）组成的结构集合
-简言之，可以通过DOM访问操作文档对象
-```
-## Document and Element
-```js
+**Window**
+::: v-pre
+`表示一个包含 DOM 文档的窗口，其 document 属性指向窗口中载入的 DOM 文档。`
+:::
+**Document**
+::: v-pre
+`表示一个网页，并作为网页内容的入口，也就是 DOM 树，可以通过 Document 对象访问设置 HTML 元素。`
+:::
+**Node**
+::: v-pre
+`表示一个接口，各种类型的 DOM API 对象会从这个接口继承`  
+`作为 DOM 的最小组成单位，一个文档的树形结构就是由各种不同类型的节点组成`  
+`Text、Comment、Element、Document都是节点`
+:::
+**Element**
+::: v-pre
+`表示一个元素，所有 Document 对象下的对象都继承自它，可以通过 Element 对象操作 HTML 元素的相关属性。`
+:::
+## Document
+```js{1,10,24,46,60,67}
 - 匹配元素
 document.getElementById('id')                // 匹配ID元素，返回匹配到的第一个元素
 document.getElementsByClassName('container') // 匹配Class元素，返回HTMLCollection
@@ -43,6 +52,7 @@ document.images                       // 返回当前文档中的 <image>元素�
 document.links                        // 返回一个文档中所有具有 href 属性值的 <area> 元素与 <a> 元素的集合
 document.scripts                      // 返回文档中所有的<script>元素的集合，返回HTMLCollection
 document.title                        // 返回、设置当前文档的标题 title
+document.head                         // 返回当前文档中的 <head> 元素
 document.readyState                   // 描述了document 的加载状态
     1. loading          // 加载中，document还在加载
     2. interactive      // 已加载，document已被解析，子资源如图像，样式表，框架等还在加载
@@ -73,17 +83,18 @@ document.getElementsByTagName("p").item(12)             // 返回元素集合指
 document.getElementsByTagName("p").namedItem('license') // 返回元素集合指定ID的元素
 for...in    // 可以迭代获取元素，需要通过hasOwnProperty区分是否是自身的属性
 for...of    // 可以迭代获取元素
+
+- NodeList(节点集合，类似于元素的节点集合)
+/* Node.childNodes、document.querySelectorAll 返回的节点集合 */
+document.getElementsByName("up").length                 // 返回节点数量
+document.getElementsByName("up").item(12)               // 返回节点集合指定索引的元素
+document.getElementsByName("up").entries()
+document.getElementsByName("up").forEach()
+document.getElementsByName("up").keys()
+document.getElementsByName("up").values()
 ```
 参考链接 1⃣️：https://developer.mozilla.org/zh-CN/docs/Web/API/Document  
 参考链接 2⃣️：https://developer.mozilla.org/zh-CN/docs/Web/API/Element
-
-**DOM**
-
-**元素对象代表HTML元素**
-
-**元素对象的子节点，可以是元素节点，文本节点，注释节点**
-
-**NodeList对象代表了节点列表，类似于元素的子节点集合**
 
 **元素（element）对象**
 
