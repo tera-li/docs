@@ -96,13 +96,12 @@ document.getElementsByName("up").values()
 参考链接 1⃣️：https://developer.mozilla.org/zh-CN/docs/Web/API/Document  
 参考链接 2⃣️：https://developer.mozilla.org/zh-CN/docs/Web/API/Element
 
-**元素（element）对象**
-
+## Element
+```js{1}
+- 属性节点
+element.accesskey = "g"             // alt+g 可以将焦点跳转到这个元素上
+```
 **一、属性节点**
-
-accessKey：设置或返回accessKey一个元素
-
-（元素设置accessKey = “g”，alt+g可访问链接等）
 
 attributes：返回元素属性的数组（属性的集合）
 
