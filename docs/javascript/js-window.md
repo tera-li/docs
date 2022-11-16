@@ -97,214 +97,89 @@ document.getElementsByName("up").values()
 参考链接 2⃣️：https://developer.mozilla.org/zh-CN/docs/Web/API/Element
 
 ## Element
-```js{1}
-- 属性节点
+```js{1,35}
+- 元素属性
+element.id                          // 设置或返回元素的id
+element.tagName                     // 返回元素的标签名 BUTTON
 element.accesskey = "g"             // alt+g 可以将焦点跳转到这个元素上
+element.attributes                  // 返回返回元素属性的集合 NamedNodeMap
+element.childNodes                  // 返回元素的子节点的集合 NodeList
+element.children                    // 返回元素的子元素集合 HTMLCollection
+element.className                   // 设置或返回元素的class属性名 'class1 class2'
+element.classList                   // 返回一个元素 class 属性的动态 DOMTokenList 集合。这可以用于操作 class 集合。
+    1. add('class')                 // 添加class属性类名
+    2. contains('class')            // 判断指定类名是否存在
+    3. remove('class')              // 移除class属性类名
+    4. toggle('class')              // 在元素中切换添加类名 add和remove
+
+element.firstChild                  // 返回元素的第一个子节点，无则返回 null
+element.firstElementChild           // 返回元素的第一个子元素，无则返回 null
+element.lastChild                   // 返回元素的最后一个子节点，无则返回 null
+element.lastElementChild            // 返回元素的最后一个子元素，无则返回 null
+element.nextSibling                 // 返回其父节点的 childNodes 列表中紧跟在其后面的节点 (包括元素、文本节点，注释节点)
+element.nextElementSibling          // 返回当前元素在其父元素的子元素节点中的后一个元素节点 (包括元素)
+element.previousSibling             // 返回其父节点的 childNodes 列表中前一个兄弟节点 (包括元素、文本节点，注释节点)
+element.previousElementSibling      // 返回当前元素在其父元素的子元素节点中的前一个元素节点 (包括元素)
+element.parentNode                  // 返回指定的节点在 DOM 树中的父节点
+element.parentElement               // 返回指定的节点在 DOM 树中的父元素节点
+
+element.contentEditable             // 设置或返回元素是否可被用户编辑
+element.innerHTML                   // 设置或返回 HTML 语法表示的元素的后代 (可以解析标签)
+element.innerText                   // 设置或返回元素的内部的文本
+element.title                       // 设置或返回元素的title
+element.style                       // 设置或返回元素的css样式声明
+
+element.nodeName                    // 返回当前节点的节点名称 DIV
+element.nodeType                    // 返回当前节点的节点类型 1 (1: 元素节点、2: 属性节点、3: 文本节点、8: 注释节点)
+element.nodeValue                   // 返回或设置当前节点的值
+
+- 元素方法
+element.appendChild(node)           // 在 Node 节点的最后一个子节点插入 Node 对象
+element.append(...node)             // 在 Element 的最后一个子节点之后插入一组 Node 对象或 DOMString 对象
+    1. Element.append() 允许追加 DOMString 对象，而 Node.appendChild() 只接受 Node 对象。
+    2. Element.append() 没有返回值，而 Node.appendChild() 返回追加的 Node 对象。
+    3. Element.append() 可以追加多个节点和字符串，而 Node.appendChild() 只能追加一个节点。
+parentElement.insertBefore(newNode, referenceChildNode)    // 在参考节点之前插入一个拥有指定父节点的子节点
+element.removeChild(node)           // 从 DOM 中删除一个子节点。返回删除的节点
+parentElement.replaceChild(newChild, oldChild)  // 将指定的节点替换当前节点的一个子节点
+element.cloneNode(false || true)    // 返回克隆节点的一个副本，可选择是否采用深度克隆
+element.isEqualNode(element)        // 判断两个节点是否相等
+
+element.getAttribute('id')          // 返回元素指定的属性值 'title'
+element.getAttributeNode('id')      // 返回元素指定的属性节点 id=title
+element.setAttribute('id', 'value') // 设置指定元素上的某个属性值
+element.setAttributeNode()          // 设置指定元素上的某个属性节点，需要显示克隆后使用
+    1. element.setAttributeNode(element.getAttributeNode('id').cloneNode())
+element.hasAttribute('id')          // 返回元素是否包含有指定的属性 true
+element.hasAttributes()             // 返回当前元素节点是否有至少一个的属性 true
+element.hasChildNodes()             // 返回当前节点是否包含有子节点 true
+
+element.focus()                     // 设置焦点
+element.blur()                      // 设置失去焦点
+element.hasFocus()                  // 设置失去焦点
+
+- 元素容器参数
+element.clientHeight                // 返回元素内容的viewport可视height (包括padding，不包括border、margin及滚动条)
+element.clientWidth                 // 返回元素内容的viewport可视width (包括padding，不包括border、margin及滚动条)
+
+element.scrollHeight                // 返回元素的height (包括滚动条以及隐蔽的地方)
+element.scrollWidth                 // 返回元素的width (包括滚动条以及隐蔽的地方)
+element.scrollTop                   // 设置或返回元素的滚动条到元素顶部的距离 (滚动距离元素顶部的像素值)
+element.scrollLeft                  // 设置或返回元素的滚动条到元素左边的距离 (滚动距离元素左边的像素值)
+
+element.offsetHeight                // 返回元素的height (包括padding，border、不包括margin)
+element.offsetWidth                 // 返回元素的width (包括padding，border、不包括margin)
+element.offsetTop                   // 返回当前元素相对于其 offsetParent 元素的顶部的距离
+element.offsetLeft                  // 返回当前元素相对于其 offsetParent 元素的左边届的距离
+element.offsetParent                // 返回指向最近的包含该元素的定位元素 (position) 或者最近的 table, td, th, body 元素
+element.getBoundingClientRect()     // 返回元素的大小及其相对于视口(viewport)的位置
+    width                           // 返回元素的height (包括padding，border、不包括margin)
+    height                          // 返回元素的width (包括padding，border、不包括margin)
+    top / y                         // 返回元素上边距viewport上边的距离
+    left / x                        // 返回元素左边距viewport左边的距离
+    right                           // 返回元素右边距viewport左边的距离
+    bottom                          // 返回元素下边距viewport上边的距离
 ```
-**一、属性节点**
-
-attributes：返回元素属性的数组（属性的集合）
-
-childNodes：返回元素的一个子节点的数组（子元素节点集合）
-
-children：返回元素的子元素集合（子元素集合）
-
-**classList**：返回元素类名（class，可以对class进行操作）
-
-（1）add：添加class属性类名
-
-（2）contains：返回布尔值，判断指定类名是否存在
-
-（3）remove：移除class属性类名
-
-（4）toggle(class,true|false)：在元素中切换添加类名（移除和添加）
-
-（1）只设置第一个参数，当存在指定class时，会移除class
-
-（2）当不存在指定class时，会添加class属性
-
-（3）第二个参数设置false时，强制移除指定class
-
-（4）第二个参数设置true时，强制添加指定class
-
-（5）item（number）：返回当前索引的class类名
-
-className：设置或返回元素的class属性名
-
-tagName：返回元素的标签名
-
-id：设置或返回元素的id（id = 'asd'）
-
-**firstChild**：返回元素的第一个子元素
-
-**lastChild**：返回元素的最后一个子元素
-
-nextSibling：返回元素之后紧跟的元素（包括文本节点，注释节点）
-
-**nextElementSibling**：**返回元素之后紧跟的兄弟元素（不包括以上）**
-
-previousSibling：返回元素之前紧接的节点（包括文本节点，注释节点）
-
-**previousElementSibling**：**返回元素之前紧接的节点（不包括以上）**
-
-**contentEditable**：设置元素的内容是否可编辑（true：可编辑，false：不可编辑）
-
-dir：设置或返回元素的文字方向（rtl：从右到左排列，ltr：从左到右排列）
-
-innerHTML：设置或返回元素内容（可以解析标签）
-
-innerText：设置或返回元素内容（不可以解析标签）
-
-textContent：设置或返回一个节点和它的文本内容
-
-lang：设置或返回一个元素的语言
-
-nodeName：可依据节点的类型返回其名称（标签名，属性名）
-
-nodeType：返回节点类型
-
-（1）1：元素节点
-
-（2）2：属性节点
-
-（3）3：文本节点
-
-（4）8：注释节点
-
-nodeValue：返回元素的节点值
-
-☐ parentNode：返回某节点的父节点
-
-ownerDocument：返回某元素的根元素（文档document）
-
-**tabIndex**：设置或返回 tab 按键的控制次序
-
-title：设置或返回元素的title属性
-
-**parentElement：父元素**
-
-**firstElementChild：某元素下的第一个子元素**
-
-**lastElementChild：某元素下的最后一个子元素**
-
-**二、方法**
-
-addEventListener：向指定元素添加事件句柄
-
-removeEventListener：向指定元素移除事件句柄
-
-**appendChild**：向指定元素末尾添加子元素
-
-**append**：也是在元素末尾添加子元素
-
-两者区别
-
-**appendChild**只能传入**一个节点**，**不支持字符串**，插入的节点需要**createElement**等操作创建或具有的dom节点
-
-**append**可以传入**多个节点**和**字符串**
-
-**prepend**：向指定元素开始位置插入子元素
-
-insertBefore：向指定元素的子节点前插入新子节点
-
-（需要插入的节点元素，节点前的子节点）
-
-插入的是节点对象
-
-removeChild(节点对象)：删除一个子元素
-
-replaceChild(newnode，oldnode)：替换一个子元素
-
-cloneNode：拷贝指定元素的属性和值，设置参数true会复制指定元素的所有节点
-
-p1.compareDocumentPosition(p2)：比较两个节点的文档位置
-
-（1）1：不属于同一个文档（没有关系）
-
-（2）2：p1位于p2之后
-
-（3）4：p1位于p2之前
-
-（4）8：p1位于p2之内
-
-（5）16：p2位于p1之内
-
-（6）32：两个节点在同一元素的两个属性（没有关系）
-
-focus：为元素设置焦点（如果可以设置）
-
-getAttribute：返回指定元素属性的属性值
-
-getAttributeNode：返回指定属性，通过属性名称获取属性节点（包括属性，属性值）
-
-setAttribute：设置指定属性和属性值（属性名，属性值）
-
-setAttributeNode（属性节点）：设置属性节点
-
-（通过 createAttribute 创建的属性节点，nodeValue 定义属性值）
-
-hasAttribute：判断元素是否有指定属性
-
-hasAttributes：判断元素是否有任何属性
-
-hasChildNodes：判断元素是否具有子元素
-
-hasFocus：判断检测元素或文档是否获得焦点
-
-isContentEditable：判断元素是否可编辑
-
-namespaceURI：返回被选节点峨命名空间URI
-
-isDefaultNamespace：判断指定的namespaceURI（命名空间是否默认）
-
-p1.isEqualNode(p2)：判断两个节点是否相等
-
-p1.isSameNode(p2)：当节点与给定的节点是同一个节点时返回true，否则返回false
-
-item.isSupported("Core","2.0")：判断当前节点是否支持某个特性
-
-normalize：合并相邻的文本节点并删除空的文本节点
-
-style：设置或返回元素的样式属性
-
-**nodelsit**.item：返回子节点列表的指定索引（childNodes.item(0)）
-
-**nodelist**.length：返回节点列表的节点数目（childNodes.length）
-
-**三、屏幕及滚动条属性**
-
-clientHeight：返回页面 or element内容的viewport可视高度（不包括边框，边距及滚动条）
-
-clientWidth：返回页面 or element内容的viewport可视宽度（不包括边框，边距及滚动条）
-
-scrollHeight：整个元素的高度（包括滚动条以及隐蔽的地方）
-
-scrollWidth：整个元素的宽度（包括滚动条以及隐蔽的地方）
-
-scrollLeft：返回当前视图中的实际元素的左边缘和左边缘之间的距离
-
-scrollTop：返回当前视图中的实际元素的顶部边缘和顶部边缘之间的距离
-
-offsetHeight：返回元素的高度（包括边框和填充，但不是边距）
-
-offsetWidth：返回元素的宽度（包括边框和填充，但不是边距）
-
-offsetTop：返回当前元素的相对垂直偏移位置的偏移容器（**offset表示偏移尺寸**）
-
-offsetLeft：返回当前元素的相对水平偏移位置的偏移容器
-
-offsetParent：返回元素的偏移容器，返回最外层父元素
-
-getBoundingClientRect()：{} 每个元素都有这个方法，返回一个domrect对象
-
-返回属性：
-
-left/x：该元素左边距离页面左边的距离（对应鼠标clientX）
-
-top/y：该元素上边距离页面上边的距离（对应鼠标clientY）
-
-bottom、right：该元素右边距离页面左边的距离，该元素底边距离页面上边的距离
-
 **DOM**
 
 **Attr对象代表一个HTML元素的属性**

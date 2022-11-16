@@ -9,11 +9,29 @@
       let aaa = await import("./index.js");
       console.log(aaa.func());
     </script>
+    <style>
+      #title {
+        width: 100px;
+        height: 100px;
+        padding: 10px;
+        margin: 10px;
+        border: 10px solid red;
+      }
+    </style>
   </head>
-  <body>
-    <div id="title"></div>
-    <button id="title" accesskey="g">sss</button>
-    <button id="title" accesskey="h" onclick="console.log(123)">hhh</button>
+  <body style="margin: 0; height: 2000px; width: 2000px; overflow: scroll">
+    <span style="height: 10px; position: relative">
+      <div id="title">
+        <p>div</p>
+        123
+      </div>
+    </span>
+
+    <button id="title1" accesskey="g">g123</button>
+    <button id="title2" accesskey="h" onclick="console.log(123)" class="btn">
+      h123
+    </button>
+    <input />
     <script>
       import("./index.js").then((res) => {
         console.log(res.func());
