@@ -184,164 +184,101 @@ element.getBoundingClientRect()     // 返回元素的大小及其相对于视�
 `Event 接口表示在 DOM 中出现的事件。`  
 `由系统自动触发或者用户操作触发`
 :::
-```js{1}
+```js{1,6,19,26,39,51,56,60,71}
 - DOM事件允许JavaScript在HTML文档中注册不同事件处理程序，事件通常与函数结合使用
-事件捕获(event capture)：先检查html元素是否注册相同事件，如果是则运行，然后向内继续检测下一层元素，直到到达实际点击元素
-事件冒泡(event bubble)：先检测点击元素是否注册相同事件，如果是则运行，然后向外继续检测下一层元素，直到到达html元素
+
+事件捕获(event capture): 先检查html元素是否注册相同事件，如果是则运行，然后向内继续检测下一层元素，直到到达实际点击元素
+事件冒泡(event bubble): 先检测点击元素是否注册相同事件，如果是则运行，然后向外继续检测下一层元素，直到到达html元素
+
+- 鼠标事件
+onclick: 鼠标点击单击触发 (单击)
+oncontextmenu: 鼠标右键打开菜单时触发 (右击)
+ondblclick: 鼠标双击触发 (双击)
+
+onmousemove: 鼠标移动时触发 (移动时触发)
+onmousedown: 鼠标被按下 (点击按下)
+onmouseup: 鼠标被松开 (点击松开)
+onmouseenter: 鼠标移动到元素上时触发 (鼠标移入)
+onmouseleave: 鼠标移出元素时触发 (鼠标移出)
+onmouseover: 鼠标移动到元素上时触发 (鼠标移入，当有子元素覆盖时，当从父元素移入子元素，会冒泡触发它的父元素事件)
+onmouseout: 鼠标移出某元素 (鼠标移出，子元素移入父元素时，会触发事件冒泡)
+
+- 键盘事件
+onkeydown: 键盘按键被按下时
+onkeypress: 键盘按键被按下并松开
+onkeyup: 键盘按键被松开
+altKey: 表示事件触发时 alt 键 (OS X 系统上的 Option 或 ⌥ 键) 是 (true) 否 (false) 被按下
+ctrlKey: 表示事件触发时 control 键是 (true) 否 (false) 按下
+
+- 框架事件
+onDOMContentLoaded: 页面已经完全加载了HTML，DOM树已经构建完毕，不需要等待 <img> 和样式表等外部资源的加载
+onload: 在页面或图像完成加载时触发 (页面第一次加载时触发)
+onbeforeunload: 在即将离开页面 (刷新或关闭)时触发
+onunload: 用户退出页面时，当文档或一个子资源正在被卸载时
+
+onpageshow: 在用户进入网页时触发 (页面每次加载都会触发)
+onpagehide: 在用户离开网页时触发 (返回上一页或下一页)
+onerror: 在加载文档或图像出错时触发
+onhashchange: 当URL锚发生修改时触发 (location.hash或href修改锚触发)
+onresize: 当窗口或框架被重新调整大小时触发(可以应用到移动端)
+onscroll: 当页面滚动时触发
+
+- 表单事件
+onblur: 当元素失去焦点
+onfocus: 当元素获取焦点
+onfocusin: 当元素即将获取焦点时
+onfocusout: 当元素即将失去焦点时
+onchange: 当表单元素发生改变时
+oninput: 当用户输入时触发
+onsearch: 当用户对文本框进行搜索时 (type="search": enter/回车键)
+onselect: 当用户选取文本时 (双击选中value时触发)
+onreset: 表单重置时触发 (type=“reset”: 表单重置触发)
+onsubmit: 表单提交时触发 (type=“submit”: 表单提交触发)
+
+- 剪贴板事件
+oncopy: 用户拷贝元素内容时
+oncut: 用户前剪切元素内容时
+onpaste: 用户粘贴元素内容时
+
+- 打印事件
+onbeforeprint: 页面即将打印时触发
+onafterprint: 页面已经开始打印，或者打印窗口已经关闭时触发
+
+- 拖拽事件
+ondragstart: 元素开始拖动时 (1)
+ondrag: 元素正在拖动时      (2)
+ondragend: 元素完成拖动时   (3)
+
+ondragenter: 拖动元素进入放置目标时 (进入区域时) (1)
+ondragover: 拖动元素在放置目标时 (在区域时)      (2)
+ondragleave: 拖动元素离开放置目标时 (离开区域时) (3)
+ondrop: 拖动元素放置在目标时 (放下元素时)        (4)
+属性: draggable="false" (元素不可拖动)
+
+- 多媒体(Media)事件(video/audio)
+onemptied: 播放列表为空时 (warn)
+onerror: 加载期间发生错误时 (error)
+onabort: 视频数据终止加载时 (error)
+onsuspend: 浏览器读取媒体数据终止时 (error)
+onstalled: 浏览器获取媒体数据，但媒体数据不可用时 (error)
+onloadstart: 浏览器开始寻找指定视频时 (1)
+ondurationchange: 视屏时长发生变化时 (2)
+onloadedmetadata: 视频的元数据加载后触发 (3)
+onloadeddata: 浏览器加载视频当前帧时触发 (4)
+onprogress: 在浏览器下载指定的视频时 (5)
+oncanplay: 视频可以开始播放时 (6)
+oncanplaythrough: 视频可以正常播放且无需停顿和缓冲时 (7)
+onplay: 视频开始播放时 (1)
+onpause: 视频暂停时触发 (3)
+onplaying: 视频暂停播放或缓冲后准备重新开始播放时触发 (4)
+onratechange: 视频播放速度发生改变时 (3)
+onseeking: 用户重新定位视频位置时触发 (3)
+onseeked: 用户重新定位视频位置后触发 (4)
+ontimeupdate: 当前播放位置发生改变时 (2)
+onwaiting: 视频播放下一帧需要缓冲时触发 (2)
+onvolumechange: 音量发生改变时 (3)
+onended: 播放结束时 (3)
 ```
-****
-
-**一、鼠标事件**
-
-onclick：鼠标点击单击触发（单击）
-
-oncontextmenu：鼠标右键打开菜单时触发（右击）
-
-ondblclick：鼠标双击触发（双击）
-
-onmousemove：鼠标移动时触发（移动就会触发）
-
-onmousedown：鼠标被按下（点击按下）
-
-onmouseup：鼠标被松开（点击松开）
-
-onmouseenter：鼠标移动到元素上时触发（鼠标移入）
-
-onmouseleave：鼠标移出元素时触发（鼠标移出）
-
-**onmouseover**：鼠标移动到元素上时触发
-
-（鼠标移入，当有子元素覆盖时，当从父元素移入子元素，会冒泡触发它的父元素事件）
-
-**onmouseout**：鼠标移出某元素（鼠标移出，子元素移入父元素时，会触发事件冒泡）
-
-**二、键盘事件**
-
-onkeydown：键盘按键被按下时
-
-onkeypress：键盘按键被按下并松开
-
-onkeyup：键盘按键被松开
-
-**三、框架/对象（Frame/Object）事件**
-
-onbeforeunload：在即将离开页面（刷新或关闭）时触发
-
-onload：在页面或图像完成加载时触发（页面第一次加载时触发）
-
-onunload：用户退出页面时
-
-onpageshow：在用户浏览网页时触发（页面每次加载都会触发）
-
-onpagehide：在用户离开浏览器时触发（返回上一页或下一页）
-
-onerror：在加载文档或图像出错时触发
-
-onhashchange：当URL锚发生修改时触发（location.hash或href修改锚触发）
-
-onresize：当窗口或框架被重新调整大小时触发（可以应用到移动端）
-
-onscroll：当页面滚动时触发
-
-**四、表单事件**
-
-onblur：当元素失去焦点
-
-onfocus：当元素获取焦点
-
-onfocusin：当元素即将获取焦点时
-
-onfocusout：当元素即将失去焦点时
-
-onchange：当表单元素发生改变时
-
-oninput：当用户输入时触发
-
-onsearch：当用户对文本框进行搜索时（type="search"；enter/回车键）
-
-onselect：当用户选取文本时（双击选中value时触发）
-
-onreset：表单重置时触发（type=“reset”；表单重置触发）
-
-onsubmit：表单提交时触发（type=“submit”；表单提交触发）
-
-**五、剪贴板事件**
-
-oncopy：用户拷贝元素内容时
-
-oncut：用户前剪切元素内容时
-
-onpaste：用户粘贴元素内容时
-
-**六、打印事件**
-
-onafterprint：页面已经开始打印，或者打印窗口已经关闭时触发
-
-onbeforeprint：页面即将打印时触发
-
-**七、拖动事件**
-
-ondragstart：元素开始拖动时（1）
-
-ondrag：元素正在拖动时（2）
-
-ondragend：元素完成拖动时（3）
-
-ondragenter：拖动元素进入放置目标时（进入区域时）（1）
-
-ondragover：拖动元素在放置目标时（在区域时）（2）
-
-ondragleave：拖动元素离开放置目标时（离开区域时）（3）
-
-ondrop：拖动元素放置在目标时（放下元素时）（4）
-
-属性：draggable="false"（元素不可拖动）
-
-**八、多媒体（Media）事件（视屏音频）**
-
-onemptied：播放列表为空时（warn）
-
-onerror：加载期间发生错误时（error）
-
-onabort：视频数据终止加载时（error）
-
-onsuspend：浏览器读取媒体数据终止时（error）
-
-onstalled：浏览器获取媒体数据，但媒体数据不可用时（error）
-
-onloadstart：浏览器开始寻找指定视频时（1）
-
-ondurationchange：视屏时长发生变化时（2）
-
-onloadedmetadata：视频的元数据加载后触发（3）
-
-onloadeddata：浏览器加载视频当前帧时触发（4）
-
-onprogress：在浏览器下载指定的视频时（5）
-
-oncanplay：视频可以开始播放时（6）
-
-oncanplaythrough：视频可以正常播放且无需停顿和缓冲时（7）
-
-onplay：视频开始播放时（1）
-
-onpause：视频暂停时触发（3）
-
-onplaying：视频暂停播放或缓冲后准备重新开始播放时触发（4）
-
-onratechange：视频播放速度发生改变时（3）
-
-onseeking：用户重新定位视频位置时触发（3）
-
-onseeked：用户重新定位视频位置后触发（4）
-
-ontimeupdate：当前播放位置发生改变时（2）
-
-onwaiting：视频播放下一帧需要缓冲时触发（2）
-
-onvolumechange：音量发生改变时（3）
-
-onended：播放结束时（3）
 
 **九、动画事件（animation属性触发的事件）**
 
