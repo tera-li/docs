@@ -184,7 +184,7 @@ element.getBoundingClientRect()     // 返回元素的大小及其相对于视�
 `Event 接口表示在 DOM 中出现的事件。`  
 `由系统自动触发或者用户操作触发`
 :::
-```js{1,6,19,26,39,51,56,60,71,95,100,105,115}
+```js{1,6,19,26,39,51,56,60,71,95,100,105,115,164}
 - DOM事件允许JavaScript在HTML文档中注册不同事件处理程序，事件通常与函数结合使用
 
 事件捕获(event capture): 先检查html元素是否注册相同事件，如果是则运行，然后向内继续检测下一层元素，直到到达实际点击元素
@@ -319,10 +319,20 @@ window.addEventListener('customEvent', function (event) {
     console.log(event.name+'，'+event.message);
 });
 // 创建自定义Event事件
-var event = document.createEvent("HTMLEvents");
+var event = document.createEvent("customEvent");
 // 初始化事件
 event.initEvent("customEvent", true, true);
+/*  推荐以下写法
+var event = new CustomEvent("customEvent", {
+    detail: {
+        detailEvent: true
+    },
+    bubbles: true
+});
+*/
 // 派发触发事件
+event.name = "join"
+event.message = "hello"
 window.dispatchEvent(event);
 
 // addEventListener指定对象，每当事件发生时，都会调用此方法handleEvent
@@ -337,151 +347,17 @@ var obj = {
     }
 };
 document.body.addEventListener('click', obj, false);
-```
-**十六、鼠标/键盘事件对象 (event)**
 
-**属性**
+- 复合事件
+// DOM3级事件，用于处理input等输出序列处理，针对input的event事件
 
-altKey: 事件触发时，alt键是否按下
-
-button: 那个鼠标按钮被点击
-
-0: 鼠标左键
-
-1: 鼠标中键
-
-2: 鼠标右键
-
-clientX: 鼠标指针的水平坐标 (相对于当前窗口)
-
-clientY: 鼠标指针的垂直坐标 (相对于当前窗口)
-
-screenX: 鼠标指针的水平坐标 (相对于屏幕)
-
-screenY: 鼠标指针的垂直坐标 (相对于屏幕)
-
-ctrlKey: Ctrl键是否按下
-
-shiftKey: shift键是否按下
-
-metaKey: meta键是否按下
-
-relatedTarget: 返回与事件的目标节点相关的节点
-
-Location: 返回按键在键盘上的位置
-
-charCode: 返回按键触发的Unicode字母代码
-
-keyCode: 返回按键的触发的Unicode字母代码
-
-which: 返回按键的触发的Unicode字母代码
-
-key: 返回按键返回的标识符 (按键名称)
-
-**方法**
-
-initMouseEvent: 初始化鼠标事件对象的值
-
-initKeyboardEvent: 初始化键盘事件对象的值
-
-**addEventListener**
-
-添加事件监听
-
-和removeEventListener配合，防止内容泄露
-
-addEventListener(event，listener，options)
-
-event
-
-事件类型，如click，mousemove
-
-listener
-
-监听事件触发时，会接收一个事件通知 (实现event接口对象)
-
-必须是一个实现eventlistener
-
-options
-
-有关listener属性的可选参数对象
-
-capture: boolean
-
-默认false，使用事件冒泡，true为事件捕获
-
-once: Boolean
-
-默认为false，是否只调用这一次，true只调用这一次，之后自动销毁listener
-
-passive: Boolean
-
-默认为true，意味永远不会调用preventDefault
-
- (或者说我不会调用preventDefault，调用了也没用)
-
-为false会阻止页面滚动
-
-**自定义事件**
-
-**new Event**
-
-new Event('click', {bubbles: true/false, cancalable: true/false})
-
-type；该事件是否冒泡；该事件默认行为是否阻止
-
-![clipboard.png](./assets/Aspose.Words.6d1ffee9-7ccd-4aac-9510-8f567fa2cdb7.003.png)
-
-创建事件后，在对象元素上使用**dispatchEvent**触发该事件
-
-当代码运行到此处时，会**自动触发绑定元素的对应事件**
-
-![clipboard.png](./assets/Aspose.Words.6d1ffee9-7ccd-4aac-9510-8f567fa2cdb7.004.png)
-
-允许冒泡后，文档会捕获相同事件
-
-**new MouseEvent，keyboardEvent，FocusEvent**
-
-这些事件派生自UIEvent ->> Event
-
-允许自定义UI事件
-
-可以设置event事件中的属性值，screenX、screenY、ctrlkey
-
-![clipboard.png](./assets/Aspose.Words.6d1ffee9-7ccd-4aac-9510-8f567fa2cdb7.005.png)
-
-**new CustomEvent**
-
-自定义事件，像全新的事件，可以使用new CustomEvent
-
-与new Event的差别是，该事件有一个detail参数作为描述相关的值
-
-使用**dispatchEvent**触发该事件
-
-![clipboard.png](./assets/Aspose.Words.6d1ffee9-7ccd-4aac-9510-8f567fa2cdb7.006.png)
-
-![clipboard.png](./assets/Aspose.Words.6d1ffee9-7ccd-4aac-9510-8f567fa2cdb7.007.png)
-
-![clipboard.png](./assets/Aspose.Words.6d1ffee9-7ccd-4aac-9510-8f567fa2cdb7.008.png)
-
-**复合事件**
-
-DOM3级事件，用于处理input等输出序列处理
-
-针对input的event事件
-
+// 当用户正在进行编辑文本，开始输入汉字时触发
 input.addEventListener('compositionstart', ()=>{})
-
-当用户正在进行编辑文本，开始输入汉字时触发
-
+// 当用户正在插入新的字符时，正在插入字符时触发
 input.addEventListener('compositionupdate', ()=>{})
-
-当用户正在插入新的字符时，正在插入字符时触发
-
+// 当用户插入所有字符结束时调用，插入字符完成结束
 input.addEventListener('compositionend', ()=>{})
-
-当用户插入所有字符结束时调用，插入字符完成结束
-
+```
 **事件循环: 宏任务和微任务**
 
 **主线程 (JS引擎线程)**
