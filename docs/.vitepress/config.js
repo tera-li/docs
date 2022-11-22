@@ -50,6 +50,7 @@ export default defineConfig({
               { text: "JavaScript Basics", link: "/javascript/" },
               { text: "JavaScript New Features", link: "/javascript/js-feat" },
               { text: "JavaScript Window", link: "/javascript/js-window" },
+              { text: "JavaScript Thread", link: "/javascript/js-thread" },
               { text: "js-proto", link: "/javascript/js-proto" },
               { text: "js-browser", link: "/javascript/js-browser" },
               {
