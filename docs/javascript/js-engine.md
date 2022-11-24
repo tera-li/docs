@@ -84,6 +84,9 @@
 
 ## Event Loop
 ::: info
+`解决JavaScript单线程运行时不会阻塞的一种机制，也就是实现异步的原理`  
+`Javascript本身是没有异步这一说法的，是由其宿主环境提供的`  
+
 <video height='400' width='100%' controls autoplay loop src="./assets/evnet-loop.mp4"></video>
 :::
 
@@ -120,7 +123,7 @@ dad = null;
 `该算法将无法访问的对象标记为垃圾，然后扫描（收集）它们`
 ![garbage.png](./assets/garbage-collectoion-algorithm.png)
 ```js
-// 函数结束后发现两个对象都无法访问，则标记为垃圾清楚
+// 函数结束后发现两个对象都无法从根访问，则标记为垃圾清除
 function garbage() {
     let son = { name: 'John' };
     let dad = { name: 'Johnson' }
@@ -130,15 +133,67 @@ function garbage() {
 }
 garbage()
 ```
+
+3. **内存泄漏**
+   - **全局变量**  
+`变量的不当使用，创建意外的全局变量，导致函数执行完毕后无法销毁。可在使用 "use strict" 开启严格模式避免`
+```js
+function foo(){
+    name = '前端曰'
+}
+// 其实是把name变量挂载在window对象上
+function foo(){
+    window.name = '前端曰'
+}
+// 又或者
+function foo(){
+    // 其实这里的this就是指向的window对象
+    this.name = '前端曰'
+}
+foo()
+```
+   - **定时器**  
+`定时器的不当使用，定时器中的引用不会被标记清除，因为他仍在使用，在SPA页面中就算离开该页面，定时器也会继续执行`
+```js
+const object = {};
+const intervalId = setInterval(function() {
+  doSomething(object);
+}, 2000);
+```
+   - **监听器**  
+`监听器使用过后，不再使用应当移除掉`
+```js
+const element = document.getElementById('button');
+const onClick = () => alert('hi');
+
+element.addEventListener('click', onClick);
+
+element.removeEventListener('click', onClick);
+element.parentNode.removeChild(element);
+```
+   - **闭包**  
+`内部匿名函数可以访问父级作用域的变量，减少重复调用函数时所造成开辟的内存开销`  
+`当closure函数执行完毕后，垃圾回收机制是应当清空函数的所占用的内存的`  
+`但是内部return的匿名函数还引用着父级作用域中的变量，则导致无法标记垃圾回收`  
+```js
+function closure(){
+    var min = 10;
+    return function(max){
+        console.log(min * max);
+    }
+}
+let clo = closure()
+clo(10)
+clo(100)
+clo(1000)
+```
+
 :::
 
 
 ## Event Loop事件循环
 **是什么**  
-::: info
-`解决JavaScript单线程运行时不会阻塞的一种机制，也就是实现异步的原理`  
-`Javascript本身是没有异步这一说法的，是由其宿主环境提供的`  
-:::
+
 
 `JS引擎先处理同步代码 (宏任务)，微任务和定时器等异步代码放入对应线程中等待触发`
 `当微任务和异步代码符合触发条件，将会把回调函数放入任务队列末尾等待JS引擎执行`
