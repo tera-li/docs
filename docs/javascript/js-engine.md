@@ -87,7 +87,20 @@
 `解决JavaScript单线程运行时不会阻塞的一种机制，也就是实现异步的原理`  
 `Javascript本身是没有异步这一说法的，是由其宿主环境提供的`  
 
-<video height='400' width='100%' controls autoplay loop src="./assets/evnet-loop.mp4"></video>
+<video height='400' width='100%' controls autoplay loop src="./assets/event-loop.mp4"></video>
+
+`调用脚本和函数时，都会依次添加到 执行栈 顶部，执行完毕后 解释器 会将其从 执行栈 中删除`  
+`在执行栈中当解析为 同步任务 则直接运行，若解析为 异步任务 则将放入 Web APIs 中等到触发时机成熟便将任务推送到 Callback Queue，Callback Queue 再推送给 执行栈 依次执行`  
+
+1. **执行栈 (Call Stack)**  
+   `JavaScript 代码被解析和执行时所在环境，具有 LIFO(后进先出 )结构`  
+   `在 JavaScript 执行之前，会先编译代码，创建执行上下文，压入执行栈中`
+
+2. **Web平台接口 (Web Apis)**  
+   `Web 环境所拥有的接口，当执行AjAx、Fetch、setTimeout、DOM 等调用时，它们往往不是同步进行的，而是通知 其他线程 进行操作`  
+   `当这些外部接口调用 符合一定条件 时，会将对应的 回调函数 或 事件消息 推送到 任务队列 末尾，等待依次放入 执行栈 执行`
+   
+3. **回调队列 (Callback Queue)**
 :::
 
 ## 垃圾回收
