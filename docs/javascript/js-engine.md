@@ -97,12 +97,44 @@
    `在 JavaScript 执行之前，会先编译代码，创建执行上下文，压入执行栈中`
 
 2. **Web平台接口 (Web Apis)**  
-   `Web 环境所拥有的接口，当执行AjAx、Fetch、setTimeout、DOM操作 等调用时，它们往往不是同步进行的，而是通知 其他线程 进行操作`  
+   `Web 环境所拥有的接口，当执行AjAx、Fetch、setTimeout、DOM、UserHandle操作 等调用时，它们往往不是同步进行的，而是通知 其他线程 进行操作`  
    `当这些外部接口调用 符合一定条件 时，会将对应的 回调函数 或 事件消息 推送到 任务队列 末尾，等待依次放入 执行栈 执行`
    
 3. **回调队列 (Callback Queue)**  
    `回调队列 也称为 事件队列，具有 FIFO(先进先出) 结构`  
    `当 Web APIs 有事件触发时，会向 回调队列末尾 推入对应的 脚本 或 函数，回调队列 再依次推入 执行栈 执行`
+4. **同步任务和异步任务**
+```js
+console.log(1)
+setTimeout(() => { console.log('setTImeout') }, 0)
+console.log(2)
+
+输出: 1 2 setTImeout
+```
+`以上代码在执行时`  
+`同步任务是 1 2 ，在 执行栈 中会依次执行`  
+`异步任务是 setTImeout，在 执行栈 解析到后会让 宿主环境(Web接口)进行对应的接口操作，在接口符合条件的情况下再推入 回调队列 末尾`
+
+5. **宏任务和微任务**
+```js
+console.log(1)
+setTimeout(() => { console.log('setTImeout') }, 0)
+queueMicrotask(() => { console.log('queueMicrotask') })
+console.log(2)
+
+输出: 1 2 queueMicrotask setTImeout
+```
+`以上代码在执行时`  
+`同步任务是 1 2 ，在 执行栈 中会依次执行`  
+`异步任务在这里进行了划分 宏任务 和 微任务`  
+- 宏任务
+  - setTimeout、setInterval、AjAx、Fetch、UserHandle
+  - 这些 宏任务 会放入 回调队列 中执行
+- 微任务
+  - queueMicrotask、Promise.then、MutationObserver
+  - 这些 微任务 会放入 微任务队列 中执行
+
+`在 宏任务 执行前，都会先检查 微任务队列，看是否有待执行的 微任务，必先执行 微任务 再执行 宏任务`
 :::
 
 ## 垃圾回收
@@ -205,73 +237,9 @@ clo(1000)
 
 :::
 
-
-## Event Loop事件循环
-**是什么**  
-
-
 `JS引擎先处理同步代码 (宏任务)，微任务和定时器等异步代码放入对应线程中等待触发`
 `当微任务和异步代码符合触发条件，将会把回调函数放入任务队列末尾等待JS引擎执行`
 `当Event事件触发时，事件触发线程会将对应事件函数放入任务队列末尾`
-
-
-**Event loop事件轮询处理**
-
-宏任务->微任务->GUI渲染引擎线程->定时器线程放入执行函数
-
- (同步任务->微任务->定时器任务)
-
-事件轮询依次进行
-
-![clipboard.png](./assets/Aspose.Words.6d1ffee9-7ccd-4aac-9510-8f567fa2cdb7.009.png)
-
-queueMicrotask: 创建一个**微任务**
-
-promise: **微任务**
-
-MutationObserver: DOM变动管擦器 (**微任务**)
-
-setTimeout: **异步任务**
-
-![clipboard.png](./assets/Aspose.Words.6d1ffee9-7ccd-4aac-9510-8f567fa2cdb7.010.png)
-
-![clipboard.png](./assets/Aspose.Words.6d1ffee9-7ccd-4aac-9510-8f567fa2cdb7.011.png)
-
-浏览器进程
-
-一个页面相当于一个进程，一个进程有多个线程互相配合
-
-栈
-
-**后进先出，先进后出**
-
-**数据存储只能从顶部逐个存入，取出时也需从顶部逐个取出**
-
-![clipboard.png](./assets/Aspose.Words.6d1ffee9-7ccd-4aac-9510-8f567fa2cdb7.012.png)
-
-堆
-
-**无序的key-value (键值对)存储方式**
-
-![clipboard.png](./assets/Aspose.Words.6d1ffee9-7ccd-4aac-9510-8f567fa2cdb7.013.png)
-
-队列
-
-**先进先出**
-
-**数据存储从队尾插入，从队头取出**
-
-![clipboard.png](./assets/Aspose.Words.6d1ffee9-7ccd-4aac-9510-8f567fa2cdb7.014.png)
-
-宏任务
-
-JS同步任务
-
-微任务
-
-JS微任务
-
-![clipboard.png](./assets/Aspose.Words.6d1ffee9-7ccd-4aac-9510-8f567fa2cdb7.015.png)
 
 **事件委托**
 
