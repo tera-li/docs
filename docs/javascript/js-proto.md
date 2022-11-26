@@ -1,5 +1,11 @@
-**JavaScript原型**
+# JavaScript Proto
 
+::: v-pre
+`JavaScript 原型的意义在于实现继承，为了搞懂内部实现可参考下图的相互引用`
+:::
+![proto.png](./assets/proto.png)
+::: info
+:::
 **什么是原型**
 
 每当创建一个函数或对象时，**浏览器会自动**为这个函数或对象**创建一个\_\_proto\_\_对象**，随之函数的**constructor**等属性

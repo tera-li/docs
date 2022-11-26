@@ -51,7 +51,7 @@ export default defineConfig({
               { text: "JavaScript New Features", link: "/javascript/js-feat" },
               { text: "JavaScript Window", link: "/javascript/js-window" },
               { text: "JavaScript Engine", link: "/javascript/js-engine" },
-              { text: "js-proto", link: "/javascript/js-proto" },
+              { text: "JavaScript Proto", link: "/javascript/js-proto" },
               { text: "js-browser", link: "/javascript/js-browser" },
               {
                 text: "js-dataCommunication",

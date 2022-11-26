@@ -5,37 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script type="module">
-      let aaa = await import("./index.js");
-      console.log(aaa.func());
-    </script>
-    <style>
-      #title {
-        width: 100px;
-        height: 100px;
-        padding: 10px;
-        margin: 10px;
-        border: 10px solid red;
-      }
-    </style>
   </head>
-  <body style="margin: 0; height: 2000px; width: 2000px; overflow: scroll">
-    <span style="height: 10px; position: relative">
-      <div id="title">
-        <p>div</p>
-        123
-      </div>
-    </span>
-
-    <button id="title1" accesskey="g">g123</button>
-    <button id="title2" accesskey="h" onclick="console.log(123)" class="btn">
-      h123
-    </button>
-    <input />
+  <body
+    style="
+      margin: 0;
+      height: 2000px;
+      width: 2000px;
+      overflow: scroll;
+      background-color: black;
+    "
+  >
     <script>
-      import("./index.js").then((res) => {
-        console.log(res.func());
-      });
+      function Foo() {
+        this.name = "foo1";
+      }
+      Foo.prototype.name = "foo2";
+      let f1 = new Foo();
+      // console.log(f1.constructor);
+      // console.log(f1.__proto__.constructor);
+      console.log(Foo.prototype);
     </script>
   </body>
 </html>
