@@ -5,27 +5,22 @@
 ```js
 document.defaultView            // 该属性可以获取指定文档所在窗口
 window.document                 // 返回对 Document 对象的只读引用
-window.frames: 返回窗口中所有命名的框架 (返回window对象集合数组，每个window对象中含有一个框架) 
-history: history对象 (浏览器中访问过的URL) [History对象.note](note://5B8ECF3EF2544339BB51F7C8A071ECB6)
-innerWidth: 返回窗口的文档显示区的高度 (文档height) 
-innerHeight: 返回窗口的文档显示区的宽度 (文档width) 
-outerHeight: 设置或返回窗口的外部高度 (文档height+外部工具栏/滚动条) 
-outerWidth: 设置或返回窗口的外部宽度 (文档width+外部工具栏/滚动条) 
-pageXOffset: 返回文档在窗口左上角水平滚动像素 (滚动条距离水平像素) 
-pageYOffset: 返回文档在窗口左上角垂直滚动像素 (滚动条距离垂直像素) 
-length: 返回或设置窗口中的框架数量
-location: 用于窗口或框架的location对象[Location对象.note](note://41F3269F1AC4450E92602442A5324102)
-name: 设置或返回窗口的名称
-navigator: 对navigator对象的引用[Navigator对象.note](note://C80B477FF7144491A0CC98E50820F26B)
-opener: 返回对创建此创久的窗口引用 (打开窗口的父窗口) 
-closed: 返回窗口是否已被关闭 (通过open和close方法打开关闭，可以检测是否关闭) 
-parent: 返回当前窗口的父窗口信息
-screen: 对screen对象的引用[Screen对象.note](note://3543240A842A4ADBBA7549C8076155BA)
-screenLeft: 返回窗口相对于屏幕的X坐标 (screenX，距离左边的距离) 
-screenTop: 返回窗口相对于屏幕的Y坐标 (screenY，距离顶部的距离) 
-self: 返回指向当前window对象的引用，可以保证多个窗口的位置
-top: 返回当前窗口的最顶层浏览器窗口
+window.frames                   // 返回窗口中所有命名的框架 (返回window对象集合数组，如iframe) 
+window.self                     // 返回指向当前window对象的引用，可以保证在多个窗口中的位置
+window.parent                   // 返回当前窗口的父窗口信息
+window.top                      // 返回当前窗口的最顶层浏览器窗口 (子窗口中返回顶级父窗口)
+window.length                   // 返回或设置窗口中的框架数量
+window.name                     // 设置或返回窗口的名称
 
+window.innerWidth               // 返回窗口的文档显示区的高度 (文档height) 
+window.innerHeight              // 返回窗口的文档显示区的宽度 (文档width) 
+window.pageXOffset              // 返回文档在窗口左上角水平滚动像素 (滚动条距离水平像素) 
+window.pageYOffset              // 返回文档在窗口左上角垂直滚动像素 (滚动条距离垂直像素) 
+
+window.outerHeight              // 设置或返回窗口的浏览器高度 (文档height+外部工具栏/滚动条) 
+window.outerWidth               // 设置或返回窗口的浏览器宽度 (文档width+外部工具栏/滚动条) 
+window.screenLeft               // 返回浏览器相对于屏幕的X坐标 (浏览器距离左边的距离的像素数) 
+window.screenTop                // 返回浏览器相对于屏幕的Y坐标 (浏览器距离上边的距离的像素数) 
 
 alert(): 带有一段消息，确认按钮的警告框
 confirm(): 带有一段消息，确认按钮和取消按钮的对话框 (返回true，false) 
