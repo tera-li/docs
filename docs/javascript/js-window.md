@@ -1,13 +1,18 @@
-**Window**
+# Window
 ::: v-pre
 `表示一个包含 DOM 文档的窗口，其 document 属性指向窗口中载入的 DOM 文档。`
 :::
-**Node**
+```js
+21
+```
+
+## Node
 ::: v-pre
 `表示一个接口，各种类型的 DOM API 对象会从这个接口继承`  
 `作为 DOM 的最小组成单位，一个文档的树形结构就是由各种不同类型的节点组成`  
 `Text、Comment、Element、Document都是节点`
 :::
+
 ## Document
 ::: v-pre
 `表示一个网页，并作为网页内容的入口，也就是 DOM 树，可以通过 Document 对象访问设置 HTML 元素。`

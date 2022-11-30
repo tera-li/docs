@@ -1,8 +1,7 @@
-**JavaScript 存储对象**
-
-**localstorage：本地存储（长久存储，需要手动删除数据）**
-
-**sessionstorage：会话存储（临时存储，关闭窗口自动删除数据）**
+# Browser
+## JavaScript 存储对象
+- **localStorage 本地存储（长久存储，需要手动删除数据）**
+- **sessionStorage：会话存储（临时存储，关闭窗口自动删除数据）**
 
 **存储对象方法**
 
