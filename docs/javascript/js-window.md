@@ -68,6 +68,14 @@ localStorage.removeItem('myCat');       // 删除本地存储对应key数据
 localStorage.clear();                   // 清空本地存储所有数据
 ```
   - **sessionStorage: 会话存储 (临时存储，关闭窗口自动删除数据)**
+```js
+打开多个相同的 URL 的 Tabs 页面，会创建各自的 sessionStorage
+关闭对应浏览器标签或窗口，会清除对应的 sessionStorage
+sessionStorage.setItem('key', 'value'); // 保存数据到 sessionStorage
+sessionStorage.getItem('key');          // 从 sessionStorage 获取数据
+sessionStorage.removeItem('key');       // 从 sessionStorage 删除保存的数据
+sessionStorage.clear();                 // 从 sessionStorage 删除所有保存的数据
+```
   - **IndexedDB: 在客户端存储大量的结构化数据 (存储大量数据)**
 :::
 ::: info JavaScript 页面记录
