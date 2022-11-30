@@ -7,8 +7,7 @@
 ![proto.png](./assets/proto.png)
 
 ## 原型
-::: info
-**简介**  
+::: info 简介
 
 JavaScript 被描述为一种**基于原型的语言**，每个对象拥有一个**原型对象**，对象从原型继承方法和属性。  
 
@@ -46,21 +45,21 @@ doSomeInstancing.valueOf()
 }
 ```
 ## 原型链查找
-::: info
+::: info 简介
 首先，会检查 **doSomeInstancing** 对象是否具有可用的 **valueOf()** 方法，  
 如果没有，则浏览器检查 **doSomeInstancing** 对象的原型对象（即 **doSomething** 构造函数的 prototype 属性所指向的对象）是否具有可用的 **valueof()** 方法。  
 如果也没有，则浏览器检查 **doSomething()** 构造函数的 prototype 属性所指向的对象的原型对象（即 **Object** 构造函数的 prototype 属性所指向的对象）是否具有可用的 **valueOf()** 方法。这里有这个方法，于是该方法被调用。  
 :::
 
 ## prototype属性  
-::: info
+::: info 简介
 **prototype** 对象定义继承成员的地方，通过修改原型属性  
 比如 **Object.values()**、**Object.keys()**，以及其他不在 **prototype** 对象内的成员，不会被“**对象实例**”或“**继承自 Object() 的对象类型**”所继承。这些方法/属性仅能被**Object() 构造器**自身使用。  
 **prototype** 定义继承成员，__proto__访问继承对象  
 :::
 
 ## 创建对象的原型
-::: info
+::: info 简介
 创建一个新对象，使用现有的对象来作为新创建对象的原型（**prototype**）
 ```js
 let a = { name: 'join' }
@@ -72,7 +71,7 @@ b.__proto__
 :::
 
 ## constructor 属性
-::: info
+::: info 简介
 每个实例对象都从原型中继承了一个 constructor 属性，该属性指向了用于构造此实例对象的构造函数。
 ```js
 function Person(val) {

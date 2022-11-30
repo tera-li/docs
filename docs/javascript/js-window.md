@@ -3,8 +3,67 @@
 `表示一个包含 DOM 文档的窗口，其 document 属性指向窗口中载入的 DOM 文档。`
 :::
 ```js
-21
+document.defaultView            // 该属性可以获取指定文档所在窗口
+window.document                 // 返回对 Document 对象的只读引用
+window.frames: 返回窗口中所有命名的框架 (返回window对象集合数组，每个window对象中含有一个框架) 
+history: history对象 (浏览器中访问过的URL) [History对象.note](note://5B8ECF3EF2544339BB51F7C8A071ECB6)
+innerWidth: 返回窗口的文档显示区的高度 (文档height) 
+innerHeight: 返回窗口的文档显示区的宽度 (文档width) 
+outerHeight: 设置或返回窗口的外部高度 (文档height+外部工具栏/滚动条) 
+outerWidth: 设置或返回窗口的外部宽度 (文档width+外部工具栏/滚动条) 
+pageXOffset: 返回文档在窗口左上角水平滚动像素 (滚动条距离水平像素) 
+pageYOffset: 返回文档在窗口左上角垂直滚动像素 (滚动条距离垂直像素) 
+length: 返回或设置窗口中的框架数量
+location: 用于窗口或框架的location对象[Location对象.note](note://41F3269F1AC4450E92602442A5324102)
+name: 设置或返回窗口的名称
+navigator: 对navigator对象的引用[Navigator对象.note](note://C80B477FF7144491A0CC98E50820F26B)
+opener: 返回对创建此创久的窗口引用 (打开窗口的父窗口) 
+closed: 返回窗口是否已被关闭 (通过open和close方法打开关闭，可以检测是否关闭) 
+parent: 返回当前窗口的父窗口信息
+screen: 对screen对象的引用[Screen对象.note](note://3543240A842A4ADBBA7549C8076155BA)
+screenLeft: 返回窗口相对于屏幕的X坐标 (screenX，距离左边的距离) 
+screenTop: 返回窗口相对于屏幕的Y坐标 (screenY，距离顶部的距离) 
+self: 返回指向当前window对象的引用，可以保证多个窗口的位置
+top: 返回当前窗口的最顶层浏览器窗口
+
+
+alert(): 带有一段消息，确认按钮的警告框
+confirm(): 带有一段消息，确认按钮和取消按钮的对话框 (返回true，false) 
+prompt(msg，defaulttext): 显示可提示用户进行输入的对话框 (返回输入的字符串) 
+setInterval(function，milliseconds，params): 在指定的毫秒数，周期循环调用函数或计算表达式
+setTimeout(function，milliseconds，params): 在指定的毫秒数后调用函数或计算表达式
+function: 执行函数
+milliseconds: 等待的毫秒数
+params: 传给function的其他参数
+clearInterval(): 取消由setinterval设置的timeout
+clearTimeout(): 取消由settimeout设置的timeout
+open(URL，name，specs，replace): 打开一个新窗口,第三个参数接收一个字符串
+“height=400,width=400,top=10”等，这些参数定义新窗口的属性
+close(): 关闭浏览器窗口
+moveBy(): 把当前浏览器相对于窗口移动 (移动多少) 
+moveTo(): 把窗口的左上角移动到一个指定坐标 (移动到) 
+focus(): 把键盘焦点给予一个窗口
+stop(): 停止页面的载入
+scrollBy(): 按照指定像素值来滚动内容 (移动多少) 
+scrollTo(): 把内容滚动到指定坐标 (移动到) 
+btoa(): 创建一个base-64编码的字符串
+atob(): 解码一个base-64编码的字符串
+print(): 打印当前窗口页面
+matchMedia(media).matches: 返回一个新的MediaQueryList，表示指定媒体查询后的结果，返回true或false
+**getComputedStyle**(element，伪类元素 (可传null) ): 用于获取指定元素的css样式
+和element.style的作用相同，返回CSSstyledeclaration对象
+**elementFromPoint**(X,Y): 返回在窗口坐标处嵌套最多的元素 (element元素可以改变) 
 ```
+::: info JavaScript 存储对象
+  - **localStorage: 本地存储 (长久存储，需要手动删除数据)**
+  - **sessionStorage: 会话存储 (临时存储，关闭窗口自动删除数据)**
+  - **IndexedDB: 在客户端存储大量的结构化数据 (存储大量数据)**
+:::
+::: info JavaScript 页面记录
+  - **History:**
+  - **Location:**
+  - **Navigator:**
+:::
 
 ## Node
 ::: v-pre
@@ -100,7 +159,7 @@ document.getElementsByName("up").values()
 // 选择需要观察变动的节点
 const targetNode = document.getElementById('some-id');
 /*
-    观察器的配置（需要观察什么变动）
+    观察器的配置 (需要观察什么变动) 
     childList: Boolean (node的直接子节点的更改做出反应)
     subtree: Boolean (node的所有后代的更改做出反应)
     attributes: Boolean (node的特性的更改做出反应)

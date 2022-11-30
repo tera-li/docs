@@ -12,10 +12,28 @@
       height: 2000px;
       width: 2000px;
       overflow: scroll;
-      background-color: black;
+      /* background-color: black; */
     "
   >
-    <div style="color: #fff; position: sticky; top: 10px">123123</div>
+    <iframe>123</iframe>
+    <iframe>123</iframe>
+    <iframe>123</iframe>
+    <div
+      onmouseout="console.log(event)"
+      style="width: 200px; height: 200px; background-color: aqua"
+    >
+      222
+      <div
+        style="
+          width: 100px;
+          height: 100px;
+          background-color: blueviolet;
+          margin: 0 auto;
+        "
+      >
+        111
+      </div>
+    </div>
     <script>
       function Foo() {
         this.name = "foo1";
