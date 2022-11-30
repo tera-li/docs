@@ -61,6 +61,12 @@ document.cookie = 'username=John Doe; domain= ;expires=Thu, 18 Dec 2043 12:00:00
     - secure: cookie 只通过 https 协议传输
 ```
   - **localStorage: 本地存储 (长久存储，需要手动删除数据)**
+```js
+localStorage.setItem('myCat', 'Tom');   // 设置本地存储key/value
+localStorage.getItem('myCat');          // 获取本地存储key的value
+localStorage.removeItem('myCat');       // 删除本地存储对应key数据
+localStorage.clear();                   // 清空本地存储所有数据
+```
   - **sessionStorage: 会话存储 (临时存储，关闭窗口自动删除数据)**
   - **IndexedDB: 在客户端存储大量的结构化数据 (存储大量数据)**
 :::
