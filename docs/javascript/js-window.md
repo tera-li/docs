@@ -49,6 +49,17 @@ const ele = document.getElementsByTagName('div')[0]
 window.getComputedStyle(ele, null )         // 在应用活动样式表并解析这些值可能包含的任何基本计算后报告元素的所有 CSS 属性的值，该元素的style样式表
 ```
 ::: info JavaScript 存储对象
+  - **Cookie: 本地存储 (长久存储，可设置数据过期时间)**
+```js
+document.cookie       // result 'someCookieName1=true; someCookieName2=true'
+document.cookie = 'username=John Doe; domain= ;expires=Thu, 18 Dec 2043 12:00:00 GMT; max-age=300; path=/; secure=true;';
+    - name/value: 名称/值
+    - domain: 域名 (默认当前文档的域名)
+    - path: 网页路径 (基于domain)
+    - expires: 有效期时间 (chrome 最大为400天，删除cookie就设置当前时间之前的时间)
+    - max-age: 存活最大seconds时间 (max-age优先级比expires高，删除cookie就设置0)
+    - secure: cookie 只通过 https 协议传输
+```
   - **localStorage: 本地存储 (长久存储，需要手动删除数据)**
   - **sessionStorage: 会话存储 (临时存储，关闭窗口自动删除数据)**
   - **IndexedDB: 在客户端存储大量的结构化数据 (存储大量数据)**
