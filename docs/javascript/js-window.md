@@ -2,52 +2,51 @@
 ::: v-pre
 `表示一个包含 DOM 文档的窗口，其 document 属性指向窗口中载入的 DOM 文档。`
 :::
-```js
-document.defaultView            // 该属性可以获取指定文档所在窗口
-window.document                 // 返回对 Document 对象的只读引用
-window.frames                   // 返回窗口中所有命名的框架 (返回window对象集合数组，如iframe) 
-window.self                     // 返回指向当前window对象的引用，可以保证在多个窗口中的位置
-window.parent                   // 返回当前窗口的父窗口信息
-window.top                      // 返回当前窗口的最顶层浏览器窗口 (子窗口中返回顶级父窗口)
-window.length                   // 返回或设置窗口中的框架数量
-window.name                     // 设置或返回窗口的名称
+```js{1,21}
+- 窗口属性
+document.defaultView       // 该属性可以获取指定文档所在窗口
+window.document            // 返回对 Document 对象的只读引用
+window.frames              // 返回窗口中所有命名的框架 (返回window对象集合数组，如iframe) 
+window.self                // 返回指向当前window对象的引用，可以保证在多个窗口中的位置
+window.parent              // 返回当前窗口的父窗口信息
+window.top                 // 返回当前窗口的最顶层浏览器窗口 (子窗口中返回顶级父窗口)
+window.length              // 返回或设置窗口中的框架数量
+window.name                // 设置或返回窗口的名称
 
-window.innerWidth               // 返回窗口的文档显示区的高度 (文档height) 
-window.innerHeight              // 返回窗口的文档显示区的宽度 (文档width) 
-window.pageXOffset              // 返回文档在窗口左上角水平滚动像素 (滚动条距离水平像素) 
-window.pageYOffset              // 返回文档在窗口左上角垂直滚动像素 (滚动条距离垂直像素) 
+window.innerWidth          // 返回窗口的文档显示区的高度 (文档height) 
+window.innerHeight         // 返回窗口的文档显示区的宽度 (文档width) 
+window.pageXOffset         // 返回文档在窗口左上角水平滚动像素 (滚动条距离水平像素) 
+window.pageYOffset         // 返回文档在窗口左上角垂直滚动像素 (滚动条距离垂直像素) 
 
-window.outerHeight              // 设置或返回窗口的浏览器高度 (文档height+外部工具栏/滚动条) 
-window.outerWidth               // 设置或返回窗口的浏览器宽度 (文档width+外部工具栏/滚动条) 
-window.screenLeft               // 返回浏览器相对于屏幕的X坐标 (浏览器距离左边的距离的像素数) 
-window.screenTop                // 返回浏览器相对于屏幕的Y坐标 (浏览器距离上边的距离的像素数) 
+window.outerHeight         // 设置或返回窗口的浏览器高度 (文档height+外部工具栏/滚动条) 
+window.outerWidth          // 设置或返回窗口的浏览器宽度 (文档width+外部工具栏/滚动条) 
+window.screenLeft          // 返回浏览器相对于屏幕的X坐标 (浏览器距离左边的距离的像素数) 
+window.screenTop           // 返回浏览器相对于屏幕的Y坐标 (浏览器距离上边的距离的像素数) 
 
-alert(): 带有一段消息，确认按钮的警告框
-confirm(): 带有一段消息，确认按钮和取消按钮的对话框 (返回true，false) 
-prompt(msg，defaulttext): 显示可提示用户进行输入的对话框 (返回输入的字符串) 
-setInterval(function，milliseconds，params): 在指定的毫秒数，周期循环调用函数或计算表达式
-setTimeout(function，milliseconds，params): 在指定的毫秒数后调用函数或计算表达式
-function: 执行函数
-milliseconds: 等待的毫秒数
-params: 传给function的其他参数
-clearInterval(): 取消由setinterval设置的timeout
-clearTimeout(): 取消由settimeout设置的timeout
-open(URL，name，specs，replace): 打开一个新窗口,第三个参数接收一个字符串
-“height=400,width=400,top=10”等，这些参数定义新窗口的属性
-close(): 关闭浏览器窗口
-moveBy(): 把当前浏览器相对于窗口移动 (移动多少) 
-moveTo(): 把窗口的左上角移动到一个指定坐标 (移动到) 
-focus(): 把键盘焦点给予一个窗口
-stop(): 停止页面的载入
-scrollBy(): 按照指定像素值来滚动内容 (移动多少) 
-scrollTo(): 把内容滚动到指定坐标 (移动到) 
-btoa(): 创建一个base-64编码的字符串
-atob(): 解码一个base-64编码的字符串
-print(): 打印当前窗口页面
-matchMedia(media).matches: 返回一个新的MediaQueryList，表示指定媒体查询后的结果，返回true或false
-**getComputedStyle**(element，伪类元素 (可传null) ): 用于获取指定元素的css样式
-和element.style的作用相同，返回CSSstyledeclaration对象
-**elementFromPoint**(X,Y): 返回在窗口坐标处嵌套最多的元素 (element元素可以改变) 
+- 窗口方法
+window.alert()                      // 带有一段消息，确认按钮的警告框
+window.confirm('message')           // 带有一段消息，确认按钮和取消按钮的对话框 (返回true，false) 
+window.prompt('title', 'defaultValue')  // 显示一个对话框，对话框中包含一条文字信息，用来提示用户输入文字 (确认返回string，取消返回null)
+window.open(url, strWindowName, strWindowFeatures)
+    - url(窗口的URL): 'http://www.cnn.com/',
+    - strWindowName(窗口的Name): 'CNN_WindowName',
+    - strWindowFeatures(窗口的一些特性): 'width=400,height=400'
+window.stop()               // 相当于点击了浏览器的停止按钮，能够阻止图片、新窗口、和一些会延迟加载的对象的加载
+window.close()              // 关闭浏览器窗口 (只能由 Window.open() 方法打开的窗口的 window)
+window.moveBy(100,100)      // 把当前浏览器相对于窗口移动 (移动多少像素，只能由 Window.open() 方法打开的窗口的 window)
+window.moveTo(100,100)      // 把窗口的左上角移动到一个指定坐标 (移动到指定像素位置，只能由 Window.open() 方法打开的窗口的 window)
+
+window.scrollBy(0, 100)     // 按照指定像素值来滚动内容 (移动多少像素)
+window.scrollTo(0, 100)     // 把内容滚动到指定坐标 (移动到像素)
+
+const encodedData = window.btoa('Hello, world'); // 编码字符串，创建一个base-64编码的字符串
+const decodedData = window.atob(encodedData); // 解码字符串，解码一个base-64编码的字符串
+
+window.print()              // 打印当前窗口页面
+window.matchMedia('(max-width: 600px)')     // 返回一个新的MediaQueryList，matches返回true或false，表示是否与媒体查询匹配
+
+const ele = document.getElementsByTagName('div')[0]
+window.getComputedStyle(ele, null )         // 在应用活动样式表并解析这些值可能包含的任何基本计算后报告元素的所有 CSS 属性的值，该元素的style样式表
 ```
 ::: info JavaScript 存储对象
   - **localStorage: 本地存储 (长久存储，需要手动删除数据)**
@@ -130,6 +129,7 @@ addEventListener('click', (event) => { console.log(event) }, {
 removeEventListener('click', (event) => { console.log(event) }, true) // 删除使用的addEventListener方法添加的事件
 document.open('text/html','replace')// 打开一个流，接收document.write()，输出流展示内容
 document.close()                    // 关闭一个打开的流，并显示数据
+document.elementFromPoint(2,2)      // 方法返回给定坐标点下最上层的 element 元素
 
 - HTML Collection(HTML元素的集合，类似于数组列表)
 document.getElementsByTagName("p").length               // 返回子元素的数目
