@@ -38,9 +38,6 @@ keyPath：对象属性的路径，会将此路径作为键，例如id
 
 autoIncrement：如果为true，则自动生成新存储的对象的键，是一个不断递增的数字
 
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.001.png)
-
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.002.png)
 
 **事务**
 
@@ -54,7 +51,6 @@ store：事务要访问的存储库名称，如“books”
 
 type：readonly（默认，只读），readwrite（读写数据）
 
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.003.png)
 
 objectStore(name)：获取该存储库的存储对象
 
@@ -68,9 +64,6 @@ objectStore(name)：获取该存储库的存储对象
 
 **getAll**()：获取所有数据
 
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.004.png)
-
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.005.png)
 
 **delete**(key)：删除指定key的数据
 
@@ -86,10 +79,6 @@ next（默认值，从最小索引向上移动）
 
 prev（相反的顺序，从最大索引向下记录）
 
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.006.png)
-
-
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.007.png)
 
 事件：
 
@@ -99,7 +88,6 @@ trans.abort()：手动终止事务
 
 trans.oncomplete()：保证事务完成之后触发
 
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.008.png)
 
 创建索引
 
@@ -134,7 +122,6 @@ terminate()
 
 要想继续使用worker，必须重新创建worker
 
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.009.png)
 
 **AJAX**
 
@@ -194,11 +181,6 @@ xhr.abort()：终止请求
 
 xhr.upload：比如在POST一些内容时，在上传时触发事件
 
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.010.png)
-
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.011.png)
-
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.012.png)
 
 **跨域**
 
@@ -300,7 +282,6 @@ response
 
 fetch的请求状态异常不会报错error（会是404和500）
 
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.013.png)
 
 response.body
 
@@ -362,7 +343,6 @@ socket.bufferedAmount
 
 如果不断调用send(),则该属性值会持续增长
 
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.014.png)
 
 socket.url
 
@@ -372,7 +352,6 @@ socket.readyState
 
 返回当前websocket的链接状态
 
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.015.png)
 
 **心跳重连**
 
@@ -380,7 +359,6 @@ websocket 一般 每隔90秒无操作则会自动断开，需要加入一个心�
 
 就是设置定时器setInterval，持续socket.send()向服务端发送消息
 
-![clipboard.png](./assets/Aspose.Words.e79fe606-efe7-400f-9980-2fb9395d2cf1.016.png)
 
 1
 

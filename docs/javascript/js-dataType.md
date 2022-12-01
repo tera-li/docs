@@ -42,13 +42,9 @@ name：返回Utin8Array类型的构造名“Utin8Array”
 
 BYTES\_PER\_ELEMENT：返回数组中元素的字节数(一个数字代表几个字节)
 
-![clipboard.png](.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.001.png)
 
 new TextDecoder()文本解码器，可以解析数据视图中的**数字**为**对应字符**
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.002.png)
-
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.003.png)
 
 **Dataview视图**
 
@@ -66,9 +62,6 @@ byteLength：指定DataView对象的字节长度（默认匹配buffer的长度�
 
 **方法**
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.004.png)
-
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.005.png)
 
 设置ArrayBuffer中对应的-bit数（8，16，32，64无符号字节）
 
@@ -76,7 +69,6 @@ byteLength：指定DataView对象的字节长度（默认匹配buffer的长度�
 
 所有Uint8Array、Uint16Array都称为TypedArray
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.006.png)
 
 **TypedArray**拥有**数组的所有方法**，除了**splice**和**concat**
 
@@ -102,11 +94,6 @@ fatal：默认为false，使用\uFFFD替换无效字符，为true则无效字符
 
 stream：对于解码流，为true，则将传入的buffer作为参数重复decode，表示“未完成”的字符，并在下一个数据块来的时候进行解码
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.007.png)
-
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.008.png)
-
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.009.png)
 
 **new TextEncoder（）**：文本**编码器**（将**字符串**转换为**字节**）
 
@@ -116,13 +103,11 @@ stream：对于解码流，为true，则将传入的buffer作为参数重复deco
 
 字符串编码成Uint8Array
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.010.png)
 
 encodeInto(str, destination)
 
 将str编码到destination中，该目标必须为Uint8Array
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.011.png)
 
 **Blob**
 
@@ -142,7 +127,6 @@ endings：是否转换换行符，使Blob对应当前操作系统的换行符（
 
 默认啥也不做，false
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.012.png)
 
 方法
 
@@ -156,9 +140,6 @@ contentType：新blob的type，默认与源Blob的type相同
 
 **Blob用作URL**
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.013.png)
-
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.014.png)
 
 可以将blob转换为字符串，地址用作于url地址
 
@@ -168,9 +149,6 @@ contentType：新blob的type，默认与源Blob的type相同
 
 使用内建的FileReader方法，该方法继承与Blob
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.015.png)
-
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.016.png)
 
 以上都可转换为url
 
@@ -180,7 +158,6 @@ readAsDataURL无需撤销，但对大的Blob编码时会消耗性能和内存
 
 **Blob转ArrayBuffer**
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.017.png)
 
 使用FileReader构造函数转换
 
@@ -202,7 +179,6 @@ lastModified：最后一次修改的时间戳
 
 当文件上传时，会触发方法，this里面会有file的信息
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.018.png)
 
 **new FileReader()**// 没有参数
 
@@ -216,9 +192,6 @@ lastModified：最后一次修改的时间戳
 
 以上读取过程，有以下事件
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.019.png)
-
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.020.png)
 
 1
 
@@ -246,47 +219,36 @@ value：String || Blob || File
 
 filename：传给服务器的文件名称
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.021.png)
 
 **delete(name)**
 
 要删除的键（key）的名字
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.022.png)
-
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.023.png)
 
 **entries()**
 
 返回iterator（可迭代），可以遍历formdata
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.024.png)
 
 **get(name)**
 
 获取值的键名（如果有重复的，就返回第一个）
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.025.png)
-
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.026.png)
 
 **getAll(name)**
 
 获取所有的值的键名
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.027.png)
 
 **has(name)**
 
 检测查询的name
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.028.png)
 
 **keys()**
 
 返回一个name的迭代器
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.029.png)
 
 // key1，key2
 
@@ -302,7 +264,6 @@ set会覆盖存在的相同key所对应的值，不会重复添加
 
 返回一个value的迭代器
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.030.png)
 
 // valu1，value2
 
@@ -320,7 +281,6 @@ base：表示一个基准URL的DOMString，默认为相对路径
 
 USVString === DOMString 直接映射一个 String
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.031.png)
 
 new URL()属性
 
@@ -410,7 +370,6 @@ JSON.stringify({a:123,b:321}, (q,w) => {return w},1)
 
 第二个参数，为数组时
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.032.png)
 
 接收需要转换的key
 
