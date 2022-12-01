@@ -119,6 +119,26 @@ DBOpenRequest.onupgradeneeded = function(event) {
 :::
 ::: info JavaScript 页面记录
   - **History:**
+```js
+history.forward()                   // 向前移动一页
+history.back()                      // 向后移动一页
+history.go(-1)                      // 2向前移动2页，-2向后移动2页面，0则与location.reload()具有相同的效果
+
+// 状态对象数据，2MiB 
+const state = { 'page_id': 1, 'user_id': 5 }
+// 移动的状态传递简短的标题
+const title = 'pushName'
+// url (?query: 添加query参数；/path: 替换域名后面的路径；path: 替换当前所在路径)
+const url = '?page=1'
+// 在历史中添加一条记录，可对这条记录添加状态，以及添加url
+history.pushState(state, title, url)
+// 将更改浏览器中的URL(即按下后退按钮不会将您带回)
+history.replaceState(state, title, url)
+// 每当用户导航到新状态时，都会触发popstate事件
+
+history.length                      // 页面回话记录数目
+history.scrollRestoration           // 在历史导航上显式地设置默认滚动恢复行为
+```
   - **Location:**
   - **Navigator:**
 :::
