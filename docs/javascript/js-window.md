@@ -130,12 +130,12 @@ const state = { 'page_id': 1, 'user_id': 5 }
 const title = 'pushName'
 // url (?query: 添加query参数；/path: 替换域名后面的路径；path: 替换当前所在路径)
 const url = '?page=1'
-// 在历史中添加一条记录，可对这条记录添加状态，以及添加url，不会刷新页面
+// 在历史中添加一条记录，可对这条记录绑定state，以及添加url，不会刷新页面
 history.pushState(state, title, url)
-// 覆盖当前历史记录，可对这条记录添加状态，以及添加url，不会刷新页面
+// 覆盖当前历史记录，可对这条记录绑定state，以及添加url，不会刷新页面
 history.replaceState(state, title, url)
 // 每当激活同一文档中不同的历史记录条目时，popstate 事件就会触发，PopStateEvent
-// back、forward()、go()才会触发
+// 第一次加载页面不会触发，back、forward()、go()才会触发
 window.onpopstate = (event) => { console.log(event) };
 
 history.length                      // 页面回话记录数目
@@ -143,6 +143,21 @@ history.scrollRestoration           // 在历史导航上显式地设置默认�
 history.state                       // 返回在 history 栈顶的 任意 值的拷贝，查看 state 值，不必等待 popstate事件发生后再查看
 ```
   - **Location:**
+```js
+location.href                  // 返回整个 URL              http://localhost:5173/docs-surprise/javascript/js-window.html?page=1#hash
+location.protocol              // 返回    协议              https:
+location.host                  // 返回    域名 + 端口号      localhost:5173
+location.hostname              // 返回    域名              localhost
+location.port                  // 返回    端口号             5173
+location.pathname              // 返回    域名后的path       /docs-surprise/javascript/js-window.html
+location.search                // 返回    域名后的?          ?page=1
+location.hash                  // 返回    域名后的#          #hash
+location.origin                // 返回    源的域名的标准形式   https://developer.mozilla.org
+
+location.assign('https://www.baidu.com')    // 触发窗口加载并跳转到指定 URL，当前页面会保存在会话记录中
+location.replace('https://www.baidu.com')   // 加载指定 URL 并替换掉当前的资源，当前页面将从会话记录中消失
+location.reload()                           // 刷新当前页面
+```
   - **Navigator:**
 :::
 
