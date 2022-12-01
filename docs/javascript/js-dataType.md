@@ -42,7 +42,7 @@ name：返回Utin8Array类型的构造名“Utin8Array”
 
 BYTES\_PER\_ELEMENT：返回数组中元素的字节数(一个数字代表几个字节)
 
-![clipboard.png](./assets/Aspose.Words.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.001.png)
+![clipboard.png](.a50c8c66-c3dd-49ec-960f-d5e254f4fed8.001.png)
 
 new TextDecoder()文本解码器，可以解析数据视图中的**数字**为**对应字符**
 

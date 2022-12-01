@@ -10,7 +10,6 @@
 
 元素生命周期
 
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.001.png)
 
 **示例**
 
@@ -125,7 +124,6 @@ shadowRootInit：一个shadowRootInit字典（创建一个shadow tree）
 
 不可以通过**elem.shadowRoot**访问shadow tree，永远是null
 
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.002.png)
 
 自定义的my-ele元素会将它的内部DOM隐藏在影子中，不会显示
 
@@ -145,7 +143,6 @@ slot插槽，使元素更加灵活
 
 **具名插槽**
 
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.003.png)
 
 通过shadow DOM的shadowRoot中使用slot
 
@@ -155,13 +152,11 @@ shadow DOM中提供了两个slot插槽，并且定义name=“mytext”的插槽�
 
 **默认插槽**
 
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.004.png)
 
 shadow DOM中slot不定义name名字，则是不具名的插槽
 
 将会把元素中所有没有slot属性的元素渲染到插槽中
 
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.005.png)
 
 创建template，将模板作为shadow Dom的内容
 
@@ -171,7 +166,6 @@ shadow DOM中slot不定义name名字，则是不具名的插槽
 
 :host选择器允许选择shadow宿主（包含shadow树的元素）
 
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.006.png)
 
 :host：作用在**整个shadow宿主节点**
 
@@ -183,17 +177,12 @@ shadow DOM中slot不定义name名字，则是不具名的插槽
 
 对slot本身元素进行样式化，并影响子元素
 
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.007.png)
 
 使用::slotted(ele)，只能对插槽插入的对应元素进行渲染（不能用于更深层次的节点）
 
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.008.png)
 
 使用自定义css属性进行样式穿透（外部元素声明的样式，会用于内部插槽的样式）
 
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.009.png)
-
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.010.png)
 
 **shadow事件**
 
@@ -201,7 +190,6 @@ shadow dom具有冒泡事件、事件委托等
 
 如果是自定义事件，需要定义自定义事件的bubbles和composed
 
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.011.png)
 
 只有composed为true，才会允许事件可以从shadow DOM传递到一般的DOM
 
@@ -217,7 +205,6 @@ template的content属性可看作DocumentFragment相当于一个DOM包装器片�
 
 可以随时插入node节点（如append()、insertBefore()）
 
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.012.png)
 
 template中的元素也会被添加到shadow DOM中，并且生效
 
@@ -227,7 +214,4 @@ template中的元素也会被添加到shadow DOM中，并且生效
 
 **只有让复杂的事情简单化的架构才是好架构**
 
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.013.png)
-
-![clipboard.png](./assets/Aspose.Words.dc16c6af-a881-4f21-9080-4774cc7b46fc.014.png)
 
