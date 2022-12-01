@@ -17,7 +17,7 @@ export default defineConfig({
   // outDir: "../public",
   // markdown配置
   markdown: {
-    theme: "material-default",
+    theme: "monokai",
     lineNumbers: true,
   },
   // 主题配置

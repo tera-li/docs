@@ -130,14 +130,17 @@ const state = { 'page_id': 1, 'user_id': 5 }
 const title = 'pushName'
 // url (?query: 添加query参数；/path: 替换域名后面的路径；path: 替换当前所在路径)
 const url = '?page=1'
-// 在历史中添加一条记录，可对这条记录添加状态，以及添加url
+// 在历史中添加一条记录，可对这条记录添加状态，以及添加url，不会刷新页面
 history.pushState(state, title, url)
-// 将更改浏览器中的URL(即按下后退按钮不会将您带回)
+// 覆盖当前历史记录，可对这条记录添加状态，以及添加url，不会刷新页面
 history.replaceState(state, title, url)
-// 每当用户导航到新状态时，都会触发popstate事件
+// 每当激活同一文档中不同的历史记录条目时，popstate 事件就会触发，PopStateEvent
+// back、forward()、go()才会触发
+window.onpopstate = (event) => { console.log(event) };
 
 history.length                      // 页面回话记录数目
 history.scrollRestoration           // 在历史导航上显式地设置默认滚动恢复行为
+history.state                       // 返回在 history 栈顶的 任意 值的拷贝，查看 state 值，不必等待 popstate事件发生后再查看
 ```
   - **Location:**
   - **Navigator:**
