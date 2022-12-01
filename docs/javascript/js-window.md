@@ -49,7 +49,7 @@ const ele = document.getElementsByTagName('div')[0]
 window.getComputedStyle(ele, null )         // 在应用活动样式表并解析这些值可能包含的任何基本计算后报告元素的所有 CSS 属性的值，该元素的style样式表
 ```
 ::: info JavaScript 存储对象
-  - **Cookie: 本地存储 (长久存储，可设置数据过期时间)**
+  - **Cookie: 本地存储 (长久存储，可设置数据过期时间，4k)**
 ```js
 document.cookie       // result 'someCookieName1=true; someCookieName2=true'
 document.cookie = 'username=John Doe; domain= ;expires=Thu, 18 Dec 2043 12:00:00 GMT; max-age=300; path=/; secure=true;';
@@ -60,14 +60,14 @@ document.cookie = 'username=John Doe; domain= ;expires=Thu, 18 Dec 2043 12:00:00
     - max-age: 存活最大seconds时间 (max-age优先级比expires高，删除cookie就设置0)
     - secure: cookie 只通过 https 协议传输
 ```
-  - **localStorage: 本地存储 (长久存储，需要手动删除数据)**
+  - **localStorage: 本地存储 (长久存储，需要手动删除数据，5M)**
 ```js
 localStorage.setItem('myCat', 'Tom');   // 设置本地存储key/value
 localStorage.getItem('myCat');          // 获取本地存储key的value
 localStorage.removeItem('myCat');       // 删除本地存储对应key数据
 localStorage.clear();                   // 清空本地存储所有数据
 ```
-  - **sessionStorage: 会话存储 (临时存储，关闭窗口自动删除数据)**
+  - **sessionStorage: 会话存储 (临时存储，关闭窗口自动删除数据，5M)**
 ```js
 打开多个相同的 URL 的 Tabs 页面，会创建各自的 sessionStorage
 关闭对应浏览器标签或窗口，会清除对应的 sessionStorage
@@ -76,7 +76,46 @@ sessionStorage.getItem('key');          // 从 sessionStorage 获取数据
 sessionStorage.removeItem('key');       // 从 sessionStorage 删除保存的数据
 sessionStorage.clear();                 // 从 sessionStorage 删除所有保存的数据
 ```
-  - **IndexedDB: 在客户端存储大量的结构化数据 (存储大量数据)**
+  - **IndexedDB: 在客户端存储大量的结构化数据 (存储大量数据，250M+)**
+```js
+// 创建或打开对应数据库，创建连接
+var DBOpenRequest = window.indexedDB.open("toDoList", 4);
+// 数据库初始化连接成功
+DBOpenRequest.onsuccess = (event) => {
+    db = DBOpenRequest.result;
+    // 创建一个要添加到对象存储中的新项
+    var newItem = [
+        { taskTitle: "Walk dog", hours: 19, minutes: 30, day: 24, month: 'December', year: 2013 }
+    ];
+    // 打开一个读/写db事务，指定表格名称，操作模式，以添加数据
+    var transaction = db.transaction(["toDoList"], "readwrite");
+    // 当一切都完成时，报告事务完成的成功情况
+    transaction.oncomplete = (event) => { console.log('oncomplete') };
+    // 由于错误，事务出现问题
+    transaction.onerror = (event) => { console.log('onerror') };
+    // 在事务上创建对象存储，请求的对象存储区的名称。
+    var objectStore = transaction.objectStore("toDoList");
+    // 将数据添加到对象存储区
+    var objectStoreRequest = objectStore.add(newItem[0]);
+    // 对象存储请求操作成功情况
+    objectStoreRequest.onsuccess = (event) => { console.log('onsuccess') };
+};
+// upgradeneeded 若是指定的版本号，大于数据库的实际版本号，就会发生数据库升级事件upgradeneeded
+// 首次新建数据库也会触发这个事件
+DBOpenRequest.onupgradeneeded = function(event) {
+  var db = event.target.result;
+  db.onerror = (event) => { console.log('onerror') };
+  // 为该数据库创建一个objectStore
+  var objectStore = db.createObjectStore("toDoList", { keyPath: "taskTitle" });
+  // 定义objectStore将包含哪些数据项
+  objectStore.createIndex("hours", "hours", { unique: false });
+  objectStore.createIndex("minutes", "minutes", { unique: false });
+  objectStore.createIndex("day", "day", { unique: false });
+  objectStore.createIndex("month", "month", { unique: false });
+  objectStore.createIndex("year", "year", { unique: false });
+  objectStore.createIndex("notified", "notified", { unique: false });
+};
+```
 :::
 ::: info JavaScript 页面记录
   - **History:**
