@@ -27,7 +27,6 @@ url：发生数据更新的文档的url
 
 storageArea：发生数据更新的localStorage或sessionStorage对象
 
-![clipboard.png](./assets/Aspose.Words.ee17646c-4108-4c74-bd9a-024f44493a52.001.png)
 
 **浏览器数据库**
 
@@ -63,7 +62,6 @@ reload(boolean)：重新载入当前文档（设置为true，会绕过缓存，�
 
 replace(newURL)：用新文档替换当前文档，**最好是使用replace，不要使用assgin**
 
-![clipboard.png](./assets/Aspose.Words.ee17646c-4108-4c74-bd9a-024f44493a52.002.png)
 
 **Navigator**
 
@@ -174,6 +172,3 @@ pixelDepth：返回屏幕的颜色分辨率（每像素的位数）
 **Window对象方法**
 
 
-![clipboard.png](./assets/Aspose.Words.ee17646c-4108-4c74-bd9a-024f44493a52.003.png)
-
-![clipboard.png](./assets/Aspose.Words.ee17646c-4108-4c74-bd9a-024f44493a52.004.png)
