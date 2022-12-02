@@ -22,6 +22,7 @@
       /* background-color: black; */
     "
   >
+    <video autoplay playsinline></video>
     <iframe>123</iframe>
     <iframe>123</iframe>
     <iframe>123</iframe>
@@ -42,6 +43,14 @@
       </div>
     </div>
     <script>
+      let video = document.getElementsByTagName("video")[0];
+      console.log(video);
+      navigator.mediaDevices.enumerateDevices().then((res) => console.log(res));
+      navigator.mediaDevices
+        .getUserMedia({ audio: true, video: true })
+        .then((stream) => {
+          video.srcObject = stream;
+        });
       function Foo() {
         this.name = "foo1";
         console.log(this);
