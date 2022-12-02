@@ -1,4 +1,4 @@
-# Window
+# JavaScript Window
 ::: v-pre
 `表示一个包含 DOM 文档的窗口，其 document 属性指向窗口中载入的 DOM 文档。`
 :::
