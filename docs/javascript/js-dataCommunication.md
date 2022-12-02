@@ -64,7 +64,7 @@ oReq.upload.addEventListener("progress", console.log(oReq));
 // oReq.timeout = 2000
 // 终止该请求
 // oReq.abort()
-// 请求readyState状态值发生改变时触发 0: 未初始化；1: 服务器建立连接；2: 请求已接受；3: 请求处理中；4: 请求已完成
+// 请求readyState状态值发生改变时触发 0: 未初始化(请求还未初始化)；1: 正在加载(已建立服务器链接)；2: 加载成功(请求已接受)；3: 交互(正在处理请求)；4: 请求已完成
 oReq.onreadystatechange = () => { oReq.readyState }
 // 浏览器返回的状态码，200 ok, 404 not found
 oReq.status
