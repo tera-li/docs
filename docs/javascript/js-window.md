@@ -118,7 +118,7 @@ DBOpenRequest.onupgradeneeded = function(event) {
 ```
 :::
 ::: info JavaScript 页面记录
-  - **History:**
+  - **History: 查看操作浏览器的曾经在标签页或者框架里访问的会话历史记录**
 ```js
 history.forward()                   // 向前移动一页
 history.back()                      // 向后移动一页
@@ -142,7 +142,7 @@ history.length                      // 页面回话记录数目
 history.scrollRestoration           // 在历史导航上显式地设置默认滚动恢复行为
 history.state                       // 返回在 history 栈顶的 任意 值的拷贝，查看 state 值，不必等待 popstate事件发生后再查看
 ```
-  - **Location:**
+  - **Location: 查看操作当前对象的位置（URL）**
 ```js
 location.href                  // 返回整个 URL              http://localhost:5173/docs-surprise/javascript/js-window.html?page=1#hash
 location.protocol              // 返回    协议              https:
@@ -158,7 +158,27 @@ location.assign('https://www.baidu.com')    // 触发窗口加载并跳转到指
 location.replace('https://www.baidu.com')   // 加载指定 URL 并替换掉当前的资源，当前页面将从会话记录中消失
 location.reload()                           // 刷新当前页面
 ```
-  - **Navigator:**
+  - **Navigator: 用户代理的状态和标识，包含浏览器暴露的一些信息**
+```js
+navigator.cookieEnabled         // 返回 当前页面是否启用了 cookie
+navigator.clipboard             // 返回 读写剪切板内容的 Clipboard 对象 (需用户允许开启权限)
+navigator.geolocation           // 返回 访问设备的位置信息 (需用户允许开启权限)
+navigator.language              // 返回 用户偏好语言
+navigator.languages             // 返回 来自Accept-Language HTTP header，偏好语言优先级排成的数组
+navigator.maxTouchPoints        // 返回 当前设备能够支持的最大同时触摸的点数
+navigator.mediaDevices          // 返回或操作媒体设备
+    // 可用的媒体输入和输出设备的列表，例如麦克风，摄像机，耳机设备等
+    navigator.mediaDevices.enumerateDevices().then(res => console.log(res))
+    // 选择和授权捕获展示的内容或部分内容（如一个窗口）在一个MediaStream 里
+    navigator.mediaDevices.getDisplayMedia({ video: true }).then((stream) => {
+        video.srcObject = stream;
+    });
+    // 给予使用媒体输入的许可，获取用户设备音频和视频等，媒体输入会产生一个 MediaStream 里
+    navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then((stream) => {
+        video.srcObject = stream;
+    });
+
+```
 :::
 
 ## Node
@@ -557,3 +577,5 @@ document.body.addEventListener('click', obj, false);
 参考链接 1⃣️: https://developer.mozilla.org/zh-CN/docs/Web/API/Document  
 参考链接 2⃣️: https://developer.mozilla.org/zh-CN/docs/Web/API/Element  
 参考链接 3⃣️: https://developer.mozilla.org/zh-CN/docs/Web/API/Event  
+参考链接 4⃣️: https://developer.mozilla.org/zh-CN/docs/Web/API/Window  
+参考链接 5⃣️: https://developer.mozilla.org/zh-CN/docs/Web/API/Navigator  
