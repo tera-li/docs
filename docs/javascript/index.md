@@ -1,4 +1,4 @@
-# JavaScript
+# JavaScript Basics
 
 **是什么？** 动态脚本语言，解释性或即时编译型语言
 ```html

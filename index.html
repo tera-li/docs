@@ -5,62 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      @media (max-width: 600px) {
-        div {
-          color: red;
-        }
-      }
-    </style>
   </head>
-  <body
-    style="
-      margin: 0;
-      height: 2000px;
-      width: 2000px;
-      overflow: scroll;
-      /* background-color: black; */
-    "
-  >
-    <video autoplay playsinline></video>
-    <iframe>123</iframe>
-    <iframe>123</iframe>
-    <iframe>123</iframe>
-    <div
-      onmouseout="console.log(event)"
-      style="width: 200px; height: 200px; background-color: aqua"
-    >
-      222
-      <div
-        style="
-          width: 100px;
-          height: 100px;
-          background-color: blueviolet;
-          margin: 0 auto;
-        "
-      >
-        111
-      </div>
-    </div>
+  <body>
     <script>
-      let video = document.getElementsByTagName("video")[0];
-      console.log(video);
-      navigator.mediaDevices.enumerateDevices().then((res) => console.log(res));
-      navigator.mediaDevices
-        .getUserMedia({ audio: true, video: true })
-        .then((stream) => {
-          video.srcObject = stream;
-        });
-      function Foo() {
-        this.name = "foo1";
-        console.log(this);
-      }
-      Foo.prototype.name = "foo2";
-      let f1 = new Foo();
-      // console.log(f1.constructor);
-      // console.log(f1.__proto__.constructor);
-      console.log(f1);
-      // open("www.baidu.com");
+      let myWorker = new Worker("./worker.js");
+      myWorker.postMessage(1);
+      myWorker.onmessage = (e) => {
+        console.log(e.data);
+      };
     </script>
   </body>
 </html>
