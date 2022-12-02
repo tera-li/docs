@@ -142,7 +142,7 @@ history.length                      // 页面回话记录数目
 history.scrollRestoration           // 在历史导航上显式地设置默认滚动恢复行为
 history.state                       // 返回在 history 栈顶的 任意 值的拷贝，查看 state 值，不必等待 popstate事件发生后再查看
 ```
-  - **Location: 查看操作当前对象的位置（URL）**
+  - **Location: 查看操作当前对象的位置（URL)**
 ```js
 location.href                  // 返回整个 URL              http://localhost:5173/docs-surprise/javascript/js-window.html?page=1#hash
 location.protocol              // 返回    协议              https:
@@ -177,7 +177,23 @@ navigator.mediaDevices          // 返回或操作媒体设备
     navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then((stream) => {
         video.srcObject = stream;
     });
+navigator.onLine ? 'online' : 'offline'     // 设备是否在线，有网络/无网络
+navigator.pdfViewerEnabled      // 浏览器是否支持PDF文件的内联查看
+navigator.userAgent             // 返回 浏览器用户代理 操作系统版本、CPU 类型、浏览器版本等信息
+navigator.getBattery()          // 返回 系统的电量信息 是否正在充电、距离充电完毕还需多少秒、距离电池耗电至空需多少秒
 
+// 返回 设备的网络连接信息
+// ownlink (网络下行速度) effectiveType (网络类型) onchange (有值代表网络状态变更) rtt (估算的往返时间) saveData (打开/请求数据保护模式) 
+navigator.connection
+
+// 主要用于将统计数据发送到 Web 服务器，同时避免了用传统技术 (如：XMLHttpRequest) 发送分析数据的一些问题
+// 采用POST PING发送数据
+navigator.sendBeacon('/api/getData', 'data');
+navigator.share({
+  title: document.title,
+  text: 'Hello World',
+  url: 'https://www.baidu.com', // 调用本机的共享机制作为 Web Share
+})
 ```
 :::
 
