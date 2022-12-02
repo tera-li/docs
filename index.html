@@ -7,6 +7,15 @@
     <title>Document</title>
   </head>
   <body>
+    <form
+      accept="https://www.runoob.com/try/ajax/ajax_info"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input type="text" value="qwe&" name="i1" />
+      <input type="file" name="i2" />
+      <input type="submit" value="submit" />
+    </form>
     <script>
       let myWorker = new Worker("./worker.js");
       myWorker.postMessage(1);

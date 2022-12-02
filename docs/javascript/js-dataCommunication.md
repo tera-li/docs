@@ -29,92 +29,52 @@ onmessage = (e) => {
 // 终止 worker，立即杀死
 myWorker.terminate();
 ```
-
-new Worker("worker.js")
-
-方法
-
-postMessage(value)
-
-向主线程或者子线程传输value
-
-onmessage = function(e)
-
-接收主线程或子线程传输过来的value
-
-terminate()
-
-主线程终止worker，不管之后还有没有消息传递
-
-要想继续使用worker，必须重新创建worker
-
-
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/API/Worker  
 ## AJAX
+:::info 简介
+Asynchronous JavaScript + XML (异步 JavaScript 和 XML)  
+不需要重载 (刷新) 整个页面则可以更新网页部分内容
+:::
+```js
+var oReq = new XMLHttpRequest();    // new ActiveXObject("Microsoft.XMLHTTP") IE老版本使用的语法
+oReq.open("post", "https://www.runoob.com/try/ajax/ajax_info", true);
+// i1=qwe&i2=join，表单数据被编码成以 '&' 分隔的键 - 值对，同时以 '=' 分隔键和值，符号会被编码
+// oReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
 
-**Asynchronous JavaScript and XML（异步的JavaScript和XML）**
+// name: (二进制) name1: join，不要设置此类请求头，浏览器会自动识别 文件流 并设置请求头
+// oReq.setRequestHeader('Content-Type', 'multipart/form-data')
 
-**AJAX不是编程语言，而是使用现有标准的新方法**
+// {name: 'join'}，要使用JSON.stringify({name: 'join'})
+oReq.setRequestHeader('Content-Type', 'application/json')
 
-**AJAX与服务器交换数据，在不重新加载网页的情况下更新部分网页**
+// load 传输完成，所有数据保存在 response 中
+oReq.addEventListener("load", (e) => console.log(oReq));
+// progress 数据量发生了变化，下载进度，下载和上传
+oReq.addEventListener("progress", (e) => {
+    // lengthComputable 数据量可计算
+    // loaded   已经执行的数据量
+    // total    数据总量
+    console.log(oReq)
+});
+// 上传相关事件，用来表示上传的进度
+oReq.upload.addEventListener("progress", console.log(oReq));
+// 远程内容获取到一个存储原生二进制数据的 ArrayBuffer 对象中
+// oReq.responseType = "arraybuffer"
+// 超时时间，单位是毫秒
+// oReq.timeout = 2000
+// 终止该请求
+// oReq.abort()
+// 请求readyState状态值发生改变时触发 0: 未初始化；1: 服务器建立连接；2: 请求已接受；3: 请求处理中；4: 请求已完成
+oReq.onreadystatechange = () => { oReq.readyState }
+// 浏览器返回的状态码，200 ok, 404 not found
+oReq.status
 
-**请求**
-
-new XMLHttpRequest()：创建
-
-new ActiveXObject("Microsoft.XMLHTTP")：IE老版本使用的语法
-
-**setRequestHeader**(header,value)：向请求设置头
-
-open(method,url，async)：规定请求类型，URL，是否异步
-
-send(string)：将请求发送到服务器，string用于post
-
-timeout：设置超时时间（xhr.timeout = 1000）
-
-**响应**
-
-**onreadystatechange**：存储函数，每当readyState属性改变，就会调用该函数
-
-**readyState**：存有XMLHttpRequest的状态
-
-0：请求初始化
-
-1：服务器建立连接
-
-2：请求已接收
-
-3：请求处理中
-
-4：请求已完成
-
-**status**：请求状态（200：‘OK’，404：未找到页面）
-
-**responseText**：获得字符串形式的响应数据
-
-**responseXML**：获得XML形式的响应数据
-
-**事件**
-
-onload：请求完成，并且响应已完全下载
-
-onerror：当无法发出请求
-
-onprogress：下载响应期间定期触发，报告已经下载了多少
-
-ontimeout：监听是否超时
-
-xhr.abort()：终止请求
-
-xhr.upload：比如在POST一些内容时，在上传时触发事件
-
-
-**跨域**
-
-xhr.withCredentials = true
-
-CORS策略进行跨域请求
-
-[HTTP.note](note://A22DC6B82F7B47E89FEA70BA55DC4725)
+let formData = new FormData()
+formData.append('name',new Blob([new ArrayBuffer(100)]))
+formData.append('name1','join')
+oReq.send(JSON.stringify({name: 'join'}));
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest  
 
 ## Fetch
 
