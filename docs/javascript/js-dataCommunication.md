@@ -77,113 +77,48 @@ oReq.send(JSON.stringify({name: 'join'}));
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest  
 
 ## Fetch
-
-JavaScript的api接口，用于访问和操作HTTP请求（现代通用方法）
-
-fetch(url)
-
-.then((response) => { return response.json()})
-
-.then((myjson) => { console.log(myjson)})
-
-需要json()方法，转换响应的数据
-
-fetch(url,options)
-
-options包含一些可选参数
-
-body：JSON.stringify(data),  // 发送主体数据
-
-headers:{     // 设置请求头
-
-'user-agent': 'Mozilla/4.0 MDN Example',
-
-'content-type': 'application/json'
-
-// Formdata对象，设置为application/x-www-form-urlencoded
-
-}
-
-method: 'POST'，
-
-mode: 'cors',   // 允许跨域（cors || same-origin || no-cors）
-
-credentials: 'include || same-origin'
-
-让浏览器发送包含凭据的请求（跨域源）使其跨域
-
-只在同一源时发送凭证
-
-**上传文件FormData**
-
-new FormData()    // 可以遍历键值
-
-append('username', 'abc123') // key，value
-
-append(files, filed.files[0])
-
-set(name, value1)
-
-设置key，value（该方法会移除相同的name字段，而append不会）
-
-set(name. blob, fileName)
-
-delete(name)
-
-get(name)
-
-has(name)
-
-在fetch中使用formdata，会自动设置请求头，不用手动设置content-type
-
-**自定义请求对象**
-
-new Request(url, options)
-
-放在fetch()中，构成对应的url和options
-
-**自定义请求头**
-
-new Headers({
-
-'Content-Type': 'text/plain'
-
-`    `})
-
-headers.has('Content-type')：判断是否有该请求头
-
-headers.set('Content-type','text/html')：设置请求头
-
-headers.append('Content-Type',‘value’)：追加请求value
-
-headers.get('Content-Length')：获取该请求头的长度
-
-headers.getAll('Content-type')：获取该请求头的value
-
-headers.delete('Content-type')：删除该请求头的value
-
-**自定义请求头可以作为参数，设置成fetch请求头**
-
-response
-
-fetch的请求状态异常不会报错error（会是404和500）
-
-
-response.body
-
-response.text()：读取response，并以文本形式返回response
-
-response.json()：读取response，解析为JSON
-
-response.formData()：以Formdata对象的形式返回response
-
-response.blob()：以Blob（具有类型的二进制数据）形式返回response
-
-response.arrayBuffer()：以arrayBuffer（低级别的二进制数据）形式返回response
-
-response.header
-
-response.headers.get('Content-Type')
+:::info 简介
+JavaScript的api接口，用于访问和操作HTTP请求 (现代通用方法)
+:::
+```js
+fetch('https://www.runoob.com/try/ajax/ajax_info',{
+    // 请求方法
+    method: 'post',
+    // 发送主体数据
+    body: JSON.stringify({ name: 'join' }),
+    // 设置请求头
+    headers:{
+        'content-type': 'application/json'
+        // FormData对象，设置为multipart/form-data
+    },
+    /*  请求是否允许跨域
+        same-origin: 不允许跨域，它需要遵守同源策略，若不是同源，会报错当前请求非同源
+        cors: 允许跨域，若服务器不允许跨域，则会提示 No 'Access-Control-Allow-Origin' header
+        no-cors: 不允许跨域，允许浏览器发送本次跨域请求，但是不能访问响应返回的内容，这也是其response type为opaque透明的原因
+    */
+    mode: 'cors',
+    /*  请求缓存方式
+        default: 浏览器从 HTTP 缓存中寻找匹配的请求
+            缓存匹配上，则返回缓存
+            缓存匹配上但已经过期，先请求服务器端显示资源没有改动，它将从缓存中返回资源；如果服务器显示资源变动，那么重新从服务器下载资源更新缓存
+            缓存没有匹配，则以普通方式请求
+        no-store: 浏览器直接从远程服务器获取资源，不查看缓存，不会缓存资源
+        reload: 浏览器直接从远程服务器获取资源，不查看缓存，会缓存资源
+        no-cache: 
+            缓存有匹配，浏览器会向远程服务器发出条件请求，如果指示资源没有更改，则将从缓存中返回该资源。否则，将从服务器下载资源并更新缓存
+            缓存没有匹配，浏览器将发出正常请求，并使用下载的资源更新缓存
+        force-cache:
+            缓存有匹配，不管是新匹配项还是旧匹配项，都将从缓存中返回
+            缓存没有匹配，浏览器将发出正常请求，并使用下载的资源更新缓存
+        only-if-cached: 
+            缓存有匹配，不管是新匹配项还是旧匹配项，都将从缓存中返回
+            缓存没有匹配，浏览器将返回一个错误
+    */
+    cache: 'default'
+})
+.then((response) => { console.log(response) })
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch  
 
 ## WebSocket
 
