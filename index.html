@@ -16,12 +16,15 @@
       <input type="file" name="i2" />
       <input type="submit" value="submit" />
     </form>
+    <iframe src="./iframe.html"></iframe>
     <script>
       let myWorker = new Worker("./worker.js");
       myWorker.postMessage(1);
       myWorker.onmessage = (e) => {
         console.log(e.data);
       };
+      // document.cookie = "name=join";
+      // sessionStorage.setItem("name", "join11111");
     </script>
   </body>
 </html>
