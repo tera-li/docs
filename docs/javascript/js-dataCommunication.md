@@ -121,67 +121,33 @@ fetch('https://www.runoob.com/try/ajax/ajax_info',{
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/API/Fetch_API/Using_Fetch  
 
 ## WebSocket
-
-是一种在浏览器和服务器之间建立持久持续连接的现代方式
-
+::: info 简介
+在浏览器和服务器之间建立持久持续连接，通过该连接发送和接收数据的 API
 websocket没有跨域限制，可以发送/接收字符串和二进制数据
+:::
+```js
+// 打开一个websocket连接
+// wss 可以使用该协议，该协议具有SSL证书，传输是被加密的，而且更可靠
+let socket = new WebSocket("ws://localhost:8080")
+// 连接已建立
+socket.onopen = (event) =>  { console.log("WebSocket is open now.") }
+// 发送数据
+socket.send("data")
+// 接收服务端发送的数据
+socket.onmessage = (data) =>  { console.log(data) }
+// 连接发生错误
+socket.onerror = (err) =>  { console.log(err) }
+// 连接已关闭
+socket.onclose = (event) =>  { console.log(event) }
+// 连接关闭可能是客户端主动关闭，也可能是服务端主动关闭
+// 参数: 数字状态码，解析连接关闭原因 (对连接关闭的描述)
+socket.close(code, description)
 
-let socket = **new WebSocket**("**ws**://localhost:8080")
-
-打开一个websocket连接
-
-**wss**://
-
-可以使用该协议，该协议是被加密的，而且更可靠
-
-**属性事件**
-
-socket.**onopen**：连接已建立
-
-可以在此处发送消息
-
-socket.**send**(data)
-
-socket.**onmessage**：接收服务端发送的数据
-
-socket.**onerror**：websocket发生错误
-
-socket.**onclose**：连接已关闭
-
-连接关闭可能是客户端主动关闭，也可能是服务端主动关闭
-
-socket.**close**(code, description)
-
-数字状态码，解析连接关闭原因
-
-对连接关闭的描述
-
-**属性**
-
-socket.bufferedAmount
-
-返回已经被socket.send()放入队列中，但还没有被发送到网络的数据字节数
-
-如果不断调用send(),则该属性值会持续增长
-
-
-socket.url
-
-返回值为构造函数**创建websocket实例对象时的URL**
-
-socket.readyState
-
-返回当前websocket的链接状态
-
-
-**心跳重连**
-
-websocket 一般 每隔90秒无操作则会自动断开，需要加入一个心跳机制防止自断
-
-就是设置定时器setInterval，持续socket.send()向服务端发送消息
-
-
-1
+// 心跳机制
+Websocket 在一定时间的无操作情况下会自动断开连接，因此需要加入一个心跳机制防止自断
+可以设置定时器setInterval，持续socket.send()向服务端发送消息
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket  
 
 ## EventSource
 
