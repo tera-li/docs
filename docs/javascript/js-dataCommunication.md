@@ -150,13 +150,16 @@ Websocket 在一定时间的无操作情况下会自动断开连接，因此需�
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/API/WebSocket  
 
 ## EventSource
-
-**websocket有以下几点不同：**
-
-SSE是使用http协议，而websocket是一种单独的协议
-
-SSE是单向传输，只能服务端向客户端推送，websocket是双向
-
-SSE支持断点续传，websocket需要自己实现
-
-SSE支持发送自定义类型消息
+::: info 简介
+SSE (server-sent-event)，是服务器推送的一个网络事件接口  
+对 HTTP 服务开启一个持久化的连接，以text/event-stream 格式发送事件，会一直保持开启直到被要求关闭  
+与 WebSockets 不同的是，服务端推送是单向的。数据信息被单向从服务端到客户端分发  
+:::
+```js
+var es = new EventSource("http://localhost:8080/Home/GetNotices?user=lxw");
+es.onmessage = (event) => { console.log(event.data) };
+es.onopen = (event) => { console.log(event) };
+es.onerror = (event) => { console.log(event) };
+es.close();
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource  
