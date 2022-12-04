@@ -1,42 +1,50 @@
-**二进制格式**
+# JavaScript Data Type
 
-在传输文件时（创建，上传，下载，最多的是图像处理）
+## ArrayBuffer
+:::info 简介
+通用的、固定长度的原始二进制数据缓冲区，用来存储二进制的  
+不能直接操作 ArrayBuffer 的内容，而是要通过 类型化数组对象 (TypedArray) or 数据视图 (DataView)来操作  
+:::
+```js
+// 创建一个ArrayBuffer，大小以字节为单位
+const buffer = new ArrayBuffer(8);
+// 表示 ArrayBuffer 的 byte 的大小
+buffer.byteLength
+// 返回一个新的 ArrayBuffer，内容为截取的副本
+buffer.slice(2,4)
+// 返回 true，判断传入的参数值是否是 类型化数组对象 (TypedArray) or 数据视图 (DataView)
+ArrayBuffer.isView(new Int32Array())
+ArrayBuffer.isView(new DataView(buffer))
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer  
 
-let buffer = **new ArrayBuffer(length)**
+## TypedArray
+:::info 简介
+TypedArray 对象描述了底层 二进制数据缓冲区(ArrayBuffer) 的类数组视图  
+没有称为 TypedArray 的全局属性，也没有直接可用的 TypedArray 构造函数，作为抽象类只能被其子类使用
+:::
+```js
+Int8Array: 8位有符号整数，长度1个字节，1个字节1个元素
+Uint8Array: 8位无符号整数，长度1个字节，1个字节1个元素
+Int16Array: 16位有符号整数，长度2个字节，2个字节1个元素
+Uint16Array: 16位无符号整数，长度2个字节，2个字节1个元素
+Int32Array: 32位有符号整数，长度4个字节，4个字节1个元素
+Uint32Array: 32位无符号整数，长度4个字节，4个字节1个元素
+Float32Array: 32位浮点数，长度4个字节，4个字节1个元素
+Float64Array: 64位浮点数，长度8个字节，8个字节1个元素
 
-基本的二进制对象-----表示**通用的、固定长度的原始二进制数据缓冲区，是一个字节数组**
+// 返回数组中元素的字节数 (一个元素代表几个字节)
+Int8Array.BYTES_PER_ELEMENT
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypedArray  
 
-arraybuffer是所有**定型数组及视图引用**的基本单位
+## DataView
+:::info 简介
+:::
 
-属性
-
-buffer.byteLength：byte的大小，构造时生成，不可改变
-
-**ArrayBuffer对象并没有提供读写内存的方法，而是允许在其上方建立视图，从而插入与读取内存中的数据**
-
-**如需操作ArrayBuffer，需要使用数组缓冲区视图（以下为视图类型）**
-
-**定型数组视图，基本拥有数组的原生方法**
-
-**定型数组：**
-
-**Uint8Array**：将ArrayBuffer中每个字节视为0到255之间的单个整数，8位无符号整数（1,1）
-
-1个字节一个元素
-
-**Uitn16Array**：将每2个字节视为一个0到65535之间的整数，16位无符号整数（2,1）
-
-2个字节一个元素
-
-**Uitn32Array**：将每4个字节视为一个0到4294967295之间的整数，32位无符号整数（4,1）
-
-4个字节一个元素
-
-**Float64Array**：将每8个字节视为5.0x10-324 到 1.8x10308 之间的浮点数（8,1）
-
-8个字节一个元素
-
-属性
+## Blob
+:::info 简介
+:::
 
 name：返回Utin8Array类型的构造名“Utin8Array”
 

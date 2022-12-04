@@ -56,7 +56,7 @@ export default defineConfig({
                 text: "JavaScript Communication",
                 link: "/javascript/js-dataCommunication",
               },
-              { text: "js-dataType", link: "/javascript/js-dataType" },
+              { text: "JavaScript Data Type", link: "/javascript/js-dataType" },
               { text: "js-webComponent", link: "/javascript/js-webComponent" },
               { text: "js-design", link: "/javascript/js-design" },
             ],
