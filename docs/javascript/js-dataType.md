@@ -110,81 +110,16 @@ const str = decoder.decode(bufferArray); // String "€"
 
 ## Blob
 :::info 简介
+表示一个不可变、原始数据的类文件对象  
+可以看作是存放二进制数据的容器，设置二进制数据的MIME类型
 :::
-
-
-new TextDecoder()文本解码器，可以解析数据视图中的**数字**为**对应字符**
-
-
-**Dataview视图**
-
-**用于向底层ArrayBuffer写入值**
-
-**new DataView**(buffer,byteOffset,byteLength)
-
-**参数**
-
-buffer：存在的**ArrayBuffer**对象
-
-byteOffset：第一个字节在buffer中的字节偏移（默认第一个字节开始）
-
-byteLength：指定DataView对象的字节长度（默认匹配buffer的长度）
-
-**方法**
-
-
-设置ArrayBuffer中对应的-bit数（8，16，32，64无符号字节）
-
-**TypedArray**
-
-所有Uint8Array、Uint16Array都称为TypedArray
-
-
-**TypedArray**拥有**数组的所有方法**，除了**splice**和**concat**
-
-**TextDecoder、TextEnCoder**
-
-可以解码所有二进制arrayBuffer、有无符号整数（Uint8Array、Int8Array）
-
-**Blob除外[Blob.note](note://FC8962FCACC64C0B83C58D232291E732)**
-
-**new TextDecoder（label，options）**：文本**解码器**（将**字节**转换为**字符串**）
-
-**label**：默认utf-8格式
-
-**options：**
-
-fatal：默认为false，使用\uFFFD替换无效字符，为true则无效字符抛出异常（不可解码）
-
-**方法**
-
-**decode**(**BufferSource**,stream)
-
-**buffersource**：arraybuffer对象本身，或者是arraybuffer的视图类型（如Uint8Array、Uint16Array等）
-
-stream：对于解码流，为true，则将传入的buffer作为参数重复decode，表示“未完成”的字符，并在下一个数据块来的时候进行解码
-
-
-**new TextEncoder（）**：文本**编码器**（将**字符串**转换为**字节**）
-
-只支持utf-8编码
-
-**encode**(str)
-
-字符串编码成Uint8Array
-
-
-encodeInto(str, destination)
-
-将str编码到destination中，该目标必须为Uint8Array
-
+```js
+let array = new ArrayBuffer(10)
+// 创建Blob对象，传入Blob/BufferSource/String类型的数组 (必须由数组包裹)
+new Blob([array])
+```
 
 **Blob**
-
-表示一个不可变、**原始数据的类文件对象**，数据可以按文本二进制的格式进行读取，用于数据操作
-
-Blob最大的用途就是**解析转换为URL地址**，当然他也可以**转换为file之类的文件**或**ArrayBuffer**
-
 **new Blob**(blobParts,options)
 
 blobParts：Blob/BufferSource/String类型的数组（必须由数组包裹）

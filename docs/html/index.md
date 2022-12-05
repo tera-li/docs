@@ -43,7 +43,8 @@ name属性 供浏览器进行解析，如解决浏览器兼容问题
 ```html
 html文档定义样式信息
   - type="text/css"：规定样式表的 MIME 类型
-  - MIME 类型 MIME (Multipurpose Internet Mail Extensions) 是 描述消息内容类型的标准，用来表示文档、文件或字节流的性质和格式
+  - MIME 类型 MIME (Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型
+    - 描述消息内容类型的标准，用来表示文档、文件或字节流的类型和格式
 ```
 5. **\<link /\>**
 ```html
