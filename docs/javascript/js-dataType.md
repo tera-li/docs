@@ -23,18 +23,43 @@ ArrayBuffer.isView(new DataView(buffer))
 TypedArray 对象描述了底层 二进制数据缓冲区(ArrayBuffer) 的类数组视图  
 没有称为 TypedArray 的全局属性，也没有直接可用的 TypedArray 构造函数，作为抽象类只能被其子类使用
 :::
-```js
-Int8Array: 8位有符号整数，长度1个字节，1个字节1个元素
-Uint8Array: 8位无符号整数，长度1个字节，1个字节1个元素
-Int16Array: 16位有符号整数，长度2个字节，2个字节1个元素
-Uint16Array: 16位无符号整数，长度2个字节，2个字节1个元素
-Int32Array: 32位有符号整数，长度4个字节，4个字节1个元素
-Uint32Array: 32位无符号整数，长度4个字节，4个字节1个元素
+```js{1,11,18}
+- 类型数组对象
+Int8Array: 8位有符号整数，长度1个字节，1个字节1个元素 (-128 ~ 127)
+Uint8Array: 8位无符号整数，长度1个字节，1个字节1个元素 (0 ~ 255)
+Int16Array: 16位有符号整数，长度2个字节，2个字节1个元素 (-32768 ~ 32767)
+Uint16Array: 16位无符号整数，长度2个字节，2个字节1个元素 (0 ~ 65535)
+Int32Array: 32位有符号整数，长度4个字节，4个字节1个元素 (-2147483648 ~ 2147483647)
+Uint32Array: 32位无符号整数，长度4个字节，4个字节1个元素 (0 ~ 4294967295)
 Float32Array: 32位浮点数，长度4个字节，4个字节1个元素
 Float64Array: 64位浮点数，长度8个字节，8个字节1个元素
 
+- 数据大小
+8bit(位)=1Byte(字节)
+1024Byte(字节)=1KB
+1024KB=1MB
+1024MB=1GB
+1024GB=1TB
+
+- 使用
 // 返回数组中元素的字节数 (一个元素代表几个字节)
 Int8Array.BYTES_PER_ELEMENT
+
+// 以长度参数构造对象
+var int8 = new Int8Array(2);
+int8[0] = 42;
+
+// 以数组构造对象
+var arr = new Int8Array([21,31]);
+
+// 从另一数组构造对象
+var x = new Int8Array([21, 31]);
+var y = new Int8Array(x);
+
+// 从 ArrayBuffer 构造对象
+var buffer = new ArrayBuffer(8);
+// buffer byteOffset (选择buffer从左开始的起始位置的偏移) length (选取长度)
+var z = new Int8Array(buffer, 1, 4);
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/TypedArray  
 
