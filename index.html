@@ -16,6 +16,7 @@
       <input type="file" name="i2" />
       <input type="submit" value="submit" />
     </form>
+    <a src="" alt=""></a>
     <iframe src="./iframe.html"></iframe>
     <script>
       let myWorker = new Worker("./worker.js");
@@ -23,6 +24,19 @@
       myWorker.onmessage = (e) => {
         console.log(e.data);
       };
+      let array = "hello world";
+      // 创建Blob对象，传入Blob/BufferSource/String类型的数组 (必须由数组包裹)
+      let blob = new Blob([array], { type: "text/plain" });
+      let reader = new FileReader();
+      reader.onload = (evt) => {
+        console.log(evt.target);
+        let a = document.getElementsByTagName("a")[0];
+        a.href = evt.target.result;
+        a.download = true;
+        a.click();
+      };
+
+      reader.readAsDataURL(blob);
       // document.cookie = "name=join";
       // sessionStorage.setItem("name", "join11111");
     </script>
