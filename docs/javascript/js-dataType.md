@@ -21,7 +21,8 @@ ArrayBuffer.isView(new DataView(buffer))
 ## TypedArray
 :::info 简介
 TypedArray 对象描述了底层 二进制数据缓冲区(ArrayBuffer) 的类数组视图  
-没有称为 TypedArray 的全局属性，也没有直接可用的 TypedArray 构造函数，作为抽象类只能被其子类使用
+没有称为 TypedArray 的全局属性，也没有直接可用的 TypedArray 构造函数，作为抽象类只能被其子类使用  
+语法与普通数组完全没有什么不同，只不过它直接针对内存进行操作，而且每个成员都有确定的数据类型
 :::
 ```js{1,11,18}
 - 类型数组对象
@@ -65,15 +66,51 @@ var z = new Int8Array(buffer, 1, 4);
 
 ## DataView
 :::info 简介
+视图是一个可以从 二进制ArrayBuffer 对象中读写多种数值类型的底层接口，使用它时，不用考虑不同平台的字节序问题  
 :::
+```js{25}
+const buffer = new ArrayBuffer(16);
+// 创建视图
+const view1 = new DataView(buffer);
+view1.setInt8(1, 12)
+view1.getInt8(1)
+
+setInt8: 写入1个字节的8位整数。
+setUint8: 写入1个字节的8位无符号整数。
+setInt16: 写入2个字节的16位整数。
+setUint16: 写入2个字节的16位无符号整数。
+setInt32: 写入4个字节的32位整数。
+setUint32: 写入4个字节的32位无符号整数。
+setFloat32: 写入4个字节的32位浮点数。
+setFloat64: 写入8个字节的64位浮点数。
+
+getInt8: 读取1个字节，返回一个8位整数。
+getUint8: 读取1个字节，返回一个无符号的8位整数。
+getInt16: 读取2个字节，返回一个16位整数。
+getUint16: 读取2个字节，返回一个无符号的16位整数。
+getInt32: 读取4个字节，返回一个32位整数。
+getUint32: 读取4个字节，返回一个无符号的32位整数。
+getFloat32: 读取4个字节，返回一个32位浮点数。
+getFloat64: 读取8个字节，返回一个64位浮点数。
+
+- TextDecoder 和 TextEncoder
+// 如果二进制是包含文本数据的文件，可将值读取为实际的 JavaScript 字符串
+
+// 默认使用 UTF-8 编码将码位流转换成字节流
+const encoder = new TextEncoder('UTF-8');
+// 接受一个字符串作为输入，返回一个对参数中给定的文本的编码后的 Uint8Array 类型数组
+const bufferArray = encoder.encode('€'); // Uint8Array(3) [226, 130, 172]
+
+// 文本解码器，解码器将字节流作为输入，并提供码位流作为输出 (UTF-8、ISO-8859-2、KOI8-R、GBK)
+const decoder = new TextDecoder('UTF-8');
+// 返回一个字符串，其包含作为参数传递的缓冲区解码后的文本
+const str = decoder.decode(bufferArray); // String "€"
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/DataView  
 
 ## Blob
 :::info 简介
 :::
-
-name：返回Utin8Array类型的构造名“Utin8Array”
-
-BYTES\_PER\_ELEMENT：返回数组中元素的字节数(一个数字代表几个字节)
 
 
 new TextDecoder()文本解码器，可以解析数据视图中的**数字**为**对应字符**
