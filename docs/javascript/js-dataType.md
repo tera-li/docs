@@ -149,3 +149,4 @@ readAsDataURL
     1. 生成本地内存 base64 格式
     2. 无需撤销，自动释放内存，但对内存较大的Blob编码时会消耗更多性能和内存
 ```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/API/Blob  

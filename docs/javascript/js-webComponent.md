@@ -1,14 +1,52 @@
-**custom elements**
-
-可以通过描述带有自己的方法、属性、事件等的类来创建自定义HTML元素
-
+# JavaScript Web Components
+## Custom Elements
+:::info 简介
+自定义元素  
+允许您定义 custom elements 及其行为，然后可以在您的用户界面中按照需要使用它们  
 自定义标签完成之后，可以正常在HTML中使用
+:::
+```js{1,2}
+// Custom Elements 继承自 HTMLElement 抽象类
+// 创建 自定义元素 可在元素生命周期中执行相关操作
+class MyElement extends HTMLElement {
+    constructor() {
+        super()
+    }
+    // 自定义元素第一次被连接到文档 DOM 时被调用
+    connectedCallback() { console.log('元素已被添加到文档') }
 
-**Autonomous custom elements（自定义标签）**
+    // 自定义元素与文档 DOM 断开连接时被调用，如元素被删除 ele.remove()
+    disconnectedCallback() { console.log('元素从文档移除') }
 
-全新的元素，继承自**HTMLElement**抽象类
+    // 自定义元素的所监听的属性被增加、移除或更改时被调用，如 ele.setAttribute('first', 'value')
+    attributeChangedCallback(name, oldValue, newValue) {}
 
-元素生命周期
+    // 返回元素的属性名数组，这些属性变化会被监视
+    static get observedAttributes() {
+        return ['first']
+    }
+    // 自定义元素被移动到新文档时被调用
+    adoptedCallback() { console.log('当元素被移动到新文档的时') }
+}
+// 定义和注册自定义元素(其中必须要有短横线)，用来显示在HTML文档上
+customElements.define('my-element', MyElement, {extends: 'h1'})
+// 返回以前定义自定义元素的构造函数
+customElements.get('my-element');
+```
+## Shadow DOM
+:::info 简介
+影子 DOM  
+可封装的 `影子DOM树` 附加到元素（与主文档 DOM 分开呈现）并可控制其关联的功能  
+可保持元素的功能私有，能被脚本化和样式化，而不用担心与文档的其他部分发生冲突
+:::
+## Templates and Slots
+:::info 简介
+HTML 模板  
+`<template />` 和 `<slot />` 元素使您可以编写不在呈现页面中显示的标记模板
+:::
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/Web_Components  
+
+
 
 
 **示例**
@@ -18,55 +56,7 @@
 ```
 <script type="text/javascript">
 
-**class MyElement extends HTMLElement** {
 
-// constructor() {
-
-//  super()
-
-// }
-
-**connectedCallback**() {
-
-console.log('元素已被添加到文档')
-
-}
-
-**disconnectedCallback**() {
-
-// 该元素被删除DOM=>removeChild(ele)等
-
-console.log('元素从文档移除')
-
-}
-
-**static get observedAttributes**() {
-
-// 该元素的属性数组，这些属性会被监视
-
-return ['first']
-
-}
-
-**attributeChangedCallback**(name, oldValue, newValue) {
-
-// ele.setAttribute(attr,value)
-
-// 当被监视的属性值发生变化时，该方法会被调用
-
-}
-
-**adoptedCallback**() {
-
-console.log('当元素被移动到新文档的手')
-
-}
-
-}
-
-// 定义和注册主定义元素，用来显示在HTML文档上
-
-**customElements**.**define**('my-element', MyElement)
 
 </script>
 ```
