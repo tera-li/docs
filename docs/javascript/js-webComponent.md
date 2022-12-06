@@ -75,8 +75,68 @@ customElements.define('my-p', MyP, { extends: 'p' })
 :::info 简介
 影子 DOM  
 可封装的 `影子DOM树` 附加到元素（与主文档 DOM 分开呈现）并可控制其关联的功能  
-可保持元素的功能私有，能被脚本化和样式化，而不用担心与文档的其他部分发生冲突
+可保持元素的功能私有，私有化脚本和样式，而不用担心与文档的其他部分发生冲突
 :::
+```html
+<popup-info data-text="this is title!"></popup-info>
+```
+```js
+// 创建自定义元素
+class PopUpInfo extends HTMLElement {
+    constructor() {
+        super();
+        // 创建 shadow root
+        const shadow = this.attachShadow({ mode: "open" });
+
+        // 创建span
+        const info = document.createElement("span");
+        // 获取属性内容并将其放入文本中
+        const text = this.getAttribute("data-text");
+        info.setAttribute("class", "info");
+        info.textContent = text;
+
+        // 创建img
+        const img = document.createElement("img");
+        img.src = "./docs/assets/aperture.svg";
+
+        // 创建一些style应用到 shadow dom
+        const style = document.createElement("style");
+        style.textContent = `
+            .info {
+                font-size: 0.8rem;
+                width: 200px;
+                display: inline-block;
+                border: 1px solid black;
+                padding: 10px;
+                background: white;
+                border-radius: 10px;
+                opacity: 0;
+                transition: 0.6s all;
+                position: relative;
+                bottom: 20px;
+                left: 0px;
+                z-index: 3;
+            }
+            img {
+                width: 1.2rem;
+            }
+            img:hover + .info {
+                opacity: 1;
+            }
+        `;
+        // 将创建的元素附加到shadow dom
+        shadow.append(style);
+        shadow.append(img);
+        shadow.append(info);
+        // ShadowRoot 附加的宿主 DOM 元素，popup-info元素。
+        shadow.host;
+        // ShadowRoot 内部的 DOM 树
+        shadow.innerHTML;
+    }
+}
+// 注册自定义元素
+customElements.define('popup-info', PopUpInfo);
+```
 ## Templates and Slots
 :::info 简介
 HTML 模板  
