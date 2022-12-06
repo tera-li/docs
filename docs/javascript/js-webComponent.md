@@ -11,6 +11,7 @@
 class MyElement extends HTMLElement {
     constructor() {
         super()
+        this.style.color = "red";
     }
     // 自定义元素第一次被连接到文档 DOM 时被调用
     connectedCallback() { console.log('元素已被添加到文档') }
@@ -29,7 +30,7 @@ class MyElement extends HTMLElement {
     adoptedCallback() { console.log('当元素被移动到新文档的时') }
 }
 // 定义和注册自定义元素(其中必须要有短横线)，用来显示在HTML文档上
-customElements.define('my-element', MyElement, {extends: 'h1'})
+customElements.define('my-element', MyElement)
 // 返回以前定义自定义元素的构造函数
 customElements.get('my-element');
 ```

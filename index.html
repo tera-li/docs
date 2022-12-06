@@ -19,37 +19,32 @@
     <a src="" alt=""></a>
     <iframe src="./iframe.html"></iframe>
     <my-element>123</my-element>
-    <script defer>
-      // Custom Elements 继承自 HTMLElement 抽象类
-      // 创建 自定义元素 可在元素生命周期中执行相关操作
+    <script>
       class MyElement extends HTMLElement {
         constructor() {
           super();
-          this.attachShadow({ mode: "open" });
-          let p = document.createElement("p");
-          p.textContent = "123";
-          console.log(p);
-          this.append(p);
+          this.style.color = "red";
         }
         // 自定义元素第一次被连接到文档 DOM 时被调用
         connectedCallback() {
           console.log("元素已被添加到文档");
         }
+
         // 自定义元素与文档 DOM 断开连接时被调用，如元素被删除 ele.remove()
         disconnectedCallback() {
           console.log("元素从文档移除");
         }
+
+        // 自定义元素的所监听的属性被增加、移除或更改时被调用，如 ele.setAttribute('first', 'value')
+        attributeChangedCallback(name, oldValue, newValue) {}
+
+        // 返回元素的属性名数组，这些属性变化会被监视
+        static get observedAttributes() {
+          return ["first"];
+        }
         // 自定义元素被移动到新文档时被调用
         adoptedCallback() {
           console.log("当元素被移动到新文档的时");
-        }
-        // 自定义元素的一个属性被增加、移除或更改时被调用，如 ele.setAttribute('id', 'value')
-        attributeChangedCallback(name, oldValue, newValue) {
-          console.log(name, oldValue, newValue);
-        }
-        // 该元素的属性数组，这些属性会被监视
-        static get observedAttributes() {
-          return ["first1"];
         }
       }
       // 定义和注册自定义元素(其中必须要有短横线)，用来显示在HTML文档上
