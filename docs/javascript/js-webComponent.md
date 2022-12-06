@@ -7,6 +7,10 @@
 :::
 - Autonomous custom elements (自定义元素)
 
+```html
+<my-element>myElement!</my-element>
+```
+
 ```js{1,2}
 // Custom Elements 继承自 HTMLElement 抽象类
 // 创建 自定义元素 可在元素生命周期中执行相关操作
@@ -83,32 +87,6 @@ HTML 模板
 
 
 
-**示例**
-
-<!-- **<my-element first="123">123</my-element>** -->
-
-```
-<script type="text/javascript">
-
-
-
-</script>
-```
-**Customized built-in elements（自定义内置元素）**
-
-继承**内置的HTML元素**，比如**自定义HTMLButtonElement**等
-
-示例
-
-<script> // 这个按钮在被点击的时候说 "hello"，该自定义元素继承自HTMLButton元素 class HelloButton extends HTMLButtonElement {   constructor() {     super();     this.addEventListener('click', () => alert("Hello!"));   } } // 注册一个hello-button的元素，指定元素构造器，可选：继承已创建的元素（拥有其属性和方法） customElements.define('hello-button', HelloButton, {extends: 'button'}); </script>
-
-// is属性允许您指定标准HTML元素像自定义的内置元素一样工作
-
-// 只有在当前文档中成功定义(define)指定的自定义元素名称，
-
-// 并且(extends)扩展了要应用的元素，才能使用is属性   <button is="hello-button">Click me</button>   <button is="hello-button" disabled>Disabled</button>
-
-define(name,constructor,option:{extends: 'element'})：定义一个新的自定义元素
 
 **Shadow DOM**
 
