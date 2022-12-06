@@ -5,6 +5,8 @@
 允许您定义 custom elements 及其行为，然后可以在您的用户界面中按照需要使用它们  
 自定义标签完成之后，可以正常在HTML中使用
 :::
+- Autonomous custom elements (自定义元素)
+
 ```js{1,2}
 // Custom Elements 继承自 HTMLElement 抽象类
 // 创建 自定义元素 可在元素生命周期中执行相关操作
@@ -33,6 +35,37 @@ class MyElement extends HTMLElement {
 customElements.define('my-element', MyElement)
 // 返回以前定义自定义元素的构造函数
 customElements.get('my-element');
+// 当元素被定义时，接口返回一个成功的promise
+customElements.whenDefined('my-element');
+```
+- Customized built-in elements (自定义内置元素)
+
+```html
+<button is="my-button">click!</button>
+<p is="my-p">This is p!</p>
+```
+
+```js
+// 继承自 HTMLButtonElement，并扩展该元素
+class MyButton extends HTMLButtonElement {
+    constructor() {
+        super()
+        // this.disabled = true
+        this.addEventListener('click', (event) => console.log("Hello!"))
+    }
+}
+// 继承 button 元素，拥有 button 元素所有属性
+customElements.define('my-button', MyButton, { extends: 'button' })
+
+// 继承自 HTMLParagraphElement，并扩展该元素
+class MyP extends HTMLParagraphElement {
+    constructor() {
+        super()
+        this.style.color = 'red'
+    }
+}
+// 继承 p 元素，拥有 p 元素所有属性
+customElements.define('my-p', MyP, { extends: 'p' })
 ```
 ## Shadow DOM
 :::info 简介
@@ -75,15 +108,7 @@ HTML 模板
 
 // 并且(extends)扩展了要应用的元素，才能使用is属性   <button is="hello-button">Click me</button>   <button is="hello-button" disabled>Disabled</button>
 
-**customElements**
-
-该接口提供注册自定义元素和查询已注册的元素的方法
-
 define(name,constructor,option:{extends: 'element'})：定义一个新的自定义元素
-
-get(name)：返回指定自定义元素的构造函数
-
-whenDefined(name)：当元素被定义时，接口返回一个成功的promise
 
 **Shadow DOM**
 
