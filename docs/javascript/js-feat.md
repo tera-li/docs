@@ -306,7 +306,7 @@ var f = function(x) { return x };
 var f = x => x
 ```
 - **Class类**
-```js
+```js{52,53,54,55,56}
 /*
     class 的本质是 function。
     它可以看作一个语法糖，让对象原型的写法更加清晰、更像面向对象编程的语法。
@@ -357,6 +357,20 @@ Example.a
 Example.getName()
 // 类只能通过new实例化
 new Example()
+
+/*
+  new.target 检测该函数或构造方法是否被new 运算符调用过  
+  如果调用过，返回类或函数本身构造函数，否则为undefined  
+  如下图: 检测该类是否被实例化，可以防止类被实例化  
+*/
+class C {
+    constructor() {
+        if (new.target === C) {
+            throw '该类已被实例化'
+        }
+    }
+}
+new C()
 ```
 - **模块**
 ```js

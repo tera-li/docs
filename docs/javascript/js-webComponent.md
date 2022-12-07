@@ -74,6 +74,7 @@ customElements.define('my-p', MyP, { extends: 'p' })
 ## Shadow DOM
 :::info 简介
 影子 DOM  
+shadow dom为封装而生，它可以让一个组件拥有自己的shadow dom树  
 可封装的 `影子DOM树` 附加到元素（与主文档 DOM 分开呈现）并可控制其关联的功能  
 可保持元素的功能私有，私有化脚本和样式，而不用担心与文档的其他部分发生冲突
 :::
@@ -86,6 +87,8 @@ class PopUpInfo extends HTMLElement {
     constructor() {
         super();
         // 创建 shadow root
+        // { mode: open }: shadow root元素可以从 js 外部访问根节点，是shadow tree
+        // { mode: closed }: 拒绝从 js 外部访问关闭的shadow root节点，永远是null
         const shadow = this.attachShadow({ mode: "open" });
 
         // 创建span
@@ -141,6 +144,12 @@ customElements.define('popup-info', PopUpInfo);
 :::info 简介
 HTML 模板  
 `<template />` 和 `<slot />` 元素使您可以编写不在呈现页面中显示的标记模板
+
+`<template />`是一种用于保存客户端内容机制，该内容在加载页面不会呈现  
+将模板视为一个可存储在文档中以便后续使用的内容片段
+1. template不会在文档中显示，除非被插入使用
+2. template的content属性可看作DocumentFragment相当于一个DOM包装器片段
+3. template中的元素也会被添加到shadow DOM中，并且生效
 :::
 ```html
 <!DOCTYPE html>
@@ -173,7 +182,7 @@ HTML 模板
           // 定义shadow后，内容只能挂在到shadow上
           let shadow = this.attachShadow({ mode: "open" });
           let template = document.getElementById("template");
-          // 模版使用方式一
+          // 模版使用方式一，将元素内容放入template中
           // this.shadowRoot.innerHTML = template.innerHTML;
           // 模版使用方式二
           this.shadowRoot.append(template.content.cloneNode(true));
@@ -192,3 +201,11 @@ HTML 模板
 </html>
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/Web_Components  
+## 组织化架构
+::: info 简介
+开发复杂软件的原则：不要让软件复杂  
+当某个部分复杂了，就将其拆分为简单的部分，再以约定的协议、简单的方式组合起来  
+`只有让复杂的事情简单化的架构才是好架构`
+:::
+![clipboard.png](./assets/clipboard.png)
+![subfield.png](./assets/subfield.png)
