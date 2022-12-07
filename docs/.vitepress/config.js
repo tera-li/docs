@@ -57,7 +57,10 @@ export default defineConfig({
                 link: "/javascript/js-dataCommunication",
               },
               { text: "JavaScript Data Type", link: "/javascript/js-dataType" },
-              { text: "js-webComponent", link: "/javascript/js-webComponent" },
+              {
+                text: "JavaScript Web Components",
+                link: "/javascript/js-webComponent",
+              },
               { text: "js-design", link: "/javascript/js-design" },
             ],
           },
