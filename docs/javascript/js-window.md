@@ -46,7 +46,16 @@ window.print()              // 打印当前窗口页面
 window.matchMedia('(max-width: 600px)')     // 返回一个新的MediaQueryList，matches返回true或false，表示是否与媒体查询匹配
 
 const ele = document.getElementsByTagName('div')[0]
-window.getComputedStyle(ele, null )         // 在应用活动样式表并解析这些值可能包含的任何基本计算后报告元素的所有 CSS 属性的值，该元素的style样式表
+window.getComputedStyle(ele, null)          // 在应用活动样式表并解析这些值可能包含的任何基本计算后报告元素的所有 CSS 属性的值，该元素的style样式表
+JSON.parse()                // 解析json数据为JavaScript对象
+// param1: JSON 字符串的值
+// param2: 函数 被序列化的值会经过该函数的转换和处理并返回
+// param2: 数组['a'] 包含在这个数组中的属性名才会被序列化到最终的 JSON 字符串中
+// param3: 数字指定缩进用的空白字符串
+JSON.stringify({a: 123, b: 321}, (key, value) => { 
+    value.a = 333
+    return value 
+}, 2)
 ```
 ::: info JavaScript 存储对象
   - **Cookie: 本地存储 (长久存储，可设置数据过期时间，4k)**
@@ -156,7 +165,7 @@ location.origin                // 返回    源的域名的标准形式   https:
 
 location.assign('https://www.baidu.com')    // 触发窗口加载并跳转到指定 URL，当前页面会保存在会话记录中
 location.replace('https://www.baidu.com')   // 加载指定 URL 并替换掉当前的资源，当前页面将从会话记录中消失
-location.reload()                           // 刷新当前页面
+location.reload(boolean)                    // 刷新当前页面，设置为true，会绕过缓存，从服务器重新下载该文档
 ```
   - **Navigator: 用户代理的状态和标识，包含浏览器暴露的一些信息**
 ```js
@@ -178,6 +187,8 @@ navigator.mediaDevices          // 返回或操作媒体设备
         video.srcObject = stream;
     });
 navigator.onLine ? 'online' : 'offline'     // 设备是否在线，有网络/无网络
+    window.addEventListener('online', navigator.onLine)	    // 设备联网时
+    window.addEventListener('offline', navigator.onLine)	// 设备断网时
 navigator.pdfViewerEnabled      // 浏览器是否支持PDF文件的内联查看
 navigator.userAgent             // 返回 浏览器用户代理 操作系统版本、CPU 类型、浏览器版本等信息
 navigator.getBattery()          // 返回 系统的电量信息 是否正在充电、距离充电完毕还需多少秒、距离电池耗电至空需多少秒
@@ -194,6 +205,24 @@ navigator.share({
   text: 'Hello World',
   url: 'https://www.baidu.com', // 调用本机的共享机制作为 Web Share
 })
+```
+:::
+
+::: info JavaScript Console
+```js
+1. assert: 如果断言为false，则在控制台输出错误信息 (表达式: true or false, message)
+2. clear: 清除控制台上的信息
+3. count: 记录count调用次数
+4. warn: 输出警告信息到控制台
+5. error: 输出错误信息到控制台
+6. group: 在控制台创建一个信息分组 (对console输出进行分组)
+   1. groupCollapsed: 创建一个折叠的信息分组
+   2. groupEnd: 结束当前分组
+7. info: 控制台输出一条信息
+8.  log: 控制台输出一条信息
+9.  table(['xxx']): 以表格形式显示数据
+10. time/timeEnd: 测试程序执行的时长
+11. trace: 显示当前执行代码的堆栈调用路径
 ```
 :::
 
@@ -285,7 +314,7 @@ document.getElementsByName("up").forEach()
 document.getElementsByName("up").keys()
 document.getElementsByName("up").values()
 ```
-- **DOM 变动观察器**
+:::info DOM 变动观察器
 ```js
 监视对 DOM 树所做更改的能力；观察DOM元素，在其发生更改时触发回调
 
@@ -320,6 +349,13 @@ observer.observe(targetNode, config);
 // 之后，可停止观察
 observer.disconnect();
 ```
+:::
+
+::: info Document styleSheets
+```js
+
+```
+:::
 
 ## Element
 ::: v-pre
@@ -442,9 +478,13 @@ ctrlKey: 表示事件触发时 control 键是 (true) 否 (false) 按下
 
 - 框架事件
 onDOMContentLoaded: 页面已经完全加载了HTML，DOM树已经构建完毕，不需要等待 <img> 和样式表等外部资源的加载
-onload: 在页面或图像完成加载时触发 (页面第一次加载时触发)
+onload: 页面加载完毕，外部资源已完成，样式已被应用，图片大小也已知 (页面第一次加载时触发)
 onbeforeunload: 在即将离开页面 (刷新或关闭)时触发
 onunload: 用户退出页面时，当文档或一个子资源正在被卸载时
+    这里提一下 <script async></script>
+    async: 立即下载脚本，异步加载脚本，下载完就加载，渲染引擎就会中断渲染，执行这个脚本以后，再继续渲染
+    defer: 立即下载脚本，异步加载脚本，下载完脚本延迟到文档完全解析后加载，DomContentLoaded 事件触发之前完成
+    另外，如果有多个defer脚本，会按照它们在页面出现的顺序加载，而多个async脚本是不能保证加载顺序的
 
 onpageshow: 在用户进入网页时触发 (页面每次加载都会触发)
 onpagehide: 在用户离开网页时触发 (返回上一页或下一页)
