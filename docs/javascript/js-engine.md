@@ -100,23 +100,41 @@
 4. **同步任务和异步任务**
 ```js
 console.log(1)
-setTimeout(() => { console.log('setTImeout') }, 0)
+setTimeout(() => { console.log('setTimeout') }, 0)
 console.log(2)
 
-输出: 1 2 setTImeout
+输出: 1 2 setTimeout
 ```
 `以上代码在执行时`  
 `同步任务是 1 2 ，在 执行栈 中会依次执行`  
-`异步任务是 setTImeout，在 执行栈 解析到后会让 宿主环境(Web接口)进行对应的接口操作，在接口符合条件的情况下再推入 回调队列 末尾`
+`异步任务是 setTimeout，在 执行栈 解析到后会让 宿主环境(Web接口)进行对应的接口操作，在接口符合条件的情况下再推入 回调队列 末尾`
 
 5. **宏任务和微任务**
 ```js
 console.log(1)
-setTimeout(() => { console.log('setTImeout') }, 0)
+requestIdleCallback(() => { console.log('requestIdleCallback') },{ timeout: 2000 })
+setTimeout(() => { console.log('setTimeout') }, 0)
+requestAnimationFrame(() => { console.log('requestAnimationFrame') })
 queueMicrotask(() => { console.log('queueMicrotask') })
 console.log(2)
 
-输出: 1 2 queueMicrotask setTImeout
+输出: 1 2 queueMicrotask requestAnimationFrame setTimeout requestIdleCallback
+输出: 1 2 queueMicrotask setTimeout requestAnimationFrame requestIdleCallback
+/* 
+   queueMicrotask: 微任务 (microtask)，在执行事件循环队列之前调用
+*/
+/* 请求动画帧
+   requestAnimationFrame: 要求浏览器在下次重绘之前调用指定的回调函数，如更新动画
+      - 把每一帧中的所有DOM操作集中起来，在下次重绘之前调用，把所有动画操作集中在一次重绘
+      - 重绘时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧，1000ms/60
+      - 相当于每16.7ms就会刷新一次，生成动画可以执行递归操作
+      - cancelAnimationFrame(raf)取消
+*/
+/* 请求空闲回调
+   requestIdleCallback: 在浏览器空闲时期被调用，不会影响延迟关键事件，如动画和输入响应
+      - timeout: 如果回调函数在2000ms后还未执行，那么回调任务将放入事件循环中排队
+      - cancelIdleCallback(ric)取消
+*/
 ```
 `以上代码在执行时`  
 `同步任务是 1 2 ，在 执行栈 中会依次执行`  
