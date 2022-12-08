@@ -1,48 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
   <body>
-    <!-- 使用自定义元素 -->
-    <my-ele myELeClass>
-      <!-- 定义元素内容 -->
-      <h1>h1</h1>
-      <h2>h2</h2>
-      <span slot="myText">Let's have some different text!</span>
-      <h1 slot="myText2">Let's have some different text!</h1>
-    </my-ele>
-    <!-- 定义模版 -->
-    <template id="template">
-      <!-- 定义默认插槽、具名插槽 -->
-      <slot name="myText"></slot>
-      <slot name="myText2"></slot>
-      <slot></slot>
-
-      <style>
-        :host {
-          background: rgb(239, 131, 59);
-          user-select: none;
-        }
-      </style>
-    </template>
+    <button onclick="notifyMe()">Notify me!</button>
     <script>
-      class myEle extends HTMLElement {
-        connectedCallback() {
-          // 定义shadow后，内容只能挂在到shadow上
-          let shadow = this.attachShadow({ mode: "open" });
-          let template = document.getElementById("template");
-          // 模版使用方式一
-          // this.shadowRoot.innerHTML = template.innerHTML;
-          // 模版使用方式二
-          this.shadowRoot.append(template.content.cloneNode(true));
-
-          // 改变元素样式
-          this.shadowRoot.querySelector('slot[name="myText"]').onclick = (
-            event
-          ) => {
-            event.target.style.color = "red";
-          };
-        }
+      function func(result) {
+        console.log(result);
       }
-      customElements.define("my-ele", myEle);
     </script>
+    <script src="http://localhost:3000/jsonp?callback=func"></script>
   </body>
 </html>

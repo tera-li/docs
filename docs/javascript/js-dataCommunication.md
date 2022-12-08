@@ -163,3 +163,40 @@ es.onerror = (event) => { console.log(event) };
 es.close();
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource  
+## 跨域相关
+:::info 
+- 后端设置请求域的跨域配置
+1. Access-Control-Allow-Origin: *               允许所有域名的脚本访问该资源
+   1. value: https://www.baidu.com              允许指定的域名访问
+2. Access-Control-Allow-Methods                 允许的请求方式
+3. Access-Control-Allow-Headers                 跨域允许包含的头
+- jsonp
+1. ajax发起请求是有同源保护策略的限制，会报错
+2. `<scrip />` 会发起一个get请求，这个请求是不受同源策略限制的
+```js
+// html代码
+function func(result) {
+  console.log(result)   // { message: "hello world" }
+}
+<script src="http://localhost:3000/jsonp?callback=func"></script>
+// 请求返回 /**/ typeof func === 'function' && func({"message":"hello world"});
+// 后端返回jsonp数据，检测callback指定是否为函数，并执行函数，将数据传入给指定的函数的参数中
+```
+```js
+// nodejs代码
+var express = require("express");
+var app = express();
+var port = 3000;
+app.get("/", function (req, res) {
+  res.send("hello world");
+});
+// /jsonp?callback=func
+app.get("/jsonp", (req, res) => {
+  res.jsonp({ message: "hello world" });
+  // => func({ "message": "hello world" })
+});
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
+```
+:::
