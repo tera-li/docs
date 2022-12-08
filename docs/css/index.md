@@ -345,3 +345,25 @@ p {
 }
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox  
+## CSS 函数
+```css
+/* 匹配文档树的根元素，声明全局 CSS 变量 */
+:root {
+  --main-bg-color: coral;
+}
+.box {
+  /* calc(): 动态计算高度，高度为100% - 10px */
+  height: calc(100% - 10px);
+  /* max(): 设置宽度为最大值，取 50% 或 300px */
+  width: max(50%, 300px);
+  /* min(): 设置宽度为最小值，取 50% 或 300px */
+  width: min(50%, 300px);
+  /* var(): 函数用于插入自定义的属性值，如果一个属性值在多处被使用，该方法就很有用。 */
+  background-color: var(--main-bg-color);
+}
+a:after{
+  /* attr(): 获取a标签href的属性值，并作为内容添加到a标签后面 */
+  content: "attr(href)"
+}
+
+```
