@@ -116,7 +116,7 @@ let obj = {
 obj.func();         // { name: 'obj', func: function, item: {...} }
 obj.item.func();    // { name: 'item', func: function }
 ```
-1. 箭头函数
+2. 箭头函数
    1. `this指向` 箭头函数所在作用域中的this，箭头函数所处上下文的this
    2. 上下文就是每段代码的执行环境
 ```js
