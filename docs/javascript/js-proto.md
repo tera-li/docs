@@ -97,3 +97,38 @@ function Person(val) {
 ```
 可以通过实例的构造函数，在无法获取原始构造器时使用创建新的实例对象
 :::
+## this 指向
+:::info 改变this指向的方法
+```js
+function child() {
+    this.name = 'child'
+    console.log(arguments)
+    console.log(this)
+}
+function person() {
+    this.name = 'person'
+    console.log(arguments)
+    console.log(this)   // window
+}
+// call() 在 函数 运行时指定使用的 this 值，这里指向 person 构造函数的
+// this => person，立即运行
+child.call(person,'arg1','arg2')
+
+// apply() 在 函数 运行时指定使用的 this 值，这里指向 person 构造函数的
+// this => person，立即运行
+child.apply(person,['arg1','arg2'])
+
+// bind() 在 bind() 被调用时，这个新函数的 this 指向第一个参数，这里指向 person 构造函数的
+// this => person，返回新函数，手动调用新函数
+child.bind(person,['arg1','arg2'])()
+child.bind(person,'arg1','arg2')()
+
+// 区别1: 参数
+call() 一个参数列表             arg1, arg2 ...
+apply() 一个包含多个参数的数组   [arg1, arg2 ...]
+bind() 一个参数列表             arg1, arg2, ...
+// 区别2: 运行时机
+call()和apply() 是立即执行
+bind() 是先指定this指向，返回新函数手动调用
+```
+:::
