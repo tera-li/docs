@@ -98,6 +98,43 @@ function Person(val) {
 可以通过实例的构造函数，在无法获取原始构造器时使用创建新的实例对象
 :::
 ## this 指向
+:::info this指向
+1. 普通函数
+   1. `this指向` 调用函数的直接对象
+   2. 没有直接调用者，`this指向` window
+   3. "use strict"，指定了严格模式，`this指向` undefined
+   4. 可以被call,apply,bind改变 `this指向`
+```js
+let obj = {
+    name: "obj",
+    func() { console.log(this) },
+    item: {
+        name: "item",
+        func() { console.log(this) },
+    },
+};
+obj.func();         // { name: 'obj', func: function, item: {...} }
+obj.item.func();    // { name: 'item', func: function }
+```
+1. 箭头函数
+   1. `this指向` 箭头函数所在作用域中的this，箭头函数所处上下文的this
+   2. 上下文就是每段代码的执行环境
+```js
+let obj = {
+    name: "obj",
+    func() {
+        // { name: 'obj', func: function, item: {...} }
+        console.log(this);
+        setTimeout(() => {
+            // { name: 'obj', func: function, item: {...} }
+            console.log(this);
+        });
+    },
+};
+obj.func();
+```
+:::
+
 :::info 改变this指向的方法
 ```js
 function child() {

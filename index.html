@@ -9,10 +9,23 @@
   <body>
     <button onclick="notifyMe()">Notify me!</button>
     <script>
-      function func(result) {
-        console.log(result);
+      function func() {
+        // { name: 'obj', func: function, item: {...} }
+        console.log(this);
       }
+      func();
+      let obj = {
+        name: "obj",
+        func() {
+          // { name: 'obj', func: function, item: {...} }
+          console.log(this);
+          setTimeout(function () {
+            // { name: 'obj', func: function, item: {...} }
+            console.log(this);
+          });
+        },
+      };
+      obj.func();
     </script>
-    <script src="http://localhost:3000/jsonp?callback=func"></script>
   </body>
 </html>
