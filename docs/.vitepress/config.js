@@ -61,7 +61,7 @@ export default defineConfig({
                 text: "JavaScript Web Components",
                 link: "/javascript/js-webComponent",
               },
-              { text: "js-design", link: "/javascript/js-design" },
+              { text: "JavaScript Design Mode", link: "/javascript/js-design" },
             ],
           },
         ],

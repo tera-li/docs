@@ -1,84 +1,60 @@
-**JavaScript设计模式和开发实践**
+# JavaScript Design Mode
 
-**设计模式作用**
+::: info 设计模式
+设计模式是解决某个特定场景下对某种问题的解决方案  
+设计模式可能会增加复杂的逻辑，或更多的代码量  
+作用: 让人们写出可复用和可维护性高的程序
+:::
+## 工厂模式
+:::info 简单工厂
+不涉及到 User 的具体的实现类，达到封装效果，主要用来创建同一类对象 (产品)  
+优点：
+    1. 你只需要一个正确的参数，就可以获取到你所需要的对象，而无需知道其创建的具体细节
+    2. 扩展性高，可任意扩展
+    3. 当不同实例都有相同的行为时，就可使用工厂模式
+缺点：
+    1. 每增加一个产品，相应的也要增加一个子工厂，加大了额外的开发量
 
-设计模式可能会增加复杂的逻辑，或更多的代码量
+```js
+class User {
+    //构造器
+    constructor(opt) {
+        this.name = opt.name;
+        this.viewPage = opt.viewPage;
+    }
+    //静态方法
+    static getInstance(role) {
+        switch (role) {
+        case "superAdmin":
+            return new User({
+                name: "超级管理员",
+                viewPage: ["首页", "通讯录", "发现页", "应用数据", "权限管理"],
+            });
+            break;
+        case "admin":
+            return new User({
+                name: "管理员",
+                viewPage: ["首页", "通讯录", "发现页", "应用数据"],
+            });
+            break;
+        case "user":
+            return new User({
+                name: "普通用户",
+                viewPage: ["首页", "通讯录", "发现页"],
+            });
+            break;
+        default:
+            throw new Error("参数错误, 可选参数:superAdmin、admin、user");
+        }
+    }
+}
 
-作用：让人们写出可复用和可维护性高的程序
-
-JavaScript是没有工厂模式的，JavaScript不存在类型耦合的问题，因此不需要
-
-**动态类型语言和鸭子类型**
-
-JavaScript是动态类型语言，这一切都建立在鸭子类型上
-
-只要该函数是实现某种事件的方法，只要能实现，就不会管你是什么类型
-
-**多态**
-
-同样的操作作用于不同对象上面，产生不同的解释和不同的执行结果
-
-
-不同对象在同一个操作中，展现出不同的执行结果
-
-JavaScript在面向对象中，不必询问对象是什么类型，只需要调用该行为就是了
-
-父类定义一个方法不去实现，让继承它的子类去实现
-
-**设计模式**
-
-**原型模式**
-
-每个对象都有构造器原型，对象的构造器原型又可被用做其他对象的原型，从而实现原型模式的继承，可以通过方便的Object.create()来创建对象继承，但此方法性能较慢
-
-**this指向**
-
-
-**作为在对象中this指向该对象**
-
-**在普通函数中this指向window**
-
-如function qwe() { return this === window}
-
-**在构造器调用指向该函数对象**
-
-如new function () {this.name = 'sven'}
-
-但如果调用构造器，显式地返回一个object，如
-
-new function () { this.name = 'sven' return { name: name}}
-
-则this指向的是return返回的对象
-
-**call和apply**
-
-使用call()改变对象的内部this指向
-
-**闭包的作用**
-
-封装变量集合
-
-
-延续局部变量的寿命
-
-**高阶函数**
-
-函数可以作为参数被传递
-
-
-回调函数把函数当作参数传递
-
-函数可以作为返回值输出
-
-
-柯里化（相当于就是闭包的延申）
-
-将需要传递多个参数的函数，分解成每次只传递一个或一部分参数
-
-让它返回的函数去处理剩下的参数
-
-**设计模式**
-
+// 调用
+let superAdmin = User.getInstance("superAdmin");
+let admin = User.getInstance("admin");
+let normalUser = User.getInstance("user");
+```
+:::
 **单例模式**
 
 **保证一个类仅有一个实例，并提供一个访问它的全局访问点**
