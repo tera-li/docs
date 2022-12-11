@@ -6,8 +6,9 @@
 作用: 让人们写出可复用和可维护性高的程序
 :::
 ## 工厂模式
-:::info 简单工厂
+:::info 简介
 不涉及到 User 的具体的实现类，达到封装效果，主要用来创建同一类对象 (产品)  
+
 优点：
     1. 你只需要一个正确的参数，就可以获取到你所需要的对象，而无需知道其创建的具体细节
     2. 扩展性高，可任意扩展
@@ -55,9 +56,37 @@ let admin = User.getInstance("admin");
 let normalUser = User.getInstance("user");
 ```
 :::
-**单例模式**
 
-**保证一个类仅有一个实例，并提供一个访问它的全局访问点**
+## 单例模式
+:::info 简介
+保证一个类仅有一个实例，并提供一个访问它的全局访问点  
+要创建一个标准的单列模式并不复杂，无非是通过一个变量来标志当前是否已经为某个类创建过对象
+
+优点：
+    1. 内存中只有一个实例，减少内存开支
+    2. 减少系统的性能开销
+缺点：
+    1. 扩展很困难
+    2. 单例类的职责过重，在一定程度上违背了"单一职责原则"
+
+```js
+let Single = function(name) {
+    this.name = name
+    this.instance = null
+}
+Single.prototype.getName = function() {
+    console.log(this.name)
+}
+Single.getInstance = function (name) {
+    if (!this.instance) {
+        this.instance = new Single(name)
+    }
+    return this.instance
+}
+let one = Single.getInstance('one')
+let two = Single.getInstance('two')
+```
+:::
 
 
 
