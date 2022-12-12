@@ -31,82 +31,7 @@ export default defineConfig({
       { text: "JS", link: "/javascript/index" },
       // { text: "Home", link: "/" },
     ],
-    sidebar: [
-      {
-        text: "前端三把斧",
-        collapsible: true,
-        items: [
-          {
-            text: "HTML",
-            link: "/html/",
-          },
-          {
-            text: "CSS",
-            link: "/css/",
-          },
-          {
-            text: "JavaScript",
-            items: [
-              { text: "JavaScript Basics", link: "/javascript/" },
-              { text: "JavaScript New Features", link: "/javascript/js-feat" },
-              { text: "JavaScript Window", link: "/javascript/js-window" },
-              { text: "JavaScript Engine", link: "/javascript/js-engine" },
-              { text: "JavaScript Proto", link: "/javascript/js-proto" },
-              {
-                text: "JavaScript Communication",
-                link: "/javascript/js-dataCommunication",
-              },
-              { text: "JavaScript Data Type", link: "/javascript/js-dataType" },
-              {
-                text: "JavaScript Web Components",
-                link: "/javascript/js-webComponent",
-              },
-              {
-                text: "JavaScript Design Pattern",
-                link: "/javascript/js-design",
-              },
-            ],
-          },
-        ],
-      },
-      {
-        text: "前端框架",
-        collapsible: true,
-        items: [
-          {
-            text: "Vue2",
-            items: [],
-          },
-          {
-            text: "Vue3",
-            items: [],
-          },
-          {
-            text: "React",
-            items: [],
-          },
-        ],
-      },
-      {
-        text: "打包部署",
-        collapsible: true,
-        items: [
-          {
-            text: "Webpack",
-            items: [],
-          },
-          {
-            text: "Vite",
-            items: [],
-          },
-        ],
-      },
-      // {
-      //   text: "JAVA",
-      //   collapsible: true,
-      //   items: [],
-      // },
-    ],
+    sidebar: sidebar,
     // 社交链接
     socialLinks: [
       { icon: "github", link: "https://github.com/hljinjiang" },
@@ -143,3 +68,80 @@ export default defineConfig({
     lastUpdatedText: "最近更新时间 ",
   },
 });
+
+const sidebar = [
+  {
+    text: "前端三把斧",
+    collapsible: true,
+    items: [
+      {
+        text: "HTML",
+        link: "/html/",
+      },
+      {
+        text: "CSS",
+        link: "/css/",
+      },
+      {
+        text: "JavaScript",
+        items: [
+          { text: "JavaScript Basics", link: "/javascript/" },
+          { text: "JavaScript New Features", link: "/javascript/js-feat" },
+          { text: "JavaScript Window", link: "/javascript/js-window" },
+          { text: "JavaScript Engine", link: "/javascript/js-engine" },
+          { text: "JavaScript Proto", link: "/javascript/js-proto" },
+          {
+            text: "JavaScript Communication",
+            link: "/javascript/js-dataCommunication",
+          },
+          { text: "JavaScript Data Type", link: "/javascript/js-dataType" },
+          {
+            text: "JavaScript Web Components",
+            link: "/javascript/js-webComponent",
+          },
+          {
+            text: "JavaScript Design Pattern",
+            link: "/javascript/js-design",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    text: "前端框架",
+    collapsible: true,
+    items: [
+      {
+        text: "Vue2",
+        items: [{ text: "Vue2 Basics", link: "/vue/vue2" }],
+      },
+      {
+        text: "Vue3",
+        items: [],
+      },
+      {
+        text: "React",
+        items: [],
+      },
+    ],
+  },
+  {
+    text: "打包部署",
+    collapsible: true,
+    items: [
+      {
+        text: "Webpack",
+        items: [],
+      },
+      {
+        text: "Vite",
+        items: [],
+      },
+    ],
+  },
+  // {
+  //   text: "JAVA",
+  //   collapsible: true,
+  //   items: [],
+  // },
+];
