@@ -127,7 +127,7 @@ calculateBonus('A', 10000)
 优点：  
     1. 将代理对象与真实被调用的目标对象分离  
     2. 保护目标对象的作用  
-    3. 对目标对象的功能增强
+    3. 对目标对象的功能增强  
 缺点：   
     1. 客户端和目标对象增加一个代理对象，会造成请求处理速度变慢  
     2. 增加系统的复杂度
@@ -164,103 +164,68 @@ start.invite({ url: 'http:www.baidu.com', host: '9000' })
 ```
 :::
 
+## 观察者模式 (发布订阅)
+:::info 简介
+一对多的依赖关系，当一个对象状态发生改变时，所有依赖于它的对象都将得到通知  
+多个订阅者，只需要等发布者通知订阅者即可  
+多个订阅者订阅某事件，当某事件触发时 (发布)，订阅者 (订阅)事件  
+   
+优点：  
+    1. 观察者和被观察者是抽象耦合的  
+    2. 建立一套触发机制  
+缺点：   
+    1. 如果观察者对象有很多，都通知到会花费很多时间  
+```js
+// 主体
+class Subject {
+    observers = [];
+    state;
 
+    getState() {
+        return this.state;
+    }
+    setState(state) {
+        this.state = state;
+        this.notifyAllObservers();
+    }
+    // 放入观察者实现类
+    attach(observer) {
+        this.observers.push(observer);
+    }
+    // 通知所有观察者
+    notifyAllObservers() {
+        for (let observer in this.observers) {
+            this.observers[observer].update();
+        }
+    }
+}
+// 观察者抽象类
+class Observer {
+    constructor() {
+        if (new.target === Observer) {
+            throw new Error("Vehicle");
+        }
+    }
+    subject;
+    update() {}
+}
+// 观察者实现类
+class BinaryObserver extends Observer {
+    constructor(subject) {
+        super();
+        this.subject = subject;
+        this.subject.attach(this);
+    }
+    update() {
+        console.log("Binary String: " + subject.getState());
+    }
+}
+let subject = new Subject();
+new BinaryObserver(subject);
+// 触发订阅
+subject.setState(15);
+subject.setState(10);
+```
+:::
 
-**迭代器模式**
-
-就是迭代器，for循环，forEach，map等
-
-**发布-订阅模式（观察者模式）**
-
-一对多的依赖关系，当一个对象状态发生改变时，所有依赖于它的对象都将得到通知
-
-多个订阅者，只需要等发布者通知订阅者即可
-
-
-多个订阅者订阅点击事件，当点击事件触发时（发布），订阅者订阅到事件
-
-**装饰器模式**
-
-能够动态地增加对象的职责，称为装饰器模式
-
-比如天冷了，需要多穿外套；需要飞行，就在头上插上一支竹蜻蜓
-
-能够包装基类，**在继承基类的基础上包装成新功能，扩展功能**
-
-允许向一个现有的对象添加新功能，同时又不改变其结构，包装现有的类等，提供额外的功能
-
-
-**状态模式**
-
-定义
-
-·允许一个对象在其内部状态改变时改变它的行为
-
-对象看起来似乎修改了它的类
-
-电灯泡之类的弱光、中等光、强光状态的切换
-
-由此我产生一个由对象包装的字典状态管理，管理电灯泡的状态模式
-
-通过不同方法的触发，返回key，触发对应字典的状态管理
-
-**适配器模式**
-
-对于某个接口，不用去改变源代码，只是再进一步适配接口，如封装组件流出接口交互
-
-
-如果百度map的接口不是show，那么就需要写一个适配对象，返回百度的接口
-
-
-如上，当百度map接口为display时，只需要调用show方法，适配返回百度的display方法
-
-相当于适配包装了接口
-
-**JavaScript设计模式**
-
-**一、继承**
-
-**原型继承（类式继承）**
-
-通过实例化父类，赋值给子类的原型上，实例化子类后，实现继承
-
-
-**构造函数继承**
-
-在子类中改变父类的作用域指向，通过实例化子类，达到构造函数继承
-
-
-**原型式继承**
-
-使父类对象赋值给子类原型，返回实例化后的子类（这时就继承了父类对象在原型链上）
-
-原型式继承相当于Object.create(obj)
-
-
-**寄生式继承**
-
-在原型式继承上，对继承的对象进行了扩展
-
-
-**组合寄生式继承**
-
-复制父类的原型，使子类对象赋值给父类原型的构造函数
-
-子类对象的prototype为父类的实例（在子类赋值给父类构造函数之后）
-
-子类的原型拥有父类的方法
-
-
-**二、设计模式**
-
-工厂模式
-
-创建一个接口，让其子类自己决定实例化哪个工厂类
-
-抽离出工厂类的公共部分（方法和属性）
-
-
-安全模式类
-
-
-1
+参考链接：https://www.runoob.com/design-pattern/design-pattern-tutorial.html
