@@ -85,7 +85,7 @@ export default defineConfig({
   // 页面描述，自动注入meta
   description: "Just playing around.",
   // 页面头部，自动注入
-  head: [["link", { rel: "shortcut icon", href: "./aperture.svg" }]],
+  head: [["link", { rel: "shortcut icon", href: "../static/aperture.svg" }]],
   // 语言，<html lang="en-US">
   lang: "en-US",
   // 最后更新时间，可在themeConfig自定义配置
@@ -100,7 +100,7 @@ export default defineConfig({
   // 主题配置
   themeConfig: {
     // 左侧logo
-    logo: "./aperture.svg",
+    logo: "../static/aperture.svg",
     // 顶部导航
     nav: [
       { text: "HTML", link: "/html/" },
