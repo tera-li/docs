@@ -1,4 +1,4 @@
-# JavaScript Design Mode
+# JavaScript Design Pattern
 
 ::: info 设计模式
 设计模式是解决某个特定场景下对某种问题的解决方案  
