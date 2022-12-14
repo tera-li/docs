@@ -1,15 +1,5 @@
 /**
- * - 生成观察者更新视图
- * - 将观察者实例挂载到Dep类中
- * - 数据发生变化的时候，调用回调函数更新视图
- *
- * 属性
- * - vm: vue实例
- * - key: 观察的键
- * - cb: 回调函数
- *
- * 方法：
- * - update()
+ * Watcher 观察者
  *
  */
 
@@ -23,12 +13,12 @@ class Watcher {
     this.cb = cb;
     // 将watcher对象挂载到Dep.target
     Dep.target = this;
-    // 触发数据劫持中对应属性的get，存储watcher实例，并缓存旧值
+    // 访问缓存旧值，同时触发数据劫持中对应属性的get，在Dep中存储Watcher实例，用来后续通知数据更新
     this.oldValue = vm[key];
     // get值之后，清除Dep中的实例
     Dep.target = null;
   }
-  // 观察者中的方法 用来更新视图
+  // 通过Dep通知调用，更新视图
   update() {
     // 调用update的时候，获取新值
     let newValue = this.vm[this.key];
