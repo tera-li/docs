@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue2_Reactive</title>
+    <style>
+      * {
+        text-align: center;
+      }
+    </style>
+    <script src="./js/Dep.js"></script>
+    <script src="./js/Observer.js"></script>
+    <script src="./js/Watcher.js"></script>
+    <script src="./js/Compiler.js"></script>
+    <script src="./js/Vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{ count }}
+      <hr />
+      <button onclick="notifyMe()">add count !!!</button>
+    </div>
+    <script>
+      // 初始化数据
+      const data = {
+        count: 0,
+        arr: [1, 2, 3],
+        obj: {
+          childName: "test",
+        },
+      };
+      let vm = new Vue({
+        el: "#app",
+        data: data,
+      });
+      const notifyMe = () => {
+        data.count++;
+      };
+    </script>
+  </body>
+</html>

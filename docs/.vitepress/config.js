@@ -43,7 +43,7 @@ const sidebar = [
     items: [
       {
         text: "Vue2",
-        items: [{ text: "Vue2 Basics", link: "/vue/vue2" }],
+        items: [{ text: "Vue2 Reactive", link: "/vue/vue2-reactive" }],
       },
       {
         text: "Vue3",

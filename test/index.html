@@ -7,57 +7,7 @@
     <title>Document</title>
   </head>
   <body>
+    <script type="module" src="./js/index.js"></script>
     <button onclick="notifyMe()">Notify me!</button>
-    <script>
-      // 主体
-      class Subject {
-        observers = [];
-        state;
-
-        getState() {
-          return this.state;
-        }
-        setState(state) {
-          this.state = state;
-          this.notifyAllObservers();
-        }
-        // 放入观察者实现类
-        attach(observer) {
-          this.observers.push(observer);
-        }
-        // 通知所有观察者
-        notifyAllObservers() {
-          for (let observer in this.observers) {
-            this.observers[observer].update();
-          }
-        }
-      }
-      // 观察者抽象类
-      class Observer {
-        constructor() {
-          if (new.target === Observer) {
-            throw new Error("Vehicle");
-          }
-        }
-        subject;
-        update() {}
-      }
-      // 观察者实现类
-      class BinaryObserver extends Observer {
-        constructor(subject) {
-          super();
-          this.subject = subject;
-          this.subject.attach(this);
-        }
-        update() {
-          console.log("Binary String: " + subject.getState());
-        }
-      }
-      let subject = new Subject();
-      new BinaryObserver(subject);
-      // 触发订阅
-      subject.setState(15);
-      subject.setState(10);
-    </script>
   </body>
 </html>
