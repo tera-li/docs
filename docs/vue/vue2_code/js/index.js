@@ -1,7 +1,6 @@
-import "./Dep.js";
-import "./Watcher.js";
+import { Watcher } from "./Watcher.js";
 import { Observer } from "./Observer.js";
-
+console.log(require("./Watcher"));
 const data = {
   name: "join",
   pwd: "123456",
@@ -10,13 +9,8 @@ const data = {
     childName: "test",
   },
 };
-new Observer(data);
-// data.name = "set_join";
+new Watcher(data, "name", (newValue) => {
+  console.log("检测到数据变化 " + newValue);
+});
+data.name = "set";
 console.log(data);
-setTimeout(() => {
-  data.name = "set_join";
-  setTimeout(() => {
-    console.log(data.name);
-    data.name = "set_join";
-  }, 1000);
-}, 1000);

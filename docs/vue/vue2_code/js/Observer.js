@@ -1,4 +1,3 @@
-import { Dep } from "./Dep.js";
 /**
  * - 把data中的属性，进行数据劫持，转换成响应式数据
  * - 如果data中的某个属性也是对象，把该属性转换成响应式数据
@@ -7,9 +6,8 @@ import { Dep } from "./Dep.js";
  * 方法：
  * - walk(data)    - 遍历data属性，调用defineReactive将数据转换成getter/setter
  * - defineReactive(data, key, value)    - 将数据转换成getter/setter
- *
  */
-export class Observer {
+class Observer {
   constructor(data) {
     this.walk(data);
   }
@@ -33,8 +31,7 @@ export class Observer {
       enumerable: true,
       configurable: true,
       get() {
-        console.log(Dep.target);
-        // 在这里添加观察者对象Dep.target表示观察者
+        // 当watcher创建时，往Dep添加观察者
         Dep.target && dep.addSub(Dep.target);
         return value;
       },

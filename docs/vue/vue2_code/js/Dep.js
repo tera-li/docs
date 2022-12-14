@@ -1,14 +1,14 @@
 // 发布者
-export class Dep {
+class Dep {
   constructor() {
-    // 记录所有的订阅者
+    // 存储所有观察者
     this.subs = [];
   }
-  // 添加订阅者
+  // 添加观察者
   addSub(sub) {
     this.subs.push(sub);
   }
-  // 发布通知
+  // 对每个观察者发布通知
   notify() {
     this.subs.forEach((sub) => {
       sub.update();
