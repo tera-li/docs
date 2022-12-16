@@ -8,6 +8,8 @@
 3. View层 or Model层 的数据变化 -> 会被 Object.defineProperty 监听到变化 -> 此时 Dep 进行遍历 Watcher 进行通知 -> Watcher 内部通过 newValue和oldValue 的比较来更新 View层
 :::
 ## Dep
+:::info 发布者
+:::
 ## Observer
 ## Watcher
 ## Compiler
