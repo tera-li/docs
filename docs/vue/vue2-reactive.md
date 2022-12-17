@@ -9,6 +9,7 @@
 :::
 ## Dep
 :::info 发布者
+用于存储 Watcher观察者，以及通知 Watcher观察者 数据已变化
 :::
 ## Observer
 ## Watcher
