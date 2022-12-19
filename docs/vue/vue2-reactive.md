@@ -10,6 +10,24 @@
 ## Dep
 :::info 发布者
 用于存储 Watcher观察者，以及通知 Watcher观察者 数据已变化
+```js
+class Dep {
+    constructor() {
+        // 存储所有Watcher
+        this.subs = [];
+    }
+    // 添加Watcher
+    addSub(sub) {
+        this.subs.push(sub);
+    }
+    // 对每个Watcher发布通知
+    notify() {
+        this.subs.forEach((sub) => {
+            sub.update();
+        });
+    }
+}
+```
 :::
 ## Observer
 :::info 发布者
