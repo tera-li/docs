@@ -40,14 +40,11 @@ const sidebar = [
   {
     text: "前端框架",
     collapsible: true,
+    collapsed: true,
     items: [
       {
-        text: "Vue2",
+        text: "Vue",
         items: [{ text: "Vue2 Reactive", link: "/vue/vue2-reactive" }],
-      },
-      {
-        text: "Vue3",
-        items: [],
       },
       {
         text: "React",
@@ -61,7 +58,7 @@ const sidebar = [
     items: [
       {
         text: "Webpack",
-        items: [],
+        link: "/build/webpack",
       },
       {
         text: "Vite",

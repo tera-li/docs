@@ -6,6 +6,11 @@
 1. Vue实例创建 -> Observer 对实例中 Data 遍历使用 Object.defineProperty 进行数据劫持，并使用 getter 和 setter 获取监听
 2. Vue Template or Render 进行编译 -> 编译中遇到 Model变量 的引用 -> 创建 Watcher观察者 -> 并通过 Object.defineProperty 中的 getter 向 Dep发布者 添加观察者 -> 最后编译完成，创建 View层  
 3. View层 or Model层 的数据变化 -> 会被 Object.defineProperty 监听到变化 -> 此时 Dep 进行遍历 Watcher 进行通知 -> Watcher 内部通过 newValue和oldValue 的比较来更新 View层
+
+**响应式介绍：**  
+连接数据层和视图层，数据驱动应用，数据变化，视图更新  
+响应式 + 虚拟DOM，提升开发效率，降低开发难度  
+Object.defineProperty() 未对数组所有元素进行 数据劫持，只是重写了数组的7个方法来对数组的变更做出响应 ( pop, push, reverse, shift, sort, splice, unshift )
 :::
 ## Dep
 :::info 发布者
@@ -215,3 +220,49 @@ class Vue {
 }
 ```
 :::
+## 全部集成
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue2_Reactive</title>
+    <style>
+      * {
+        text-align: center;
+      }
+    </style>
+    <script src="./js/Dep.js"></script>
+    <script src="./js/Observer.js"></script>
+    <script src="./js/Watcher.js"></script>
+    <script src="./js/Compiler.js"></script>
+    <script src="./js/Vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{ count }}
+      <hr />
+      <button type="button" onclick="notifyMe()">add count !!!</button>
+    </div>
+    <script>
+      // 初始化数据
+      const data = {
+        count: 0,
+        arr: [1, 2, 3],
+        obj: {
+          childName: "test",
+        },
+      };
+      let vm = new Vue({
+        el: "#app",
+        data: data,
+      });
+      const notifyMe = () => {
+        data.count++;
+      };
+    </script>
+  </body>
+</html>
+```
