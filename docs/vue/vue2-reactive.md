@@ -31,7 +31,8 @@ class Dep {
 :::
 ## Observer
 :::info 观察者
-观察者用于对data对象中的数据进行数据劫持
+观察者用于对 data对象 中的数据进行数据劫持  
+并在 Compiler编译时，添加 Watcher观察者，以便后续数据变化进行通知
 ```js
 class Observer {
   constructor(data) {
