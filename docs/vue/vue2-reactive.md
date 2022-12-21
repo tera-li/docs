@@ -118,7 +118,7 @@ class Watcher {
 ## Compiler
 :::info 编译器
 编译模板，解析指令/插值表达式  
-当数据变化后，通过 Watcher观察者 重新渲染视图
+当数据变化后，通过 Watcher观察者 重新渲染视图  
 ```js
 class Compiler {
   constructor(vm) {
@@ -175,6 +175,43 @@ class Compiler {
 ```
 :::
 ## Vue
-:::info 发布者
-用于存储 Watcher观察者，以及通知 Watcher观察者 数据已变化
+:::info Vue实例对象
+入口类，调用 Observer、Compiler 进行数据劫持、模板编译  
+挂载 data数据
+```js
+class Vue {
+  constructor(options) {
+    // 将Vue实例挂载到el元素上
+    this.$el = document.querySelector(options.el);
+    // 获取绑定data数据
+    this.$data = options.data;
+    // 对data所有数据进行递归劫持
+    new Observer(this.$data);
+    // 在Vue实例对象上挂载data的所有属性
+    this._proxyData(this.$data);
+    // 传入Vue实例，编译解析模板
+    new Compiler(this);
+    console.log(this);
+  }
+  // 在Vue实例对象上挂载data的所有属性
+  _proxyData(data) {
+    // 遍历data对象的所有属性，进行数据劫持，挂载到Vue实例根上
+    Object.keys(data).forEach((key) => {
+      Object.defineProperty(this, key, {
+        enumerable: true,
+        configurable: true,
+        get() {
+          return data[key];
+        },
+        set(newValue) {
+          if (newValue === data[key]) {
+            return;
+          }
+          data[key] = newValue;
+        },
+      });
+    });
+  }
+}
+```
 :::
