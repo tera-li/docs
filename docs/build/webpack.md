@@ -1,4 +1,15 @@
 # Webpack
+:::info directory
+```
+├─ dist               # 打包dist
+├─ public             # 静态公共资源
+│  ├─ index.html      # HTML
+├─ src                # 源文件
+│  ├─ index.js        # index.js     入口
+│  ├─ two-entry.js    # two-entry.js 入口
+│  ├─ vue_main.js     # vue_main.js  入口
+```
+:::
 :::info package.json
 ```json
 {
