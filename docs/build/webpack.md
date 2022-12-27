@@ -49,16 +49,19 @@ Plugin: 用于资源加载以外的其他打包/压缩/文件处理等功能
 ## Directory
 :::info directory
 ```
-├─ dist               # 打包dist
-├─ public             # 静态公共资源
-│  ├─ index.html      # HTML
-├─ loaders            # 自定义loader
-├─ src                # 源文件
-│  ├─ custom.custom   # 未知文件，通过自定义loader进行解析
-│  ├─ index.js        # index.js     入口
-│  ├─ two-entry.js    # two-entry.js 入口
-│  ├─ vue_main.js     # vue_main.js  入口
-├─ webpack.config.js  # webpack config
+├─ dist                 # 打包dist
+├─ public               # 静态公共资源
+│  ├─ index.html        # HTML
+├─ loaders              # 自定义loader
+│  ├─ custom-loader.js  # custom-loader.js
+├─ plugins              # 自定义plugin
+│  ├─ custom-plugin.js  # custom-plugin.js
+├─ src                  # 源文件
+│  ├─ custom.custom     # 未知文件，通过自定义loader进行解析
+│  ├─ index.js          # index.js     入口
+│  ├─ two-entry.js      # two-entry.js 入口
+│  ├─ vue_main.js       # vue_main.js  入口
+├─ webpack.config.js    # webpack config
 ```
 :::
 ## Package.json
