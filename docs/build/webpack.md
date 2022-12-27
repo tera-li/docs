@@ -1,7 +1,7 @@
 # Webpack
 ## Webpack 基本原理
 
-Webpack 会找到其中 entry 指定的入口文件作为打包入口  
+Webpack 会找到 entry 指定的入口文件作为打包入口  
 Webpack 只能理解 JavaScript 和 JSON 文件  
 - 根据入口文件代码中的 import 或 require 的语句解析，推断出来模块依赖，并解析每个模块的资源依赖，形成依赖树
 - 递归依赖树，找到每个节点对应的资源文件，然后根据每个模块的 rules 匹配文件并执行对应的loaders，将进行资源加载转换，把最后的转换结果进行打包
@@ -74,7 +74,6 @@ const htmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader/dist/index");
 
 module.exports = {
-  // build 的环境变量
   mode: process.env.NODE_ENV,
   // 入口，指示 webpack 应该使用哪个模块，来作为构建其内部 依赖图(dependency graph) 的开始
   entry: {
@@ -109,7 +108,7 @@ module.exports = {
       // 解析.js
       {
         test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
@@ -138,9 +137,12 @@ module.exports = {
   ],
   // 配置模块如何解析
   resolve: {
+    // 别名
     alias: {
       "@": "/src",
     },
+    // 尝试按顺序解析这些后缀名，引入文件就可以不带后缀
+    extensions: [".js", ".json", ".vue"],
   },
   // 开发工具
   devtool: process.env.NODE_ENV === "development" ? "source-map" : false,
