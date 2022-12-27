@@ -13,6 +13,33 @@ Loader: 用于资源加载并处理各种语言的转换/编译（例如：将�
 - 解析原始文件 -> 匹配rule,loader 编译,代码转换 -> loader 将处理完成后的结果, 交给 webpack进行打包 -> 输出最终文件 bundle.js
 
 ![loaders.png](./assets/loaders.png)
+:::info 自定义loader
+```js
+// webpack.config.js 解析 .custom 自定义文件
+{
+  test: /\.custom$/,
+  use: ["./loaders/custom-loader.js"],
+},
+
+// custom.custom file
+(()=>{
+    const p = window.document.createElement("p");
+    p.innerHTML = 'source';
+    window.document.getElementsByTagName("body")[0].append(p);
+})()
+
+// custom-loader.js
+module.exports = (source) => {
+  // 返回 loader 处理后结果，return buffer or string
+  return source.replace("source", "loader处理后的结果");
+};
+
+// output
+<body>
+  <p>loader处理后的结果</p>
+</body>
+```
+:::
 
 ## Plugin
 Plugin: 用于资源加载以外的其他打包/压缩/文件处理等功能
@@ -25,7 +52,9 @@ Plugin: 用于资源加载以外的其他打包/压缩/文件处理等功能
 ├─ dist               # 打包dist
 ├─ public             # 静态公共资源
 │  ├─ index.html      # HTML
+├─ loaders            # 自定义loader
 ├─ src                # 源文件
+│  ├─ custom.custom   # 未知文件，通过自定义loader进行解析
 │  ├─ index.js        # index.js     入口
 │  ├─ two-entry.js    # two-entry.js 入口
 │  ├─ vue_main.js     # vue_main.js  入口
@@ -123,6 +152,11 @@ module.exports = {
       {
         test: /\.vue$/,
         use: ["vue-loader"],
+      },
+      // 解析 .custom 自定义文件
+      {
+        test: /\.custom$/,
+        use: ["./loaders/custom-loader.js"],
       },
     ],
   },
