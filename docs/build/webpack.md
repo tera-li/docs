@@ -1,4 +1,25 @@
 # Webpack
+## Webpack 基本原理
+
+Webpack 会找到其中 entry 指定的入口文件作为打包入口  
+Webpack 只能理解 JavaScript 和 JSON 文件  
+- 根据入口文件代码中的 import 或 require 的语句解析，推断出来模块依赖，并解析每个模块的资源依赖，形成依赖树
+- 递归依赖树，找到每个节点对应的资源文件，然后根据每个模块的 rules 匹配文件并执行对应的loaders，将进行资源加载转换，把最后的转换结果进行打包
+
+![webpack.png](./assets/webpack_build.png)
+
+## Loader
+Loader: 用于资源加载并处理各种语言的转换/编译（例如：将不同语言转换为 JavaScript）
+- 解析原始文件 -> 匹配rule,loader 编译,代码转换 -> loader 将处理完成后的结果, 交给 webpack进行打包 -> 输出最终文件 bundle.js
+
+![loaders.png](./assets/loaders.png)
+
+## Plugin
+Plugin: 用于资源加载以外的其他打包/压缩/文件处理等功能
+
+![plugins.png](./assets/plugins.png)
+
+## Directory
 :::info directory
 ```
 ├─ dist               # 打包dist
@@ -8,8 +29,10 @@
 │  ├─ index.js        # index.js     入口
 │  ├─ two-entry.js    # two-entry.js 入口
 │  ├─ vue_main.js     # vue_main.js  入口
+├─ webpack.config.js  # webpack config
 ```
 :::
+## Package.json
 :::info package.json
 ```json
 {
@@ -42,6 +65,7 @@
 }
 ```
 :::
+## Webpack.config.js
 :::info webpack.config.js
 ```js
 // 配置index.html页面的入口，自动在内存中根据指定页面生成一个内存页面
@@ -71,7 +95,7 @@ module.exports = {
     rules: [
       // webpack 只能理解 JavaScript 和 JSON 文件
       // loader将处理import,require等其它的类型文件，比如对.css,Image,.ts转换成 Webpack能够识别的方式
-      // 原始文件 -> loader 编译,代码转换 -> loader 处理完成后的结果,交给 webpack进行打包 -> 输出最终文件
+      // 原始文件 -> 匹配rule,loader 编译,代码转换 -> loader 处理完成后的结果,交给 webpack进行打包 -> 输出最终文件 bundle.js
       {
         test: /\.css$/,
         // 从后向前处理，处理完成后交由 webpack打包合并到 bundle.js中

@@ -62,7 +62,7 @@ const sidebar = [
       },
       {
         text: "Vite",
-        items: [],
+        link: "/build/vite",
       },
     ],
   },
