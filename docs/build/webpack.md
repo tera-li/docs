@@ -13,6 +13,7 @@ Loader: 用于资源加载并处理各种语言的转换/编译（例如：将�
 - 解析原始文件 -> 匹配rule,loader 编译,代码转换 -> loader 将处理完成后的结果, 交给 webpack进行打包 -> 输出最终文件 bundle.js
 
 ![loaders.png](./assets/loaders.png)
+
 :::info 自定义loader
 ```js
 // webpack.config.js 解析 .custom 自定义文件
@@ -43,9 +44,91 @@ module.exports = (source) => {
 
 ## Plugin
 Plugin: 用于资源加载以外的其他打包/压缩/文件处理等功能
+- plugin通过 webpack 底层的特性来处理相应的钩子，在钩子回调中处理相关事件
 
 ![plugins.png](./assets/plugins.png)
 
+:::info 自定义plugin
+```js
+// webpack.config.js  加载CustomPlugin插件
+{
+  plugins: [
+    // 自定义plugin，压缩代码
+    new CustomPlugin(),
+  ]
+}
+
+// custom-plugin.js
+var JSZip = require("jszip");
+var path = require("path");
+var fs = require("fs");
+
+class CustomPlugin {
+  zip = new JSZip();
+  constructor(props = {}) {
+    this.props = {
+      dir: "./dist",
+      zipName: "dist.zip",
+      ...props,
+    };
+  }
+  apply(compiler) {
+    // 钩子函数执行回调
+    compiler.hooks.afterEmit.tap("CustomPlugin", (compilation) => {
+      if (fs.existsSync(path.resolve(this.props.dir))) {
+        this.toZip();
+      }
+    });
+  }
+  readDir(obj, nowPath) {
+    // 读取目录中的所有文件及文件夹（同步操作）
+    let files = fs.readdirSync(nowPath);
+    files.forEach((fileName, index) => {
+      let fillPath = nowPath + "/" + fileName;
+      // 获取一个文件的属性
+      let file = fs.statSync(fillPath);
+      // 如果是目录的话，继续查询
+      if (file.isDirectory()) {
+        // 压缩对象中生成该目录
+        let dirList = this.zip.folder(fileName);
+        // 重新检索目录文件
+        this.readDir(dirList, fillPath);
+      } else {
+        // 压缩目录添加文件
+        obj.file(fileName, fs.readFileSync(fillPath));
+      }
+    });
+  }
+
+  toZip() {
+    this.readDir(this.zip, path.resolve(this.props.dir));
+    // 压缩
+    this.zip
+      .generateAsync({
+        // 压缩类型选择nodebuffer，在回调函数中会返回zip压缩包的Buffer的值，再利用fs保存至本地
+        type: "nodebuffer",
+        // 压缩算法
+        compression: "DEFLATE",
+        compressionOptions: {
+          level: 9,
+        },
+      })
+      .then((content) => {
+        // 将buffer写入.zip
+        fs.writeFile(this.props.zipName, content, (err) => {
+          if (!err) {
+            console.log(this.props.zipName + "压缩成功");
+          } else {
+            console.log(this.props.zipName + "压缩失败");
+          }
+        });
+      });
+  }
+}
+module.exports = CustomPlugin;
+
+```
+:::
 ## Directory
 :::info directory
 ```
