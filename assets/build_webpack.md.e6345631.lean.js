@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,a as l}from"./app.d36a8f90.js";const m=JSON.parse('{"title":"Webpack","description":"","frontmatter":{},"headers":[],"relativePath":"build/webpack.md","lastUpdated":1671891094000}'),p={name:"build/webpack.md"},e=l("",5),o=[e];function F(r,c,t,i,y,u){return a(),n("div",null,o)}const q=s(p,[["render",F]]);export{m as __pageData,q as default};
