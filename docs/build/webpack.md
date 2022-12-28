@@ -45,6 +45,7 @@ module.exports = (source) => {
 ## Plugin
 Plugin: 用于资源加载以外的其他打包/压缩/文件处理等功能
 - plugin通过 webpack 底层的特性来处理相应的钩子，在钩子回调中处理相关任务
+- apply 方法有一个参数 compiler，通过 compiler 可以给 webpack 编译打包过程中添加钩子
 
 ![plugins.png](./assets/plugins.png)
 
@@ -131,7 +132,7 @@ module.exports = CustomPlugin;
 :::
 ## Directory
 :::info directory
-```
+```js
 ├─ dist                 # 打包dist
 ├─ public               # 静态公共资源
 │  ├─ index.html        # HTML
