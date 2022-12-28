@@ -44,7 +44,7 @@ module.exports = (source) => {
 
 ## Plugin
 Plugin: 用于资源加载以外的其他打包/压缩/文件处理等功能
-- plugin通过 webpack 底层的特性来处理相应的钩子，在钩子回调中处理相关事件
+- plugin通过 webpack 底层的特性来处理相应的钩子，在钩子回调中处理相关任务
 
 ![plugins.png](./assets/plugins.png)
 
@@ -156,16 +156,18 @@ module.exports = CustomPlugin;
   "description": "webpack-config",
   "main": "/src/index.js",
   "scripts": {
-    "dev": "webpack-dev-server --progress --mode=development --node-env development",
+    "dev": "webpack serve --mode=development --node-env development --progress",
     "build:prod": "webpack --mode=production --node-env production --progress",
     "build:dev": "webpack --mode=development --node-env development --progress"
   },
+  "homepage": "https://github.com/hljinjiang/webpack-config#readme",
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^9.1.0",
     "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",
+    "jszip": "^3.10.1",
     "style-loader": "^3.3.1",
     "ts-loader": "^9.4.2",
     "typescript": "^4.9.4",
@@ -187,6 +189,7 @@ module.exports = CustomPlugin;
 // 自动把打包好的 bundle 追加到html中
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const { VueLoaderPlugin } = require("vue-loader/dist/index");
+const CustomPlugin = require("./plugins/custom-plugin");
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -254,6 +257,8 @@ module.exports = {
       filename: "index.html",
     }),
     new VueLoaderPlugin(),
+    // 自定义plugin，压缩代码
+    new CustomPlugin(),
   ],
   // 配置模块如何解析
   resolve: {
