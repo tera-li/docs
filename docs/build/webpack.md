@@ -1,5 +1,4 @@
 # Webpack
-## Webpack 基本原理
 
 Webpack 会找到 entry 指定的入口文件作为打包入口  
 Webpack 只能理解 JavaScript 和 JSON 文件  
