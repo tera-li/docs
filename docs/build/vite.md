@@ -47,18 +47,31 @@ import App from './App.vue';
 :::
 
 ## rollup
-使用 rollup 进行打包，通过build.rollupOptions 配置入口及相关打包配置  
+- vite 使用 rollup 进行打包，通过build.rollupOptions 配置入口及相关打包配置  
+- rollup 以 ESM 标准为目标的构建工具  
+- rollup 具有 tree-shaking，对所用的代码进行静态分析，并将未实际用到的代码剔除  
+- Vite plugin 基于 rollup 插件
 
-## Plugin
-Plugin: 用于资源加载以外的其他打包/压缩/文件处理等功能
-- plugin通过 webpack 底层的特性来处理相应的钩子，在钩子回调中处理相关任务
-- apply 方法有一个参数 compiler，通过 compiler 可以给 webpack 编译打包过程中添加钩子
-
-
-:::info 自定义plugin
 ```js
+{
+    // 配置自定义底层的 Rollup 打包配置
+    rollupOptions: {
+      // 打包时跳过指定modules，引入的外部 externals
+      external: ["vue"],
+      // build 入口配置
+      input: {
+        //可以配置多个，表示多入口
+        index: path.resolve(__dirname, "index.html"),
+        project: path.resolve(__dirname, "custom.html"),
+      },
+      output: {
+        // chunkFileNames:'[name]-[hash].js',
+        // entryFileNames:"[name]-[hash].js",
+      },
+    },
+}
 ```
-:::
+
 ## Directory
 :::info directory
 ```js
