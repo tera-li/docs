@@ -77,17 +77,16 @@ import App from './App.vue';
 ```js
 ├─ dist                 # 打包dist
 ├─ public               # 静态公共资源
-│  ├─ index.html        # HTML
-├─ loaders              # 自定义loader
-│  ├─ custom-loader.js  # custom-loader.js
+│  ├─ vite.svg          # HTML
 ├─ plugins              # 自定义plugin
 │  ├─ custom-plugin.js  # custom-plugin.js
 ├─ src                  # 源文件
-│  ├─ custom.custom     # 未知文件，通过自定义loader进行解析
-│  ├─ index.js          # index.js     入口
-│  ├─ two-entry.js      # two-entry.js 入口
-│  ├─ vue_main.js       # vue_main.js  入口
-├─ webpack.config.js    # webpack config
+│  ├─ custom.custom     # 未知文件，通过自定义plugin进行解析
+│  ├─ main.ts           # main.ts
+│  ├─ custom-main.ts    # custom-main.ts
+├─ index.html           # index    入口
+├─ custom.html          # custom   入口
+├─ vite.config.ts       # vite config
 ```
 :::
 ## Package.json
