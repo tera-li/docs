@@ -89,13 +89,38 @@ import App from './App.vue';
 ├─ vite.config.ts       # vite config
 ```
 :::
+
+## Plugin
+:::info custom-plugin.js
+```js
+const fileRegex = /\.(custom)$/;
+
+export default () => {
+  return {
+    name: "transform-file",
+    // 该钩子触发时进行转换
+    transform(source, id) {
+      // 匹配文件后缀
+      if (fileRegex.test(id)) {
+        // source 源文件输出
+        return {
+          code: source.replace("source", "plugin处理后的结果"),
+          map: null, // 如果可行将提供 source map
+        };
+      }
+    },
+  };
+};
+```
+:::
+
 ## Package.json
 :::info package.json
 ```json
 {
   "name": "vite_config",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite --mode development",
@@ -119,6 +144,7 @@ import App from './App.vue';
 }
 ```
 :::
+
 ## Vite.config.ts
 :::info vite.config.ts
 ```js
