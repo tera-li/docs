@@ -163,6 +163,7 @@ p {
     letter-spacing: 设置 字与字 的距离
     word-spacing: 设置 单词段字之间 的距离
     word-break: 设置单词内断行方式 (break-all 任意字符间断行 | break-word 单词间换行)
+    white-space: 设置如何处理元素中的空白
     text-indent: 设置首行缩进长度
     text-decoration: 设置文本的修饰
     text-decoration-color: 设置文本修饰线的颜色
