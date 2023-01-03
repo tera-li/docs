@@ -66,6 +66,20 @@ const sidebar = [
       },
     ],
   },
+  {
+    text: "性能优化",
+    collapsible: true,
+    items: [
+      {
+        text: "Http",
+        link: "/performance/http-performance",
+      },
+      {
+        text: "Build",
+        link: "/performance/build-performance",
+      },
+    ],
+  },
   // {
   //   text: "JAVA",
   //   collapsible: true,
