@@ -72,7 +72,10 @@ const sidebar = [
     items: [
       {
         text: "Http",
-        link: "/performance/http-performance",
+        items: [
+          { text: "Http Basics", link: "/performance/http-basics" },
+          { text: "Http Performance", link: "/performance/http-performance" },
+        ],
       },
       {
         text: "Build",
