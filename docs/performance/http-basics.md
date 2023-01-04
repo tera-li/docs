@@ -1,4 +1,12 @@
 # Http Basics
+## 网络模型
+:::info 简介
+首先我们来看两张图  
+![](./assets/protocol-all.png)  
+![](./assets/protocol.png)  
+![](./assets/Aspose.Words.417e3b11-1720-4c92-af80-ff130734d73b.010.jpeg)
+
+:::
 ## HTTP
 :::info 简介
 **超⽂本传输协议**(HyperText Transfer Protocol)  
@@ -168,7 +176,6 @@ a. URI**能唯⼀标识某⼀互联⽹资源** ， URL**在此基础上表示资
 
 \1. 通过解析 IP地址，得知 MAC地址，进⾏路由选择传输数据
 
-![](./assets/Aspose.Words.417e3b11-1720-4c92-af80-ff130734d73b.010.jpeg)
 
 ![](./assets/Aspose.Words.417e3b11-1720-4c92-af80-ff130734d73b.011.jpeg)
 
