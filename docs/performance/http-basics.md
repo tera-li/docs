@@ -1,13 +1,35 @@
 # Http Basics
 ## 网络模型
 :::info 简介
-首先我们来看两张图  
+首先我们来看几张图，了解下网络的模型结构  
+国际标准 OSI模型 有7层结构，广泛应用的 TCP/IP模型 可以分为5层/4层结构  
+
 ![](./assets/protocol-all.png)  
 ![](./assets/protocol.png)  
 ![](./assets/Aspose.Words.417e3b11-1720-4c92-af80-ff130734d73b.010.jpeg)
 
+这里主要分析 TCP/IP模型 4层结构
 :::
-## HTTP
+
+## URI
+:::info 简介
+URI（**统一资源标识符**）用于标识某一互联网资源名称的字符串  
+URI是一种抽象宽泛的定义。即，不管用什么方法表示，只要能唯一标记某个资源，它就叫URI  
+通常已http:、ftp:、mailto:、file:，和协议对应的内容所构成  
+
+- URL（**统一资源定位符**）用于标识某一互联网资源名称的字符串，URL是URI的一个子集  
+  - 比如：http://www.aspxfans.com:8080/news/day01/index.asp?boardID=5&pwd=24618&page=1#name  
+    - 协议部分 http:            (浏览器协议)
+    - 域名部分 www.aspxfans.com (通过DNS转换为IP，识别主机服务器)
+    - 端口部分 :8080            (识别主机的对应进程)
+    - 目录部分 /news/day01/     (资源路径)
+    - 文件部分 index.asp        (查找的对应文件)
+    - 参数部分 boardID=5&pwd=24618&page=1 (参数)
+    - 锚定部分 name             (#指定了网页中的一个位置)
+:::
+参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/Common_questions/What_is_a_URL
+
+## 应用层-HTTP
 :::info 简介
 **超⽂本传输协议**(HyperText Transfer Protocol)  
 每个 HTTP请求都是⽆状态的，可以把 HTTP的⼀次请求当作⼀次事务  
