@@ -31,7 +31,7 @@ URI是一种抽象宽泛的定义。即，不管用什么方法表示，只要�
 
 ## 应用层-HTTP
 :::info 简介
-**超⽂本传输协议**(HyperText Transfer Protocol)  
+HTTP（**超⽂本传输协议 HyperText Transfer Protocol** ）  
 每个 HTTP请求都是⽆状态的，可以把 HTTP的⼀次请求当作⼀次事务  
 HTTP是应⽤层通信协议，旨在在联⽹设备之间传输信息，HTTP标准化了客户端和服务器之间的通信⽅式  
 HTTPS：在 HTTP基础上，增加 **传输加密** 和 **身份认证** 保证传输过程的安全性
@@ -161,6 +161,70 @@ HTTP传输分为 **报文首部** 和 **报文主体**
 :::
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods
 
+## 传输层-TCP
+:::info 简介
+TCP（**传输控制协议 Transmission Control Protocol**）  
+是一个面向连接的、可靠的、基于字节流的传输层协议  
+- 面向连接
+  - 客户端和服务器的连接，互相通信之前，TCP 需要三次握手建立连接，四次握手终止连接  
+- 可靠的
+  - 保证连接的可靠，数据校验，数据的可控制（重传策略）
+
+UDP（**用户数据报协议**）  
+无需建立连接就可以发送封装的 IP 数据包的方法，音频和多媒体应用，UDP是最好的选择  
+如果有一个消息丢失，在稍后的瞬间之后另一个新的消息就会替换它  
+- 无连接
+  - 传输数据之前源端和终端不建立连接，不需要维护连接状态
+- 不可控（不可靠）
+  - 无法保障数据完整性
+:::
+
+## TCP 握手
+### 建立连接
+TCP 作为传输层协议，使用三次握手协议建立连接，该方法可以防止产生错误的连接  
+TCP三次握手的过程如下：
+1. 连接开始：客户端发送SYN（SEQ=x）报文给服务器端，进入SYN_SEND状态。
+1. 请求确认：服务器端收到SYN报文，回应一个SYN （SEQ=y）ACK（ACK=x+1）报文，进入SYN_RECV状态。
+1. 连接确认：客户端检查ACK === x+1，随之发送ACK（ACK=y+1）报⽂给服务端，服务端检查ACK === y+1，
+           如果正确则建⽴连接，进入Established状态。
+
+三次握手完成，TCP客户端和服务器端成功地建立连接，可以开始传输数据了。
+```js
+SYN -> 连接请求
+ACK -> 应答信号 / 确认标志
+SYN_SEND -> 发送完一个连接请求后等待一个匹配的连接请求
+SYN_RECV -> 发送连接请求并且接收到匹配的连接请求以后等待连接请求确认
+Established -> 表示一个建立的连接
+
+client ->                  client发送 SYN（SEQ=x）请求建立连接                 -> server
+server -> 收到client请求应答, server回应 SYN （SEQ=y）- ACK（ACK=x+1）请求建立连接  -> client
+client -> 检测server的数据 ACK === x+1, 正确则发送 ACK（ACK=y+1）, 服务器检测client的数据 ACK === y+1, 正确则建立连接 -> server
+```
+![](./assets/Aspose.Words.3443b485-1533-46e9-8ef5-fddf78953ed1.001.png)
+
+### 连接终止
+TCP 连接的终止一个连接要经过四次握手  
+1. Client发送一个FIN并包含一个随机的seq=a，主动关闭Client到Server的数据传送，Client进入FIN_WAIT_1状态
+1. Server收到FIN后，发送一个ACK并包含一个seq=a+1给Client,Server进入CLOSE_WAIT状态。
+1. Server发送一个FIN并包含一个随机的seq=b和一个ACK=a+1,用来关闭Server到Client的数据传输，Server进入LAST_ACK状态。
+1. Client收到FIN后，Client进入TIME_WAIT状态，接着发送一个ACK并包含一个seq=b+1给Server,Server收到ACK包后进入CLOSED状态，完成四次挥手
+
+```js
+FIN -> 连接终止
+seq -> 随机序列
+ACK -> 应答信号 / 确认标志
+FIN_WAIT_1 -> 等待远端TCP 的连接终止请求
+CLOSE_WAIT -> 等待本地连接终止请求
+LAST_ACK -> 等待先前发送给远端TCP 的连接终止请求的确认
+TIME_WAIT -> 等待足够的时间过去以确保远端TCP 接收到它的连接终止请求的确认
+CLOSED -> 关闭连接状态
+
+client -> client发送 FIN（seq=a） -> server
+server -> 收到client的 FIN，发送 ACK（seq=a+1） -> client
+server -> server发送 FIN（seq=b）- ACK（ACK=a+1） -> client
+client -> 收到server的 FIN，client进入等待连接终止，并发送 ACK（seq=b+1），server收到 ACK 后进入关闭状态 -> server
+```
+![](./assets/Aspose.Words.3443b485-1533-46e9-8ef5-fddf78953ed1.002.png)
 
 
 
@@ -259,12 +323,7 @@ i. 在客户端和服务器之间进⾏中转，并保持双⽅通信连接的�
 1. RST: reset表示连接重置。
 1. URG: urgent紧急指针字段值有效。
 1. SEQ：随机序列号
-3. 三次握⼿
-1. 连接开始：客户端发送SYN（SEQ=a）报⽂给服务器端，进⼊SYN\_SEND状态。
-1. 请求确认：服务器端收到SYN报⽂，回复⼀个SYN （SEQ=b）和ACK（ACK=a+1）报⽂，x包为客户端发来 的SYN进⼊S[YN_RECV状态。](https://baike.baidu.com/item/SYN_RECV)
-1. 连接确认：客户端检查ACK === a+1，随之发送ACK（ACK=b+1）报⽂给服务端，服务端检查ACK === b+1，如果正确则建⽴连接，进⼊Established状态。client和server之间开始传输数据。
 
-![](./assets/Aspose.Words.3443b485-1533-46e9-8ef5-fddf78953ed1.001.png)
 
 4. 四次挥⼿
 1. Client发送⼀个FIN并包含⼀个随机的seq=a，主动关闭Client到Server的数据传送，Client进⼊FIN\_WAIT\_1状
@@ -275,7 +334,6 @@ i. 在客户端和服务器之间进⾏中转，并保持双⽅通信连接的�
 2. Server发送⼀个FIN并包含⼀个随机的seq=b和⼀个ACK=a+1,⽤来关闭Server到Client的数据传输，Server进 ⼊LAST\_ACK状态。
 2. Client收到FIN后，Client进⼊TIME\_WAIT状态，接着发送⼀个ACK并包含⼀个seq=b+1给Server,Servr收到 ACK包后进⼊CLOSED状态，完成四次挥⼿
 
-![](./assets/Aspose.Words.3443b485-1533-46e9-8ef5-fddf78953ed1.002.png)
 
 **IP：互联⽹协议(⽹络之间互连协议)，是TCP/IP中的⽹络层协议核⼼**
 
