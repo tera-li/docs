@@ -1,19 +1,42 @@
 # Http Basics
 ## 网络模型
 :::info 简介
-首先我们来看两张图  
+首先我们来看几张图，了解下网络的模型结构  
+国际标准 OSI模型 有7层结构，广泛应用的 TCP/IP模型 可以分为5层/4层结构  
+
 ![](./assets/protocol-all.png)  
 ![](./assets/protocol.png)  
 ![](./assets/Aspose.Words.417e3b11-1720-4c92-af80-ff130734d73b.010.jpeg)
 
+这里主要分析 TCP/IP模型 4层结构
 :::
-## HTTP
+
+## URI
 :::info 简介
-**超⽂本传输协议**(HyperText Transfer Protocol)  
+URI（**统一资源标识符**）用于标识某一互联网资源名称的字符串  
+URI是一种抽象宽泛的定义。即，不管用什么方法表示，只要能唯一标记某个资源，它就叫URI  
+通常已http:、ftp:、mailto:、file:，和协议对应的内容所构成  
+
+- URL（**统一资源定位符**）用于标识某一互联网资源名称的字符串，URL是URI的一个子集  
+  - 比如：http://www.aspxfans.com:8080/news/day01/index.asp?boardID=5&pwd=24618&page=1#name  
+    - 协议部分 http:            (浏览器协议)
+    - 域名部分 www.aspxfans.com (通过DNS转换为IP，识别主机服务器)
+    - 端口部分 :8080            (识别主机的对应进程)
+    - 目录部分 /news/day01/     (资源路径)
+    - 文件部分 index.asp        (查找的对应文件)
+    - 参数部分 boardID=5&pwd=24618&page=1 (参数)
+    - 锚定部分 name             (#指定了网页中的一个位置)
+:::
+参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/Common_questions/What_is_a_URL
+
+## 应用层-HTTP
+:::info 简介
+HTTP（**超⽂本传输协议 HyperText Transfer Protocol** ）  
 每个 HTTP请求都是⽆状态的，可以把 HTTP的⼀次请求当作⼀次事务  
 HTTP是应⽤层通信协议，旨在在联⽹设备之间传输信息，HTTP标准化了客户端和服务器之间的通信⽅式  
 HTTPS：在 HTTP基础上，增加 **传输加密** 和 **身份认证** 保证传输过程的安全性
 :::
+
 :::info HTTP结构
 ![](./assets/Aspose.Words.417e3b11-1720-4c92-af80-ff130734d73b.001.png)
 
@@ -119,32 +142,95 @@ HTTP传输分为 **报文首部** 和 **报文主体**
 
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status
 
+## HTTP方法
+:::info 简介
+根据 HTTP 标准，HTTP 请求可以使用多种请求方法  
+|   请求方法    |   说明   |
+|  ----  | ----  |
+|  GET  |  请求指定的页面信息，并返回实体主体
+|  HEAD  |  类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头
+|  POST  |  向指定资源提交数据进行处理请求（例如提交表单或者上传文件），数据被包含在请求体中。POST 请求可能会导致新的资源的建立和/或已有资源的修改
+|  PUT   |  从客户端向服务器传送的数据取代指定的文档的内容
+|  DELETE  |  请求服务器删除指定的页面
+|  CONNECT  |  HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器
+|  OPTIONS  |  用于描述目标资源的通信选项
+|  TRACE  |  回显服务器收到的请求，主要用于测试或诊断
+|  PATCH  |  是对 PUT 方法的补充，用来对已知资源进行局部更新
 
-a. 获取服务器资源， Web建⽴在 http协议上通信
+![](./assets/clipboard.png)
+:::
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods
 
-3. 服务端（ server）
+## 传输层-TCP
+:::info 简介
+TCP（**传输控制协议 Transmission Control Protocol**）  
+是一个面向连接的、可靠的、基于字节流的传输层协议  
+- 面向连接
+  - 客户端和服务器的连接，互相通信之前，TCP 需要三次握手建立连接，四次握手终止连接  
+- 可靠的
+  - 保证连接的可靠，数据校验，数据的可控制（重传策略）
 
-a. 接收请求，响应请求
+UDP（**用户数据报协议**）  
+无需建立连接就可以发送封装的 IP 数据包的方法，音频和多媒体应用，UDP是最好的选择  
+如果有一个消息丢失，在稍后的瞬间之后另一个新的消息就会替换它  
+- 无连接
+  - 传输数据之前源端和终端不建立连接，不需要维护连接状态
+- 不可控（不可靠）
+  - 无法保障数据完整性
+:::
 
-4. URI（ **统⼀资源标识符** ）
-1. URI协议指访问资源所使⽤的的协议类型名称，能 **唯⼀标识某⼀互联⽹资源**
-1. <https://blog.csdn.net/qq_32595453/article/details/79516787>
-1. 我们可以这样解释它：
-1. ①这是⼀个可以通过 https协议访问的资源，
-1. ②位于主机 blog.csdn.net上，
-3. ③通过 “/qq\_32595453/article/details/79516787”可以对该资源进⾏唯⼀标识（注意，这个不⼀定是完 整的路径）
+## TCP 握手
+### 建立连接
+TCP 作为传输层协议，使用三次握手协议建立连接，该方法可以防止产生错误的连接  
+TCP三次握手的过程如下：
+1. 连接开始：客户端发送SYN（SEQ=x）报文给服务器端，进入SYN_SEND状态。
+1. 请求确认：服务器端收到SYN报文，回应一个SYN （SEQ=y）ACK（ACK=x+1）报文，进入SYN_RECV状态。
+1. 连接确认：客户端检查ACK === x+1，随之发送ACK（ACK=y+1）报⽂给服务端，服务端检查ACK === y+1，
+           如果正确则建⽴连接，进入Established状态。
 
-注意：以上三点只不过是对实例的解释，以上三点并不是URI的必要条件，URI只是⼀种概念，怎样实 现⽆所谓，只要它唯⼀标识⼀个资源就可以了。
+三次握手完成，TCP客户端和服务器端成功地建立连接，可以开始传输数据了。
+```js
+SYN -> 连接请求
+ACK -> 应答信号 / 确认标志
+SYN_SEND -> 发送完一个连接请求后等待一个匹配的连接请求
+SYN_RECV -> 发送连接请求并且接收到匹配的连接请求以后等待连接请求确认
+Established -> 表示一个建立的连接
 
-![](./assets/Aspose.Words.417e3b11-1720-4c92-af80-ff130734d73b.006.png)
+client ->                  client发送 SYN（SEQ=x）请求建立连接                 -> server
+server -> 收到client请求应答, server回应 SYN （SEQ=y）- ACK（ACK=x+1）请求建立连接  -> client
+client -> 检测server的数据 ACK === x+1, 正确则发送 ACK（ACK=y+1）, 服务器检测client的数据 ACK === y+1, 正确则建立连接 -> server
+```
+![](./assets/Aspose.Words.3443b485-1533-46e9-8ef5-fddf78953ed1.001.png)
 
-5. URL（ **统⼀资源定位符** ）
+### 连接终止
+TCP 连接的终止一个连接要经过四次握手  
+1. Client发送一个FIN并包含一个随机的seq=a，主动关闭Client到Server的数据传送，Client进入FIN_WAIT_1状态
+1. Server收到FIN后，发送一个ACK并包含一个seq=a+1给Client,Server进入CLOSE_WAIT状态。
+1. Server发送一个FIN并包含一个随机的seq=b和一个ACK=a+1,用来关闭Server到Client的数据传输，Server进入LAST_ACK状态。
+1. Client收到FIN后，Client进入TIME_WAIT状态，接着发送一个ACK并包含一个seq=b+1给Server,Server收到ACK包后进入CLOSED状态，完成四次挥手
 
-a. URI**能唯⼀标识某⼀互联⽹资源** ， URL**在此基础上表示资源的位置** ， URL是 URI的⼦集
+```js
+FIN -> 连接终止
+seq -> 随机序列
+ACK -> 应答信号 / 确认标志
+FIN_WAIT_1 -> 等待远端TCP 的连接终止请求
+CLOSE_WAIT -> 等待本地连接终止请求
+LAST_ACK -> 等待先前发送给远端TCP 的连接终止请求的确认
+TIME_WAIT -> 等待足够的时间过去以确保远端TCP 接收到它的连接终止请求的确认
+CLOSED -> 关闭连接状态
 
-6. DNS（ **应⽤层** -**将域名和** ip**相互映射，计算机互相访问** ）
-1. DNS协议解析，通过域名查找 IP地址
-1. DNS是⼀个分布式数据库，如果所访问的 DNS服务器不存在计算机请求的域名，则会重定向到另⼀台 DNS服 务器
+client -> client发送 FIN（seq=a） -> server
+server -> 收到client的 FIN，发送 ACK（seq=a+1） -> client
+server -> server发送 FIN（seq=b）- ACK（ACK=a+1） -> client
+client -> 收到server的 FIN，client进入等待连接终止，并发送 ACK（seq=b+1），server收到 ACK 后进入关闭状态 -> server
+```
+![](./assets/Aspose.Words.3443b485-1533-46e9-8ef5-fddf78953ed1.002.png)
+
+
+
+1. DNS（ **应⽤层** -**将域名和** ip**相互映射，计算机互相访问** ）
+2. DNS协议解析，通过域名查找 IP地址
+3. DNS是⼀个分布式数据库，如果所访问的 DNS服务器不存在计算机请求的域名，则会重定向到另⼀台 DNS服 务器
 
 ![](./assets/Aspose.Words.417e3b11-1720-4c92-af80-ff130734d73b.007.jpeg)
 
@@ -237,12 +323,7 @@ i. 在客户端和服务器之间进⾏中转，并保持双⽅通信连接的�
 1. RST: reset表示连接重置。
 1. URG: urgent紧急指针字段值有效。
 1. SEQ：随机序列号
-3. 三次握⼿
-1. 连接开始：客户端发送SYN（SEQ=a）报⽂给服务器端，进⼊SYN\_SEND状态。
-1. 请求确认：服务器端收到SYN报⽂，回复⼀个SYN （SEQ=b）和ACK（ACK=a+1）报⽂，x包为客户端发来 的SYN进⼊S[YN_RECV状态。](https://baike.baidu.com/item/SYN_RECV)
-1. 连接确认：客户端检查ACK === a+1，随之发送ACK（ACK=b+1）报⽂给服务端，服务端检查ACK === b+1，如果正确则建⽴连接，进⼊Established状态。client和server之间开始传输数据。
 
-![](./assets/Aspose.Words.3443b485-1533-46e9-8ef5-fddf78953ed1.001.png)
 
 4. 四次挥⼿
 1. Client发送⼀个FIN并包含⼀个随机的seq=a，主动关闭Client到Server的数据传送，Client进⼊FIN\_WAIT\_1状
@@ -253,7 +334,6 @@ i. 在客户端和服务器之间进⾏中转，并保持双⽅通信连接的�
 2. Server发送⼀个FIN并包含⼀个随机的seq=b和⼀个ACK=a+1,⽤来关闭Server到Client的数据传输，Server进 ⼊LAST\_ACK状态。
 2. Client收到FIN后，Client进⼊TIME\_WAIT状态，接着发送⼀个ACK并包含⼀个seq=b+1给Server,Servr收到 ACK包后进⼊CLOSED状态，完成四次挥⼿
 
-![](./assets/Aspose.Words.3443b485-1533-46e9-8ef5-fddf78953ed1.002.png)
 
 **IP：互联⽹协议(⽹络之间互连协议)，是TCP/IP中的⽹络层协议核⼼**
 
