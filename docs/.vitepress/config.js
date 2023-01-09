@@ -72,15 +72,23 @@ const sidebar = [
     items: [
       {
         text: "Http",
-        items: [
-          { text: "Http Basics", link: "/performance/http-basics" },
-          { text: "Http Performance", link: "/performance/http-performance" },
-        ],
+        link: "/performance/http-performance",
+        // items: [
+        //   { text: "Http Performance", },
+        // ],
       },
       {
         text: "Build",
         link: "/performance/build-performance",
       },
+    ],
+  },
+  {
+    text: "网络基础",
+    items: [
+      { text: "HTTP 基础", link: "/network/http-basics" },
+      { text: "Web 结构组件", link: "/network/web-construction" },
+      { text: "Web 安全", link: "/network/web-safety" },
     ],
   },
   // {
