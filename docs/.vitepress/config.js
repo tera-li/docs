@@ -87,6 +87,7 @@ const sidebar = [
     text: "网络基础",
     items: [
       { text: "HTTP 基础", link: "/network/http-basics" },
+      { text: "HTTP 缓存", link: "/network/http-cache" },
       { text: "Web 结构组件", link: "/network/web-construction" },
       { text: "Web 安全", link: "/network/web-safety" },
     ],
