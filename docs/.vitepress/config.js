@@ -66,6 +66,14 @@ const sidebar = [
         text: "Vite",
         link: "/build/vite",
       },
+      {
+        text: "Npm",
+        link: "/build/npm",
+      },
+      {
+        text: "Tool",
+        link: "/build/tool",
+      },
     ],
   },
   {
@@ -76,9 +84,6 @@ const sidebar = [
       {
         text: "Http",
         link: "/performance/http-performance",
-        // items: [
-        //   { text: "Http Performance", },
-        // ],
       },
       {
         text: "Build",
