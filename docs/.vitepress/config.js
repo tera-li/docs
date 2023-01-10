@@ -3,6 +3,7 @@ const sidebar = [
   {
     text: "前端三把斧",
     collapsible: true,
+    collapsed: true,
     items: [
       {
         text: "HTML",
@@ -55,6 +56,7 @@ const sidebar = [
   {
     text: "打包部署",
     collapsible: true,
+    collapsed: true,
     items: [
       {
         text: "Webpack",
@@ -69,6 +71,7 @@ const sidebar = [
   {
     text: "性能优化",
     collapsible: true,
+    collapsed: true,
     items: [
       {
         text: "Http",
@@ -85,6 +88,7 @@ const sidebar = [
   },
   {
     text: "网络基础",
+    collapsible: true,
     items: [
       { text: "HTTP 基础", link: "/network/http-basics" },
       { text: "HTTP 缓存", link: "/network/http-cache" },
