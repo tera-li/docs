@@ -630,6 +630,119 @@ var obj = {
 };
 document.body.addEventListener('click', obj, false);
 ```
+
+### 移动设备触摸事件
+1. touchstart
+   1. ⼿指点击屏幕时触发，即使有⼀个⼿指放在了屏幕上
+   1. 点击时触发
+1. touchmove
+   1. ⼿指在屏幕滑动时触发
+   1. ⼿指持续滑动屏幕触发
+1. touchend
+   1. ⼿指在屏幕上松开时触发
+   1. 点击后松开时触发
+1. touchcancel
+   1. 系统停⽌对 touch触摸的跟踪时触发，触发时间，暂⽆
+1. 以上都通过
+   1. document(element).addEventListener('touchstart',()=>{},options)
+1. 以上包含跟踪触摸的属性
+1. touches
+   1. 当前跟踪的触摸操作 touch对象数组
+1. targetTouches
+   1. 特定与事件⽬标的 touch对象数组
+1. changedTouches
+   1. 如果设置了 touchmove取消默认事件（阻⽌⻚⾯滚动），上⾯两个属性将没有数组，因为上⾯的属性跟踪 不到 touchmove的混动事件
+   1. ⾄上次触摸以来发⽣改变后的 touch对象数组
+1. 以上包含的属性为下⾯ touch包含的属性
+7. 以上 touch包含的属性
+1. clientX， clientY
+   1. 触摸⽬标在视⼝中的 x， y坐标
+1. pageX， pageY
+   1. 触摸⽬标在⻚⾯中的 x， y坐标
+1. screenX， screenY
+   1. 触摸⽬标在屏幕中 x， y坐标
+1. target
+
+i. 触摸的 dom节点⽬标
+
+8. 阻⽌⻚⾯滚动
+1. document.addEventListener('touchmove',(e) => {
+
+e.perventDefault() },{passive: false})
+
+i. 不设置 passive： false，会报错，将不会阻⽌⻚⾯滚动
+
+2. 或者设置 css样式 \* {touch-action: pan-y}
+
+i. 作⽤是启动单指垂直平移⼿势
+
+### 移动设备手势事件
+
+两个⼿指触摸屏幕就会产⽣⼿势
+
+1. gesturestart
+   1. 当⼀个⼿指已经按在屏幕上，另⼀个⼿指⼜触摸⼿指时触发
+1. gesturechange
+   1. 当触摸屏上其中⼀个⼿指位置发⽣改变时触发
+1. gestureend
+   1. 两个⼿指中，其中⼀个⼿指从屏幕移开时触发
+1. 每个⼿势事件的 event对象都包含着标准的额⿏标事件属性
+   1. bubbles
+   1. cancelable
+   1. view
+   1. clientX， clientY
+   1. pageX， pageY
+   1. screenX， screenY
+   1. altKey， shiftKey， ctrlKey， metaKey
+1. 另外两个最重要的属性
+1. rotation
+   1. ⼿指变化引起的旋转⻆度，从 0开始
+   1. 负值表示逆时针旋转，正值表示顺时针旋转
+1. scale
+1. 表示⼿指之间距离的变化，从 1开始
+1. 两⼿指向内收缩（距离减少， 1减⼩）
+1. 两⼿指向外收缩（距离增加， 1增⼤）
+
+### 移动设备其它事件
+
+**移动设备⽅向改变触发事件**
+
+orientationchange：
+
+1. window.addEventListener("orientationchange",()=> {
+
+screen.orientation.angle
+
+2. )
+2. 包含 3种值
+2. 0--垂直放置
+2. 90--向左转 90°
+2. -90--向右转 90°
+
+**移动设备旋转度数**
+
+deviceorientation：
+
+\1. window.addEventListener("deviceorientation")
+
+1. event.beta：围绕 x轴转动（ -180~180）
+1. event.gamma：围绕 y轴转动（ -90~90）
+1. event.alpha：围绕 z轴转动（跟地⼼连成⼀条线，背对为正，指向地⼼的⽅向为负）
+
+**响应设备的加速度（移动和旋转加速度）**
+
+devicemotion：
+
+\1. window.addEventListener("devicemotion")
+
+1. event.acceleration
+   1. 有 x， y， z三个值表示三个⽅向上的移动加速度（不包含重⼒）
+1. event.accelerationIncludingGravity
+   1. 有 x， y， z三个值表示三个⽅向上的移动加速度（包含重⼒）
+1. event.rotationRate
+
+i. 有 beta， gamma， alpha表示三个轴的旋转速率
+
 参考链接 1⃣️: https://developer.mozilla.org/zh-CN/docs/Web/API/Document  
 参考链接 2⃣️: https://developer.mozilla.org/zh-CN/docs/Web/API/Element  
 参考链接 3⃣️: https://developer.mozilla.org/zh-CN/docs/Web/API/Event  

@@ -94,11 +94,22 @@ const sidebar = [
   {
     text: "网络基础",
     collapsible: true,
+    collapsed: true,
     items: [
       { text: "HTTP 基础", link: "/network/http-basics" },
       { text: "HTTP 缓存", link: "/network/http-cache" },
       { text: "Web 结构组件", link: "/network/web-construction" },
       { text: "Web 安全", link: "/network/web-safety" },
+    ],
+  },
+  {
+    text: "TypeScript",
+    collapsible: true,
+    // collapsed: true,
+    items: [
+      { text: "TS 基础", link: "/ typescript/ts-basics" },
+      { text: "TS 内置类型", link: "/ typescript/ts-inlay-type" },
+      { text: "TS 类型语言", link: "/ typescript/ts-declare" },
     ],
   },
   // {
