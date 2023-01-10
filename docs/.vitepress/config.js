@@ -3,6 +3,7 @@ const sidebar = [
   {
     text: "前端三把斧",
     collapsible: true,
+    collapsed: true,
     items: [
       {
         text: "HTML",
@@ -15,22 +16,22 @@ const sidebar = [
       {
         text: "JavaScript",
         items: [
-          { text: "JavaScript Basics", link: "/javascript/" },
-          { text: "JavaScript New Features", link: "/javascript/js-feat" },
-          { text: "JavaScript Window", link: "/javascript/js-window" },
-          { text: "JavaScript Engine", link: "/javascript/js-engine" },
-          { text: "JavaScript Proto", link: "/javascript/js-proto" },
+          { text: "JavaScript 基础", link: "/javascript/" },
+          { text: "JavaScript 新特性", link: "/javascript/js-feat" },
+          { text: "JavaScript 窗口", link: "/javascript/js-window" },
+          { text: "JavaScript 引擎", link: "/javascript/js-engine" },
+          { text: "JavaScript 原型", link: "/javascript/js-proto" },
           {
-            text: "JavaScript Communication",
+            text: "JavaScript 通信",
             link: "/javascript/js-dataCommunication",
           },
-          { text: "JavaScript Data Type", link: "/javascript/js-dataType" },
+          { text: "JavaScript 数据类型", link: "/javascript/js-dataType" },
           {
-            text: "JavaScript Web Components",
+            text: "JavaScript Web组件",
             link: "/javascript/js-webComponent",
           },
           {
-            text: "JavaScript Design Pattern",
+            text: "JavaScript 设计模式",
             link: "/javascript/js-design",
           },
         ],
@@ -44,17 +45,18 @@ const sidebar = [
     items: [
       {
         text: "Vue",
-        items: [{ text: "Vue2 Reactive", link: "/vue/vue2-reactive" }],
+        items: [{ text: "Vue2 响应式", link: "/vue/vue2-reactive" }],
       },
       {
         text: "React",
-        items: [],
+        items: [{ text: "React 基础", link: "/react/react-basics" }],
       },
     ],
   },
   {
     text: "打包部署",
     collapsible: true,
+    collapsed: true,
     items: [
       {
         text: "Webpack",
@@ -69,6 +71,7 @@ const sidebar = [
   {
     text: "性能优化",
     collapsible: true,
+    collapsed: true,
     items: [
       {
         text: "Http",
@@ -85,6 +88,7 @@ const sidebar = [
   },
   {
     text: "网络基础",
+    collapsible: true,
     items: [
       { text: "HTTP 基础", link: "/network/http-basics" },
       { text: "HTTP 缓存", link: "/network/http-cache" },

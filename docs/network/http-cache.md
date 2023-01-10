@@ -24,7 +24,7 @@ web 缓存主要指的是两部分：
 ```js
 // expires是根据本地时间来判断的资源是否失效的，假设客户端和服务器时间不同，会导致缓存命中误差
 // Response Head
-express: Fri, 08 Mar 2029 08:05:59 GMT  // 在指定时间前都可使用缓存
+express: Fri, 08 Mar 2029 08:05:59 GMT  // 指定时间和本机时间对比，在指定时间之前都可使用缓存
 express: 0  // 仍然会启用缓存，只不过缓存立刻过期
 express: -1 // 内容立即过期，在再次显示之前必须重新请求
 ```
@@ -39,14 +39,14 @@ Cache-Control 的优先级高于 Expires
   - 缓存再硬盘中，容量大
   - 读取速度慢
 
-先读取 memory cache -> 其次才是 disk cache
+先读取 memory cache -> 其次才是 disk cache  
 Cache-control 又分为**私有缓存**和**共享缓存**  
 
 ```js
-// 私有缓存：内容仅供单个用户使用，应该仅在浏览器中本地缓存
+/*  私有缓存：内容仅供单个用户使用，应该仅在浏览器中本地缓存 */
 Cache-Control: private
 
-/*  所有内容都将被缓存
+/*  共享缓存：所有内容都将被缓存
     1. 浏览器从 HTTP 缓存中寻找匹配的请求
     2. 缓存匹配上，则返回缓存
     3. 缓存匹配上但已经过期，先请求服务器端显示资源没有改动，它将从缓存中返回资源；如果服务器显示资源变动，那么重新从服务器下载资源更新缓存
@@ -76,7 +76,7 @@ Cache-Control: force-cache
 */
 Cache-Control: only-if-cached
 
-/*  缓存过期指定为当前时间的增量(以秒为单位)，在该时间内再次访问不会请求服务器 */
+/*  缓存过期指定为当前时间的增量(以秒为单位)，在访问该请求后的300秒之内不会请求服务器 */
 Cache-Control: max-age=300
 
 /*  缓存时间 1年，immutable 指令可用于明确指示不需要重新验证，因为内容永远不会改变
@@ -109,5 +109,7 @@ If-None-Match: "deadbeef"
 Last-Modified: Tue, 22 Feb 2022 22:00:00 GMT
 If-Modified-Since: Tue, 22 Feb 2022 22:00:00 GMT
 ```
+## 缓存大致流程
+![](./assets/http-cache-all.png)
 
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching
