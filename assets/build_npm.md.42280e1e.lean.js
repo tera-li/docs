@@ -1,0 +1,1 @@
+import{_ as l,c as i,o as n,a as t}from"./app.3d3f0baa.js";const q=JSON.parse('{"title":"NPM","description":"","frontmatter":{},"headers":[],"relativePath":"build/npm.md","lastUpdated":1673336035000}'),o={name:"build/npm.md"},p=t("",12),e=[p];function s(a,r,u,m,d,_){return n(),i("div",null,e)}const g=l(o,[["render",s]]);export{q as __pageData,g as default};
