@@ -1,0 +1,1 @@
+import{_ as l,c as i,o as t,a as s}from"./app.46bbe91d.js";const j=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":" typescript/ts-declare.md","lastUpdated":1673429044000}'),o={name:" typescript/ts-declare.md"},e=s("",10),r=[e];function n(p,a,c,g,_,d){return t(),i("div",null,r)}const u=l(o,[["render",n]]);export{j as __pageData,u as default};
