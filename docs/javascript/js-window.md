@@ -176,16 +176,16 @@ navigator.language              // 返回 用户偏好语言
 navigator.languages             // 返回 来自Accept-Language HTTP header，偏好语言优先级排成的数组
 navigator.maxTouchPoints        // 返回 当前设备能够支持的最大同时触摸的点数
 navigator.mediaDevices          // 返回或操作媒体设备
-    // 可用的媒体输入和输出设备的列表，例如麦克风，摄像机，耳机设备等
-    navigator.mediaDevices.enumerateDevices().then(res => console.log(res))
-    // 选择和授权捕获展示的内容或部分内容（如一个窗口）在一个MediaStream 里
-    navigator.mediaDevices.getDisplayMedia({ video: true }).then((stream) => {
-        video.srcObject = stream;
-    });
-    // 给予使用媒体输入的许可，获取用户设备音频和视频等，媒体输入会产生一个 MediaStream 里
-    navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then((stream) => {
-        video.srcObject = stream;
-    });
+// 可用的媒体输入和输出设备的列表，例如麦克风，摄像机，耳机设备等
+navigator.mediaDevices.enumerateDevices().then(res => console.log(res))
+// 选择和授权捕获展示的内容或部分内容（如一个窗口）在一个MediaStream 里
+navigator.mediaDevices.getDisplayMedia({ video: true }).then((stream) => {
+    video.srcObject = stream;
+});
+// 给予使用媒体输入的许可，获取用户设备音频和视频等，媒体输入会产生一个 MediaStream 里
+navigator.mediaDevices.getUserMedia({ audio: true, video: true }).then((stream) => {
+    video.srcObject = stream;
+});
 navigator.onLine ? 'online' : 'offline'     // 设备是否在线，有网络/无网络
     window.addEventListener('online', navigator.onLine)	    // 设备联网时
     window.addEventListener('offline', navigator.onLine)	// 设备断网时
@@ -348,12 +348,6 @@ const observer = new MutationObserver(callback);
 observer.observe(targetNode, config);
 // 之后，可停止观察
 observer.disconnect();
-```
-:::
-
-::: info Document styleSheets
-```js
-
 ```
 :::
 
@@ -705,43 +699,29 @@ i. 作⽤是启动单指垂直平移⼿势
 
 ### 移动设备其它事件
 
-**移动设备⽅向改变触发事件**
+```js
+// 移动设备⽅向改变触发事件
+window.addEventListener("orientationchange",()=> {
+    0 -- 垂直放置
+    90 -- 向左转 90°
+    -90 -- 向右转 90°
+    screen.orientation.angle   
+})
 
-orientationchange：
+// 移动设备旋转度数
+window.addEventListener("deviceorientation",(event)=> {
+    event.beta: 围绕 x轴转动（ -180~180）
+    event.gamma: 围绕 y轴转动（ -90~90）
+    event.alpha: 围绕 z轴转动（跟地⼼连成⼀条线，背对为正，指向地⼼的⽅向为负）
+})
 
-1. window.addEventListener("orientationchange",()=> {
-
-screen.orientation.angle
-
-2. )
-2. 包含 3种值
-2. 0--垂直放置
-2. 90--向左转 90°
-2. -90--向右转 90°
-
-**移动设备旋转度数**
-
-deviceorientation：
-
-\1. window.addEventListener("deviceorientation")
-
-1. event.beta：围绕 x轴转动（ -180~180）
-1. event.gamma：围绕 y轴转动（ -90~90）
-1. event.alpha：围绕 z轴转动（跟地⼼连成⼀条线，背对为正，指向地⼼的⽅向为负）
-
-**响应设备的加速度（移动和旋转加速度）**
-
-devicemotion：
-
-\1. window.addEventListener("devicemotion")
-
-1. event.acceleration
-   1. 有 x， y， z三个值表示三个⽅向上的移动加速度（不包含重⼒）
-1. event.accelerationIncludingGravity
-   1. 有 x， y， z三个值表示三个⽅向上的移动加速度（包含重⼒）
-1. event.rotationRate
-
-i. 有 beta， gamma， alpha表示三个轴的旋转速率
+// 响应设备的加速度（移动和旋转加速度）
+window.addEventListener("devicemotion",(event)=>{
+    event.acceleration:                 有 x,y,z三个值表示三个⽅向上的移动加速度（不包含重⼒）
+    event.accelerationIncludingGravity: 有 x,y,z三个值表示三个⽅向上的移动加速度（包含重⼒）
+    event.rotationRate:                 有 beta,gamma,alpha表示三个轴的旋转速率
+})
+```
 
 参考链接 1⃣️: https://developer.mozilla.org/zh-CN/docs/Web/API/Document  
 参考链接 2⃣️: https://developer.mozilla.org/zh-CN/docs/Web/API/Element  
