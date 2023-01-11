@@ -164,12 +164,14 @@ es.close();
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/API/EventSource  
 ## 跨域相关
-:::info 
+:::info 简介
 - 后端设置请求域的跨域配置
 1. Access-Control-Allow-Origin: *               允许所有域名的脚本访问该资源
    1. value: https://www.baidu.com              允许指定的域名访问
 2. Access-Control-Allow-Methods                 允许的请求方式
 3. Access-Control-Allow-Headers                 跨域允许包含的头
+
+
 - jsonp
 1. ajax发起请求是有同源保护策略的限制，会报错
 2. `<scrip />` 会发起一个get请求，这个请求是不受同源策略限制的
@@ -198,5 +200,23 @@ app.get("/jsonp", (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+```
+
+
+- proxy  
+在本地启动node服务器，将本地请求通过本地服务器代理进行转发，从而绕过了浏览器同源协议的限制
+```js
+// 对 /api/users 的请求会将请求代理到 http://10.82.26.117:8097/api/users
+proxy: {
+    '/api': {
+        target: 'http://10.82.26.117:8097/',
+        changeOrigin: true,
+        ws: false,
+        // 重新路径，是否将/api替换成其它路径
+        pathRewrite: {
+            '^/api': '/api'
+        }
+    },
+}
 ```
 :::

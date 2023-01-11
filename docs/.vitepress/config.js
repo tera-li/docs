@@ -105,7 +105,7 @@ const sidebar = [
   {
     text: "TypeScript",
     collapsible: true,
-    // collapsed: true,
+    collapsed: true,
     items: [
       { text: "TS 基础", link: "/ typescript/ts-basics" },
       { text: "TS 内置类型", link: "/ typescript/ts-inlay-type" },
