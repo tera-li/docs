@@ -1,46 +1,64 @@
 # Typescript 基础
-
-强类型定义，静态类型检测
-
-需要npm i -g typescript 安装，tsc '.ts'⽂件进⾏编译，再通过node '.js'运⾏编译后的⽂件
-
-**基础类型**
-
-1. any：任意类型
-   1. 变量可以赋予任意类型的值
-2. number：数字类型
-   1. 变量表示整数和分数（二进制到十六进制）
-3. string：字符串类型
-   1. 变量表示字符串
-4. boolean：布尔类型
-   1. 变量表示逻辑（true和false）
-5. []：数组类型
-   1. 变量为数组
-6. let x:[string,number] == x ['string',1]：元祖类型
-   1. 变量为已知定义的类型，对应赋值类型必须相同
-7. enum：枚举类型
-
+强类型定义，静态类型检测，代码声明编译提示
 ```ts
-enum Color {Red, Green, Blue};
-let c: Color = Color.Blue;
-console.log(c);    // 输出 2
+// 安装 typescript
+npm i -g typescript
+
+// 输出 tsconfig.json
+tsc --init
+
+// 通过 tsc 编译 .ts文件，输出 .js文件
 ```
 
-void：没有返回值
-定义函数，没有返回值
-null
-变量的值缺失
-undefined
-变量初始化是一个未定义的值
-never
-定义函数，其他类型的子类型，代表从不会出现的值
+## 基础类型
 
-**变量声明**
+```ts
+// number: 数字类型
+let a: number = 6;
 
-1. var 变量：类型 = 值
+// string: 字符串类型
+let a: string = '6';
 
-**运算符**
+// boolean: 布尔类型
+let a: boolean = true;
 
+// []: 数组类型
+let a: number[] = [1, 2];
+// 使用数组泛型
+let a: Array<number> = [1, 2];
+
+// 元组类型: 已知元素数量和类型的数组，各元素的类型不必相同，对应位置的类型需要相同
+let x:[string,number];
+x = ['1',1];
+
+// enum: 枚举类型
+enum Color {Red, Green, Blue};
+let c: Color = Color.Blue;
+
+// 对象值缺失
+let c = null;
+
+// 未定义的值
+let c = undefined;
+
+// any: 任意类型，可以赋予任意类型的值
+let a: any = '123';
+
+// unknown: 未知类型，不确定的类型会有类型检测，赋值后需要自己类型断言
+let a: unknown
+
+// void: 没有返回值
+const a = (): void => {
+  return undefined;
+};
+
+// never: 永不返回值，从不会出现的值
+const a = (): never => {
+  throw new Error('error')
+};
+```
+
+## 运算符
 ```ts
 // 算术运算符
 +、-、*、/、%、++、--
@@ -49,89 +67,105 @@ never
 // 逻辑运算符
 &&（and）、||（or）、!（not）
 // 赋值运算符
-=、+=、-=、\*=、/=
+=、+=、-=、*=、/=
 // 三元运算符
 age ? var1 : var2
 // 类型运算符
-typeof var  // 返回操作数的类型
-instanceof  // 判断对象是否为指定的类型
-
+// 返回操作数的类型
+typeof a  
+// 判断对象是否为指定的类型
+[123] instanceof Array
 ```
 
+## 条件语句
+```ts
+if
+if...else
+if...else if...else
+switch
+```
 
+## 循环语句
+```ts
+for
+for in
+for of
+while
+do...while
+// 终⽌循环
+break
+// 跳过当前循环，去到下一个循环
+continue
+```
 
-**条件语句**
+## 函数
+```ts
+// 参数可以定义类型
+function (s: number)
+// 可选参数
+function (s?: number)
+// 默认参数
+function (s:number = 0.5)
+// 剩余参数
+function (...s:number[])
 
-1 if语句
+// 函数重载
+/*
+   函数声明，定义具有多个不同类型：参数类型，返回值类型的同名函数
+   减少代码量，让函数具有多个类型约束
+   重载的⽅法名字相同，但是参数不同
+   每个重载⽅法都必须有⼀个独⼀⽆⼆的参数类型列表
+*/
+function disp(x:string):void; 
+function disp(x:number):void;
 
-2 if...else语句
+function disp(x:number | string):void {}
+```
 
-3 if...else if...else语句 4 switch(){
+## 接⼝
 
-5    case var: {
+```ts
+interface person {
+    firstName: String,
+    lastName: String
+}
+var child:person = {
+    firstName: 'hello',
+    lastName: 'world'
+}
 
-6        break;
+const func = (): person => {
+  return {
+    firstName: "1",
+    lastName: "1",
+  };
+};
 
-7    }
+class child implements person {
+  firstName = "123";
+  lastName = "123";
+}
+```
 
-8    default: {
-
-9        break
-
-10    }
-
-11 }
-
-**循环语句**
-
-1 for
-
-2 for in 3 for of 4 forEach 5 every
-
-6 some
-
-7 while
-
-8 do...while
-
-9 break；终⽌循环
-
-10 continue；跳过当前循环 11 ⽆限循环
-
-**函数**
-
-1. function和js一样
-1. 参数可以定义类型 function (s: number)
-1. 可选参数 function (s?; number)
-1. 默认参数 function (s:number = 0.5)
-1. 剩余参数 function (...s:number[])
-1. **函数重载**
-
-1 // 函数声明，定义具有多个不同类型：参数类型，返回值类型的同名函数 2 // 减少代码量，让函数具有多个类型约束
-
-3 function disp(x:string):void; 
-
-4 function disp(x:number):void;
-
-5 // 函数实现
-
-6 function disp(x:number | string):void {}
-
-1. 重载的⽅法名字相同，但是参数不同
-1. 每个重载⽅法都必须有⼀个独⼀⽆⼆的参数类型列表
-
-**联合类型**
-
+## 联合类型
 ```ts
 const arr:number | string
 // 符合两个类型之一都可
+const sayHello = (name: number | string) => {
+  /* ... */
+};
+sayHello('str')
 ```
-**类型别名**
+## 类型别名
 
 ```ts
 type Name = string
 type Age = number
 type Resolver = Name | Age
+
+let c:Name = '123'
+let cc:Age = 123
+
 // type 创建类型别名
 type NameResolver = () => string;
 function vvvv():NameResolver {
@@ -139,35 +173,22 @@ function vvvv():NameResolver {
 }
 // 类型别名常用于联合类型/交叉类型
 ```
-**联合断⾔**
+## 联合断⾔
 
 ```ts
-a as string
-(a as string).age  // a.age
-<string>a
-(<string>a).age  // a.age
+let a: any = '123'
+a as String;
+(a as String).length;
+
+<String>a
+(<String>a).length
+
+// 非空断言
+const ignoreUndefinedAndNull: string = null!; // Ok
 ```
 
-**接⼝**
-
-```ts
-interface person {
-    firstname：string,
-    lastname：string
-}
-var child:person = {
-    firstname: 'hello',
-    lastname: 'world'
-}
-
-1. 使⽤ interface定义接⼝，使⽤具体类去实现定义的接⼝类型
-2. 使⽤ implements实现接⼝（还可以实现类型）
-```
-
-**声明合并**
-
+## 声明合并
 1. 接⼝合并
-
 ```ts
 interface A {
     number: number
@@ -181,17 +202,20 @@ interface A {
     age: string
 }
 ```
-
 2. 函数合并
-
 ```ts
 // 函数合并就是函数重载
 // 定义多个不同类型参数 or 不同类型返回值的同名函数
 // 最后来实现同名函数定义的多个类型
+function disp(x:string):void; 
+function disp(x:number):void;
+
+function disp(x:number | string):void {}
 ```
 
-3. **联合类型** (如果⼀个值是联合类型， **只能访问联合类型的共有成员** )
+3. 联合类型
 
+只能访问联合类型的共有成员
 ```ts
 interface BB {
     number: string
@@ -199,10 +223,11 @@ interface BB {
 }
 interface BC {
     age: string
+    foo: string
 }
 function vv(): BB | BC {
     return {
-        age: '1',  // 可以只返回age
+        age: '1',  // 只能返回age
         number: 's'
     }
 }
@@ -211,9 +236,17 @@ vv().age // '1'
 vv().number //  error(BC不存在number)
 ```
 
-4. **交叉类型**（把多个类型合并成⼀个类型，包含合并的所有类型）
+4. 交叉类型
 
+把多个类型合并成⼀个类型，包含合并的所有类型
 ```ts
+interface BB {
+    number: string
+    age: string
+}
+interface BC {
+    age: string
+}
 function vv(): BB & BC {
     return {
         // 必须返回所有类型的属性
@@ -228,13 +261,13 @@ vv().number // 's'
 
 1. 通过class定义类
    1. constructor()定义构造函数和实例接收参数
-   1. disp(){}定义方法函数
-   1. 通过new 类，创建一个实例对象
-1. 类的继承
-1. class Child extends Person
-1. 该类具有person类的所有方法和构造函数
-3. 通过创建实例的传参，会person类的构造函数，进行赋值等操作
-3. 多重继承
+   2. disp(){}定义方法函数
+   3. 通过new 类，创建一个实例对象
+2. 类的继承
+3. class Child extends Person
+4. 该类具有person类的所有方法和构造函数
+5. 通过创建实例的传参，会person类的构造函数，进行赋值等操作
+6. 多重继承
 
 ```ts
 class Child extends Person
