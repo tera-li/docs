@@ -126,21 +126,41 @@ function disp(x:number | string):void {}
 
 ```ts
 interface person {
-    firstName: String,
-    lastName: String
+  firstName: String;
+  lastName: String;
+  // 只读属性
+  readonly name: string;
+  // 可选属性
+  age?: number;
+  // 除上面必选属性外的 任意属性
+  [propName: string]: any;
 }
-var child:person = {
-    firstName: 'hello',
-    lastName: 'world'
+// 函数接口约束
+interface funChild {
+  (x: number, y: number): void;
 }
+const child: funChild = (msg) => {};
+child(1, 1);
 
 const func = (): person => {
   return {
     firstName: "1",
     lastName: "1",
+    name: "1",
   };
 };
+// 接口继承
+interface Point extends person {
+  y: number;
+}
+let obj: Point = {
+  firstName: "string",
+  lastName: "string",
+  name: "string",
+  y: 1,
+};
 
+// 接口实现
 class child implements person {
   firstName = "123";
   lastName = "123";
@@ -149,13 +169,46 @@ class child implements person {
 
 ## 联合类型
 ```ts
-const arr:number | string
+const arr: number | string
 // 符合两个类型之一都可
 const sayHello = (name: number | string) => {
   /* ... */
 };
 sayHello('str')
+
+interface A {
+  number: number;
+}
+interface B {
+  age: string;
+}
+type Resolver = A | B;
+let obj: Resolver = {
+  age: "age",
+};
 ```
+## 交叉类型
+
+```ts
+// 把多个类型合并成⼀个类型，包含合并的所有类型
+interface BB {
+    number: string
+    age: string
+}
+interface BC {
+    age: string
+}
+function vv(): BB & BC {
+    return {
+        // 必须返回所有类型的属性
+        age: '1',
+        number: 's'
+    }
+}
+vv().age // '1'
+vv().number // 's'
+```
+
 ## 类型别名
 
 ```ts
@@ -165,15 +218,16 @@ type Resolver = Name | Age
 
 let c:Name = '123'
 let cc:Age = 123
+let ccc:Resolver = '123'
 
-// type 创建类型别名
+// type 创建类型别名，给一个类型起个新名字
 type NameResolver = () => string;
 function vvvv():NameResolver {
     return () => '11'
 }
 // 类型别名常用于联合类型/交叉类型
 ```
-## 联合断⾔
+## 类型断⾔
 
 ```ts
 let a: any = '123'
@@ -207,56 +261,12 @@ interface A {
 // 函数合并就是函数重载
 // 定义多个不同类型参数 or 不同类型返回值的同名函数
 // 最后来实现同名函数定义的多个类型
-function disp(x:string):void; 
-function disp(x:number):void;
+function disp(x:string):number; 
+function disp(x:number):string;
 
 function disp(x:number | string):void {}
 ```
 
-3. 联合类型
-
-只能访问联合类型的共有成员
-```ts
-interface BB {
-    number: string
-    age: string
-}
-interface BC {
-    age: string
-    foo: string
-}
-function vv(): BB | BC {
-    return {
-        age: '1',  // 只能返回age
-        number: 's'
-    }
-}
-// 只能访问多个类型的共有成员
-vv().age // '1'
-vv().number //  error(BC不存在number)
-```
-
-4. 交叉类型
-
-把多个类型合并成⼀个类型，包含合并的所有类型
-```ts
-interface BB {
-    number: string
-    age: string
-}
-interface BC {
-    age: string
-}
-function vv(): BB & BC {
-    return {
-        // 必须返回所有类型的属性
-        age: '1',
-        number: 's'
-    }
-}
-vv().age // '1'
-vv().number // 's'
-```
 **类**
 
 1. 通过class定义类
