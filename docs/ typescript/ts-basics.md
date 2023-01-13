@@ -127,8 +127,8 @@ function disp(x:number | string):void {}
 ```ts
 /* 定义接口 */
 interface person {
-  firstName: String;
-  lastName: String;
+  firstName: string;
+  lastName: string;
   // 只读属性
   readonly name: string;
   // 可选属性
@@ -238,11 +238,11 @@ function vvvv():NameResolver {
 
 ```ts
 let a: any = '123'
-a as String;
-(a as String).length;
+a as string;
+(a as string).length;
 
-<String>a
-(<String>a).length
+<string>a
+(<string>a).length
 
 // 非空断言
 const ignoreUndefinedAndNull: string = null!; // Ok
@@ -274,71 +274,100 @@ function disp(x:number):string;
 function disp(x:number | string):void {}
 ```
 
-**类**
-
-1. 通过class定义类
-   1. constructor()定义构造函数和实例接收参数
-   2. disp(){}定义方法函数
-   3. 通过new 类，创建一个实例对象
-2. 类的继承
-3. class Child extends Person
-4. 该类具有person类的所有方法和构造函数
-5. 通过创建实例的传参，会person类的构造函数，进行赋值等操作
-6. 多重继承
-
+## 类
+1. 定义
 ```ts
-class Child extends Person
-class exleaf extends Child 
-// exleaf继承了Child和Person类
-```
-
-4. static关键字
-   1. 定义类的数据成员为静态
-   1. 可以直接通过类名调用
-4. instanceof运算符
-
-```ts
-var obj = new Person() 
-var isPerson = obj instanceof Person; 
-// 判断obj是不是指定的类型，或者说指定是类实例化而来
-```
-
-6. 访问控制修饰符
-1. public：公有属性，可以在任何地⽅访问
-
-**i. 实例可访问，⼦类可访问，** class**内部可访问**
-
-2. private：私有的，只能在该类访问
-1. **实例不可访问，⼦类不访问，** class**内部可访问**
-1. **不允许被继承和实例化**
-3. protected：受保护的，可以被⾃身和⼦类、⽗类访问
-1. **实例不可访问，⼦类可访问，** class**内部可访问**
-1. **只允许被继承**
-4. readonly：只读的
-
-```ts
-class Animal {
-  // public name: string;
-  public constructor(public name) {
-    // this.name = name;
+interface childInter {
+  fileName: string;
+}
+class Child {
+  // 静态属性
+  static staticName: string = "string";
+  // 成员属性
+  fileName: string = "string";
+  // 私有字段（和private的区别在于# 在运行时都无法访问，private仅仅是一个检查）
+  #privateName: string;
+  // 构造函数
+  constructor(props: childInter) {
+    this.fileName = props.fileName;
+    this.#privateName = props.fileName;
+  }
+  // 静态方法
+  static getStaticName() {
+    return this.staticName;
+  }
+  // 成员方法
+  getFileName() {
+    return this.fileName;
+  }
+  // 访问器 getter
+  get privateName(): string {
+    return this.#privateName;
+  }
+  // 访问器 setter
+  set privateName(newName: string) {
+    this.#privateName = newName;
   }
 }
-// 可以在构造函数中定义参数的修饰符
-// 相当于在class中定义该属性，并将name参数的值赋值给class中的name
+
+// 访问静态成员
+Child.staticName;
+// 实例化对象
+let child = new Child({ fileName: "fileName" });
+// 调用成员方法
+child.getFileName();
+// 处触发setter
+child.privateName = "new";
+console.log(child.privateName);
 ```
 
-7. 类的接⼝和实现
-   1. 定义接⼝： interface
-   1. 实现接⼝： implements
-   1. 需要实现接⼝定义的属性
-7. 类的抽象类
-1. 做为其他⼦类的基类使⽤，不能够被实例化，抽象类的抽象⽅法必须在⼦类中实现
-1. 具有抽象⽅法的类，也是抽象类，⼦类继承抽象类必须实现抽象⽅法（**所谓的多态**）
-1. **⽗类定义抽象⽅法不能实现该⽅法，必须是继承它的⼦类去实现，不同的⼦类有不同表现**
-1. 抽象⽅法需要在⼦类中实现，虽然普通基类也可以达到效果，但是抽象⽅法会给⼈提示作⽤
-1. 抽象类中的抽象⽅法必须被⼦类实现
-
+2. 继承
 ```ts
+interface childInter {
+  fileName: string;
+}
+class Person {
+  constructor(props: childInter) {
+    console.log(props);
+  }
+  getFileName() {
+    console.log("This is Person name");
+  }
+  getFileName1() {
+    console.log("This is Person name1");
+  }
+}
+class Child extends Person {
+  // 公有属性，可以在任何地⽅访问
+  public fileName: string = "fileName";
+  // 受保护属性，可以被⾃身和⼦类、⽗类访问
+  protected fileName1: string = "fileName1";
+  // 私有属性，只能在该类访问
+  private fileName2: string = "fileName2";
+  // 只读
+  readonly fileName3: string = "fileName3";
+
+  constructor(props: childInter) {
+    super(props);
+  }
+  // 重写父类方法
+  getFileName() {
+    // 通过super调用继承类的方法
+    super.getFileName()
+    console.log("This is Child name");
+  }
+}
+let child = new Child({ fileName: "fileName" });
+child.getFileName();
+```
+3. 抽象类
+```ts
+/* 做为其他⼦类的基类使⽤，不能够被实例化，抽象类的抽象⽅法必须在⼦类中实现
+具有抽象⽅法的类，也是抽象类，⼦类继承抽象类必须实现抽象⽅法，所谓的多态
+⽗类定义抽象⽅法不能实现该⽅法，必须是继承它的⼦类去实现，不同的⼦类有不同表现
+抽象⽅法需要在⼦类中实现，虽然普通基类也可以达到效果，但是抽象⽅法会给⼈提示作⽤
+抽象类中的抽象⽅法必须被⼦类实现
+*/
 // 定义抽象类
 abstract class Department {
     constructor(public name:string) {
@@ -357,14 +386,7 @@ class AccountingDepartment extends Department {
 }
 ```
 
-2. **类的多态**
-   1. **⽗类定义⼀个⽅法不去实现，让继承它的⼦类去实现，不同的⼦类有不同表现**
-3. **类的重写**
-4. 继承⽗类，⼦类写⼀个⽗类同名⽅法，使⽤ super.⽅法名调⽤⽗类的⽅法（重写）
-5. 并可以在此基础上添加其他⽅法
-
-**泛型**
-
+## 泛型
 1. 定义泛型
 
 **a. 泛型解决类、接⼝、⽅法的复⽤性以及对不特定类型的数据的⽀持**
@@ -376,7 +398,7 @@ class AccountingDepartment extends Department {
 2. 泛型接⼝
    1. 泛型类
 2. 实现函数泛型或者参数泛型
-<!-- 1. iden<String>('字符串 ‘) -->
+<!-- 1. iden<string>('字符串 ‘) -->
 
 i. 可以指定调⽤函数所传的数据类型
 
