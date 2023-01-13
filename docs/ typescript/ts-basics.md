@@ -125,6 +125,7 @@ function disp(x:number | string):void {}
 ## 接⼝
 
 ```ts
+/* 定义接口 */
 interface person {
   firstName: String;
   lastName: String;
@@ -135,13 +136,16 @@ interface person {
   // 除上面必选属性外的 任意属性
   [propName: string]: any;
 }
-// 函数接口约束
+/* 函数接口约束 */
 interface funChild {
   (x: number, y: number): void;
 }
+
+// 实现
 const child: funChild = (msg) => {};
 child(1, 1);
 
+// 实现
 const func = (): person => {
   return {
     firstName: "1",
@@ -149,10 +153,13 @@ const func = (): person => {
     name: "1",
   };
 };
-// 接口继承
+
+/* 接口继承 */
 interface Point extends person {
   y: number;
 }
+
+// 实现
 let obj: Point = {
   firstName: "string",
   lastName: "string",
@@ -169,8 +176,8 @@ class child implements person {
 
 ## 联合类型
 ```ts
-const arr: number | string
 // 符合两个类型之一都可
+const arr: number | string
 const sayHello = (name: number | string) => {
   /* ... */
 };
@@ -212,6 +219,8 @@ vv().number // 's'
 ## 类型别名
 
 ```ts
+// type 创建类型别名，给一个类型起个新名字
+// 类型别名常用于联合类型/交叉类型
 type Name = string
 type Age = number
 type Resolver = Name | Age
@@ -220,12 +229,10 @@ let c:Name = '123'
 let cc:Age = 123
 let ccc:Resolver = '123'
 
-// type 创建类型别名，给一个类型起个新名字
 type NameResolver = () => string;
 function vvvv():NameResolver {
     return () => '11'
 }
-// 类型别名常用于联合类型/交叉类型
 ```
 ## 类型断⾔
 
