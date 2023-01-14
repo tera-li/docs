@@ -124,7 +124,7 @@ function disp(x:number | string):void {}
 
 ## 接⼝
 
-```ts
+```ts 1,30
 /* 定义接口 */
 interface person {
   firstName: string;
@@ -387,25 +387,55 @@ class AccountingDepartment extends Department {
 ```
 
 ## 泛型
-1. 定义泛型
+```ts 1,9,15,24,42
+// 1. func<定义泛型变量>(str: 泛型变量, num: 泛型变量): 泛型变量
+const func = <T>(str: T): T => {
+  return str;
+};
+func("123");
+func<string>("123");
+func<string | number>(123);
 
-**a. 泛型解决类、接⼝、⽅法的复⽤性以及对不特定类型的数据的⽀持**
+// 2. 多个泛型变量
+const func1 = <T, V>(str: T, num: V): T | V => {
+  return num;
+};
+func1<string, number>("123", 123);
 
-<!-- 2. function iden<T>(arg: T) : T -->
-   1. 定义泛型函数
-   1. 参数为泛型
-   1. 函数类型有 void（⽆返回值）， any（任意值）， T：（必须 return返回值）
-2. 泛型接⼝
-   1. 泛型类
-2. 实现函数泛型或者参数泛型
-<!-- 1. iden<string>('字符串 ‘) -->
+// 3. 定义泛型接口
+interface Inter {
+  <T>(arg: T): T;
+}
+const func2: Inter = <T>(str: T): T => {
+  return str;
+};
+func2("123");
 
-i. 可以指定调⽤函数所传的数据类型
+// 4. 定义泛型接口
+interface InterClass<T> {
+  nameValue: T;
+  add: (x: T, y: number) => T;
+}
+// 类接口
+class Child<T> implements InterClass<string> {
+  nameValue = "123";
+  add(x: string, y: number): string {
+    return "123";
+  }
+  delete(x: T): T {
+    return x;
+  }
+}
+let child = new Child<number>();
+child.delete(123);
 
-2. iden('字符串 ')
-   1. 也可以不指定，泛型会⾃动识别参数类型
-2. 如果对函数定义（： T），就必须 return返回值
-   1. 如果不 return 返回值就会报错
-2. 如果对函数没有定义（： T），不⽤ ne返回 return
-
-i. 但是会提示 undefined
+// 5. 接口约束泛型
+interface Person {
+  name: string;
+  age: number;
+}
+function student<T extends Person>(arg: T): T {
+  return arg;
+}
+student({ age: 123, name: "string" });
+```
