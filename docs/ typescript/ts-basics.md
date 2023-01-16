@@ -439,3 +439,77 @@ function student<T extends Person>(arg: T): T {
 }
 student({ age: 123, name: "string" });
 ```
+
+## 装饰器
+
+1. 类装饰器
+```ts
+function Greeter(greeting: string) {
+  return function (target: Function) {
+    target.prototype.greet = function (): void {
+      console.log(greeting);
+    };
+  };
+}
+
+@Greeter("Hello TS!")
+class Greeting {
+  constructor() {
+    // 内部实现
+  }
+}
+
+let myGreeting = new Greeting();
+(myGreeting as any).greet(); // console output: 'Hello TS!';
+```
+
+2. 属性装饰器
+
+```ts
+function logProperty(property: string) {
+  return (target: any, key: string) => {
+    // 初始化值
+    target[key] = property;
+    console.log(property);
+  };
+}
+
+class Person {
+  @logProperty("参数")
+  personName: string;
+
+  constructor() {
+    this.personName = "constructor";
+  }
+}
+
+const p1 = new Person();
+```
+
+3. ⽅法装饰器
+```ts
+function enumerable(value: boolean) {
+  return function (
+    target: any,
+    propertyKey: string,
+    descriptor: PropertyDescriptor
+  ) {
+    console.log(descriptor);
+    descriptor.enumerable = value;
+  };
+}
+class Greeter {
+  greeting: string;
+  constructor(message: string) {
+    this.greeting = message;
+  }
+
+  @enumerable(false)
+  greet() {
+    return "Hello, " + this.greeting;
+  }
+}
+
+let greeter = new Greeter("msg");
+greeter.greet();
+```
