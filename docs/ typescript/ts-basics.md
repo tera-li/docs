@@ -580,3 +580,5 @@ greeter.greet();
   ]
 }
 ```
+
+参考链接：https://www.tslang.cn/docs/home.html
