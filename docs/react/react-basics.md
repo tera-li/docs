@@ -37,7 +37,7 @@
    1. 挂载阶段
       1. constructor(props)（构造函数最先调⽤）
       2. static getDerivedStateFromProps(props, state)（罕⻅⽤例，即 state的值取决于 props）
-         1. ⼦组件的 state取决于⽗组件的 props；
+         1. ⼦组件的 state取决于⽗组件的 props
          2. return props or null
       3. componentWillmount（在组件挂载前）
       4. render（渲染）
@@ -65,24 +65,21 @@
    1. ⽗传⼦， **通过** prop**属性传值**
    2. ⼦传⽗，通过 prop属性 **将⽗组件⽅法传⼊⼦组件** ，⼦组件 **调⽤传⼊的属性⽅法** ， **触发⽗组件的⽅法**
 6. react-router-dom
-7. 路由组件和⼀般组件的区别
-8. 精确匹配和模糊匹配
-9. params和 search(query)、 state
-10. 编程式路由导航 this.props.history.push('')
-11. withRouter可以使⾮路由组件拥有路由组件特有的 API，进⾏编程式导航
-
+   1. 路由组件和⼀般组件的区别
+   2. 精确匹配和模糊匹配
+   3. params和 search(query)、 state
+   4. 编程式路由导航 this.props.history.push('')
+   5. withRouter可以使⾮路由组件拥有路由组件特有的 API，进⾏编程式导航
 ![](./assets/Aspose.Words.bdb07b23-8480-466b-9fef-08b6ea7387cb.001.jpeg)
 
 7. redux
-
 ![](./assets/Aspose.Words.bdb07b23-8480-466b-9fef-08b6ea7387cb.002.jpeg)
-
-1. 异步和同步 action
-1. react-redux集中式管理
-8. react-router
-8. hooks
-8. Fragment、 Context、 PureComponent、 getderivedStateFromError、 renderProps(插槽 )
-8. 组件间传值⽅式
-1. ⽗⼦： props
-1. 兄弟： pubsub、 redux
-1. 祖孙组件： pubsub、 redux、 context
+   1. 异步和同步 action
+   2. react-redux集中式管理
+1. react-router
+2. hooks
+3. Fragment、 Context、 PureComponent、 getderivedStateFromError、 renderProps(插槽 )
+4. 组件间传值⽅式
+   1. ⽗⼦： props
+   2. 兄弟： pubsub、 redux
+   3. 祖孙组件： pubsub、 redux、 context
