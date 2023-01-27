@@ -1,9 +1,25 @@
 # React Basics
 
-## 组件
+## 组件类别
 1. 函数组件（简单组件）
    1. 没有状态组件，不能驱动视图更新
    1. 没有 this 指向
+```js
+import React, { useState } from "react";
+
+const Example = () => {
+  // 声明一个新的叫做 “count” 的 state 变量
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+    </div>
+  );
+};
+export default Example;
+```
 2. 类组件（复杂组件）
    1. 有状态组件，驱动视图更新
    2. 有 this指向
@@ -72,7 +88,7 @@
    5. withRouter可以使⾮路由组件拥有路由组件特有的 API，进⾏编程式导航
 ![](./assets/Aspose.Words.bdb07b23-8480-466b-9fef-08b6ea7387cb.001.jpeg)
 
-7. redux
+1. redux
 ![](./assets/Aspose.Words.bdb07b23-8480-466b-9fef-08b6ea7387cb.002.jpeg)
    1. 异步和同步 action
    2. react-redux集中式管理
