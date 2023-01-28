@@ -159,9 +159,9 @@ myRef = React.createRef()
 2. **static getDerivedStateFromProps(props, state)**: 罕⻅⽤例，即 state 的值任何时候都取决于 props
    1. 静态方法，无 this
    2. ⼦组件的 state 取决于⽗组件的 props
-   3. return props or null
+   3. return props or null，会返回一个对象用来更新当前的 state 对象
 3. **UNSAFE_componentWillMount()**: 在组件挂载前调用（DOM插入前）
-4. **render()**: 是 class 组件中唯一必须实现的方法，返回需要渲染的JSX
+4. **render()**: 是 class 组件中唯一必须实现的方法，返回需要渲染的DOM
    1. 原生的DOM，如div
    2. React组件
    3. Fragment（片段）
@@ -176,27 +176,30 @@ myRef = React.createRef()
 
 ### 更新阶段
 :::info 简介
-1. props传⼊的更新阶段
-   1. UNSAFE_componentWillReceiveProps(nextProps): 在组件接收参数前调⽤
-      1. 在更新⼦组件，需要重新渲染组件时⽤到的⽐较多
-   2. static getDerivedStateFromProps(props, state): 罕⻅⽤例，即 state 的值任何时候都取决于 props
-   3. shouldComponentUpdate（需要组件更新）
-      1. return Boolean（ true表示组件更新， false表示组件不更新）
-   4. UNSAFE_componentWillUpdate（组件更新前）
-   5. render（渲染）
-   6. getSnapshotBeforeUpdate（获取快照在更新前， return的值在下个钩⼦中接收）
-      1. 在 dom更新前调⽤，获取更新前的 dom信息
-      2. return null or snapshotValue
-   7. componentDidUpdate(preProps, preState, snapshotValue)（组件更新后）
-2. state渲染更新
-   1. shouldComponentUpdate
-   2. componentWillUpdate
-   3. render
-   4. componentDidUpdate
+1. **UNSAFE_componentWillReceiveProps(nextProps)**: 在组件接收 props 前调⽤
+   1. 在更新⼦组件，需要重新渲染组件时⽤到的⽐较多，更新state
+2. **static getDerivedStateFromProps(props, state)**: 罕⻅⽤例，即 state 的值任何时候都取决于 props
+3. **shouldComponentUpdate(nextProps, nextState)**: 是否需要组件重新渲染
+   1. 新的props，新的state
+   2. return Boolean（true表示组件重新渲染， false表示组件不冲洗渲染）
+4. **UNSAFE_componentWillUpdate(nextProps, nextState)**: 组件更新前
+   1. 在组件收到新的 props 或 state 时触发
+   2. 不能此方法中调用 this.setState()
+5. **render()**: 是 class 组件中唯一必须实现的方法，返回需要渲染的DOM
+6. **getSnapshotBeforeUpdate(prevProps, prevState)**: 获取快照在更新前， return的值在下个钩⼦中接收
+   1. 在 DOM 更新前调⽤，可获取更新前的 DOM 信息
+   2. return null or snapshotValue
+7. **componentDidUpdate(prevProps, prevState, snapshotValue)**: 组件更新后
+   1. 可以操作 DOM，发送请求等
 :::
 
-   1. 卸载阶段
-      1. componentWillUnmount（组件卸载前）
+### 卸载阶段
+:::info 简介
+1. **componentWillUnmount()**: 组件卸载前触发
+   1. 取消订阅等额外操作
+:::
+
+## 组件传值
 1. ⽗⼦组件传值
    1. ⽗传⼦， **通过** prop**属性传值**
    2. ⼦传⽗，通过 prop属性 **将⽗组件⽅法传⼊⼦组件** ，⼦组件 **调⽤传⼊的属性⽅法** ， **触发⽗组件的⽅法**
