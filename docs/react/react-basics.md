@@ -245,6 +245,28 @@ export {MyContext, Provider, Consumer};
    }}
 </Consumer>
 ```
+
+### events
+```js
+// events.js
+import { EventEmitter } from "events";
+export default new EventEmitter();
+
+// person
+// 组件初始化时添加事件监听
+emitter.addListener("info", (info) => {
+   console.log("监听", info);
+});
+
+// 组件销毁前移除事件监听
+emitter.removeListener("info", (info) => {
+   console.log("移除", info);
+});
+
+// child
+// 发射事件
+emitter.emit("info", "我是来自father的 info");
+```
 2. react-router-dom
    1. 路由组件和⼀般组件的区别
    2. 精确匹配和模糊匹配
