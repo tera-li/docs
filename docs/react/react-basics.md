@@ -274,8 +274,13 @@ emitter.emit("info", "我是来自father的 info");
    2. HashRouter 使用 # 方式跟在 URL 后面
 ```js
 import { BrowserRouter } from 'react-router-dom';
+
 <BrowserRouter>
-    <App />
+   <App />
+</BrowserRouter>
+
+<BrowserRouter>
+   <App />
 </BrowserRouter>
 ```
 2. 路由匹配组件(route matchers components) 比如 <Route /> 和 <Switch />
@@ -312,14 +317,148 @@ import { Link, NavLink } from "react-router-dom";
 
 ```
 
-1. redux
-![](./assets/Aspose.Words.bdb07b23-8480-466b-9fef-08b6ea7387cb.002.jpeg)
-   1. 异步和同步 action
-   2. react-redux集中式管理
-1. react-router
-2. hooks
-3. Fragment、 Context、 PureComponent、 getderivedStateFromError、 renderProps(插槽 )
-4. 组件间传值⽅式
-   1. ⽗⼦： props
-   2. 兄弟： pubsub、 redux
-   3. 祖孙组件： pubsub、 redux、 context
+## Redux
+![](./assets/redux.png)
+```js
+// index.js
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import Main from "./main";
+
+{/* 使用provider包裹app，让Main组件及所有后代组件都能接收到store */}
+<Provider store={store}>
+   <Main />
+</Provider>
+```
+```js
+// main.js
+import { Component, Fragment } from "react";
+import Todo from "./redux/Todo";
+
+{/* 使用Todo */}
+export default class Main extends Component {
+  render() {
+    return <Todo />;
+  }
+}
+```
+```js
+// Todo.js
+import React, { Component } from "react";
+import store from "./store";
+import actions from "./actions";
+import { connect } from "react-redux";
+import { Button } from "antd";
+
+class Todo extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+  }
+  componentDidMount() {
+    this.unsubscribe = store.subscribe((e) => {
+      console.log(this);
+    });
+  }
+  componentWillUnmount() {
+    this.unsubscribe(); //取消订阅
+  }
+  render() {
+    //console.log('counter render')
+    return (
+      <div>
+        <p>{this.props.number}</p>
+        <Button onClick={this.props.increase}> + </Button>
+        <br></br>
+        <Button onClick={this.props.decrease}> - </Button>
+        <br></br>
+        <br></br>
+        <Button onClick={this.props.typeOpen}> open </Button>
+        <br></br>
+        <Button onClick={this.props.typeClose}> close </Button>
+      </div>
+    );
+  }
+}
+/* 连接 Redux 和 React，它包在我们的容器组件的外一层，
+   它接收上面 Provider 提供的 store 里面的 state 和 dispatch，
+   传给一个构造函数，返回一个对象，以属性形式传回容器组件。
+*/
+
+// connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
+/*
+1. mapStateToProps: 将store中的数据作为props绑定到组件中，这个对象会与组件的props合并
+2. mapDispatchToProps: 将actions作为props绑定到组件中
+3. mergeProps: 接收reducer和state，返回的对象则是传入组件的props
+*/
+export default connect(
+  (state) => state,
+  actions,
+  (reducer, state) => {
+    return { ...reducer, ...state };
+  }
+)(Todo);
+```
+```js
+// store.js
+import { createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import rootReducer from "./reducers";
+// 创建 store，传入reducer
+const store = createStore(rootReducer, composeWithDevTools());
+
+export default store;
+```
+```js
+// reducers.js
+import { combineReducers } from "redux";
+import constant from "./constant";
+
+const reducer = (state = { count: 0 }, action) => {
+  switch (action.type) {
+    case constant.INCREASE:
+      return { count: state.count + 1 };
+    case constant.DECREASE:
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+};
+
+const changeTypeReducer = (state = { type: "open" }, action) => {
+  switch (action.type) {
+    case constant.TYPE_OPEN:
+      return { type: "open" };
+    case constant.TYPE_CLOSE:
+      return { type: "close" };
+    default:
+      return state;
+  }
+};
+
+// 汇总所有reducer变为一个总的reducer
+export default combineReducers({
+  reducer,
+  changeTypeReducer,
+});
+```
+```js
+// actions.js
+import constant from "./constant";
+
+export default {
+  increase: () => ({ type: constant.INCREASE }),
+  decrease: () => ({ type: constant.DECREASE }),
+  typeOpen: () => ({ type: constant.TYPE_OPEN }),
+  typeClose: () => ({ type: constant.TYPE_CLOSE }),
+};
+```
+```js
+// constant.js
+export default {
+  INCREASE: "INCREASE",
+  DECREASE: "DECREASE",
+  TYPE_OPEN: "TYPE_OPEN",
+  TYPE_CLOSE: "TYPE_CLOSE",
+};
+```
