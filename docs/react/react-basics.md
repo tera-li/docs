@@ -200,9 +200,51 @@ myRef = React.createRef()
 :::
 
 ## 组件传值
-1. ⽗⼦组件传值
-   1. ⽗传⼦， **通过** prop**属性传值**
-   2. ⼦传⽗，通过 prop属性 **将⽗组件⽅法传⼊⼦组件** ，⼦组件 **调⽤传⼊的属性⽅法** ， **触发⽗组件的⽅法**
+### props
+```js
+// 1. 父 -> 子 传值
+<Hoc job="工作"></Hoc>
+// 子组件 this.props.job 使用
+
+
+// 2. 子 -> 父 传值
+callback = (value) => {
+   // 此处的value便是子组件带回
+   this.setState({
+      info: value,
+   })
+}
+<Son callback={this.callback} />
+
+// 子组件 this.props.callback(e.target.value)
+```
+
+### context
+```js
+// context.js
+import {createContext} from "react";
+
+/**
+ * Provider,Consumer来源于同一个createContext()
+ * 通过Provider传入的value属性，将数据保存起来传递给其他组件
+ * 实现跨组件传值
+ *  */
+const MyContext = createContext('context初始值');
+const {Provider, Consumer} = MyContext;
+export {MyContext, Provider, Consumer};
+
+// person
+<Provider value={111}>
+   <Child/>
+</Provider>
+
+// child
+<Consumer>
+   {(value) => {
+      return `这是context传的值${value}`;
+   }}
+</Consumer>
+```
 2. react-router-dom
    1. 路由组件和⼀般组件的区别
    2. 精确匹配和模糊匹配
