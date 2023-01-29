@@ -200,25 +200,265 @@ myRef = React.createRef()
 :::
 
 ## 组件传值
-1. ⽗⼦组件传值
-   1. ⽗传⼦， **通过** prop**属性传值**
-   2. ⼦传⽗，通过 prop属性 **将⽗组件⽅法传⼊⼦组件** ，⼦组件 **调⽤传⼊的属性⽅法** ， **触发⽗组件的⽅法**
-2. react-router-dom
-   1. 路由组件和⼀般组件的区别
-   2. 精确匹配和模糊匹配
-   3. params和 search(query)、 state
-   4. 编程式路由导航 this.props.history.push('')
-   5. withRouter可以使⾮路由组件拥有路由组件特有的 API，进⾏编程式导航
-![](./assets/Aspose.Words.bdb07b23-8480-466b-9fef-08b6ea7387cb.001.jpeg)
+### props
+```js
+// 1. 父 -> 子 传值
+<Hoc job="工作"></Hoc>
+// 子组件 this.props.job 使用
 
-1. redux
-![](./assets/Aspose.Words.bdb07b23-8480-466b-9fef-08b6ea7387cb.002.jpeg)
-   1. 异步和同步 action
-   2. react-redux集中式管理
-1. react-router
-2. hooks
-3. Fragment、 Context、 PureComponent、 getderivedStateFromError、 renderProps(插槽 )
-4. 组件间传值⽅式
-   1. ⽗⼦： props
-   2. 兄弟： pubsub、 redux
-   3. 祖孙组件： pubsub、 redux、 context
+
+// 2. 子 -> 父 传值
+callback = (value) => {
+   // 此处的value便是子组件带回
+   this.setState({
+      info: value,
+   })
+}
+<Son callback={this.callback} />
+
+// 子组件 this.props.callback(e.target.value)
+```
+
+### context
+```js
+// context.js
+import {createContext} from "react";
+
+/**
+ * Provider,Consumer来源于同一个createContext()
+ * 通过Provider传入的value属性，将数据保存起来传递给其他组件
+ * 实现跨组件传值
+ *  */
+const MyContext = createContext('context初始值');
+const {Provider, Consumer} = MyContext;
+export {MyContext, Provider, Consumer};
+
+// person
+<Provider value={111}>
+   <Child/>
+</Provider>
+
+// child
+<Consumer>
+   {(value) => {
+      return `这是context传的值${value}`;
+   }}
+</Consumer>
+```
+
+### events
+```js
+// events.js
+import { EventEmitter } from "events";
+export default new EventEmitter();
+
+// person
+// 组件初始化时添加事件监听
+emitter.addListener("info", (info) => {
+   console.log("监听", info);
+});
+
+// 组件销毁前移除事件监听
+emitter.removeListener("info", (info) => {
+   console.log("移除", info);
+});
+
+// child
+// 发射事件
+emitter.emit("info", "我是来自father的 info");
+```
+## 页面路由
+### react-router-dom
+1. 路由组件(router components) 比如 <BrowserRouter /> 和 <HashRouter />
+   1. BrowserRouter 使用 HTML5 提供的 history API 实现
+   2. HashRouter 使用 # 方式跟在 URL 后面
+```js
+import { BrowserRouter } from 'react-router-dom';
+
+<BrowserRouter>
+   <App />
+</BrowserRouter>
+
+<BrowserRouter>
+   <App />
+</BrowserRouter>
+```
+2. 路由匹配组件(route matchers components) 比如 <Route /> 和 <Switch />
+   1. 通常由 Switch 包裹 Route 匹配 URL 路径是否一致
+```js
+import { Route, Switch, Redirect } from "react-router-dom";
+
+<Switch>
+   {/* 精确匹配 */}
+   <Route path="/home">
+      <Home />
+   </Route>
+   {/* 模糊匹配 */}
+   {/* params接收参数 */}
+   {/* <Route path="/page/:id" component={Page}></Route> */}
+   {/* search接收参数、state接收参数 */}
+   <Route path="/page" component={Page} />
+   <Redirect to="/home" />
+</Switch>
+```
+3. 导航组件(navigation components) 比如 <Link />, <NavLink />, 和 <Redirect />
+```js
+import { Link, NavLink } from "react-router-dom";
+
+<Link to='/'>Home</Link>
+
+// 匹配成功会添加class or style
+<NavLink to='/about' activeClassName='active'>
+  About
+</NavLink>
+
+// 重定向 URL
+<Redirect to="/" />
+
+```
+
+## Redux
+![](./assets/redux.png)
+```js
+// index.js
+import { Provider } from "react-redux";
+import store from "./redux/store";
+import Main from "./main";
+
+{/* 使用provider包裹app，让Main组件及所有后代组件都能接收到store */}
+<Provider store={store}>
+   <Main />
+</Provider>
+```
+```js
+// main.js
+import { Component, Fragment } from "react";
+import Todo from "./redux/Todo";
+
+{/* 使用Todo */}
+export default class Main extends Component {
+  render() {
+    return <Todo />;
+  }
+}
+```
+```js
+// Todo.js
+import React, { Component } from "react";
+import store from "./store";
+import actions from "./actions";
+import { connect } from "react-redux";
+import { Button } from "antd";
+
+class Todo extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+  }
+  componentDidMount() {
+    this.unsubscribe = store.subscribe((e) => {
+      console.log(this);
+    });
+  }
+  componentWillUnmount() {
+    this.unsubscribe(); //取消订阅
+  }
+  render() {
+    //console.log('counter render')
+    return (
+      <div>
+        <p>{this.props.number}</p>
+        <Button onClick={this.props.increase}> + </Button>
+        <br></br>
+        <Button onClick={this.props.decrease}> - </Button>
+        <br></br>
+        <br></br>
+        <Button onClick={this.props.typeOpen}> open </Button>
+        <br></br>
+        <Button onClick={this.props.typeClose}> close </Button>
+      </div>
+    );
+  }
+}
+/* 连接 Redux 和 React，它包在我们的容器组件的外一层，
+   它接收上面 Provider 提供的 store 里面的 state 和 dispatch，
+   传给一个构造函数，返回一个对象，以属性形式传回容器组件。
+*/
+
+// connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])
+/*
+1. mapStateToProps: 将store中的数据作为props绑定到组件中，这个对象会与组件的props合并
+2. mapDispatchToProps: 将actions作为props绑定到组件中
+3. mergeProps: 接收reducer和state，返回的对象则是传入组件的props
+*/
+export default connect(
+  (state) => state,
+  actions,
+  (reducer, state) => {
+    return { ...reducer, ...state };
+  }
+)(Todo);
+```
+```js
+// store.js
+import { createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import rootReducer from "./reducers";
+// 创建 store，传入reducer
+const store = createStore(rootReducer, composeWithDevTools());
+
+export default store;
+```
+```js
+// reducers.js
+import { combineReducers } from "redux";
+import constant from "./constant";
+
+const reducer = (state = { count: 0 }, action) => {
+  switch (action.type) {
+    case constant.INCREASE:
+      return { count: state.count + 1 };
+    case constant.DECREASE:
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+};
+
+const changeTypeReducer = (state = { type: "open" }, action) => {
+  switch (action.type) {
+    case constant.TYPE_OPEN:
+      return { type: "open" };
+    case constant.TYPE_CLOSE:
+      return { type: "close" };
+    default:
+      return state;
+  }
+};
+
+// 汇总所有reducer变为一个总的reducer
+export default combineReducers({
+  reducer,
+  changeTypeReducer,
+});
+```
+```js
+// actions.js
+import constant from "./constant";
+
+export default {
+  increase: () => ({ type: constant.INCREASE }),
+  decrease: () => ({ type: constant.DECREASE }),
+  typeOpen: () => ({ type: constant.TYPE_OPEN }),
+  typeClose: () => ({ type: constant.TYPE_CLOSE }),
+};
+```
+```js
+// constant.js
+export default {
+  INCREASE: "INCREASE",
+  DECREASE: "DECREASE",
+  TYPE_OPEN: "TYPE_OPEN",
+  TYPE_CLOSE: "TYPE_CLOSE",
+};
+```
