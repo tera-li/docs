@@ -267,13 +267,50 @@ emitter.removeListener("info", (info) => {
 // 发射事件
 emitter.emit("info", "我是来自father的 info");
 ```
-2. react-router-dom
-   1. 路由组件和⼀般组件的区别
-   2. 精确匹配和模糊匹配
-   3. params和 search(query)、 state
-   4. 编程式路由导航 this.props.history.push('')
-   5. withRouter可以使⾮路由组件拥有路由组件特有的 API，进⾏编程式导航
-![](./assets/Aspose.Words.bdb07b23-8480-466b-9fef-08b6ea7387cb.001.jpeg)
+## 页面路由
+### react-router-dom
+1. 路由组件(router components) 比如 <BrowserRouter /> 和 <HashRouter />
+   1. BrowserRouter 使用 HTML5 提供的 history API 实现
+   2. HashRouter 使用 # 方式跟在 URL 后面
+```js
+import { BrowserRouter } from 'react-router-dom';
+<BrowserRouter>
+    <App />
+</BrowserRouter>
+```
+2. 路由匹配组件(route matchers components) 比如 <Route /> 和 <Switch />
+   1. 通常由 Switch 包裹 Route 匹配 URL 路径是否一致
+```js
+import { Route, Switch, Redirect } from "react-router-dom";
+
+<Switch>
+   {/* 精确匹配 */}
+   <Route path="/home">
+      <Home />
+   </Route>
+   {/* 模糊匹配 */}
+   {/* params接收参数 */}
+   {/* <Route path="/page/:id" component={Page}></Route> */}
+   {/* search接收参数、state接收参数 */}
+   <Route path="/page" component={Page} />
+   <Redirect to="/home" />
+</Switch>
+```
+3. 导航组件(navigation components) 比如 <Link />, <NavLink />, 和 <Redirect />
+```js
+import { Link, NavLink } from "react-router-dom";
+
+<Link to='/'>Home</Link>
+
+// 匹配成功会添加class or style
+<NavLink to='/about' activeClassName='active'>
+  About
+</NavLink>
+
+// 重定向 URL
+<Redirect to="/" />
+
+```
 
 1. redux
 ![](./assets/Aspose.Words.bdb07b23-8480-466b-9fef-08b6ea7387cb.002.jpeg)
