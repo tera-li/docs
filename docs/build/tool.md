@@ -25,20 +25,30 @@
     - 提示定义输入标准的git commit 内容
 ## husky
 ```javascript
-npm install husky@4.2.5 --save-dev
+npm install husky --save-dev
 or
-yarn add husky@4.2.5 -D
+yarn add husky -D
+
+npx husky-init  // 初始化husky配置，在根目录会有.husky配置文件，里面有初始化配置pre-commit
+npx husky add .husky/commit-msg  // 在husky配置中，添加commit-msg钩子
+
+// 在.husky中的pre-commit中添加 npm run lint-staged
+// 在.husky中的commit-msg中添加 npm run commitlint
+
 ```
 ```javascript
-// 在package.json 中添加以下代码
-"husky": {
-  "hooks": {
-      // 提交commit时触发
-    "pre-commit": "lint-staged",
-      // 检测commit的message时触发
-    "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-  }
-}
+// .husky/pre-commit
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npm run lint-staged
+
+// .husky/commit-msg
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npm run commitlint
+
 /**
 // gitHooks（常用hooks）
 1.pre-commit：钩子在键入提交信息前运行。
