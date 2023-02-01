@@ -462,3 +462,4 @@ export default {
   TYPE_CLOSE: "TYPE_CLOSE",
 };
 ```
+参考链接：https://react.docschina.org/docs/getting-started.html
