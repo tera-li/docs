@@ -68,4 +68,5 @@ add_header Cache-Control max-age=0;
 1. HTTP2 开启TCP connection，通过stream和frame进行传输，frame中的字段identifier标识此帧属于哪一个stream  
 2. identifier相同的frame属于同一流，服务端将identifier相同的帧解析成可用数据
 3. 在这个TCP connection中，同时传输了多个stream的帧数据，这就是HTTP/2的多路复用
-4. 提高请求并发数量，节省响应时间
+4. 相对于HTTP1.1，请求响应是有序的，而HTTP2多路复用通过流来传输，是无序的，这也是更快的一个点
+5. 提高请求并发数量，节省响应时间
