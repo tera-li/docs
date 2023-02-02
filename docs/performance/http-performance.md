@@ -54,3 +54,18 @@ add_header Cache-Control max-age=0;
 ### connection: keep-live
 
 持久化HTTP，通过重用TCP连接，减少HTTP响应时间
+
+## HTTP2
+
+### 头部压缩
+1. HTTP2 中对 HTTP 的头部进行压缩，常用头部使用数字类似的字典替代，节省头部传输流量
+
+### Server Push
+1. HTTP2 会对比如HTML中的引用css或js等资源，在服务端就提前简析并**主动Push发送请求**，减少客户端的解析请求时间  
+2. 服务端会根据静态资源的依赖关系，主动向客户端推送可用用的静态资源，减少请求交互次数
+
+### 多路复用
+1. HTTP2 开启TCP connection，通过stream和frame进行传输，frame中的字段identifier标识此帧属于哪一个stream  
+2. identifier相同的frame属于同一流，服务端将identifier相同的帧解析成可用数据
+3. 在这个TCP connection中，同时传输了多个stream的帧数据，这就是HTTP/2的多路复用
+4. 提高请求并发数量，节省响应时间
