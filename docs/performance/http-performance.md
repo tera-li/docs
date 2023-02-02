@@ -31,5 +31,17 @@ gzip_disable "MSIE [1-6]\.";
 gzip_vary on;
 ```
 2. **静态压缩**: 提前将文件压缩成 .gz 格式，请求来了，直接返回即可
-
+```js
+# 开启gzip静态文件返回，请求文件中有匹配到 .gz 则返回，无则返回请求文件
+gzip_static on;
+```
 ## 缓存
+```js
+// 开启强制缓存
+// 300秒内加载本地缓存，不会去请求服务器，超过时间后会去请求，匹配文件是否修改，无修改则304，有修改则200
+add_header Cache-Control max-age=300;
+
+// 开启协商缓存
+// 请求会通过 ETag/If-None-Match 或者 Last-Modified/If-Modified-Since 匹配文件是否修改，无修改则304，有修改则200
+add_header Cache-Control max-age=0;
+```
