@@ -45,3 +45,12 @@ add_header Cache-Control max-age=300;
 // 请求会通过 ETag/If-None-Match 或者 Last-Modified/If-Modified-Since 匹配文件是否修改，无修改则304，有修改则200
 add_header Cache-Control max-age=0;
 ```
+
+## 针对协议版本采取优化措施
+![](./assets/http-performance.png)
+![](./assets/http-tcp.png)
+
+
+### connection: keep-live
+
+持久化HTTP，通过重用TCP连接，减少HTTP响应时间
