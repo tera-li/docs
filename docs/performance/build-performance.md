@@ -102,6 +102,7 @@ module.exports = {
 1. prefetch(预获取)：将来某些导航下可能需要的资源
    1. 浏览器会在空闲状态取得这些资源，在取得资源之后搁在HTTP缓存以便于实现将来的请求
 2. preload(预加载)：当前导航下可能需要资源
+   1. 浏览器页面在这次导航中必须的资源，只是会在之后才会被使用
 
 ```js
 import(/* webpackPrefetch: true */ "./assets/customJs.js");
