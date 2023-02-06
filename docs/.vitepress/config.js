@@ -74,6 +74,10 @@ const sidebar = [
         text: "Tool",
         link: "/build/tool",
       },
+      {
+        text: "前端工程化",
+        link: "/build/front-end-engineering",
+      },
     ],
   },
   {
