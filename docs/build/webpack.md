@@ -295,5 +295,17 @@ module.exports = {
 };
 ```
 :::
+
+## 大致打包流程
+1. 载入 webpack 核心模块，创建 compiler 对象
+   1. 将 entry,output,module,plugins等参数和 shell 上的参数一并传入 compiler
+2. 使用 compiler 对象开始编译整个项目
+   1. 调用 compiler.run() 方法进行编译
+3. 从入口文件开始，解析模块依赖，形成依赖关系树
+   1. 根据 entry 配置找到入口文件
+   2. 依次递归所有依赖，将依赖关系树的每个模块交给不同的loader(对源代码转换为webpack能够识别的文件)进行处理
+4. 递归完成后，整理合并 Loader 处理完的结果，将打包结果输出到 output 目录
+
+
 参考链接1⃣️：https://www.webpackjs.com/  
 参考链接2⃣️：https://github.com/hljinjiang/webpack-config
