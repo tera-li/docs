@@ -229,13 +229,40 @@ this.$attrs
 this.$listeners
 ```
 ### vue3
+- 方式一
+```js
+import { defineComponent } from "vue";
+export default defineComponent({
+  setup(props, ctx) {
+    console.log(ctx.attrs)
+  },
+});
+```
+- 方式二
 ```js
 import { useAttrs } from "vue";
 // 返回返回所有绑定在组件上的属性和事件监听器（除props 申明的属性）
-useAttrs()
+const attrs = useAttrs()
 ```
 
-## 123
+## provide/inject
+### vue2
+```js
+// 父组件
+provide() {
+  return {
+    msg1: 'msg111',
+    msg2: 'msg222'
+  }
+}
+// 子组件
+inject: ['msg1','msg2'],
+```
+### vue3
+```js
+```
+
+## provide/inject
 ### vue2
 ```js
 ```
