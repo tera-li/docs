@@ -269,10 +269,12 @@ import { inject } from "vue";
 const msg = inject('msg1')
 ```
 
-## provide/inject
+## $parent/$children
 ### vue2
 ```js
-```
-### vue3
-```js
+// 获取父组件
+this.$parent
+
+// 获取子组件，多个
+this.$children
 ```
