@@ -197,6 +197,32 @@ const props = defineProps({
 ## emit
 ### vue2
 ```js
+this.$emit('sendMsg','子组件数据')
+```
+### vue3
+- 方式一
+```js
+import { defineComponent } from "vue";
+export default defineComponent({
+  emits: ['sendMsg'],
+  setup(props, ctx) {
+      ctx.emit('sendMsg', '子组件数据')
+  },
+});
+```
+- 方式二
+```js
+import { defineEmits } from "vue";
+const emits = defineEmits(['send'])
+const send = () => {
+  emits('sendMsg', '子组件数据')
+}
+sendMsg()
+```
+
+## emit
+### vue2
+```js
 ```
 ### vue3
 ```js
