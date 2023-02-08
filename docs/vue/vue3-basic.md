@@ -260,6 +260,13 @@ inject: ['msg1','msg2'],
 ```
 ### vue3
 ```js
+// 父组件
+import { provide } from "vue";
+provide("msg1",'msg1111')
+
+// 子组件
+import { inject } from "vue";
+const msg = inject('msg1')
 ```
 
 ## provide/inject
