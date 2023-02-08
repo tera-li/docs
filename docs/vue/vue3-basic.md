@@ -150,3 +150,54 @@ import {
 let val = ref(1)
 let val2 = computed(() => val.value + 1)
 ```
+## props
+### vue2
+```js
+props:['msg']
+props: {
+  show: {
+    type: Boolean,
+    default: false
+  },
+  loadingText: {
+    type: String,
+    default: '加载中...'
+  }
+},
+```
+### vue3
+- 方式一
+```js
+import { defineComponent } from "vue";
+export default defineComponent({
+  props: ["msg"],
+  props: {
+    msg: {
+      type: String,
+      default: '加载中...'
+    }
+  },
+  setup(props) {
+    console.log(props)
+  },
+});
+```
+- 方式二
+```js
+import { defineProps } from "vue";
+const props = defineProps({
+  msg: String,
+  value: {
+    type: String,
+    default: "123",
+  },
+});
+```
+
+## emit
+### vue2
+```js
+```
+### vue3
+```js
+```
