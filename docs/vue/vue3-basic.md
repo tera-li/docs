@@ -220,7 +220,22 @@ const send = () => {
 sendMsg()
 ```
 
-## emit
+## $attrs/$listeners
+### vue2
+```js
+// 返回所有绑定在组件上的属性（除props 申明的属性、class、style）
+this.$attrs
+// 返回所有绑定在组件上的事件监听器
+this.$listeners
+```
+### vue3
+```js
+import { useAttrs } from "vue";
+// 返回返回所有绑定在组件上的属性和事件监听器（除props 申明的属性）
+useAttrs()
+```
+
+## 123
 ### vue2
 ```js
 ```
