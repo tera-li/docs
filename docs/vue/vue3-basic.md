@@ -278,3 +278,81 @@ this.$parent
 // 获取子组件，多个
 this.$children
 ```
+
+## expose&ref
+:::info expose只有在vue3中才能使用
+:::
+### vue2
+```js
+// 绑定ref
+<HelloWorld ref="hello-dom" />
+// 获取子组件
+this.$refs['hello-dom']
+```
+### vue3
+- 方式一
+```js
+// 子组件 HelloWorld
+import { defineComponent } from "vue";
+export default defineComponent({
+  setup(props, ctx) {
+    const one = () => {
+      console.log('one')
+    }
+    const one1 = () => {
+      console.log('one1')
+    }
+    // expose优先级更高，返回什么才能访问什么
+    ctx.expose({ one })
+    // 返回什么才能访问什么
+    return {
+      one,
+      one1,
+    }
+  },
+});
+
+// 父组件
+<HelloWorld ref="child"/>
+
+import { defineComponent, ref } from "vue";
+export default defineComponent({
+  setup(props, ctx) {
+    let child = ref()
+    // 获取子组件属性
+    child.value
+  },
+});
+```
+
+- 方式二
+```js
+// 子组件 HelloWorld
+import { ref, defineExpose } from "vue";
+const send = () => {}
+let val = ref(1)
+// 子组件必须暴露对应属性才能让父组件获取
+defineExpose({
+  val,
+  send
+})
+
+// 父组件
+<HelloWorld ref="child"/>
+
+import { ref } from "vue";
+
+let child = ref()
+// 获取子组件属性
+child.value
+```
+
+- 方式三
+```js
+<div ref="child"></div>
+
+import { ref } from "vue";
+let child = ref()
+// 获取元素DOM
+child.value
+```
