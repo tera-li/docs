@@ -48,6 +48,7 @@ const sidebar = [
         items: [
           { text: "Vue2 响应式", link: "/vue/vue2-reactive" },
           { text: "Vue2 和 Vue3", link: "/vue/vue3-basic" },
+          { text: "Pinia", link: "/vue/Pinia" },
         ],
       },
       {
