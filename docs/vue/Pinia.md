@@ -85,4 +85,36 @@ store.$subscribe((mutation, state) => {
 },{ detached: true })
 ```
 
+## Pinia 插件
+:::info 简介
+1. 为 store 添加新的属性
+2. 定义 store 时增加新的选项
+3. 为 store 增加新的方法
+4. 包装现有的方法
+5. 改变甚至取消 action
+6. 实现副作用，如本地存储
+7. 仅应用插件于特定 store
+:::
+```js
+import { createPinia } from 'pinia'
+import { ref } from "vue";
+
+const piniaPlugin = (context) => {
+    /*  当有多个 store 调用时，会重复触发该函数
+        context.pinia // 用 `createPinia()` 创建的 pinia。
+        context.app // 用 `createApp()` 创建的当前应用(仅 Vue 3)。
+        context.store // 该插件想扩展的 store
+        context.options // 定义传给 `defineStore()` 的 store 的可选对象。
+    * */
+    console.log(context)
+    // 返回的对象会在每个store上访问到
+    return {
+        // 定义响应性数据，可以修改以呈现响应式
+        secret: ref('the cake is a lie'),
+        hello: 'hello world'
+    }
+}
+// 创建 Pinia，使用use扩展plugin
+export default createPinia().use(piniaPlugin)
+```
 参考链接：https://pinia.vuejs.org/zh/index.html
