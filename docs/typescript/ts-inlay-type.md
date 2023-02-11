@@ -218,3 +218,4 @@ class B implements T2 {
 }
 ```
 
+参考链接：https://www.tslang.cn/docs/handbook/advanced-types.html
