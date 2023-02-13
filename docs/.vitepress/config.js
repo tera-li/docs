@@ -140,9 +140,36 @@ export default defineConfig({
   // 浏览器标签，｜ 右侧文字
   titleTemplate: false,
   // 页面描述，自动注入meta
-  description: "Just playing around.",
+  description:
+    "Johan Lin's Docs，瑾江的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
   // 页面头部，自动注入
-  head: [["link", { rel: "shortcut icon", href: "../static/aperture.svg" }]],
+  head: [
+    ["link", { rel: "shortcut icon", href: "../static/aperture.svg" }],
+    ["meta", { name: "title", content: "Johan Lin's Docs" }],
+    [
+      "meta",
+      {
+        name: "description",
+        content:
+          "Johan Lin's Docs，瑾江的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
+      },
+    ],
+    [
+      "meta",
+      {
+        name: "keywords",
+        content:
+          "Johan Lin,Docs,web,surprise,瑾江的博客,前端,前端技术博客,前端基础,前端进阶,前端笔记",
+      },
+    ],
+    [
+      "meta",
+      {
+        name: "google-site-verification",
+        content: "WsLa9IEnN2TZzy4k0HF1GNYCghbHHtSDM80dokpEi3E",
+      },
+    ],
+  ],
   // 语言，<html lang="en-US">
   lang: "en-US",
   // 最后更新时间，可在themeConfig自定义配置
@@ -168,7 +195,7 @@ export default defineConfig({
     sidebar: sidebar,
     // 社交链接
     socialLinks: [
-      { icon: "github", link: "https://github.com/hljinjiang" },
+      { icon: "github", link: "https://github.com/johan-ljl" },
       {
         icon: {
           svg: `<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="764.000000pt" height="764.000000pt" viewBox="0 0 764.000000 764.000000" preserveAspectRatio="xMidYMid meet">
@@ -185,7 +212,7 @@ export default defineConfig({
     // 编辑配置
     editLink: {
       pattern:
-        "https://github.com/hljinjiang/docs-surprise/blob/main/docs/:path",
+        "https://github.com/johan-ljl/docs-surprise/blob/main/docs/:path",
       text: "Edit this page on GitHub",
     },
     // 底部配置
