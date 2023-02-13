@@ -120,6 +120,12 @@ const sidebar = [
       { text: "TS 类型语言", link: "/typescript/ts-declare" },
     ],
   },
+  {
+    text: "Node",
+    collapsible: true,
+    collapsed: true,
+    items: [{ text: "Node 基础模块", link: "/node/node-basic" }],
+  },
   // {
   //   text: "JAVA",
   //   collapsible: true,
