@@ -5,28 +5,22 @@
 1. 超文本传输协议
 2. 创建http服务
 ```js
-// 请求服务，搭建类似于express之类的框架
-1. 首页注册response扩展方法，如: res.send()等
-2. 注册静态web服务，获取静态资源返回对应文件
-   如：let data = fs.readFileSync(req.url)
-       res.end(data)
-3. 通过静态web服务则走向路由接口配置
-   配置get、post方法接口，通过req.method获取请求方法
-   app.get、app.post注册在对象不同属性中
-   将callback注册给对象属性值，运行时调用
-   let G = {
-       _get: {}
-       _post: {}
-   }
-   app.get(path, cd) {
-       G._get[path] = cd
-   }
-   app.get('/login', (req, res) => {
-       res.end('data')
-   })
-   if (req.method === 'get') {
-       G._get[req.url](req, res) // 调用定义方法
-   } else ......
+var http = require( "http" );
+// 调用http.createServer()方法返回创建的HTTP服务器
+var server = http.createServer(function( req, res ) {
+                res.writeHead(200, {'Content-Type': 'text/html'} )
+                res.write("<head><meta charset='utf8'></head>" );
+                res.end("hello world" );
+            })
+
+server.listen(1335, function() {
+    console.log( "server is running at port 1335." );
+    // server.close(); // 关闭HTTP服务器
+})
+// 当关闭HTTP服务器时触发close事件，指定回调函数处理
+server.on("close", function() {
+    console.log("HTTP服务器已关闭");
+})
 ```
 :::
 
@@ -38,17 +32,17 @@ const http = require('http')
 const url = require('url')
 
 http.createServer((req, res) => {
-    console.log(req.url);
-    const query = url.parse(req.url, true).query
-    console.log('id:' + query.id);
-    console.log('name:' + query.name);
-    res.writeHead(200, { 'Content-type': 'text/html;charset="utf-8"' })
-    res.write('你好')
-    res.write('<h2>hello world</h2>')
-    res.end('.....')
+  console.log(req.url);
+  const query = url.parse(req.url, true).query
+  console.log('id:' + query.id);
+  console.log('name:' + query.name);
+  res.writeHead(200, { 'Content-type': 'text/html;charset="utf-8"' })
+  res.write('你好' + query.name + ':' + query.id)
+  res.write('<h2>hello world</h2>')
+  res.end('.....')
 }).listen(3000)
 
-console.log('sever running at http://localhost:3000')
+console.log('sever running at http://localhost:3000/?id=1&name=join')
 ```
 :::
 
@@ -67,6 +61,10 @@ module.exports = {
 exports.todo = (val) => {
     console.log('这是一个值: ' + val)
 }
+
+// 引入使用
+var hhh = require('./hhh')
+hhh.todo('val')
 ```
 :::
 
