@@ -1,24 +1,24 @@
 ---
-title: Johan Lin
+title: JohanLin
 titleTemplate: home
 # description: description
 head:
   # - - meta
   #   - name: title
-  #     content: Johan Lin's Docs
+  #     content: JohanLin's Docs
   # - - meta
   #   - name: description
-  #     content: Johan Lin's Docs，瑾江的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记
+  #     content: JohanLin's Docs，瑾江的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记
   # - - meta
   #   - name: keywords
-  #     content: Johan Lin,Docs,web,surprise,瑾江的博客,前端,前端技术博客,前端基础,前端进阶,前端笔记
+  #     content: JohanLin,Docs,web,surprise,瑾江的博客,前端,前端技术博客,前端基础,前端进阶,前端笔记
   # - - meta
   #   - name: google-site-verification
   #   - content: WsLa9IEnN2TZzy4k0HF1GNYCghbHHtSDM80dokpEi3E
 layout: home
 aside: true
 hero:
-  name: Johan Lin's Docs
+  name: JohanLin's Docs
   text: Docs & Record the life.
   tagline: Docs content is continuously updated...
   actions:

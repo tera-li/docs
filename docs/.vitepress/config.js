@@ -141,17 +141,17 @@ export default defineConfig({
   titleTemplate: false,
   // 页面描述，自动注入meta
   description:
-    "Johan Lin's Docs，瑾江的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
+    "JohanLin's Docs，JohanLin的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
   // 页面头部，自动注入
   head: [
     ["link", { rel: "shortcut icon", href: "../static/aperture.svg" }],
-    ["meta", { name: "title", content: "Johan Lin's Docs" }],
+    ["meta", { name: "title", content: "JohanLin's Docs" }],
     [
       "meta",
       {
         name: "description",
         content:
-          "Johan Lin's Docs，瑾江的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
+          "JohanLin's Docs，JohanLin的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
       },
     ],
     [
@@ -159,7 +159,7 @@ export default defineConfig({
       {
         name: "keywords",
         content:
-          "Johan Lin,Docs,web,surprise,瑾江的博客,前端,前端技术博客,前端基础,前端进阶,前端笔记",
+          "JohanLin,Docs,web,surprise,JohanLin的博客,前端,前端技术博客,前端基础,前端进阶,前端笔记",
       },
     ],
     [
