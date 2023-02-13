@@ -267,4 +267,4 @@ class Vue {
 </html>
 ```
 
-参考链接：https://github.com/hljinjiang/vue-source/tree/main/vue2/js
+参考链接：https://github.com/johan-ljl/vue-source/tree/main/vue2/js

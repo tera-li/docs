@@ -60,4 +60,4 @@ npx cowsay hello!
 4. 可以指定 node版本、命令的版本，解决了不同项⽬使⽤不同版本的命令的问题。
 ```
 
-参考链接：https://github.com/hljinjiang/dir-to-zip
+参考链接：https://github.com/johan-ljl/dir-to-zip

@@ -1,21 +1,24 @@
 ---
-title: VitePress
-titleTemplate: Vite & Vue powered static site generator.
+title: JohanLin
+titleTemplate: home
 # description: description
 head:
-  - - meta
-    - name: description
-      content: JinJiang's Docs，瑾江的博客，surprise，前端，前端技术博客
-  - - meta
-    - name: keywords
-      content: JinJiang,Docs,瑾江的博客,surprise,前端,前端技术博客
-  - - meta
-    - name: google-site-verification
-    - content: WsLa9IEnN2TZzy4k0HF1GNYCghbHHtSDM80dokpEi3E
+  # - - meta
+  #   - name: title
+  #     content: JohanLin's Docs
+  # - - meta
+  #   - name: description
+  #     content: JohanLin's Docs，瑾江的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记
+  # - - meta
+  #   - name: keywords
+  #     content: JohanLin,Docs,web,surprise,瑾江的博客,前端,前端技术博客,前端基础,前端进阶,前端笔记
+  # - - meta
+  #   - name: google-site-verification
+  #   - content: WsLa9IEnN2TZzy4k0HF1GNYCghbHHtSDM80dokpEi3E
 layout: home
 aside: true
 hero:
-  name: JinJiang's Docs
+  name: JohanLin's Docs
   text: Docs & Record the life.
   tagline: Docs content is continuously updated...
   actions:

@@ -222,7 +222,7 @@ figcaption (figure 元素的标题)、keygen (生成密钥)
 HTML的标识元数据内容，只能在head中
 提供的是文档级别的元数据，应用整个页面
 
-<meta name="author" content="jinjiang" />
+<meta name="author" content="johan-ljl" />
   -- name=“author”  content=“作者名称”
   -- name="description"  content=“页面内容描述”
   -- name=“generator”  content=“生成页面的软件标识符”
