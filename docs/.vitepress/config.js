@@ -141,17 +141,17 @@ export default defineConfig({
   titleTemplate: false,
   // 页面描述，自动注入meta
   description:
-    "JohanLin's Docs，JohanLin的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
+    "tetralin's Docs，tetralin的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
   // 页面头部，自动注入
   head: [
     ["link", { rel: "shortcut icon", href: "../static/aperture.svg" }],
-    ["meta", { name: "title", content: "JohanLin's Docs" }],
+    ["meta", { name: "title", content: "tetralin's Docs" }],
     [
       "meta",
       {
         name: "description",
         content:
-          "JohanLin's Docs，JohanLin的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
+          "tetralin's Docs，tetralin的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
       },
     ],
     [
@@ -159,7 +159,7 @@ export default defineConfig({
       {
         name: "keywords",
         content:
-          "JohanLin,Docs,web,surprise,JohanLin的博客,前端,前端技术博客,前端基础,前端进阶,前端笔记",
+          "tetralin,Docs,web,surprise,tetralin的博客,前端,前端技术博客,前端基础,前端进阶,前端笔记",
       },
     ],
     [
@@ -195,7 +195,7 @@ export default defineConfig({
     sidebar: sidebar,
     // 社交链接
     socialLinks: [
-      { icon: "github", link: "https://github.com/johan-ljl" },
+      { icon: "github", link: "https://github.com/tetralin" },
       {
         icon: {
           svg: `<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="764.000000pt" height="764.000000pt" viewBox="0 0 764.000000 764.000000" preserveAspectRatio="xMidYMid meet">
@@ -211,8 +211,7 @@ export default defineConfig({
     ],
     // 编辑配置
     editLink: {
-      pattern:
-        "https://github.com/johan-ljl/docs-surprise/blob/main/docs/:path",
+      pattern: "https://github.com/tetralin/docs-surprise/blob/main/docs/:path",
       text: "Edit this page on GitHub",
     },
     // 底部配置

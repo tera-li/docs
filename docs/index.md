@@ -1,24 +1,12 @@
 ---
-title: JohanLin
+title: tetralin
 titleTemplate: home
 # description: description
-head:
-  # - - meta
-  #   - name: title
-  #     content: JohanLin's Docs
-  # - - meta
-  #   - name: description
-  #     content: JohanLin's Docs，瑾江的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记
-  # - - meta
-  #   - name: keywords
-  #     content: JohanLin,Docs,web,surprise,瑾江的博客,前端,前端技术博客,前端基础,前端进阶,前端笔记
-  # - - meta
-  #   - name: google-site-verification
-  #   - content: WsLa9IEnN2TZzy4k0HF1GNYCghbHHtSDM80dokpEi3E
+# head:
 layout: home
 aside: true
 hero:
-  name: JohanLin's Docs
+  name: tetra-lin's Docs
   text: Docs & Record the life.
   tagline: Docs content is continuously updated...
   actions:
