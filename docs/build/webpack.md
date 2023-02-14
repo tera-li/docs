@@ -160,7 +160,7 @@ module.exports = CustomPlugin;
     "build:prod": "webpack --mode=production --node-env production --progress",
     "build:dev": "webpack --mode=development --node-env development --progress"
   },
-  "homepage": "https://github.com/tetra-lin/webpack-config#readme",
+  "homepage": "https://github.com/tera-li/webpack-config#readme",
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",
@@ -308,4 +308,4 @@ module.exports = {
 
 
 参考链接1⃣️：https://www.webpackjs.com/  
-参考链接2⃣️：https://github.com/tetra-lin/webpack-config
+参考链接2⃣️：https://github.com/tera-li/webpack-config

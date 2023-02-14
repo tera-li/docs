@@ -270,4 +270,4 @@ export default defineConfig({
 ```
 :::
 参考链接1⃣️：https://cn.vitejs.dev  
-参考链接2⃣️：https://github.com/tetra-lin/vite-config  
+参考链接2⃣️：https://github.com/tera-li/vite-config  
