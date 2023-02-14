@@ -1,4 +1,4 @@
 ### My docs
 welcome to my docs
 
-homePage: https://johan-ljl.github.io/docs-surprise/
+homePage: https://tetra-lin.github.io/docs-surprise/
