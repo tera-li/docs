@@ -153,12 +153,12 @@ history.state                       // 返回在 history 栈顶的 任意 值的
 ```
   - **Location: 查看操作当前对象的位置（URL)**
 ```js
-location.href                  // 返回整个 URL              http://localhost:5173/docs-surprise/javascript/js-window.html?page=1#hash
+location.href                  // 返回整个 URL              http://localhost:5173/docs/javascript/js-window.html?page=1#hash
 location.protocol              // 返回    协议              https:
 location.host                  // 返回    域名 + 端口号      localhost:5173
 location.hostname              // 返回    域名              localhost
 location.port                  // 返回    端口号             5173
-location.pathname              // 返回    域名后的path       /docs-surprise/javascript/js-window.html
+location.pathname              // 返回    域名后的path       /docs/javascript/js-window.html
 location.search                // 返回    域名后的?          ?page=1
 location.hash                  // 返回    域名后的#          #hash
 location.origin                // 返回    源的域名的标准形式   https://developer.mozilla.org

@@ -195,7 +195,7 @@ export default defineConfig({
     sidebar: sidebar,
     // 社交链接
     socialLinks: [
-      { icon: "github", link: "https://github.com/terali" },
+      { icon: "github", link: "https://github.com/tera-li" },
       {
         icon: {
           svg: `<svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="764.000000pt" height="764.000000pt" viewBox="0 0 764.000000 764.000000" preserveAspectRatio="xMidYMid meet">
@@ -211,7 +211,7 @@ export default defineConfig({
     ],
     // 编辑配置
     editLink: {
-      pattern: "https://github.com/terali/docs-surprise/blob/main/docs/:path",
+      pattern: "https://github.com/tera-li/docs/blob/main/docs/:path",
       text: "Edit this page on GitHub",
     },
     // 底部配置
