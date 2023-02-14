@@ -144,7 +144,7 @@ export default defineConfig({
     "terali's Docs，terali的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
   // 页面头部，自动注入
   head: [
-    ["link", { rel: "shortcut icon", href: "../static/aperture.svg" }],
+    ["link", { rel: "shortcut icon", href: "/assets/aperture.svg" }],
     ["meta", { name: "title", content: "terali's Docs" }],
     [
       "meta",
