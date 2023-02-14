@@ -136,7 +136,7 @@ const sidebar = [
 export default defineConfig({
   // 左侧标题，｜ 左侧文字
   title: "Docs",
-  base: "/docs-surprise",
+  base: "/docs",
   // 浏览器标签，｜ 右侧文字
   titleTemplate: false,
   // 页面描述，自动注入meta
