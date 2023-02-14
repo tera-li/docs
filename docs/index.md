@@ -1,12 +1,12 @@
 ---
-title: tetralin
+title: terali
 titleTemplate: home
 # description: description
 # head:
 layout: home
 aside: true
 hero:
-  name: tetra-lin's Docs
+  name: tera-li's Docs
   text: Docs & Record the life.
   tagline: Docs content is continuously updated...
   actions:
