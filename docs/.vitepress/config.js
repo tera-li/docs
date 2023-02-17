@@ -1,137 +1,148 @@
 import { defineConfig } from "vitepress";
-const sidebar = [
-  {
-    text: "前端三把斧",
-    collapsible: true,
-    collapsed: true,
-    items: [
-      {
-        text: "HTML",
-        link: "/html/",
-      },
-      {
-        text: "CSS",
-        link: "/css/",
-      },
-      {
-        text: "JavaScript",
-        items: [
-          { text: "JavaScript 基础", link: "/javascript/" },
-          { text: "JavaScript 新特性", link: "/javascript/js-feat" },
-          { text: "JavaScript 窗口", link: "/javascript/js-window" },
-          { text: "JavaScript 引擎", link: "/javascript/js-engine" },
-          { text: "JavaScript 原型", link: "/javascript/js-proto" },
-          {
-            text: "JavaScript 通信",
-            link: "/javascript/js-dataCommunication",
-          },
-          { text: "JavaScript 数据类型", link: "/javascript/js-dataType" },
-          {
-            text: "JavaScript Web组件",
-            link: "/javascript/js-webComponent",
-          },
-          {
-            text: "JavaScript 设计模式",
-            link: "/javascript/js-design",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    text: "前端框架",
-    collapsible: true,
-    collapsed: true,
-    items: [
-      {
-        text: "Vue",
-        items: [
-          { text: "Vue2 响应式", link: "/vue/vue2-reactive" },
-          { text: "Vue2 和 Vue3", link: "/vue/vue3-basic" },
-          { text: "Pinia", link: "/vue/Pinia" },
-        ],
-      },
-      {
-        text: "React",
-        items: [{ text: "React 基础", link: "/react/react-basics" }],
-      },
-    ],
-  },
-  {
-    text: "打包部署",
-    collapsible: true,
-    collapsed: true,
-    items: [
-      {
-        text: "Webpack",
-        link: "/build/webpack",
-      },
-      {
-        text: "Vite",
-        link: "/build/vite",
-      },
-      {
-        text: "Npm",
-        link: "/build/npm",
-      },
-      {
-        text: "Tool",
-        link: "/build/tool",
-      },
-      {
-        text: "前端工程化",
-        link: "/build/front-end-engineering",
-      },
-    ],
-  },
-  {
-    text: "性能优化",
-    collapsible: true,
-    collapsed: true,
-    items: [
-      {
-        text: "Http",
-        link: "/performance/http-performance",
-      },
-      {
-        text: "Build",
-        link: "/performance/build-performance",
-      },
-    ],
-  },
-  {
-    text: "网络基础",
-    collapsible: true,
-    collapsed: true,
-    items: [
-      { text: "HTTP 基础", link: "/network/http-basics" },
-      { text: "HTTP 缓存", link: "/network/http-cache" },
-      { text: "Web 结构组件", link: "/network/web-construction" },
-      { text: "Web 安全", link: "/network/web-safety" },
-    ],
-  },
-  {
-    text: "TypeScript",
-    collapsible: true,
-    collapsed: true,
-    items: [
-      { text: "TS 基础", link: "/typescript/ts-basics" },
-      { text: "TS 内置类型", link: "/typescript/ts-inlay-type" },
-      { text: "TS 类型语言", link: "/typescript/ts-declare" },
-    ],
-  },
-  {
-    text: "Node",
-    collapsible: true,
-    collapsed: true,
-    items: [{ text: "Node 基础模块", link: "/node/node-basic-module" }],
-  },
-  // {
-  //   text: "JAVA",
-  //   collapsible: true,
-  //   items: [],
-  // },
-];
+const sidebar = {
+  "/": [
+    {
+      text: "前端三把斧",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        {
+          text: "HTML",
+          link: "/html/",
+        },
+        {
+          text: "CSS",
+          link: "/css/",
+        },
+        {
+          text: "JavaScript",
+          items: [
+            { text: "JavaScript 基础", link: "/javascript/" },
+            { text: "JavaScript 新特性", link: "/javascript/js-feat" },
+            { text: "JavaScript 窗口", link: "/javascript/js-window" },
+            { text: "JavaScript 引擎", link: "/javascript/js-engine" },
+            { text: "JavaScript 原型", link: "/javascript/js-proto" },
+            {
+              text: "JavaScript 通信",
+              link: "/javascript/js-dataCommunication",
+            },
+            { text: "JavaScript 数据类型", link: "/javascript/js-dataType" },
+            {
+              text: "JavaScript Web组件",
+              link: "/javascript/js-webComponent",
+            },
+            {
+              text: "JavaScript 设计模式",
+              link: "/javascript/js-design",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      text: "网络基础",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        { text: "HTTP 基础", link: "/network/http-basics" },
+        { text: "HTTP 缓存", link: "/network/http-cache" },
+        { text: "Web 结构组件", link: "/network/web-construction" },
+        { text: "Web 安全", link: "/network/web-safety" },
+      ],
+    },
+    {
+      text: "TypeScript",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        { text: "TS 基础", link: "/typescript/ts-basics" },
+        { text: "TS 内置类型", link: "/typescript/ts-inlay-type" },
+        { text: "TS 类型语言", link: "/typescript/ts-declare" },
+      ],
+    },
+    {
+      text: "Node",
+      collapsible: true,
+      collapsed: true,
+      items: [{ text: "Node 基础模块", link: "/node/node-basic-module" }],
+    },
+    {
+      text: "算法",
+      collapsible: true,
+      collapsed: true,
+      items: [{ text: "基础", link: "/algorithm/algorithm-basic" }],
+    },
+    // {
+    //   text: "JAVA",
+    //   collapsible: true,
+    //   items: [],
+    // },
+  ],
+  "/vue/": [
+    {
+      text: "Vue",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        { text: "Vue2 和 Vue3", link: "/vue/" },
+        { text: "Vue2 响应式", link: "/vue/vue2-reactive" },
+        { text: "Pinia", link: "/vue/Pinia" },
+      ],
+    },
+  ],
+  "/react/": [
+    {
+      text: "React",
+      collapsible: true,
+      collapsed: true,
+      items: [{ text: "React 基础", link: "/react/" }],
+    },
+  ],
+  "/build/": [
+    {
+      text: "打包部署",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        {
+          text: "Webpack",
+          link: "/build/",
+        },
+        {
+          text: "Vite",
+          link: "/build/vite",
+        },
+        {
+          text: "Npm",
+          link: "/build/npm",
+        },
+        {
+          text: "Tool",
+          link: "/build/tool",
+        },
+        {
+          text: "前端工程化",
+          link: "/build/front-end-engineering",
+        },
+      ],
+    },
+    {
+      text: "性能优化",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        {
+          text: "Http",
+          link: "/build/http-performance",
+        },
+        {
+          text: "Build",
+          link: "/build/build-performance",
+        },
+      ],
+    },
+  ],
+};
 
 export default defineConfig({
   // 左侧标题，｜ 左侧文字
@@ -144,7 +155,13 @@ export default defineConfig({
     "terali's Docs，terali的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
   // 页面头部，自动注入
   head: [
-    // ["link", { rel: "shortcuticon", href: "../assets/favicon.svg" }],
+    [
+      "link",
+      {
+        rel: "shortcut icon",
+        href: "https://cdn.jsdelivr.net/gh/tera-li/static-cdn@0.0.3/img/my.jpg",
+      },
+    ],
     ["meta", { name: "title", content: "terali's Docs" }],
     [
       "meta",
@@ -184,13 +201,13 @@ export default defineConfig({
   // 主题配置
   themeConfig: {
     // 左侧logo
-    // logo: "../../favicon.ico",
+    logo: "https://cdn.jsdelivr.net/gh/tera-li/static-cdn@0.0.3/img/my.jpg",
     // 顶部导航
     nav: [
-      { text: "HTML", link: "/html/" },
-      { text: "CSS", link: "/css/" },
-      { text: "JS", link: "/javascript/index" },
-      // { text: "Home", link: "/" },
+      { text: "前端基础", link: "/html/" },
+      { text: "Vue", link: "/vue/" },
+      { text: "React", link: "/react/" },
+      { text: "Build", link: "/build/" },
     ],
     sidebar: sidebar,
     // 社交链接
