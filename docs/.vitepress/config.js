@@ -126,6 +126,12 @@ const sidebar = [
     collapsed: true,
     items: [{ text: "Node 基础模块", link: "/node/node-basic-module" }],
   },
+  {
+    text: "算法",
+    collapsible: true,
+    collapsed: true,
+    items: [{ text: "基础", link: "/algorithm/algorithm-basic" }],
+  },
   // {
   //   text: "JAVA",
   //   collapsible: true,
