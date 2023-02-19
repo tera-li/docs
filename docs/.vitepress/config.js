@@ -66,12 +66,6 @@ const sidebar = {
       collapsed: true,
       items: [{ text: "Node 基础模块", link: "/node/node-basic-module" }],
     },
-    {
-      text: "算法",
-      collapsible: true,
-      collapsed: true,
-      items: [{ text: "基础", link: "/algorithm/algorithm-basic" }],
-    },
     // {
     //   text: "JAVA",
     //   collapsible: true,
@@ -142,6 +136,14 @@ const sidebar = {
       ],
     },
   ],
+  "/algorithm/": [
+    {
+      text: "算法",
+      collapsible: true,
+      collapsed: true,
+      items: [{ text: "认识算法", link: "/algorithm/" }],
+    },
+  ],
 };
 
 export default defineConfig({
@@ -208,6 +210,7 @@ export default defineConfig({
       { text: "Vue", link: "/vue/" },
       { text: "React", link: "/react/" },
       { text: "Build", link: "/build/" },
+      { text: "算法", link: "/algorithm/" },
     ],
     sidebar: sidebar,
     // 社交链接
