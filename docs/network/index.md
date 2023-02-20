@@ -156,7 +156,7 @@ HTTP传输分为 **报文首部** 和 **报文主体**
 |  TRACE  |  回显服务器收到的请求，主要用于测试或诊断
 |  PATCH  |  是对 PUT 方法的补充，用来对已知资源进行局部更新
 
-![](./assets/clipboard.png)
+![](./assets/clipboard.jpg)
 :::
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods
 
