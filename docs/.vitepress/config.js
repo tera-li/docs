@@ -2,69 +2,35 @@ import { defineConfig } from "vitepress";
 const sidebar = {
   "/": [
     {
-      text: "前端三把斧",
-      collapsible: true,
-      collapsed: true,
-      items: [
-        {
-          text: "HTML",
-          link: "/html/",
-        },
-        {
-          text: "CSS",
-          link: "/css/",
-        },
-        {
-          text: "JavaScript",
-          items: [
-            { text: "JavaScript 基础", link: "/javascript/" },
-            { text: "JavaScript 新特性", link: "/javascript/js-feat" },
-            { text: "JavaScript 窗口", link: "/javascript/js-window" },
-            { text: "JavaScript 引擎", link: "/javascript/js-engine" },
-            { text: "JavaScript 原型", link: "/javascript/js-proto" },
-            {
-              text: "JavaScript 通信",
-              link: "/javascript/js-dataCommunication",
-            },
-            { text: "JavaScript 数据类型", link: "/javascript/js-dataType" },
-            {
-              text: "JavaScript Web组件",
-              link: "/javascript/js-webComponent",
-            },
-            {
-              text: "JavaScript 设计模式",
-              link: "/javascript/js-design",
-            },
-          ],
-        },
-      ],
+      text: "HTML",
+      link: "/html/",
     },
     {
-      text: "网络基础",
-      collapsible: true,
-      collapsed: true,
-      items: [
-        { text: "HTTP 基础", link: "/network/http-basics" },
-        { text: "HTTP 缓存", link: "/network/http-cache" },
-        { text: "Web 结构组件", link: "/network/web-construction" },
-        { text: "Web 安全", link: "/network/web-safety" },
-      ],
+      text: "CSS",
+      link: "/css/",
     },
     {
-      text: "TypeScript",
-      collapsible: true,
-      collapsed: true,
+      text: "JavaScript",
       items: [
-        { text: "TS 基础", link: "/typescript/ts-basics" },
-        { text: "TS 内置类型", link: "/typescript/ts-inlay-type" },
-        { text: "TS 类型语言", link: "/typescript/ts-declare" },
+        { text: "JavaScript 基础", link: "/javascript/" },
+        { text: "JavaScript 新特性", link: "/javascript/js-feat" },
+        { text: "JavaScript 窗口", link: "/javascript/js-window" },
+        { text: "JavaScript 引擎", link: "/javascript/js-engine" },
+        { text: "JavaScript 原型", link: "/javascript/js-proto" },
+        {
+          text: "JavaScript 通信",
+          link: "/javascript/js-dataCommunication",
+        },
+        { text: "JavaScript 数据类型", link: "/javascript/js-dataType" },
+        {
+          text: "JavaScript Web组件",
+          link: "/javascript/js-webComponent",
+        },
+        {
+          text: "JavaScript 设计模式",
+          link: "/javascript/js-design",
+        },
       ],
-    },
-    {
-      text: "Node",
-      collapsible: true,
-      collapsed: true,
-      items: [{ text: "Node 基础模块", link: "/node/node-basic-module" }],
     },
     // {
     //   text: "JAVA",
@@ -144,6 +110,37 @@ const sidebar = {
       items: [{ text: "认识算法", link: "/algorithm/" }],
     },
   ],
+  "/network/": [
+    {
+      text: "网络基础",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        { text: "HTTP 基础", link: "/network/" },
+        { text: "HTTP 缓存", link: "/network/http-cache" },
+        { text: "Web 结构组件", link: "/network/web-construction" },
+        { text: "Web 安全", link: "/network/web-safety" },
+      ],
+    },
+  ],
+  "/other/": [
+    {
+      text: "TypeScript",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        { text: "TS 基础", link: "/other/" },
+        { text: "TS 内置类型", link: "/other/ts-inlay-type" },
+        { text: "TS 类型语言", link: "/other/ts-declare" },
+      ],
+    },
+    {
+      text: "Node",
+      collapsible: true,
+      collapsed: true,
+      items: [{ text: "Node 基础模块", link: "/other/node-basic-module" }],
+    },
+  ],
 };
 
 export default defineConfig({
@@ -211,6 +208,8 @@ export default defineConfig({
       { text: "React", link: "/react/" },
       { text: "Build", link: "/build/" },
       { text: "算法", link: "/algorithm/" },
+      { text: "网络", link: "/network/" },
+      { text: "其它", link: "/other/" },
     ],
     sidebar: sidebar,
     // 社交链接
@@ -237,7 +236,7 @@ export default defineConfig({
     // 底部配置
     footer: {
       message: "Released under the MIT License.",
-      copyright: "Copyright © 2022-present Surprise",
+      copyright: "Copyright © 2022-present Terali",
     },
     // 文档页脚
     // docFooter: {
