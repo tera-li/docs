@@ -207,5 +207,5 @@ HTML 模板
 当某个部分复杂了，就将其拆分为简单的部分，再以约定的协议、简单的方式组合起来  
 `只有让复杂的事情简单化的架构才是好架构`
 :::
-![clipboard.png](./assets/clipboard.png)
-![subfield.png](./assets/subfield.png)
+![clipboard.jpg](./assets/clipboard.jpg)
+![subfield.jpg](./assets/subfield.jpg)
