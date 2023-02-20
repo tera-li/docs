@@ -7,8 +7,11 @@ layout: home
 aside: true
 hero:
   name: Tera-li's 文档
-  text: 文档记录 & 基础巩固.
+  text: 文档记录 & 基础巩固
   tagline: 持续更新，欢迎关注...
+  image:
+    src: https://cdn.jsdelivr.net/gh/tera-li/static-cdn@0.0.4/img/home-bg.svg
+    alt: challenges
   actions:
     - theme: brand
       text: 前端基础
@@ -28,9 +31,15 @@ hero:
     - theme: alt
       text: 网络
       link: /network/
-    - theme: alt
-      text: 其它
-      link: /other/
+features:
+  - title: 知识体系
+    details: Javascript, Typescript, Vue, React, Node.js
+  - title: 跨平台
+    details: H5混合开发, Weex, Flutter, Electron
+  - title: 3D渲染
+    details: WebGL, Three.js, Babylon.js
+  - title: Web3.0
+    details: VR, AI, 去中心化
 ---
 
 <!--
