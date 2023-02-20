@@ -6,16 +6,40 @@ titleTemplate: home
 layout: home
 aside: true
 hero:
-  name: tera-li's Docs
-  text: Docs & Record the life.
-  tagline: Docs content is continuously updated...
+  name: Tera-li's 文档
+  text: 文档记录 & 基础巩固
+  tagline: 持续更新，欢迎关注...
+  image:
+    src: https://cdn.jsdelivr.net/gh/tera-li/static-cdn@0.0.4/img/home-bg.svg
+    alt: challenges
   actions:
     - theme: brand
-      text: Get Started
-      link: /html/index
+      text: 前端基础
+      link: /html/
     - theme: alt
-      text: Get Started
-      link: /html/index
+      text: Vue
+      link: /vue/
+    - theme: alt
+      text: React
+      link: /react/
+    - theme: alt
+      text: Build
+      link: /build/
+    - theme: alt
+      text: 算法
+      link: /algorithm/
+    - theme: alt
+      text: 网络
+      link: /network/
+features:
+  - title: 知识体系
+    details: Javascript, Typescript, Vue, React, Node.js
+  - title: 跨平台
+    details: H5混合开发, Weex, Flutter, Electron
+  - title: 3D渲染
+    details: WebGL, Three.js, Babylon.js
+  - title: Web3.0
+    details: VR, AI, 去中心化
 ---
 
 <!--
