@@ -4,7 +4,7 @@
 首先我们来看几张图，了解下网络的模型结构  
 国际标准 OSI模型 有7层结构，广泛应用的 TCP/IP模型 可以分为5层/4层结构  
 
-![](./assets/protocol-all.png)  
+![](./assets/protocol-all.jpg)  
 ![](./assets/protocol.png)  
 ![](./assets/Aspose.Words.417e3b11-1720-4c92-af80-ff130734d73b.010.jpeg)
 
