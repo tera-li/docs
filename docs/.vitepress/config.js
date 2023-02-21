@@ -158,7 +158,7 @@ export default defineConfig({
       "link",
       {
         rel: "shortcut icon",
-        href: "https://cdn.jsdelivr.net/gh/tera-li/static-cdn@0.0.3/img/my.jpg",
+        href: "https://cdn.jsdelivr.net/gh/tera-li/static-cdn@0.0.4/img/my.jpg",
       },
     ],
     ["meta", { name: "title", content: "terali's Docs" }],
@@ -200,7 +200,7 @@ export default defineConfig({
   // 主题配置
   themeConfig: {
     // 左侧logo
-    logo: "https://cdn.jsdelivr.net/gh/tera-li/static-cdn@0.0.3/img/my.jpg",
+    logo: "https://cdn.jsdelivr.net/gh/tera-li/static-cdn@0.0.4/img/my.jpg",
     // 顶部导航
     nav: [
       { text: "前端基础", link: "/html/" },
