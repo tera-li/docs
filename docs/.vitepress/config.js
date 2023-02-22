@@ -55,7 +55,10 @@ const sidebar = {
       text: "React",
       collapsible: true,
       collapsed: true,
-      items: [{ text: "React 基础", link: "/react/" }],
+      items: [
+        { text: "React 基础", link: "/react/" },
+        { text: "React Hook", link: "/react/react-hook" },
+      ],
     },
   ],
   "/build/": [
