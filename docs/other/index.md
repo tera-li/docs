@@ -1,4 +1,4 @@
-# Typescript 基础
+# Typescript Basics
 强类型定义，静态类型检测，代码声明编译提示
 ```ts
 // 安装 typescript
