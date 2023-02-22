@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a,a as o}from"./app.4e4226b4.js";const h=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"react/react-hook.md","lastUpdated":1677058601000}'),r={name:"react/react-hook.md"},c=o("p",null,"123",-1),s=[c];function n(_,d,p,i,l,m){return a(),t("div",null,s)}const u=e(r,[["render",n]]);export{h as __pageData,u as default};
