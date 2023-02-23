@@ -1,26 +1,29 @@
 # React Hook
 
 ## useState
+- Hook
+```js
+// 初始化、更新、读取
+const [count, setCount] = useState(0);
+setCount(count + 1)
+count
+```
+
+- class
 ```js
 /* class */
 // 初始化、更新、读取
 this.state = { count: 0 };
 this.setState({ count: this.state.count + 1 })
 this.state.count
-
-/* hook */
-// 初始化、更新、读取
-const [count, setCount] = useState(0);
-setCount(count + 1)
-count
 ```
 ## useEffect
 ```js
 /*
-相当于class中这三个函数的组合
-componentDidMount
-componentDidUpdate
-componentWillUnmount 
+    相当于class中这三个函数的组合
+    componentDidMount
+    componentDidUpdate
+    componentWillUnmount
 */
 let [count, setCount] = useState(0);
 
@@ -174,6 +177,51 @@ export default memo(Hook);
 // useCallback(fn, deps) === useMemo(() => fn, deps)
 ```
 ## useRef
+```js
+// 获取dom节点
+let hrEl = useRef(null);
+
+useEffect(() => {
+  console.log(hrEl);
+});
+<hr ref={hrEl} />
+```
 ## useImperativeHandle
+```js
+// 父组件
+export default function Main() {
+  let inputRef = useRef();
+  useEffect(() => {
+    console.log(inputRef);
+  });
+  return <Hook ref={inputRef}></Hook>
+}
+
+// 子组件
+function Hook(props, ref) {
+  const inputRef = useRef();
+  // 自定义暴露给父组件的ref值
+  useImperativeHandle(ref, () => ({
+    inputRef,
+  }));
+  return <input ref={inputRef} />;
+}
+// forwardRef 接受的 父组件 ref 属性并转发到包裹组件中
+export default forwardRef(Hook);
+```
 ## useLayoutEffect
+```js
+// useEffect       中函数会在 组件渲染 到屏幕之后执行，此时对 DOM 进行修改，会触发浏览器再次进行回流、重绘，增加了性能上的损耗
+// useLayoutEffect 中函数会在 组件渲染 到屏幕之前执行，此时可以拿到 DOM 节点进行修改，然而只会触发一次 页面渲染
+
+function Hook(props, ref) {
+  const [value, setValue] = useState(0);
+  useLayoutEffect(() => {
+    if (value === 0) {
+      setValue(10 + Math.random() * 200);
+    }
+  }, [value]);
+  return <div onClick={() => setValue(0)}>value: {value}</div>;
+}
+```
 ## useDebugValue
