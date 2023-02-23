@@ -148,7 +148,7 @@ const sidebar = {
 
 export default defineConfig({
   // 左侧标题，｜ 左侧文字
-  title: "Docs",
+  title: "Web Front End",
   base: "/",
   // 浏览器标签，｜ 右侧文字
   titleTemplate: false,
