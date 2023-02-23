@@ -69,7 +69,72 @@ function Hook() {
 }
 ```
 ## useReducer
+```js
+
+const initCount = { count: 0 };
+
+function init() {
+  return initCount;
+}
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "increment":
+      return { count: state.count + 1 };
+    case "decrement":
+      return { count: state.count - 1 };
+    case "reset":
+      return init();
+    default:
+      throw new Error();
+  }
+}
+
+export default function Hook(props) {
+  // 传入 reducer、state、init(初始化state方法)
+  let [state, dispatch] = useReducer(reducer, initCount, init);
+  return (
+    <Fragment>
+      <button onClick={() => dispatch({ type: "increment" })}>增加count</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>减少count</button>
+      <button onClick={() => dispatch({ type: "reset" })}>重置count</button>
+      <div>{state.count}</div>
+    </Fragment>
+  );
+}
+```
 ## useCallback
+```js
+// 父组件
+export default function Main() {
+  let [id, setState] = useState(0);
+
+  // 常用于传递给经过 props相等性 优化的子组件
+  let call = useCallback(() => {
+    console.log(id);
+  }, [id]);
+
+  return (
+    <Fragment>
+      <button onClick={() => setState(++id)}>父组件改变state</button>
+      <Hook call={call}></Hook>
+    </Fragment>
+  );
+}
+
+// 子组件
+function Hook(props) {
+  let [count, setState] = useState(0);
+  props.call();
+  return (
+    <Fragment>
+      <button onClick={() => setState(++count)}>增加count</button>
+    </Fragment>
+  );
+}
+// 检查 props 变更，可传入第二个参数自定义对比 props
+export default memo(Hook);
+```
 ## useMemo
 ## useRef
 ## useImperativeHandle
