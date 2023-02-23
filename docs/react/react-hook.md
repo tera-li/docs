@@ -224,4 +224,3 @@ function Hook(props, ref) {
   return <div onClick={() => setValue(0)}>value: {value}</div>;
 }
 ```
-## useDebugValue
