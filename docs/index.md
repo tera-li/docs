@@ -7,7 +7,7 @@ layout: home
 aside: true
 hero:
   name: Tera-li's 文档
-  text: 文档记录 & 基础巩固
+  text: 技术文档 & 知识扩展
   tagline: 持续更新，欢迎关注...
   image:
     src: https://cdn.jsdelivr.net/gh/tera-li/static-cdn@0.0.4/img/home-bg.svg
