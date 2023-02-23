@@ -110,6 +110,7 @@ export default function Main() {
   let [id, setState] = useState(0);
 
   // 常用于传递给经过 props相等性 优化的子组件
+  // return () => { console.log(id) }
   let call = useCallback(() => {
     console.log(id);
   }, [id]);
@@ -136,6 +137,42 @@ function Hook(props) {
 export default memo(Hook);
 ```
 ## useMemo
+```js
+// 父组件
+export default function Main() {
+  let [id, setState] = useState(0);
+
+  // return "useMemo：" + id;
+  let call = useMemo(() => {
+    return "useMemo：" + id;
+  }, [id]);
+
+  return (
+    <Fragment>
+      <Todo />
+      <button onClick={() => setState(++id)}>父组件props</button>
+      <Hook call={call}></Hook>
+    </Fragment>
+  );
+}
+
+// 子组件
+function Hook(props) {
+  let [count, setState] = useState(0);
+
+  console.log(props);
+  return (
+    <Fragment>
+      <hr />
+      <button onClick={() => setState(++count)}>增加count</button>
+      <div>{count}</div>
+    </Fragment>
+  );
+}
+export default memo(Hook);
+
+// useCallback(fn, deps) === useMemo(() => fn, deps)
+```
 ## useRef
 ## useImperativeHandle
 ## useLayoutEffect
