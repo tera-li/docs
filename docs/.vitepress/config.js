@@ -92,7 +92,7 @@ const sidebar = {
     {
       text: "性能优化",
       collapsible: true,
-      collapsed: true,
+      collapsed: false,
       items: [
         {
           text: "Http",
@@ -110,7 +110,10 @@ const sidebar = {
       text: "算法",
       collapsible: true,
       collapsed: true,
-      items: [{ text: "认识算法", link: "/algorithm/" }],
+      items: [
+        { text: "认识算法", link: "/algorithm/" },
+        { text: "数据结构", link: "/algorithm/structure" },
+      ],
     },
   ],
   "/network/": [
@@ -140,7 +143,7 @@ const sidebar = {
     {
       text: "Node",
       collapsible: true,
-      collapsed: true,
+      collapsed: false,
       items: [{ text: "Node 基础模块", link: "/other/node-basic-module" }],
     },
   ],
