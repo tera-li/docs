@@ -144,7 +144,10 @@ const sidebar = {
       text: "Node",
       collapsible: true,
       collapsed: false,
-      items: [{ text: "Node 基础模块", link: "/other/node-basic-module" }],
+      items: [
+        { text: "Node 基础", link: "/other/node-basic" },
+        { text: "Node 基础模块", link: "/other/node-basic-module" },
+      ],
     },
   ],
 };
