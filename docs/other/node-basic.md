@@ -107,6 +107,7 @@ math1.add();
 
 ## 非I/O的异步API
 - setTimeout
+
 ![o.png](./assets/settime.png)
 
 - setInterval
@@ -124,3 +125,6 @@ math1.add();
     - process.nexTick: 属于idle观察者
     - 在每一个轮循环检查中，idle观察者 先于 I/O观察者，I/O观察者 先于 check观察者
 ## 事件驱动
+- 通过主循环 + 事件触发的方式来运行程序
+
+![o.png](./assets/event_loop.png)
