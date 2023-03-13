@@ -146,6 +146,7 @@ const sidebar = {
       collapsed: false,
       items: [
         { text: "Node 基础", link: "/other/node-basic" },
+        { text: "Node 异步编程", link: "/other/node-async" },
         { text: "Node 基础模块", link: "/other/node-basic-module" },
       ],
     },
