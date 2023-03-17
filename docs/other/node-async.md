@@ -1,10 +1,14 @@
 # NodeJs 异步编程
 
-优势
-基于事件驱动的非阻塞I/O模型
-异步I/O调用
+## 异步I/O
+- 基于事件驱动的非阻塞I/O模型
+- 异步I/O调用
 
-同步I/O调用
+![o.png](./assets/async_io.png)
+
+## 同步I/O
+- 同步I/O调用
+![o.png](./assets/await_io.png)
 
 1
 难点
