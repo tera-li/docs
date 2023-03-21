@@ -10,7 +10,7 @@
 - 同步I/O调用
 ![o.png](./assets/await_io.png)
 
-## 特点点
+## 特点
 1. 异常处理
    1. 对异步API的执行，try/catch无法捕获
 2. 函数嵌套过深
@@ -20,6 +20,8 @@
 4. 多线程编程
    1. 由于Node是单线程的，无法享受到多核CPU的好处
    2. 使用web sorkers，可以很好利用多核CPU为大量计算服务
+
+![o.png](./assets/more_thread.png)
 
 
 异步转同步
