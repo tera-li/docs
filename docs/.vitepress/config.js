@@ -149,6 +149,7 @@ const sidebar = {
         { text: "Node 异步编程", link: "/other/node-async" },
         { text: "Node 基础模块", link: "/other/node-basic-module" },
         { text: "Node V8内存控制", link: "/other/node-v8" },
+        { text: "Node 二进制", link: "/other/node-buffer" },
       ],
     },
   ],
