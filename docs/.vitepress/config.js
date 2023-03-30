@@ -151,6 +151,7 @@ const sidebar = {
         { text: "Node V8内存控制", link: "/other/node-v8" },
         { text: "Node 二进制", link: "/other/node-buffer" },
         { text: "Node 进程", link: "/other/node-progress" },
+        { text: "Node 工程化", link: "/other/node-engineering" },
       ],
     },
   ],
