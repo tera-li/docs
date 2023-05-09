@@ -220,7 +220,7 @@ export default defineConfig({
     nav: [
       { text: "前端基础", link: "/html/" },
       { text: "前端框架", link: "/frontend/vue/" },
-      { text: "Build", link: "/build/" },
+      { text: "构建", link: "/build/" },
       { text: "网络", link: "/network/" },
       { text: "算法", link: "/algorithm/" },
       { text: "其它", link: "/other/" },

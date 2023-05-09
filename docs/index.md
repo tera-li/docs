@@ -20,7 +20,7 @@ hero:
       text: 前端框架
       link: /frontend/vue/
     - theme: alt
-      text: Build
+      text: 构建
       link: /build/
     - theme: alt
       text: 网络
