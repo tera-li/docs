@@ -11,6 +11,8 @@ const sidebar = {
     },
     {
       text: "JavaScript",
+      collapsible: true,
+      collapsed: false,
       items: [
         { text: "JavaScript 基础", link: "/javascript/" },
         { text: "JavaScript 新特性", link: "/javascript/js-feat" },
@@ -132,11 +134,19 @@ const sidebar = {
   ],
   "/other/": [
     {
-      text: "TypeScript",
+      text: "Browser",
       collapsible: true,
       collapsed: true,
       items: [
-        { text: "TS 基础", link: "/other/" },
+        { text: "Browser 基础", link: "/other/" },
+      ],
+    },
+    {
+      text: "TypeScript",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        { text: "TS 基础", link: "/other/ts-index" },
         { text: "TS 内置类型", link: "/other/ts-inlay-type" },
         { text: "TS 类型语言", link: "/other/ts-declare" },
       ],
