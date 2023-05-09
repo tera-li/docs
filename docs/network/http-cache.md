@@ -1,4 +1,4 @@
-# HTTP 缓存
+# HTTP Cache
 :::info 简介
 web 缓存主要指的是两部分：
 1. 浏览器 缓存
