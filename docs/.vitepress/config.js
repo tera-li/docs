@@ -40,27 +40,25 @@ const sidebar = {
     //   items: [],
     // },
   ],
-  "/vue/": [
+  "/frontend/": [
     {
       text: "Vue",
       collapsible: true,
-      collapsed: true,
+      collapsed: false,
       items: [
-        { text: "Vue2 和 Vue3", link: "/vue/" },
-        { text: "Vue2 响应式", link: "/vue/vue2-reactive" },
-        { text: "Vue3", link: "/vue/vue3" },
-        { text: "Pinia", link: "/vue/Pinia" },
+        { text: "Vue2 和 Vue3", link: "/frontend/vue/" },
+        { text: "Vue2 响应式", link: "/frontend/vue/vue2-reactive" },
+        { text: "Vue3", link: "/frontend/vue/vue3" },
+        { text: "Pinia", link: "/frontend/vue/Pinia" },
       ],
     },
-  ],
-  "/react/": [
     {
       text: "React",
       collapsible: true,
-      collapsed: true,
+      collapsed: false,
       items: [
-        { text: "React 基础", link: "/react/" },
-        { text: "React Hook", link: "/react/react-hook" },
+        { text: "React 基础", link: "/frontend/react/" },
+        { text: "React Hook", link: "/frontend/react/react-hook" },
       ],
     },
   ],
@@ -134,19 +132,11 @@ const sidebar = {
   ],
   "/other/": [
     {
-      text: "Browser",
-      collapsible: true,
-      collapsed: true,
-      items: [
-        { text: "Browser 基础", link: "/other/" },
-      ],
-    },
-    {
       text: "TypeScript",
       collapsible: true,
       collapsed: false,
       items: [
-        { text: "TS 基础", link: "/other/ts-index" },
+        { text: "TS 基础", link: "/other/" },
         { text: "TS 内置类型", link: "/other/ts-inlay-type" },
         { text: "TS 类型语言", link: "/other/ts-declare" },
       ],
@@ -229,11 +219,10 @@ export default defineConfig({
     // 顶部导航
     nav: [
       { text: "前端基础", link: "/html/" },
-      { text: "Vue", link: "/vue/" },
-      { text: "React", link: "/react/" },
-      { text: "Build", link: "/build/" },
-      { text: "算法", link: "/algorithm/" },
+      { text: "前端框架", link: "/frontend/vue/" },
+      { text: "构建", link: "/build/" },
       { text: "网络", link: "/network/" },
+      { text: "算法", link: "/algorithm/" },
       { text: "其它", link: "/other/" },
     ],
     sidebar: sidebar,

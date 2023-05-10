@@ -17,20 +17,17 @@ hero:
       text: 前端基础
       link: /html/
     - theme: alt
-      text: Vue
-      link: /vue/
+      text: 前端框架
+      link: /frontend/vue/
     - theme: alt
-      text: React
-      link: /react/
-    - theme: alt
-      text: Build
+      text: 构建
       link: /build/
-    - theme: alt
-      text: 算法
-      link: /algorithm/
     - theme: alt
       text: 网络
       link: /network/
+    - theme: alt
+      text: 算法
+      link: /algorithm/
 features:
   - title: 知识体系
     details: Javascript, Typescript, Vue, React, Node.js
