@@ -218,8 +218,8 @@ export default defineConfig({
     logo: "https://cdn.jsdelivr.net/gh/tera-li/static-cdn@0.0.4/img/my.jpg",
     // 顶部导航
     nav: [
-      { text: "前端基础", link: "/html/" },
-      { text: "前端框架", link: "/frontend/vue/" },
+      { text: "基础", link: "/html/" },
+      { text: "框架", link: "/frontend/vue/" },
       { text: "构建", link: "/build/" },
       { text: "网络", link: "/network/" },
       { text: "算法", link: "/algorithm/" },
