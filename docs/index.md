@@ -14,10 +14,10 @@ hero:
     alt: challenges
   actions:
     - theme: brand
-      text: 前端基础
+      text: 基础
       link: /html/
     - theme: alt
-      text: 前端框架
+      text: 框架
       link: /frontend/vue/
     - theme: alt
       text: 构建
