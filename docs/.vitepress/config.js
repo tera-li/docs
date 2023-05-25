@@ -155,6 +155,12 @@ const sidebar = {
         { text: "Node 工程化", link: "/other/node-engineering" },
       ],
     },
+    {
+      text: "route",
+      collapsible: true,
+      collapsed: false,
+      items: [{ text: "前端路线", link: "/other/front-end-basic" }],
+    },
   ],
 };
 
