@@ -1,0 +1,21 @@
+| 技术 | 重要程度 | 学习内容 | 学习网站 |
+| :---: | :---: | :---: | :---: |
+| 计算机基础 | 5 | 计算机组成原理、操作系统、数据结构与算法、计算机网络等 | https://www.bilibili.com/video/BV1Xb411M7S2 https://www.bilibili.com/video/BV1YE411D7nH https://www.bilibili.com/video/BV1b7411N798 https://www.bilibili.com/video/BV19J411J7AZ |
+| Linux | 5 | Linux 基本命令、Shell 编程、Linux 系统管理、Linux 网络编程等 | https://www.runoob.com/linux/linux-tutorial.html https://www.runoob.com/linux/linux-shell.html https://www.linuxprobe.com/ https://www.bilibili.com/video/BV1pW411A7a5 |
+| Java | 5 | Java 基础语法、Java 面向对象、Java 集合框架、Java 多线程、Java IO/NIO、Java 虚拟机、Java Web 开发等 | https://www.runoob.com/java/java-tutorial.html https://www.liaoxuefeng.com/wiki/1252599548343744 https://how2j.cn/ https://www.bilibili.com/video/BV1uJ411k7wy |
+| Spring Boot | 5 | Spring Boot 基础、Spring Boot 配置、Spring Boot 数据访问、Spring Boot Web 开发、Spring Boot 测试等 | https://spring.io/projects/spring-boot https://www.runoob.com/spring-boot/spring-boot-tutorial.html https://www.bilibili.com/video/BV19K4y1L7MT |
+| MySQL | 5 | MySQL 基本语法、MySQL 数据类型、MySQL 索引、MySQL 事务、MySQL 锁、MySQL 优化等 | https://www.runoob.com/mysql/mysql-tutorial.html https://www.yiibai.com/mysql/ https://www.bilibili.com/video/BV1xW411u7ax |
+| Redis | 4 | Redis 基本命令、Redis 数据类型、Redis 持久化、Redis 集群、Redis 缓存策略等 | https://www.runoob.com/redis/redis-tutorial.html http://redisdoc.com/ https://www.bilibili.com/video/BV1e4411H7on |
+| Kafka | 4 | Kafka 基本概念、Kafka 安装与配置、Kafka 生产者与消费者、Kafka 集群管理、Kafka 性能优化等 | http://kafka.apache.org/ https://kafka.apachecn.org/ https://www.bilibili.com/video/BV184411b7dx |
+| Dubbo | 4 | Dubbo 基本概念、Dubbo 安装与配置、Dubbo 服务提供与消费、Dubbo 注册中心与监控中心、Dubbo 负载均衡与容错等 | http://dubbo.apache.org/zh/ http://dubbo.io/books/dubbo-user-book-zh/ https://www.bilibili.com/video/BV1Ft41127Zu |
+| ZooKeeper | 4 | ZooKeeper 基本概念、ZooKeeper 安装与配置、ZooKeeper API、ZooKeeper 集群管理、ZooKeeper 分布式协调等 | http://zookeeper.apache.org/ https://www.w3cschool.cn/zookeeper/ https://www.bilibili.com/video/BV1JE411g7XF |
+| Spring Cloud | 4 | Spring Cloud 基本概念、Spring Cloud Eureka、Spring Cloud Ribbon、Spring Cloud Feign、Spring Cloud Hystrix、Spring Cloud Zuul、Spring Cloud Config 等 | https://spring.io/projects/spring-cloud https://www.funtl.com/zh/spring-cloud/ https://www.bilibili.com/video/BV18E411x7eT |
+| Docker | 4 | Docker 基本概念、Docker 安装与配置、Docker 镜像与容器、Docker 网络与存储、Docker 仓库与集群等 | https://www.docker.com/ https://www.runoob.com/docker/docker-tutorial.html https://www.bilibili.com/video/BV1og4y1q7M4 |
+| Kubernetes | 4 | Kubernetes 基本概念、Kubernetes 安装与配置、Kubernetes Pod、Kubernetes Service、Kubernetes Deployment、Kubernetes Ingress 等 | https://kubernetes.io/zh/ https://kuboard.cn/ https://www.bilibili.com/video/BV1GT4y1A756 |
+| 设计模式 | 4 | 设计模式的六大原则、设计模式的三大类别（创建型、结构型、行为型）、常用的设计模式（单例、工厂、代理、观察者等）等 | https://refactoringguru.cn/design-patterns https://www.runoob.com/design-pattern/design-pattern-tutorial.html https://www.bilibili.com/video/BV1G4411c7N4 |
+| 数据结构与算法 | 4 | 常用的数据结构（数组、链表、栈、队列、堆、树、图等）、常用的算法（排序、查找、递归、分治、动态规划等）、常见的算法题和解法等 | https://leetcode-cn.com/ https://www.bilibili.com/video/BV1E4411H73v https://www.bilibili.com/video/BV1X4411F744 |
+| Git | 4 | Git 基本概念、Git 基本命令、Git 分支管理、Git 远程协作等 | https://git-scm.com/ https://www.runoob.com/git/git-tutorial.html https://www.liaoxuefeng.com/wiki/896043488029600 |
+| Nginx | 3 | Nginx 基本概念、Nginx 安装与配置、Nginx 反向代理与负载均衡、Nginx 动静分离与缓存等 | http://nginx.org/en/ http://tengine.taobao.org/book/index.html https://www.bilibili.com/video/BV1p4411R74B |
+| Elasticsearch | 3 | Elasticsearch 基本概念、Elasticsearch 安装与配置、Elasticsearch 索引与文档、Elasticsearch 查询与聚合等 | https://www.elastic.co/cn/elasticsearch/ https://es.xiaoleilu.com/ https://www.bilibili.com/video/BV1aE41137RT |
+| 分布式系统 | 3 | 分布式系统的基本概念和特点，分布式系统的常见问题和解决方案，如分布式事务、分布式锁、分布式一致性等 | http://book.mixu.net/distsys/index.html http://dcaoyuan.github.io/papers/paper-liu.pdf https://www.bilibili.com/video/BV1aJ41137tT |
+| 高并发系统 | 3 | 高并发系统的基本概念和特点，高并发系统的常见问题和解决方案，如缓存击穿、缓存雪崩、限流降级等 | http://ifeve.com/high-concurrency-system-design-and-development-2/http
