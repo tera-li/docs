@@ -159,7 +159,10 @@ const sidebar = {
       text: "route",
       collapsible: true,
       collapsed: false,
-      items: [{ text: "前端路线", link: "/other/front-end-basic" }],
+      items: [
+        { text: "前端路线", link: "/other/front-end-basic" },
+        { text: "后端路线", link: "/other/back-end-basic" },
+      ],
     },
   ],
 };
