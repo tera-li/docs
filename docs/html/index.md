@@ -1,6 +1,6 @@
 # HTML
 
-HTML（超文本标记语言——HyperText Markup Language）是构成 Web 网页的一砖一瓦。它定义了网页内容的含义和结构。
+`HTML（超文本标记语言 —— HyperText Markup Language）是构成 Web 网页的一砖一瓦。它定义了网页内容的含义和结构。`
 
 ```html
 <!DOCTYPE html>
@@ -46,6 +46,17 @@ html文档定义样式信息
 5. **\<link /\>**
 ```html
 定义文档与外部资源的关系、链接样式表
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<!-- 不含高分辨率 Retina 显示的 iPhone、iPod Touch 和 Android 2.1+ 设备：-->
+<link
+  rel="apple-touch-icon-precomposed"
+  href="https://developer.mozilla.org/static/img/favicon57.png" />
+<!-- 基本 favicon -->
+<link
+  rel="icon"
+  href="https://developer.mozilla.org/static/img/favicon32.png" />
+<!-- 引入外部style -->
+<link rel="stylesheet" href="my-css-file.css" />
 ```
 6. **\<script /\>**
 ```html
@@ -221,7 +232,7 @@ HTML的标识元数据内容，只能在head中
 
 <meta name="author" content="tera-li" />
   -- name=“author”  content=“作者名称”
-  -- name="description"  content=“页面内容描述”
+  -- name="description"  content=“页面内容描述 显示在搜索引擎详情中”
   -- name=“generator”  content=“生成页面的软件标识符”
   -- name=“keywords”  content=“用逗号分隔的页面关键单词”
   -- name=“referrer”  content=“控制文档发出的HTTP请求中HTTP referer首部的内容”
