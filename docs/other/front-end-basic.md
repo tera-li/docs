@@ -1,7 +1,7 @@
 | 技术 | 重要程度| 学习内容 | 学习网站 |
 | :---: | :---: | :---: | :---: |
 | 基础语言：HTML/HTML5、CSS/CSS3、JavaScript/ECMAScript | 5 | 各种标签、样式、属性、选择器、布局、动画、事件、数据类型、运算符、流程控制、字符串、数组、对象、函数、原型、继承、this、闭包、异步、Promise等 | <p>[W3School](https://www.w3school.com.cn/)</p><p>[MDN](https://developer.mozilla.org/zh-CN/)</p><p>[ES6入门教程](https://es6.ruanyifeng.com/)</p> |
-| 浏览器API：DOM、BOM、Canvas、WebGL、WebAudio、WebRTC、WebWorker、ServiceWorker等 | 4 | 浏览器提供的用于操作网页元素、发送请求、绘制图形、处理音视频、实现并行和离线等功能的接口，以及它们的用法和兼容性 | <p>[MDN](https://developer.mozilla.org/zh-CN/)</p><p>[HTML5 Rocks](https://www.html5rocks.com/zh/)</p>|
+| 浏览器API：DOM、BOM、<b style="color: red;">Canvas、WebGL、WebAudio、WebRTC、WebWorker、ServiceWorker</b>等 | 4 | 浏览器提供的用于操作网页元素、发送请求、绘制图形、处理音视频、实现并行和离线等功能的接口，以及它们的用法和兼容性 | <p>[MDN](https://developer.mozilla.org/zh-CN/)</p><p>[HTML5 Rocks](https://www.html5rocks.com/zh/)</p>|
 | 新增的JS对象、方法、属性：Set、Map、WeakSet、WeakMap、Symbol、Proxy、Reflect等 | 3 | <p>ES6及以后版本新增的一些特性，可以提高代码的可读性和性能，以及它们的作用和使用场景</p> | <p>[ES6入门教程](https://es6.ruanyifeng.com/)</p> |
 | 前端框架：React/Vue/Angular/Svelte等 | 5 | 目前最流行的前端框架，可以提高开发效率和用户体验，以及它们的基本原理和常用功能，如组件化开发、数据绑定、路由管理、状态管理等 | <p>[React官网](https://reactjs.org/)</p><p>[Vue官网](https://vuejs.org/)</p><p>[Angular官网](https://angular.io/)</p><p>[Svelte官网](https://svelte.dev/)</p> |
 | 前端构建化工程化工具：Webpack/Rollup/Vite/Snowpack等 | 4 | 用于打包和优化前端代码的工具，可以提高代码的质量和性能，以及它们的配置和使用方法，以及常用的Loader和Plugin | <p>[Webpack官网](https://webpack.js.org/)</p><p>[Rollup官网](https://rollupjs.org/guide/en/)</p><p>[Vite官网](https://vitejs.dev/)</p><p>[Snowpack官网](https://www.snowpack.dev/)</p> |
