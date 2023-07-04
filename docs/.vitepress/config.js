@@ -129,6 +129,12 @@ const sidebar = {
         { text: "Web 安全", link: "/network/web-safety" },
       ],
     },
+    {
+      text: "Nginx",
+      collapsible: true,
+      collapsed: true,
+      items: [{ text: "Nginx", link: "/network/web-nginx" }],
+    },
   ],
   "/other/": [
     {
