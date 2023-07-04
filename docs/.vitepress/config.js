@@ -127,13 +127,8 @@ const sidebar = {
         { text: "HTTP 缓存", link: "/network/http-cache" },
         { text: "Web 结构组件", link: "/network/web-construction" },
         { text: "Web 安全", link: "/network/web-safety" },
+        { text: "Nginx", link: "/network/web-nginx" },
       ],
-    },
-    {
-      text: "Nginx",
-      collapsible: true,
-      collapsed: true,
-      items: [{ text: "Nginx", link: "/network/web-nginx" }],
     },
   ],
   "/other/": [
