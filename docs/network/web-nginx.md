@@ -13,12 +13,23 @@ server {
     location / {
         root   html;
         index  index.html index.htm
+        # 允许重新定义或者添加发往后端服务器的请求头IP
         proxy_set_header Host $host;
+        # 它代表客户端，也就是HTTP的请求端真实的IP
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         # 请求交给名为nginx_boot的upstream上
         proxy_pass http://nginx_boot;
     }
+}
+```
+## 动静分离
+```nginx
+# ~代表匹配时区分大小写
+location ~ .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|txt|js|css){
+    # 指向文件服务器目录
+    root   /nginx/static_resources;
+    expires 7d;
 }
 ```
 ## 压缩
