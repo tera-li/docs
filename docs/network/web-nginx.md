@@ -24,7 +24,7 @@ server {
 }
 ```
 ## 动静分离
-```nginx
+``` nginx
 # ~代表匹配时区分大小写
 location ~ .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|txt|js|css){
     # 指向文件服务器目录
@@ -33,5 +33,27 @@ location ~ .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|txt|js|css){
 }
 ```
 ## 压缩
+``` nginx
+http{
+    # 开启压缩机制
+    gzip on;
+    # 指定会被压缩的文件类型(也可自己配置其他类型)
+    gzip_types text/plain application/javascript text/css application/xml text/javascript image/jpeg image/gif image/png;
+    # 设置压缩级别，越高资源消耗越大，但压缩效果越好
+    gzip_comp_level 5;
+    # 在头部中添加Vary: Accept-Encoding（建议开启）
+    gzip_vary on;
+    # 处理压缩请求的缓冲区数量和大小
+    gzip_buffers 16 8k;
+    # 对于不支持压缩功能的客户端请求不开启压缩机制
+    gzip_disable "MSIE [1-6]\."; # 低版本的IE浏览器不支持压缩
+    # 设置压缩响应所支持的HTTP最低版本
+    gzip_http_version 1.1;
+    # 设置触发压缩的最小阈值
+    gzip_min_length 2k;
+    # 关闭对后端服务器的响应结果进行压缩
+    gzip_proxied off;
+}
+```
 ## 缓存
 ## 跨域
