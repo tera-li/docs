@@ -100,7 +100,7 @@ http{
 http{
     # 设置缓存的目录，并且内存中缓存区名为hot_cache，大小为128m，
     # 三天未被访问过的缓存自动清楚，磁盘中缓存的最大容量为2GB。
-    proxy_cache_path /soft/nginx/cache levels=1:2 keys_zone=hot_cache:128m inactive=3d max_size=2g;
+    proxy_cache_path /nginx/cache levels=1:2 keys_zone=hot_cache:128m inactive=3d max_size=2g;
     
     server{
         location / {
@@ -125,5 +125,29 @@ http{
         }
     }
 }
+```
+## IP黑白名单
+```nginx
+http{
+    # 屏蔽该文件中的所有IP
+    include /nginx/IP/BlocksIP.conf; 
+    server{
+        location xxx {
+            # 某一系列接口只开放给白名单中的IP
+            include /nginx/IP/WhiteIP.conf; 
+        }
+    }
+}
+
+# --------黑名单: BlocksIP.conf---------
+deny 192.177.12.222; # 屏蔽192.177.12.222访问
+deny 192.177.44.201; # 屏蔽192.177.44.201访问
+deny 127.0.0.0/8; # 屏蔽127.0.0.1到127.255.255.254网段中的所有IP访问
+
+# --------白名单: WhiteIP.conf---------
+allow 192.177.12.222; # 允许192.177.12.222访问
+allow 192.177.44.201; # 允许192.177.44.201访问
+allow 127.45.0.0/16; # 允许127.45.0.1到127.45.255.254网段中的所有IP访问
+deny all; # 除开上述IP外，其他IP全部禁止访问
 ```
 ## 跨域
