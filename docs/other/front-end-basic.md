@@ -1,4 +1,4 @@
-| 技术 | 重要程度| 学习内容 | 学习网站 |
+| 技术 | 重要程度 | 学习内容 | 学习网站 |
 | :---: | :---: | :---: | :---: |
 | 基础语言：HTML/HTML5、CSS/CSS3、JavaScript/ECMAScript | 5 | 各种标签、样式、属性、选择器、布局、动画、事件、数据类型、运算符、流程控制、字符串、数组、对象、函数、原型、继承、this、闭包、异步、Promise等 | <p>[W3School](https://www.w3school.com.cn/)</p><p>[MDN](https://developer.mozilla.org/zh-CN/)</p><p>[ES6入门教程](https://es6.ruanyifeng.com/)</p> |
 | 浏览器API：DOM、BOM、<b style="color: red;">Canvas、WebGL、WebAudio、WebRTC、WebWorker、ServiceWorker</b>等 | 4 | 浏览器提供的用于操作网页元素、发送请求、绘制图形、处理音视频、实现并行和离线等功能的接口，以及它们的用法和兼容性 | <p>[MDN](https://developer.mozilla.org/zh-CN/)</p><p>[HTML5 Rocks](https://www.html5rocks.com/zh/)</p>|
