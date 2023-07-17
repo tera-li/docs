@@ -29,6 +29,7 @@ server {
 location ~ .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|txt|js|css){
     # 指向文件服务器目录
     root   /nginx/static_resources;
+    add_header    Cache-Control  max-age=3600;
     expires 7d;
 }
 ```
@@ -151,6 +152,30 @@ allow 127.45.0.0/16; # 允许127.45.0.1到127.45.255.254网段中的所有IP访�
 deny all; # 除开上述IP外，其他IP全部禁止访问
 ```
 ## 跨域
+```nginx
+# 协议+域名+端口 同源策略
+location / {
+    # 允许跨域的请求，可以自定义变量$http_origin，*表示所有
+    add_header 'Access-Control-Allow-Origin' *;
+    # 允许携带cookie请求
+    add_header 'Access-Control-Allow-Credentials' 'true';
+    # 允许跨域请求的方法：GET,POST,OPTIONS,PUT
+    add_header 'Access-Control-Allow-Methods' 'GET,POST,OPTIONS,PUT';
+    # 允许请求时携带的头部信息，*表示所有
+    add_header 'Access-Control-Allow-Headers' *;
+    # 允许发送按段获取资源的请求
+    add_header 'Access-Control-Expose-Headers' 'Content-Length,Content-Range';
+    # 一定要有！！！否则Post请求无法进行跨域！
+    # 在发送Post跨域请求前，会以Options方式发送预检请求，服务器接受时才会正式请求
+    if ($request_method = 'OPTIONS') {
+        add_header 'Access-Control-Max-Age' 1728000;
+        add_header 'Content-Type' 'text/plain; charset=utf-8';
+        add_header 'Content-Length' 0;
+        # 对于Options方式的请求返回204，表示接受跨域请求
+        return 204;
+    }
+}
+```
 ## 防盗链设计
 ## 文件传输配置
 ## 配置SLL证书
