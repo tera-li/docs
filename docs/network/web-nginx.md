@@ -27,10 +27,10 @@ server {
 ``` nginx
 # ~代表匹配时区分大小写
 location ~ .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|txt|js|css){
+    add_header  Cache-Control  max-age=3600;
+    expires 7d;
     # 指向文件服务器目录
     root   /nginx/static_resources;
-    add_header    Cache-Control  max-age=3600;
-    expires 7d;
 }
 ```
 ## 压缩
