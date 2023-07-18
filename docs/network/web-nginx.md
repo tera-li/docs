@@ -177,6 +177,29 @@ location / {
 }
 ```
 ## 防盗链设计
+```nginx
+# 在动静分离的location中开启防盗链机制
+location ~ .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|txt|js|css){
+    # 最后面的值在上线前可配置为允许的域名地址
+    valid_referers blocked 192.168.12.129;
+    if ($invalid_referer) {
+        # 可以配置成返回一张禁止盗取的图片
+        # rewrite   ^/ http://xx.xx.com/NO.jpg;
+        # 也可直接返回403
+        return   403;
+    }
+    
+    root   /nginx/static_resources;
+    expires 7d;
+}
+```
 ## 文件传输配置
-## 配置SLL证书
+| 配置参数项 | 配置释义 |
+| :--- | :--- |
+| client_max_body_size | 设置请求体允许的最大体积 |
+| client_header_timeout | 等待客户端发送一个请求头的超时时间 |
+| client_body_timeout | 设置读取请求体的超时时间 |
+| proxy_read_timeout | 设置请求被后端服务器读取时，Nginx等待的最长时间 |
+| proxy_send_timeout | 设置后端向Nginx返回响应时的超时时间 |
+
 ## 性能优化
