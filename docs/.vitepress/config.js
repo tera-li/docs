@@ -157,7 +157,7 @@ const sidebar = {
       ],
     },
     {
-      text: "route",
+      text: "Route",
       collapsible: true,
       collapsed: false,
       items: [
