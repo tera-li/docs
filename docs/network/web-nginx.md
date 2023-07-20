@@ -177,6 +177,70 @@ location / {
 }
 ```
 ## 防盗链设计
+```nginx
+# 在动静分离的location中开启防盗链机制
+location ~ .*\.(html|htm|gif|jpg|jpeg|bmp|png|ico|txt|js|css){
+    # 最后面的值在上线前可配置为允许的域名地址
+    valid_referers blocked 192.168.12.129;
+    if ($invalid_referer) {
+        # 可以配置成返回一张禁止盗取的图片
+        # rewrite   ^/ http://xx.xx.com/NO.jpg;
+        # 也可直接返回403
+        return   403;
+    }
+    
+    root   /nginx/static_resources;
+    expires 7d;
+}
+```
 ## 文件传输配置
-## 配置SLL证书
+| 配置参数项 | 配置释义 |
+| :--- | :--- |
+| client_max_body_size | 设置请求体允许的最大体积 |
+| client_header_timeout | 等待客户端发送一个请求头的超时时间 |
+| client_body_timeout | 设置读取请求体的超时时间 |
+| proxy_read_timeout | 设置请求被后端服务器读取时，Nginx等待的最长时间 |
+| proxy_send_timeout | 设置后端向Nginx返回响应时的超时时间 |
+
 ## 性能优化
+- 打开长连接配置
+```nginx
+upstream xxx {
+    # 长连接数
+    keepalive 32;
+    # 每个长连接提供的最大请求数
+    keepalived_requests 100;
+    # 每个长连接没有新的请求时，保持的最长时间
+    keepalive_timeout 60s;
+}
+```
+- 开启零拷贝技术
+```nginx
+sendfile on; # 开启零拷贝机制
+```
+- 开启无延迟或多包共发机制
+```nginx
+tcp_nodelay on;
+tcp_nopush on;
+```
+- 调整Worker工作进程
+```nginx
+# 自动根据CPU核心数调整Worker进程数量
+worker_processes auto;
+
+# 每个Worker能打开的文件描述符，最少调整至1W以上，负荷较高建议2-3W
+worker_rlimit_nofile 20000;
+```
+- 开启CPU亲和机制
+```nginx
+worker_cpu_affinity auto;
+```
+- 开启epoll模型及调整并发连接数
+```nginx
+events {
+    # 使用epoll网络模型
+    use epoll;
+    # 调整每个Worker能够处理的连接数上限
+    worker_connections  10240;
+}
+```
