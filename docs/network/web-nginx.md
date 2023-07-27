@@ -54,6 +54,9 @@ http{
     gzip_min_length 2k;
     # 关闭对后端服务器的响应结果进行压缩
     gzip_proxied off;
+
+    # 优先返回.gz静态文件
+    gzip_static on;
 }
 ```
 ## 缓冲区
