@@ -2,6 +2,7 @@
 ::: v-pre
 `表示一个包含 DOM 文档的窗口，其 document 属性指向窗口中载入的 DOM 文档。`
 :::
+## Window
 ```js{1,21}
 - 窗口属性
 document.defaultView       // 该属性可以获取指定文档所在窗口
@@ -57,6 +58,7 @@ JSON.stringify({a: 123, b: 321}, (key, value) => {
     return value 
 }, 2)
 ```
+## Window Storage
 ::: info JavaScript 存储对象
   - **Cookie: 本地存储 (长久存储，可设置数据过期时间，4k)**
 ```js
@@ -126,6 +128,7 @@ DBOpenRequest.onupgradeneeded = function(event) {
 };
 ```
 :::
+## Window Page
 ::: info JavaScript 页面记录
   - **History: 查看操作浏览器的曾经在标签页或者框架里访问的会话历史记录**
 ```js
@@ -167,6 +170,9 @@ location.assign('https://www.baidu.com')    // 触发窗口加载并跳转到指
 location.replace('https://www.baidu.com')   // 加载指定 URL 并替换掉当前的资源，当前页面将从会话记录中消失
 location.reload(boolean)                    // 刷新当前页面，设置为true，会绕过缓存，从服务器重新下载该文档
 ```
+:::
+## Window Navigator
+::: info JavaScript 浏览器信息
   - **Navigator: 用户代理的状态和标识，包含浏览器暴露的一些信息**
 ```js
 navigator.cookieEnabled         // 返回 当前页面是否启用了 cookie
@@ -207,7 +213,7 @@ navigator.share({
 })
 ```
 :::
-
+## Window Console
 ::: info JavaScript Console
 ```js
 1. assert: 如果断言为false，则在控制台输出错误信息 (表达式: true or false, message)
@@ -232,6 +238,11 @@ navigator.share({
 `作为 DOM 的最小组成单位，一个文档的树形结构就是由各种不同类型的节点组成`  
 `Text、Comment、Element、Document都是节点`
 :::
+
+```js
+// 比如
+HTMLParagraphElement -> HTMLElement -> Element -> Node -> EventTarget -> Object
+```
 
 ## Document
 ::: v-pre
@@ -314,6 +325,7 @@ document.getElementsByName("up").forEach()
 document.getElementsByName("up").keys()
 document.getElementsByName("up").values()
 ```
+## Document MutationObserver
 :::info DOM 变动观察器
 ```js
 监视对 DOM 树所做更改的能力；观察DOM元素，在其发生更改时触发回调
@@ -584,7 +596,7 @@ input.addEventListener('compositionupdate', ()=>{})
 // 当用户插入所有字符结束时调用，插入字符完成结束
 input.addEventListener('compositionend', ()=>{})
 ```
-- **自定义事件**
+## Event Custom
 ```js
 addEventListener: 目标事件注册监听事件 (IE8 = attachEvent)
 removeEventListener: 目标事件移除监听事件 (IE8 = detachEvent)
@@ -613,8 +625,8 @@ window.dispatchEvent(event);
 
 // addEventListener指定对象，每当事件发生时，都会调用此方法handleEvent
 /*  1. this指向obj
-    2. 可动态改变handleEvent，不需要先remove再add
-    3. 不同事件可绑定同一对象，实现复用 
+    1. 可动态改变handleEvent，不需要先remove再add
+    2. 不同事件可绑定同一对象，实现复用 
 */
 var obj = {
     name: 'foo',
@@ -625,8 +637,10 @@ var obj = {
 document.body.addEventListener('click', obj, false);
 ```
 
-### 移动设备触摸事件
+## Event Mobile
+
 ```js
+移动设备触摸事件
 /*  点击时触发，⼿指点击屏幕时触发，即使有⼀个⼿指放在了屏幕上  */
 element.addEventListener('touchstart',()=>{})
 
