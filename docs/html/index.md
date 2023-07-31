@@ -21,11 +21,14 @@
 1. **\<!DOCTYPE html\>**
 ```html
 文档声明，html5标准网页声明
+<!DOCTYPE html>
 ```
 2. **\<head></head\>**
 ```html
-定义文档的头部，可以放置一些元素
-<title>网页标题</title>
+定义HTML文档的头部，可以放置一些元素
+<head>
+  <title>网页标题</title>
+</head>
 ```
 3. **\<meta />**
 ```html
@@ -35,6 +38,10 @@ name属性 供浏览器进行解析，如解决浏览器兼容问题
   - title 浏览器标题
   - keywords 网站关键字
   - description 描述
+<meta name="title" content="terali" />
+<meta name="keywords" content="terali" />
+<meta name="description" content="terali" />
+
 ```
 4. **\<style /\>**
 ```html
@@ -42,6 +49,11 @@ html文档定义样式信息
   - type="text/css"：规定样式表的 MIME 类型
   - MIME 类型 MIME (Multipurpose Internet Mail Extensions)多用途互联网邮件扩展类型
     - 描述消息内容类型的标准，用来表示文档、文件或字节流的类型和格式
+<style type="text/css">
+  a {
+    color: red;
+  }
+</style>
 ```
 5. **\<link /\>**
 ```html
@@ -65,35 +77,31 @@ html文档定义样式信息
   - defer：可选。表示脚本可以延迟到文档完全被解析和显示之后再执行。只对外部脚本有效
   - src：可选。表示包含要执行代码的外部文件
   - type：可选。可以看成是language的替代属性；表示编写代码使用的脚本语言的内容类型 (也称为MIME类型)
+<script src="./index.js"></script>
 ```
 7. **\<body>\</body>**
 ```html
 定义文档内容显示的主体
+<body>
+  <div>body</div>
+</body>
 ```
 8. **块级标签**
 ```html
-独占一行，不与其他元素所处一行
+元素独占一行，不与其他元素所处一行，总是开始在新的行/列上
 
-div,p,h1~h6,ul>li,ol>li,dl>dt>dd,table,form,pre
-header,footer,main,aside,section,audio,video,article,canvas
-object(定义内嵌对象)
+div,p,h1~h6,ul~li,ol~li,dl~dt~dd,table,form,pre
+header,footer,main,aside,section,article
 ```
 9. **行内标签**
 ```html
-与其他行内元素所处一行
+元素与其他行内元素所处一行
 
 span,a,strong,em,b,big,i,small,sub,sup,code
-button,input,label,select,textarea,img
+button,input,label,select,textarea,img,audio,video,canvas
 ```
-10. **文本标签** 
-```html
-strong(着重点粗体),em(着重点斜体),i(斜体),b(粗体),small(小号字)
-p(标签引用),blockquote(长引用),sup(上标),sub(下标),del(删除线)
-pre(预格式化文本),code(代码样式),abbr(缩写),dfn(标记特殊术语)
-addres(定义联系信息或地址),mark(凸显文字,使其文字背景为黄色)
-a(定义超链接)
-```
-11. **列表**
+
+10. **列表**
 ```html
 <dl>
   <dt>Firefox</dt>
@@ -103,7 +111,7 @@ a(定义超链接)
       developed by the Mozilla Corporation and hundreds of volunteers.</dd>
 </dl>
 ```
-12. **无序列表**
+11. **无序列表**
 ```html
 <ul>
     <li>列表项1</li>
@@ -111,7 +119,7 @@ a(定义超链接)
     <li>列表项3</li>
 </ul>
 ```
-13. **有序列表** 
+12. **有序列表** 
 ```html
 <h4>有序列表</h4>
 <ol>
@@ -120,9 +128,9 @@ a(定义超链接)
     <li>列表项3</li>
 </ol>
 
-reversed(对列表进行降序),start(列表开始点),type(开头符号类型：1，I，A)
+reversed(对列表进行降序),start(列表开始点),type(开头符号类型：1,I,A)
 ```
-14. **表格** 
+13. **表格** 
 ```html
 <table border="1">
   <tr>
@@ -141,7 +149,7 @@ cellspacing(表格内框宽度),cellpadding(表内文字与边框的距离)
 bgcolor(背景颜色),background(背景图像)
 td(rowspan(合并行),colspan(合并列))
 ```
-15. **音频** 
+14. **音频** 
 ```html
 <audio controls>
   <source src="horse.mp3" type="audio/mpeg">
@@ -154,7 +162,7 @@ loop(视频播放结束重新播放),muted(声音静音),src(音频文件的 URL
 preload(预加载,是否加载视频: none(不载入),auto(载入整个音频),meta(只载入元数据))
 poster(海报图像,加载视频显示的第一帧图片)
 ```
-16. **视频** 
+15. **视频** 
 ```html
 <video controls>
   <source src="horse.mp3" type="video/mpeg">
@@ -177,13 +185,13 @@ ele.muted：获取 video 的 muted 属性或设置该属性 (设置是否禁音)
 1. 排版
 ```html
 header (section 或 page 的页面)
-nav (导航链接)、main (文档的主体)
-section (html 区段)、article (文章)、aside (页面内容之外的内容)
+nav (导航链接),main (文档的主体)
+section (html 区段),article (文章),aside (页面内容之外的内容)
 footer (section 或 page 的页脚)
 ```
-2. 图像，音频、画布
+2. 图像,音频,画布
 ```html
-audio (音频)、video (视频标签)、source (媒介源，在 video 和 audio 中使用)
+audio (音频),video (视频标签),source (媒介源，在 video 和 audio 中使用)
 canvas (画布)
 
 1. src：视频 url
@@ -203,8 +211,8 @@ datalist (下拉列表，可以定义 input 的值，通过list和id进行绑定
 ```
 4. 进度条
 ```html
-meter (预定义范围内的度量)(value，min，max)
-progress (任何类型的任务的进度)(value，max)
+meter (预定义范围内的度量)(value,min,max)
+progress (任何类型的任务的进度)(value,max)
 ```
 5. 注释 (如汉字的拼音)
 ```html
@@ -219,9 +227,9 @@ rp (若浏览器不支持 ruby 元素显示的内容)
 ```
 6. 其他
 ```html
-dialog (对话框或窗口)、embed (外部交互内容或插件，URL)、
-figure (媒介内容的分组，规定独立的流内容(图像，图标，照片))、
-figcaption (figure 元素的标题)、keygen (生成密钥)
+dialog (对话框或窗口),embed (外部交互内容或插件，URL),
+figure (媒介内容的分组，规定独立的流内容(图像，图标，照片)),
+figcaption (figure 元素的标题),keygen (生成密钥)
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element  
 
@@ -230,7 +238,7 @@ figcaption (figure 元素的标题)、keygen (生成密钥)
 HTML的标识元数据内容，只能在head中
 提供的是文档级别的元数据，应用整个页面
 
-<meta name="author" content="tera-li" />
+<meta name="author" content="terali" />
   -- name=“author”  content=“作者名称”
   -- name="description"  content=“页面内容描述 显示在搜索引擎详情中”
   -- name=“generator”  content=“生成页面的软件标识符”
@@ -287,7 +295,7 @@ fieldset：存在于form表单中的标签，组合form表单中的输入框进�
   -- form：来自哪个表单（form 必须定义id 和 该form相同）
   -- name：fieldset的name属性值
   -- legend：定义fieldset元素的标题
-  -- align：legend属性（top，bottom，left，right）定义标题位置
+  -- align：legend属性（top,bottom,left,right）定义标题位置
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form  
 
@@ -301,27 +309,27 @@ onsubmit：在提交表单之前调用
 **三、Input**
 ```html
 type属性：
-  -- text：默认值，单行文本区域（maxlength，minlength，pattern，placeholder，readonly只读，size文本宽度，spellcheck控制是否可以检查文本框的拼写）
-  -- number：数字（value，placeholder，step=“10”按钮步进10，min，max，list预定义值，datalist id，option输出，required）
-  -- password：密码文本（autocomplete自动补全密码，required，maxlength，minlength，size，pattern，inputmode：numeric定义可能输入类型：在移动设备会选择数字键盘
-  -- email：邮箱地址（multiple可以输入多个元素，placeholder，size，value，maxlength，minlength）
-  -- tel：电话号码，拥有动态键盘的设备会显示数字键盘（placeholder，size，minlength，maxlength，value，required，pattern）
-  -- search：搜索字符串单行文本框，支持的浏览器会有清除文本框按钮（list和datalist，maxlength，minlength，pattern，placeholder，readonly，size，spellcheck）
+  -- text：默认值，单行文本区域（maxlength,minlength,pattern,placeholder,readonly只读,size文本宽度,spellcheck控制是否可以检查文本框的拼写）
+  -- number：数字（value,placeholder,step=“10”按钮步进10,min,max,list预定义值,datalist id,option输出,required）
+  -- password：密码文本（autocomplete自动补全密码,required,maxlength,minlength,size,pattern,inputmode：numeric定义可能输入类型：在移动设备会选择数字键盘
+  -- email：邮箱地址（multiple可以输入多个元素,placeholder,size,value,maxlength,minlength）
+  -- tel：电话号码，拥有动态键盘的设备会显示数字键盘（placeholder,size,minlength,maxlength,value,required,pattern）
+  -- search：搜索字符串单行文本框，支持的浏览器会有清除文本框按钮（list和datalist,maxlength,minlength,pattern,placeholder,readonly,size,spellcheck）
   -- radio：单选按钮（定义多个相同name的值，只会选择其中一个，value）
-  -- checkbox：复选框（checked，value）
+  -- checkbox：复选框（checked,value）
   -- button：按钮（在HTML使用button）
-  -- color：颜色（value十六进制，disabled，name，autofocus(bool)，autocomplete）
-  -- file：文件（accept文件类型image，multiple，需要对form表单设置enctype编码）
-  -- image：带图像的submit按钮（src，alt，width，height，required，）
-  -- range：进度条之类的范围控件（list和datalist，max，min，step）
+  -- color：颜色（value十六进制,disabled,name,autofocus(bool),autocomplete）
+  -- file：文件（accept文件类型image,multiple,需要对form表单设置enctype编码）
+  -- image：带图像的submit按钮（src,alt,width,height,required,）
+  -- range：进度条之类的范围控件（list和datalist,max,min,step）
   -- submit：提交表单按钮（value）
   -- reset：重置表单按钮
-  -- hidden：不显示的控件，但仍会提交（value，name）
-  -- date：日期（年月日，value，min，max）
-  -- month：日期（年月，value，max，min，readonly，step）
-  -- datetime-local：日期（年月日时分，min，max，required）
-  -- time：时间（value，max，min，readonly，step）
-  -- week：年和周数（value，max，min，readonly，step）
+  -- hidden：不显示的控件，但仍会提交（value,name）
+  -- date：日期（年月日,value,min,max）
+  -- month：日期（年月,value,max,min,readonly,step）
+  -- datetime-local：日期（年月日时分,min,max,required）
+  -- time：时间（value,max,min,readonly,step）
+  -- week：年和周数（value,max,min,readonly,step）
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input  
 
