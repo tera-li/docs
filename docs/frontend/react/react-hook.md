@@ -11,7 +11,6 @@ count
 
 - class
 ```js
-/* class */
 // 初始化、更新、读取
 this.state = { count: 0 };
 this.setState({ count: this.state.count + 1 })

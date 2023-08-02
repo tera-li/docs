@@ -155,22 +155,22 @@ myRef = React.createRef()
 
 ### 挂载阶段
 :::info 简介
-1. **constructor(props)**: 构造函数最先调⽤
+1. <span style="color: red">**constructor(props)**</span>: 构造函数最先调⽤
    1. 初始化内部 state
    2. 为事件处理函数绑定实例
-2. **static getDerivedStateFromProps(props, state)**: 罕⻅⽤例，即 state 的值任何时候都取决于 props
+2. <span style="color: red">**static getDerivedStateFromProps(props, state)**</span>: 罕⻅⽤例，即 state 的值任何时候都取决于 props
    1. 静态方法，无 this
    2. ⼦组件的 state 取决于⽗组件的 props
    3. return props or null，会返回一个对象用来更新当前的 state 对象
-3. **UNSAFE_componentWillMount()**: 在组件挂载前调用（DOM插入前）
-4. **render()**: 是 class 组件中唯一必须实现的方法，返回需要渲染的DOM
+3. <span style="color: red">**UNSAFE_componentWillMount()**</span>: 在组件挂载前调用（DOM插入前）
+4. <span style="color: red">**render()**</span>: 是 class 组件中唯一必须实现的方法，返回需要渲染的DOM
    1. 原生的DOM，如div
    2. React组件
    3. Fragment（片段）
    4. Portals（插槽）
    5. 字符串和数字，被渲染成text节点
    6. Boolean和null，不会渲染任何东西
-5. **componentDidMount()**: 在组件挂载后调用（DOM插入后）
+5. <span style="color: red">**componentDidMount()**</span>: 在组件挂载后调用（DOM插入后）
    1. 适合添加订阅的地方
    2. 适合网络请求获取数据
    3. 获取DOM节点
@@ -178,26 +178,26 @@ myRef = React.createRef()
 
 ### 更新阶段
 :::info 简介
-1. **UNSAFE_componentWillReceiveProps(nextProps)**: 在组件接收 props 前调⽤
+1. <span style="color: red">**UNSAFE_componentWillReceiveProps(nextProps)**</span>: 在组件接收 props 前调⽤
    1. 在更新⼦组件，需要重新渲染组件时⽤到的⽐较多，更新state
-2. **static getDerivedStateFromProps(props, state)**: 罕⻅⽤例，即 state 的值任何时候都取决于 props
-3. **shouldComponentUpdate(nextProps, nextState)**: 是否需要组件重新渲染
+2. <span style="color: red">**static getDerivedStateFromProps(props, state)**</span>: 罕⻅⽤例，即 state 的值任何时候都取决于 props
+3. <span style="color: red">**shouldComponentUpdate(nextProps, nextState)**</span>: 是否需要组件重新渲染
    1. 新的props，新的state
    2. return Boolean（true表示组件重新渲染， false表示组件不冲洗渲染）
-4. **UNSAFE_componentWillUpdate(nextProps, nextState)**: 组件更新前
+4. <span style="color: red">**UNSAFE_componentWillUpdate(nextProps, nextState)**</span>: 组件更新前
    1. 在组件收到新的 props 或 state 时触发
    2. 不能此方法中调用 this.setState()
-5. **render()**: 是 class 组件中唯一必须实现的方法，返回需要渲染的DOM
-6. **getSnapshotBeforeUpdate(prevProps, prevState)**: 获取快照在更新前， return的值在下个钩⼦中接收
+5. <span style="color: red">**render()**</span>: 是 class 组件中唯一必须实现的方法，返回需要渲染的DOM
+6. <span style="color: red">**getSnapshotBeforeUpdate(prevProps, prevState)**</span>: 获取快照在更新前， return的值在下个钩⼦中接收
    1. 在 DOM 更新前调⽤，可获取更新前的 DOM 信息
    2. return null or snapshotValue
-7. **componentDidUpdate(prevProps, prevState, snapshotValue)**: 组件更新后
+7. <span style="color: red">**componentDidUpdate(prevProps, prevState, snapshotValue)**</span>: 组件更新后
    1. 可以操作 DOM，发送请求等
 :::
 
 ### 卸载阶段
 :::info 简介
-1. **componentWillUnmount()**: 组件卸载前触发
+1. <span style="color: red">**componentWillUnmount()**</span>: 组件卸载前触发
    1. 取消订阅等额外操作
 :::
 
