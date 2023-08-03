@@ -1,37 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-  <label for="story">Tell us your story:</label>
-
-  <textarea id="story" name="story"
-            rows="5" cols="33">
-  It was a dark and stormy night...
-  </textarea>
-    <button id="btn">0</button>
+    <style>
+      .id {
+        height: 400px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .idd {
+        width: 100px;
+        height: 100px;
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="id">
+        <div class="idd"></div>
+        <div class="idd"></div>
+        <div class="idd"></div>
+        <div class="idd"></div>
+        <div class="idd"></div>
+      </div>
+      <div></div>
+    <!-- <button id="btn">0</button> -->
     <script>
-        let count = 0
-        let btn = document.getElementById("btn")
-        function add(e){  
-          console.log(e);
-            this.innerHTML = ++count
-        }
-        function throttle(fn,wait){
-            let preTime,result
-            console.log(this);
-            return function (){
-              clearTimeout(preTime)
-              preTime = setTimeout(() => {
-                fn.apply(this, ...arguments)
-              }, wait)
-            }
-        }
-        btn.addEventListener('click',throttle(add,1000))
+      let count = 0;
+      let btn = document.getElementById("btn");
+      function add(e) {
+        console.log(e);
+        this.innerHTML = ++count;
+      }
+      function throttle(fn, wait) {
+        let preTime, result;
+        console.log(this);
+        return function () {
+          clearTimeout(preTime);
+          preTime = setTimeout(() => {
+            fn.apply(this, ...arguments);
+          }, wait);
+        };
+      }
+      btn.addEventListener("click", throttle(add, 1000));
     </script>
-</body>
+  </body>
 </html>

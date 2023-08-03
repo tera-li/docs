@@ -137,6 +137,12 @@ p {
     */
     box-shadow: inset 1px 1px 1px 1px rebeccapurple;
     background: #7f8497 | url("./xxx.png");
+    /* 缩放背景图片以完全装入背景区，可能背景区部分空白 */
+    background-size: contain;
+    /* 缩放背景图片以完全覆盖背景区，可能背景图片部分看不见 */
+    background-size: cover;
+    /* 背景图像的位置是在视口内固定 */
+    background-attachment: fixed;
 }
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders  
@@ -321,7 +327,11 @@ p {
   /* 决定主轴的方向 (默认主轴为row水平方向) */
   flex-direction: row | row-reverse | column | column-reverse;
   /* 主轴 (横轴上的对齐方式) */
-  justify-content: center | flex-start | flex-end | space-between | space-around;
+  justify-content: center | flex-start | flex-end | space-between | space-around | space-evenly;
+  /* space-between:首个元素放置于起点，末尾元素放置于终点，弹性盒子之间间距相同 */
+  /* space-around: 每个元素周围分配相同的空间 */
+  /* space-evenly: 每个元素之间的间隔相等 */
+
   /* 子项是否都排在一条主轴上 (默认nowrap不换行) */
   flex-wrap: nowrap | wrap | wrap-reverse;
   /* 集合flex-direction和flex-wrap属性值的简写 */
@@ -365,3 +375,16 @@ a:after{
 }
 
 ```
+## CSS BFC
+区块格式化上下文（Block Formatting Context，BFC）是 Web 页面的可视 CSS 渲染的一部分，是块级盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域  
+
+BFC决定了元素对其内容定位，以及当前元素与其他元素之间的关系和相互作用。<b>其目的就是形成一个独立的空间，让空间中的子元素不会影响到这个独立空间之外的布局</b>
+
+```css
+/* 创建无副作用的 BFC。在父级块中使用 display: flow-root 可以创建新的 BFC */
+.parent {
+  display: flow-root;
+  overflow: hidden;
+}
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context
