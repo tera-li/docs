@@ -262,6 +262,60 @@ p {
     color: red;
 }
 ```
+## CSS 变形
+<img src="./assets/transform.png#pic_center" style="margin: 0 auto"/>
+
+```css
+.box {
+  /* transform 属性允许你旋转，缩放，倾斜或平移给定元素。这是通过修改 CSS 视觉格式化模型的坐标空间来实现的 */
+  /* Function values */
+  transform: matrix(1, 2, 3, 4, 5, 6);
+  transform: translate(12px, 50%);
+  transform: translateX(2em);
+  transform: translateY(3in);
+  transform: scale(2, 0.5);
+  transform: scaleX(2);
+  transform: scaleY(0.5);
+  transform: rotate(0.5turn);
+  transform: skew(30deg, 20deg);
+  transform: skewX(30deg);
+  transform: skewY(1.07rad);
+  transform: matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+  transform: translate3d(12px, 50%, 3em);
+  transform: translateZ(2px);
+  transform: scale3d(2.5, 1.2, 0.3);
+  transform: scaleZ(0.3);
+  transform: rotate3d(1, 2, 3, 10deg);
+  transform: rotateX(10deg);
+  transform: rotateY(10deg);
+  transform: rotateZ(10deg);
+  transform: perspective(17px);
+
+  /* Multiple function values */
+  transform: translateX(10px) rotate(10deg) translateY(5px);
+
+  /* 更改一个元素变形的原点 */
+  transform-origin: center;
+  /* x-offset | y-offset */
+  transform-origin: 3cm 2px;
+  /* x-offset-keyword | y-offset-keyword | z-offset */
+  transform-origin: right bottom 2cm;
+}
+.box_parent {
+  /* 设置元素的子元素位于该元素的平面中 */
+  transform-style: flat;
+  /* 指示元素的子元素应位于 3D 空间中 */
+  transform-style: preserve-3d;
+
+  /* 观察者与 z=0 平面的距离 */
+  perspective: none;
+  /* 数字越小，距离越近，呈现的图形越大 */
+  /* 数字越大，距离越远，呈现的图形越小 */
+  perspective: 200px;
+  /* 观察者的位置，用作 perspective 属性的消失点 */
+  perspective-origin: center;
+}
+```
 ## CSS Hack
 ```html
 针对不同浏览器的⽀持css能⼒进⾏判断
