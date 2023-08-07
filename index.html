@@ -1,18 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- <meta name="viewport" content="initial-scale=1" /> -->
     <title>Document</title>
-</head>
-<body>
-    <dialog open>
-        <p>Greetings, one and all!</p>
-        <form method="dialog">
-          <button>OK</button>
-        </form>
-      </dialog>
-
-</body>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .id {
+        width: 375px;
+        height: 400px;
+      }
+      .idd {
+        width: 375px;
+        height: 100px;
+        background-color: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+      <div class="id">
+        <div class="idd"></div>
+      </div>
+      <div></div>
+    <!-- <button id="btn">0</button> -->
+    <script>
+      let count = 0;
+      let btn = document.getElementById("btn");
+      function add(e) {
+        console.log(e);
+        this.innerHTML = ++count;
+      }
+      function throttle(fn, wait) {
+        let preTime, result;
+        console.log(this);
+        return function () {
+          clearTimeout(preTime);
+          preTime = setTimeout(() => {
+            fn.apply(this, ...arguments);
+          }, wait);
+        };
+      }
+      btn.addEventListener("click", throttle(add, 1000));
+    </script>
+  </body>
 </html>

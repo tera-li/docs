@@ -18,19 +18,19 @@
 ```
 ## HTML常见标签及属性
 
-1. **\<!DOCTYPE html\>**
+**\<!DOCTYPE html\>**
 ```html
 文档声明，html5标准网页声明
 <!DOCTYPE html>
 ```
-2. **\<head></head\>**
+**\<head></head\>**
 ```html
 定义HTML文档的头部，可以放置一些元素
 <head>
   <title>网页标题</title>
 </head>
 ```
-3. **\<meta />**
+**\<meta />**
 ```html
 描述 html 文档的元数据
 
@@ -43,7 +43,7 @@ name属性 供浏览器进行解析，如解决浏览器兼容问题
 <meta name="description" content="terali" />
 
 ```
-4. **\<style /\>**
+**\<style /\>**
 ```html
 html文档定义样式信息
   - type="text/css"：规定样式表的 MIME 类型
@@ -55,7 +55,7 @@ html文档定义样式信息
   }
 </style>
 ```
-5. **\<link /\>**
+**\<link /\>**
 ```html
 定义文档与外部资源的关系、链接样式表
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -70,7 +70,7 @@ html文档定义样式信息
 <!-- 引入外部style -->
 <link rel="stylesheet" href="my-css-file.css" />
 ```
-6. **\<script /\>**
+**\<script /\>**
 ```html
 定义客户端脚本
   - async：可选。表示应该立即下载脚本，但不应妨碍页面中的其他操作，比如下载其他资源或等待加载其他脚本。只对外部脚本有效
@@ -79,21 +79,21 @@ html文档定义样式信息
   - type：可选。可以看成是language的替代属性；表示编写代码使用的脚本语言的内容类型 (也称为MIME类型)
 <script src="./index.js"></script>
 ```
-7. **\<body>\</body>**
+**\<body>\</body>**
 ```html
 定义文档内容显示的主体
 <body>
   <div>body</div>
 </body>
 ```
-8. **块级标签**
+**块级标签**
 ```html
 元素独占一行，不与其他元素所处一行，总是开始在新的行/列上
 
 div,p,h1~h6,ul~li,ol~li,dl~dt~dd,table,form,pre
 header,footer,main,aside,section,article
 ```
-9. **行内标签**
+**行内标签**
 ```html
 元素与其他行内元素所处一行
 
@@ -101,7 +101,7 @@ span,a,strong,em,b,big,i,small,sub,sup,code
 button,input,label,select,textarea,img,audio,video,canvas
 ```
 
-10. **列表**
+**列表**
 ```html
 <dl>
   <dt>Firefox</dt>
@@ -111,7 +111,7 @@ button,input,label,select,textarea,img,audio,video,canvas
       developed by the Mozilla Corporation and hundreds of volunteers.</dd>
 </dl>
 ```
-11. **无序列表**
+**无序列表**
 ```html
 <ul>
     <li>列表项1</li>
@@ -119,7 +119,7 @@ button,input,label,select,textarea,img,audio,video,canvas
     <li>列表项3</li>
 </ul>
 ```
-12. **有序列表** 
+**有序列表** 
 ```html
 <h4>有序列表</h4>
 <ol>
@@ -130,7 +130,7 @@ button,input,label,select,textarea,img,audio,video,canvas
 
 reversed(对列表进行降序),start(列表开始点),type(开头符号类型：1,I,A)
 ```
-13. **表格** 
+**表格** 
 ```html
 <table border="1">
   <tr>
@@ -149,7 +149,7 @@ cellspacing(表格内框宽度),cellpadding(表内文字与边框的距离)
 bgcolor(背景颜色),background(背景图像)
 td(rowspan(合并行),colspan(合并列))
 ```
-14. **音频** 
+**音频** 
 ```html
 <audio controls>
   <source src="horse.mp3" type="audio/mpeg">
@@ -162,7 +162,7 @@ loop(视频播放结束重新播放),muted(声音静音),src(音频文件的 URL
 preload(预加载,是否加载视频: none(不载入),auto(载入整个音频),meta(只载入元数据))
 poster(海报图像,加载视频显示的第一帧图片)
 ```
-15. **视频** 
+**视频** 
 ```html
 <video controls>
   <source src="horse.mp3" type="video/mpeg">
@@ -181,15 +181,15 @@ ele.playbackRate：获取 video 当前的播放速率或设置该属性 (设置�
 ele.ended：表示该媒体是否播放完毕
 ele.muted：获取 video 的 muted 属性或设置该属性 (设置是否禁音)
 ```
-## **HTML5新增标签**
-1. 排版
+## HTML5新增标签
+**排版**
 ```html
 header (section 或 page 的页面)
 nav (导航链接),main (文档的主体)
 section (html 区段),article (文章),aside (页面内容之外的内容)
 footer (section 或 page 的页脚)
 ```
-2. 图像,音频,画布
+**图像,音频,画布**
 ```html
 audio (音频),video (视频标签),source (媒介源，在 video 和 audio 中使用)
 canvas (画布)
@@ -198,7 +198,7 @@ canvas (画布)
 2. type：video/mp4，video/ogg，视屏类型，帮助浏览器是否能播放该视频
 3. media：为视频指定 css3 媒体查询，为不同屏幕尺寸的设备指定不同 (更小的) 视频
 ```
-3. 下拉框可选列表
+**下拉框可选列表**
 
 ```html
 datalist (下拉列表，可以定义 input 的值，通过list和id进行绑定)
@@ -209,12 +209,12 @@ datalist (下拉列表，可以定义 input 的值，通过list和id进行绑定
   <option value="Volvo">
 </datalist>
 ```
-4. 进度条
+**进度条**
 ```html
 meter (预定义范围内的度量)(value,min,max)
 progress (任何类型的任务的进度)(value,max)
 ```
-5. 注释 (如汉字的拼音)
+**注释 (如汉字的拼音)**
 ```html
 ruby (ruby 注释，旁注标记)
 rt (ruby 注释的解释)
@@ -225,7 +225,7 @@ rp (若浏览器不支持 ruby 元素显示的内容)
   字<rp>(</rp><rt>zi</rt><rp>)</rp>
 </ruby>
 ```
-6. 其他
+**其他**
 ```html
 dialog (对话框或窗口),embed (外部交互内容或插件，URL),
 figure (媒介内容的分组，规定独立的流内容(图像，图标，照片)),
@@ -233,7 +233,7 @@ figcaption (figure 元素的标题),keygen (生成密钥)
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element  
 
-## Meta以及SEO优化
+## HTML Meta元数据
 ```html
 HTML的标识元数据内容，只能在head中
 提供的是文档级别的元数据，应用整个页面
@@ -261,7 +261,7 @@ HTML的标识元数据内容，只能在head中
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta  
 参考链接：https://www.cnblogs.com/ldq678/p/9528082.html
 
-**SEO优化**
+## HTML SEO优化
 ```html
 设置title、keywords、description，相关网页的描述
 图片alt加上key
@@ -272,7 +272,6 @@ h标题标签合理使用，h1标签权重对高
 使用长尾关键词，对关键词进行扩展
 ```
 ## Form表单
-**一、From属性**
 ```html
 accept-charset='ISO-8859-1'：规定表单提交时使用的字符编码
 action='URL'：表单提交时，向何处发送表单数据
@@ -299,14 +298,14 @@ fieldset：存在于form表单中的标签，组合form表单中的输入框进�
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form  
 
-**二、Form对象方法/事件**
+## Form对象方法/事件
 ```html
 reset()：重置一个表单（指定对应form元素）
 submit()：提交一个表单（指定对应form元素）
 onreset：在重置表单元素之前调用
 onsubmit：在提交表单之前调用
 ```
-**三、Input**
+## Form Input
 ```html
 type属性：
   -- text：默认值，单行文本区域（maxlength,minlength,pattern,placeholder,readonly只读,size文本宽度,spellcheck控制是否可以检查文本框的拼写）
@@ -333,7 +332,31 @@ type属性：
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input  
 
-**四、阻止表单默认提交**
+## Form Select
+```html
+<label for="pet-select">Choose a pet:</label>
+
+<select name="pets" id="pet-select">
+    <option value="">--Please choose an option--</option>
+    <option value="dog">Dog</option>
+    <option value="cat" selected>Cat</option>
+</select>
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select  
+
+## Form Textarea
+```html
+<label for="story">Tell us your story:</label>
+
+<textarea id="story" name="story"
+          rows="5" cols="33">
+It was a dark and stormy night...
+</textarea>
+
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea  
+
+## Form 阻止表单默认提交
 ```html
 在form中使用 <input type="text" onsubmit="event.preventDefault()" />
 在form中使用 <input type="text" onsubmit="return false" />

@@ -137,6 +137,12 @@ p {
     */
     box-shadow: inset 1px 1px 1px 1px rebeccapurple;
     background: #7f8497 | url("./xxx.png");
+    /* 缩放背景图片以完全装入背景区，可能背景区部分空白 */
+    background-size: contain;
+    /* 缩放背景图片以完全覆盖背景区，可能背景图片部分看不见 */
+    background-size: cover;
+    /* 背景图像的位置是在视口内固定 */
+    background-attachment: fixed;
 }
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders  
@@ -256,6 +262,60 @@ p {
     color: red;
 }
 ```
+## CSS 变形
+<img src="./assets/transform.png#pic_center" style="margin: 0 auto"/>
+
+```css
+.box {
+  /* transform 属性允许你旋转，缩放，倾斜或平移给定元素。这是通过修改 CSS 视觉格式化模型的坐标空间来实现的 */
+  /* Function values */
+  transform: matrix(1, 2, 3, 4, 5, 6);
+  transform: translate(12px, 50%);
+  transform: translateX(2em);
+  transform: translateY(3in);
+  transform: scale(2, 0.5);
+  transform: scaleX(2);
+  transform: scaleY(0.5);
+  transform: rotate(0.5turn);
+  transform: skew(30deg, 20deg);
+  transform: skewX(30deg);
+  transform: skewY(1.07rad);
+  transform: matrix3d(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16);
+  transform: translate3d(12px, 50%, 3em);
+  transform: translateZ(2px);
+  transform: scale3d(2.5, 1.2, 0.3);
+  transform: scaleZ(0.3);
+  transform: rotate3d(1, 2, 3, 10deg);
+  transform: rotateX(10deg);
+  transform: rotateY(10deg);
+  transform: rotateZ(10deg);
+  transform: perspective(17px);
+
+  /* Multiple function values */
+  transform: translateX(10px) rotate(10deg) translateY(5px);
+
+  /* 更改一个元素变形的原点 */
+  transform-origin: center;
+  /* x-offset | y-offset */
+  transform-origin: 3cm 2px;
+  /* x-offset-keyword | y-offset-keyword | z-offset */
+  transform-origin: right bottom 2cm;
+}
+.box_parent {
+  /* 设置元素的子元素位于该元素的平面中 */
+  transform-style: flat;
+  /* 指示元素的子元素应位于 3D 空间中 */
+  transform-style: preserve-3d;
+
+  /* 观察者与 z=0 平面的距离 */
+  perspective: none;
+  /* 数字越小，距离越近，呈现的图形越大 */
+  /* 数字越大，距离越远，呈现的图形越小 */
+  perspective: 200px;
+  /* 观察者的位置，用作 perspective 属性的消失点 */
+  perspective-origin: center;
+}
+```
 ## CSS Hack
 ```html
 针对不同浏览器的⽀持css能⼒进⾏判断
@@ -321,7 +381,11 @@ p {
   /* 决定主轴的方向 (默认主轴为row水平方向) */
   flex-direction: row | row-reverse | column | column-reverse;
   /* 主轴 (横轴上的对齐方式) */
-  justify-content: center | flex-start | flex-end | space-between | space-around;
+  justify-content: center | flex-start | flex-end | space-between | space-around | space-evenly;
+  /* space-between:首个元素放置于起点，末尾元素放置于终点，弹性盒子之间间距相同 */
+  /* space-around: 每个元素周围分配相同的空间 */
+  /* space-evenly: 每个元素之间的间隔相等 */
+
   /* 子项是否都排在一条主轴上 (默认nowrap不换行) */
   flex-wrap: nowrap | wrap | wrap-reverse;
   /* 集合flex-direction和flex-wrap属性值的简写 */
@@ -365,3 +429,16 @@ a:after{
 }
 
 ```
+## CSS BFC
+区块格式化上下文（Block Formatting Context，BFC）是 Web 页面的可视 CSS 渲染的一部分，是块级盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域  
+
+BFC决定了元素对其内容定位，以及当前元素与其他元素之间的关系和相互作用。<b>其目的就是形成一个独立的空间，让空间中的子元素不会影响到这个独立空间之外的布局</b>
+
+```css
+/* 创建无副作用的 BFC。在父级块中使用 display: flow-root 可以创建新的 BFC */
+.parent {
+  display: flow-root;
+  overflow: hidden;
+}
+```
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context
