@@ -143,6 +143,10 @@ p {
     background-size: cover;
     /* 背景图像的位置是在视口内固定 */
     background-attachment: fixed;
+    /* 线性渐变，创建一个表示两种或多种颜色线性渐变的图片 */
+    background: linear-gradient(to left, #333 50%, green 75%, red 75%);
+    /* 径向渐变，创建从原点辐射的两种或多种颜色之间的渐进过渡组成 */
+    background: radial-gradient(circle at 100%, #333, #333 50%, #eee 75%, #333 75%);
 }
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders  
@@ -314,6 +318,53 @@ p {
   perspective: 200px;
   /* 观察者的位置，用作 perspective 属性的消失点 */
   perspective-origin: center;
+}
+```
+## CSS 动画
+```css
+/* 过渡 */
+/* transition: property duration timing-function delay; */
+/* transition-property	指定CSS属性的name，transition效果
+   transition-duration	transition效果需要指定多少秒或毫秒才能完成
+   transition-timing-function	指定transition效果的转速曲线
+   transition-delay	定义transition效果开始的时候
+   */
+.box  {
+  /* property	定义应用过渡效果的 CSS 属性名称列表，列表以逗号分隔。 */
+  transition-property: none | all | property;
+  transition-duration: 10s, 30s, 230ms;
+  transition-timing-function: ease | ease-in | ease-out | ease-in-out | linear;
+  transition-delay: 2s, 4ms;
+}
+
+/* 动画 */
+/* 关键帧选择器中添加一个动画 */
+@keyframes mymove
+{
+  from { top:0px; }
+  to { top:200px; }
+}
+@keyframes mymove
+{
+  0%   { top:0px; }
+  25%  { top:200px; }
+  50%  { top:100px; }
+  75%  { top:200px; }
+  100% { top:0px; }
+}
+
+.box {
+  /* animation-name	指定要绑定到选择器的关键帧的名称
+     animation-duration	动画指定需要多少秒或毫秒完成
+     animation-timing-function	设置动画将如何完成一个周期
+     animation-delay	设置动画在启动前的延迟间隔。
+     animation-iteration-count	定义动画的播放次数。
+     animation-direction	指定是否应该轮流反向播放动画。
+     animation-fill-mode	规定当动画不播放时（当动画完成时，或当动画有一个延迟未开始播放时），要应用到元素的样式。
+     animation-play-state	指定动画是否正在运行或已暂停。 
+     */
+  /* animation: name duration timing-function delay iteration-count direction fill-mode play-state; */
+  animation: mymove 1s linear 1s infinite reverse forwards running;
 }
 ```
 ## CSS Hack
