@@ -1,6 +1,10 @@
 # JavaScript Basics
 
 `JavaScript（JS）是一种具有函数优先特性的轻量级、解释型或者说即时编译型的编程语言。`
+- JavaScript 组成
+  - ECMAScript (JavaScript基础语法)
+  - DOM（页面文档对象模型）
+  - BOM（浏览器对象模型）
 
 ```html
 1. 解释型: 不需要预先编译，将代码解释成机器码并立即执行，脚本逐行解释执行
