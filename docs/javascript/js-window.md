@@ -439,8 +439,8 @@ element.scrollLeft                  // 设置或返回元素的滚动条到元�
 
 element.offsetHeight                // 返回元素的height (包括padding，border、不包括margin)
 element.offsetWidth                 // 返回元素的width (包括padding，border、不包括margin)
-element.offsetTop                   // 返回当前元素相对于其 offsetParent 元素的顶部的距离
-element.offsetLeft                  // 返回当前元素相对于其 offsetParent 元素的左边届的距离
+element.offsetTop                   // 返回当前元素相对于其 offsetParent 元素的上边的距离（父级元素设置position，则返回与父级元素的距离）
+element.offsetLeft                  // 返回当前元素相对于其 offsetParent 元素的左边的距离（父级元素设置position，则返回与父级元素的距离）
 element.offsetParent                // 返回指向最近的包含该元素的定位元素 (position) 或者最近的 table, td, th, body 元素
 element.getBoundingClientRect()     // 返回元素的大小及其相对于视口(viewport)的位置
     width                           // 返回元素的height (包括padding，border、不包括margin)
