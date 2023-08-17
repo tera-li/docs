@@ -22,29 +22,25 @@
     </style>
   </head>
   <body>
-      <div class="id">
-        <div class="idd"></div>
-      </div>
-      <div></div>
+    <div class="id">
+      <div class="idd"></div>
+    </div>
+    <div></div>
     <!-- <button id="btn">0</button> -->
     <script>
-      let count = 0;
-      let btn = document.getElementById("btn");
-      function add(e) {
-        console.log(e);
-        this.innerHTML = ++count;
+      function Func(name) {
+        this.name = name;
       }
-      function throttle(fn, wait) {
-        let preTime, result;
-        console.log(this);
-        return function () {
-          clearTimeout(preTime);
-          preTime = setTimeout(() => {
-            fn.apply(this, ...arguments);
-          }, wait);
-        };
-      }
-      btn.addEventListener("click", throttle(add, 1000));
+      Func.eat = '吃'
+      Func.prototype.name = 'function name'
+      let obj = {};
+      // obj的原型链指向构造函数的原型
+      obj.__proto__ = Func.prototype
+      // 执行构造函数，构造函数中的this指向obj，并将参数带入
+      Func.call(obj, 'name');
+
+      console.log(obj);
+      console.log(new Func('name'))
     </script>
   </body>
 </html>
