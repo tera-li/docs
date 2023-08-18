@@ -231,14 +231,14 @@ element.removeEventListener('click', onClick);
 element.parentNode.removeChild(element);
 ```
    - **闭包**  
-`内部匿名函数可以访问父级作用域的变量，减少重复调用函数时所造成开辟的内存开销`  
+`内部匿名函数可以访问父级作用域的变量，实现数据私有化，减少重复调用函数时所造成开辟的内存开销，使外部可以使用函数内部的变量`  
 `当closure函数执行完毕后，垃圾回收机制是应当清空函数的所占用的内存的`  
 `但是内部return的匿名函数还引用着父级作用域中的变量，则导致无法标记垃圾回收`  
 ```js
 function closure(){
-    var min = 10;
+    let min = 10;
     return function(max){
-        console.log(min * max);
+        return min * max;
     }
 }
 let clo = closure()

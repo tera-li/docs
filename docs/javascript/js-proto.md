@@ -169,3 +169,23 @@ call()和apply() 是立即执行
 bind() 是先指定this指向，返回新函数手动调用
 ```
 :::
+
+## New 关键字
+:::info New 关键字
+```js
+function Func(name) {
+    this.name = name;
+}
+// 定义构造函数的原型扩展属性
+Func.prototype.name = 'function name'
+// 创建新对象
+let obj = {};
+// obj的原型链指向构造函数的原型
+obj.__proto__ = Func.prototype
+// 执行构造函数，构造函数中的this指向obj，并将参数带入，把属性挂载到obj上
+Func.call(obj, 'name');
+
+console.log(obj);
+console.log(new Func('name'))
+```
+:::
