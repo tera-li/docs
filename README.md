@@ -16,4 +16,4 @@ welcome to my docs
 
 未来的前端领域仍然充满了机遇和挑战。我会继续努力学习和进步，追求更高的水平和目标。我相信只要有热情、勤奋和坚持，就一定能够在前端领域取得成功。
 
-homePage: https://tera-li.github.io/docs/
+homePage: https://terali.cn
