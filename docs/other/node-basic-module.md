@@ -91,6 +91,19 @@ fs.stat(path.resolve(__dirname + '/app.js'), (err, data) => {
 ```
 :::
 
+## path
+:::info path
+```js
+// __dirname: 当前文件所在目录的绝对路径
+// 拼接路径
+path.join(__dirname, '/index.html')
+// 解析并拼接路径
+path.resolve(__dirname, 'index.html')
+// 提取路径中文件扩展名
+path.extname('/index.html')
+```
+:::
+
 ## stream
 :::info stream
 ```js
