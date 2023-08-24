@@ -147,7 +147,7 @@ stearm.pipe(stramWrite)
 ```
 :::
 
-## express（第三方模块）
+## Express（第三方模块）
 ```js
 var express = require('express');
 var app = express();
@@ -167,6 +167,24 @@ app.get('/', m1, m1, function(req,res) { res.send('Hello world') })
 app.get('/', [m1, m1], function(req,res) { res.send('Hello world') })
 
 
+// 导入处理querystring的Node.js内置模块
+const qs = require('querystring')
+// 自定义中间件
+app.use((req,res,next)=>{
+    let str = ''
+    // 如果数据量比较大，无法一次性发送完毕，则客户端会把数据切割后，分批发送到服务器。所以 data 事件可能会触发多次，每一次触发 data 事件时，获取到数据只是完整数据的一部分，需要手动对接收到的数据进行拼接。
+    req.on('data',(chunk)=>{
+        str += chunk
+    })
+    req.on('end',()=>{ 
+        // 在str中存放的是完整的请求体数据)
+        console.log(str); // name=Ulrich&age=22&gender=male
+        const body = qs.parse(str) // { name: 'Ulrich', age: '22', gender: 'male' }
+        req.body = body;
+        next()
+    })
+})
+
 // 匹配get、post请求，返回响应
 app.get('/', function(req,res) { res.send('Hello world') })
 app.post('/', function(req,res) { res.send('Hello world') })
@@ -179,3 +197,17 @@ app.use('/static', express.static(__dirname + '/public'));
 // 绑定并侦听指定主机和端口上的连接
 app.listen(80, function() { console.log('listen in http://127.0.0.1') })
 ```
+## 中间件分类
+::: info 中间件
+- **应用级别中间件**
+  - 绑定到Express中app实例上的中间件
+- **路由级别中间件**
+  - 绑定到Express.Router()上的中间件
+- **错误级别中间件**
+  - 对throw new Error 等抛出的错误，进行捕获的中间件 function (err, req, res, next) {}
+- **Express内置中间件**
+  - Express.static      托管静态资源
+  - Express.json        解析Json格式请求体
+  - Express.urlencoded  解析url-encoded格式请求体
+- **第三方中间件**
+:::
