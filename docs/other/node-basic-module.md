@@ -8,6 +8,7 @@
 var http = require( "http" );
 // 调用http.createServer()方法返回创建的HTTP服务器
 var server = http.createServer(function( req, res ) {
+                // res.setHeader('Content-Type', 'text/html; charset=utf-8')
                 res.writeHead(200, {'Content-Type': 'text/html'} )
                 res.write("<head><meta charset='utf8'></head>" );
                 res.end("hello world" );

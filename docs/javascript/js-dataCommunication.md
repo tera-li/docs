@@ -73,6 +73,9 @@ let formData = new FormData()
 formData.append('name',new Blob([new ArrayBuffer(100)]))
 formData.append('name1','join')
 oReq.send(JSON.stringify({name: 'join'}));
+
+// 将json对象转换为search参数
+new URLSearchParams({ test:1, name:2}).toString()  // test=1&name=2
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest  
 
