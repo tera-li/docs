@@ -34,6 +34,16 @@ const sidebar = {
         },
       ],
     },
+    {
+      text: "TypeScript",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        { text: "TS 基础", link: "/typeScript/" },
+        { text: "TS 内置类型", link: "/typeScript/ts-inlay-type" },
+        { text: "TS 类型语言", link: "/typeScript/ts-declare" },
+      ],
+    },
     // {
     //   text: "JAVA",
     //   collapsible: true,
@@ -133,16 +143,6 @@ const sidebar = {
   ],
   "/other/": [
     {
-      text: "TypeScript",
-      collapsible: true,
-      collapsed: false,
-      items: [
-        { text: "TS 基础", link: "/other/" },
-        { text: "TS 内置类型", link: "/other/ts-inlay-type" },
-        { text: "TS 类型语言", link: "/other/ts-declare" },
-      ],
-    },
-    {
       text: "Node",
       collapsible: true,
       collapsed: false,
@@ -233,7 +233,7 @@ export default defineConfig({
       { text: "构建", link: "/build/" },
       { text: "网络", link: "/network/" },
       { text: "算法", link: "/algorithm/" },
-      { text: "其它", link: "/other/" },
+      { text: "其它", link: "/other/node-basic" },
     ],
     sidebar: sidebar,
     // 社交链接
