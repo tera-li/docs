@@ -222,4 +222,10 @@ proxy: {
     },
 }
 ```
+
+- 请求分类
+  - 简单请求
+  - 预检请求
+    - 会先触发 option 类型的请求，以获知服务器是否允许该实际请求
 :::
+参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS

@@ -201,7 +201,8 @@ app.listen(80, function() { console.log('listen in http://127.0.0.1') })
 - express-session session中间件
   - Session Cookies 是存储在服务器内存中，耗费大量的资源
   - cookie 默认情况下，跨域是不会携带cookie的，需要修改请求 `xhrFields: { withCredentials: true }`
-- jwt 
+- jwt
+  - 
 :::
 ## 中间件分类
 ::: info 中间件
