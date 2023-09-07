@@ -34,6 +34,30 @@ const sidebar = {
         },
       ],
     },
+    {
+      text: "TypeScript",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        { text: "TS 基础", link: "/typeScript/" },
+        { text: "TS 内置类型", link: "/typeScript/ts-inlay-type" },
+        { text: "TS 类型语言", link: "/typeScript/ts-declare" },
+      ],
+    },
+    {
+      text: "Node",
+      collapsible: true,
+      collapsed: true,
+      items: [
+        { text: "Node 基础", link: "/node/node-basic" },
+        { text: "Node 异步编程", link: "/node/node-async" },
+        { text: "Node Module", link: "/node/node-basic-module" },
+        { text: "Node V8内存控制", link: "/node/node-v8" },
+        { text: "Node 二进制", link: "/node/node-buffer" },
+        { text: "Node 进程", link: "/node/node-progress" },
+        { text: "Node 工程化", link: "/node/node-engineering" },
+      ],
+    },
     // {
     //   text: "JAVA",
     //   collapsible: true,
@@ -133,30 +157,6 @@ const sidebar = {
   ],
   "/other/": [
     {
-      text: "TypeScript",
-      collapsible: true,
-      collapsed: false,
-      items: [
-        { text: "TS 基础", link: "/other/" },
-        { text: "TS 内置类型", link: "/other/ts-inlay-type" },
-        { text: "TS 类型语言", link: "/other/ts-declare" },
-      ],
-    },
-    {
-      text: "Node",
-      collapsible: true,
-      collapsed: false,
-      items: [
-        { text: "Node 基础", link: "/other/node-basic" },
-        { text: "Node 异步编程", link: "/other/node-async" },
-        { text: "Node 基础模块", link: "/other/node-basic-module" },
-        { text: "Node V8内存控制", link: "/other/node-v8" },
-        { text: "Node 二进制", link: "/other/node-buffer" },
-        { text: "Node 进程", link: "/other/node-progress" },
-        { text: "Node 工程化", link: "/other/node-engineering" },
-      ],
-    },
-    {
       text: "Route",
       collapsible: true,
       collapsed: false,
@@ -233,7 +233,7 @@ export default defineConfig({
       { text: "构建", link: "/build/" },
       { text: "网络", link: "/network/" },
       { text: "算法", link: "/algorithm/" },
-      { text: "其它", link: "/other/" },
+      { text: "其它", link: "/other/front-end-basic" },
     ],
     sidebar: sidebar,
     // 社交链接

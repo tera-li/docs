@@ -30,7 +30,7 @@ hero:
       link: /algorithm/
     - theme: alt
       text: 其他
-      link: /other/
+      link: /other/front-end-basic
 features:
   - title: 知识体系
     details: Javascript, Typescript, Vue, React, Node.js
