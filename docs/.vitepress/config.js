@@ -155,6 +155,14 @@ const sidebar = {
       ],
     },
   ],
+  "/back/": [
+    {
+      text: "Route",
+      collapsible: true,
+      collapsed: false,
+      items: [{ text: "back", link: "/back/" }],
+    },
+  ],
   "/other/": [
     {
       text: "Route",
@@ -228,12 +236,13 @@ export default defineConfig({
     logo: "https://cdn.jsdelivr.net/gh/tera-li/static-cdn@0.0.4/img/my.jpg",
     // 顶部导航
     nav: [
-      { text: "基础", link: "/html/" },
+      { text: "前端", link: "/html/" },
       { text: "框架", link: "/frontend/vue/" },
       { text: "构建", link: "/build/" },
       { text: "网络", link: "/network/" },
+      { text: "后端", link: "/back/" },
       { text: "算法", link: "/algorithm/" },
-      { text: "其它", link: "/other/front-end-basic" },
+      { text: "其他", link: "/other/front-end-basic" },
     ],
     sidebar: sidebar,
     // 社交链接
