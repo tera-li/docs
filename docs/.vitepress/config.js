@@ -160,7 +160,7 @@ const sidebar = {
       text: "Route",
       collapsible: true,
       collapsed: false,
-      items: [{ text: "back", link: "/back/" }],
+      items: [{ text: "基础", link: "/back/" }],
     },
   ],
   "/other/": [
