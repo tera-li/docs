@@ -14,7 +14,7 @@ hero:
     alt: challenges
   actions:
     - theme: brand
-      text: 基础
+      text: 前端
       link: /html/
     - theme: alt
       text: 框架
@@ -25,6 +25,9 @@ hero:
     - theme: alt
       text: 网络
       link: /network/
+    - theme: alt
+      text: 后端
+      link: /back/
     - theme: alt
       text: 算法
       link: /algorithm/
