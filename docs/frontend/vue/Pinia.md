@@ -24,6 +24,7 @@ watch(pinia.state, (state) => {
 ```
 
 ## 定义Store
+- Option Store
 ```js
 import { defineStore } from 'pinia'
 
@@ -46,6 +47,23 @@ export const userStore = defineStore('user', {
         },
     },
 })
+```
+- SetUp Store
+```js
+export const useCounterStore = defineStore('counter', () => {
+  const count = ref(0)
+  function increment() {
+    count.value++
+  }
+  const double = computed((state) => state.count * 2)
+
+  return { count, increment, double }
+})
+/*
+    ref() 就是 state 属性
+    computed() 就是 getters
+    function() 就是 actions
+*/
 ```
 ## 使用Store
 ```js
