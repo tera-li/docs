@@ -269,6 +269,38 @@ emitter.removeListener("info", (info) => {
 // 发射事件
 emitter.emit("info", "我是来自father的 info");
 ```
+## HOC
+```js
+// 复用组件逻辑，将传入的组件返回并渲染，返回的组件会重新进行组装
+function withOBJ(PropsComponent) {
+  return function (props) {
+    const [mouse, setMouse] = useState({ x: 0, y: 0 });
+    useEffect(() => {
+      document.getElementsByTagName("body")[0].onmousemove = function (events) {
+        setMouse({
+          x: events.clientX,
+          y: events.clientY,
+        });
+      };
+    });
+    return <PropsComponent {...mouse} {...props} />;
+  };
+}
+
+const MouseComponent = (props) => {
+  return (
+    <div>
+      {props.x}和{props.y} {props.name}
+    </div>
+  );
+};
+
+const HOCMouse = withOBJ(MouseComponent);
+export default function Main() {
+  return <HOCMouse name={"join"} />;
+}
+```
+
 ## 页面路由
 ### react-router-dom
 1. 路由组件(router components) 比如 <BrowserRouter /> 和 <HashRouter />
