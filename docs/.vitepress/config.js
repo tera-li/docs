@@ -215,7 +215,7 @@ export default defineConfig({
       "meta",
       {
         name: "google-site-verification",
-        content: "WsLa9IEnN2TZzy4k0HF1GNYCghbHHtSDM80dokpEi3E",
+        content: "nlJTCAfszb4wLHAJwrFpqq9luQcJitC1lU38XYJEGIU",
       },
     ],
   ],
