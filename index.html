@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <script>
-      let year = 10;
-      let init = 900000;
-      let total = 0;
-      while (year > 0) {
-        init = init * 1.05;
-        total = total + init * 12;
-        year--;
-      }
-      console.log(init);
-      console.log(total);
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let year = 33
+    let init = 3200
+    let total = 0
+    let count = 0
+    while (year > 0) {
+      init = init*1.01
+      total = total + (init * 12)
+      year--
+      count++
+    }
+    console.log(init);
+    console.log(total);
+    console.log(count);
+    // 1.05增长/10年
+    // 单10500/总976500/92平: 1590615
+    // 单9500/总855000/90平: 1392704
+  </script>
+</body>
 </html>

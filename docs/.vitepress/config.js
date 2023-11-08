@@ -184,7 +184,7 @@ export default defineConfig({
   titleTemplate: false,
   // 页面描述，自动注入meta
   description:
-    "terali's Docs，terali的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
+    "terali Docs，terali的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
   // 页面头部，自动注入
   head: [
     [
@@ -194,13 +194,13 @@ export default defineConfig({
         href: "https://cdn.jsdelivr.net/gh/tera-li/static-cdn@0.0.4/img/my.jpg",
       },
     ],
-    ["meta", { name: "title", content: "terali's Docs" }],
+    ["meta", { name: "title", content: "terali Docs" }],
     [
       "meta",
       {
         name: "description",
         content:
-          "terali's Docs，terali的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
+          "terali Docs，terali的博客，surprise，前端，前端技术博客，囊括前端基础、进阶、日常记录、笔记",
       },
     ],
     [
@@ -215,7 +215,7 @@ export default defineConfig({
       "meta",
       {
         name: "google-site-verification",
-        content: "WsLa9IEnN2TZzy4k0HF1GNYCghbHHtSDM80dokpEi3E",
+        content: "nlJTCAfszb4wLHAJwrFpqq9luQcJitC1lU38XYJEGIU",
       },
     ],
   ],

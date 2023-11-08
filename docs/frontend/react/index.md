@@ -183,7 +183,7 @@ myRef = React.createRef()
 2. <span style="color: red">**static getDerivedStateFromProps(props, state)**</span>: 罕⻅⽤例，即 state 的值任何时候都取决于 props
 3. <span style="color: red">**shouldComponentUpdate(nextProps, nextState)**</span>: 是否需要组件重新渲染
    1. 新的props，新的state
-   2. return Boolean（true表示组件重新渲染， false表示组件不冲洗渲染）
+   2. return Boolean（true表示组件重新渲染， false表示组件不重新渲染）
 4. <span style="color: red">**UNSAFE_componentWillUpdate(nextProps, nextState)**</span>: 组件更新前
    1. 在组件收到新的 props 或 state 时触发
    2. 不能此方法中调用 this.setState()
