@@ -8,16 +8,22 @@
 </head>
 <body>
   <script>
-    let year = 8
-    let init = 8400
+    let year = 33
+    let init = 3200
     let total = 0
+    let count = 0
     while (year > 0) {
-      init = init*1.1
+      init = init*1.01
       total = total + (init * 12)
       year--
+      count++
     }
     console.log(init);
     console.log(total);
+    console.log(count);
+    // 1.05增长/10年
+    // 单10500/总976500/92平: 1590615
+    // 单9500/总855000/90平: 1392704
   </script>
 </body>
 </html>

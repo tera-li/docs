@@ -6,7 +6,7 @@ titleTemplate: home
 layout: home
 aside: true
 hero:
-  name: Tera-li's 文档
+  name: Tera-li Docs
   text: 技术文档 & 知识扩展
   tagline: 持续更新，欢迎关注...
   image:
