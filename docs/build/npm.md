@@ -25,9 +25,9 @@
 **修改 package 中的 version版本号**
 ```js
 1. x.y.z（重大改动，较小改动，补丁）
-2. npm version major: update x
-3. npm version minor: update y
-4. npm version patch: update z
+2. npm version major (update x)
+3. npm version minor (update y)
+4. npm version patch (update z)
 ```
 ```js
 1. ^：安装依赖时获取到有新版本时，表示第⼀位版本不变，保持后⾯两位最新
