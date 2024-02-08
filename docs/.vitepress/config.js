@@ -278,5 +278,8 @@ export default defineConfig({
     // },
     // 最后更新时间
     lastUpdatedText: "最近更新时间 ",
+    search: {
+      provider: 'local'
+    }
   },
 });
