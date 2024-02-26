@@ -271,7 +271,7 @@ h标题标签合理使用，h1标签权重对高
 内链优化、外链优化
 使用长尾关键词，对关键词进行扩展
 ```
-## Form表单
+## Form 表单
 ```html
 accept-charset='ISO-8859-1'：规定表单提交时使用的字符编码
 action='URL'：表单提交时，向何处发送表单数据
@@ -298,7 +298,7 @@ fieldset：存在于form表单中的标签，组合form表单中的输入框进�
 ```
 参考链接：https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form  
 
-## Form对象方法/事件
+## Form 对象方法/事件
 ```html
 reset()：重置一个表单（指定对应form元素）
 submit()：提交一个表单（指定对应form元素）

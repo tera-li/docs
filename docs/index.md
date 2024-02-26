@@ -23,9 +23,6 @@ hero:
       text: 构建
       link: /build/
     - theme: alt
-      text: 网络
-      link: /network/
-    - theme: alt
       text: 后端
       link: /back/
     - theme: alt

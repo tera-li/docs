@@ -129,6 +129,18 @@ const sidebar = {
         },
       ],
     },
+    {
+      text: "网络基础",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        { text: "HTTP 基础", link: "/build/basic" },
+        { text: "HTTP 缓存", link: "/build/http-cache" },
+        { text: "Web 结构组件", link: "/build/web-construction" },
+        { text: "Web 安全", link: "/build/web-safety" },
+        { text: "Nginx 配置", link: "/build/web-nginx" },
+      ],
+    },
   ],
   "/algorithm/": [
     {
@@ -138,20 +150,6 @@ const sidebar = {
       items: [
         { text: "认识算法", link: "/algorithm/" },
         { text: "数据结构", link: "/algorithm/structure" },
-      ],
-    },
-  ],
-  "/network/": [
-    {
-      text: "网络基础",
-      collapsible: true,
-      collapsed: true,
-      items: [
-        { text: "HTTP 基础", link: "/network/" },
-        { text: "HTTP 缓存", link: "/network/http-cache" },
-        { text: "Web 结构组件", link: "/network/web-construction" },
-        { text: "Web 安全", link: "/network/web-safety" },
-        { text: "Nginx 配置", link: "/network/web-nginx" },
       ],
     },
   ],
@@ -239,7 +237,6 @@ export default defineConfig({
       { text: "前端", link: "/html/" },
       { text: "框架", link: "/frontend/vue/" },
       { text: "构建", link: "/build/" },
-      { text: "网络", link: "/network/" },
       { text: "后端", link: "/back/" },
       { text: "算法", link: "/algorithm/" },
       { text: "其他", link: "/other/front-end-basic" },
