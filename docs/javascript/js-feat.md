@@ -934,7 +934,7 @@ try {
 }
 ```
 ## ES2023
-```js{1,11}
+```js{1,11,21}
 - Array find from last
 const array = [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }];
 // 返回满足条件的第一个元素或元素下标
@@ -955,7 +955,16 @@ console.log(1);
     # 有了 hashbang 之后执行脚本 ./hello.js
 */
 
-- 
+- Symbols as WeakMap keys
 // 扩展了 WeakMap API，以允许使用唯一的符号作为键
+const weak = new WeakMap();
+
+// Pun not intended: being a symbol makes it become a more symbolic key
+const key = Symbol('my ref');
+const someObject = { /* data data data */ };
+
+weak.set(key, someObject);
+
+- 
 ```
 参考链接：https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md
