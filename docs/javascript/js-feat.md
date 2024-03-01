@@ -934,7 +934,7 @@ try {
 }
 ```
 ## ES2023
-```js{1,11,21}
+```js{1,11,21,31}
 - Array find from last
 const array = [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }];
 // 返回满足条件的第一个元素或元素下标
@@ -965,6 +965,23 @@ const someObject = { /* data data data */ };
 
 weak.set(key, someObject);
 
-- 
+- Change Array by copy
+// Array.prototype 将添加以下方法
+// 以下新方法返回值，为原数组操作后的拷贝值，不会改变原数组
+const sequence = [1, 2, 3];
+sequence.toReversed() // [3, 2, 1] 翻转数组元素的位置(reverse)
+sequence // [1, 2, 3]
+
+const outOfOrder = [3, 1, 2];
+outOfOrder.toSorted() // [1, 2, 3] 排序数组元素(sort)
+outOfOrder // [3, 1, 2]
+
+const array = [1, 2, 3, 4];
+array.toSpliced(1, 2, 5, 6, 7) // [1, 5, 6, 7, 4] 在指定位置，删除指定数量的元素，并插入新成员(splice)
+array // [1, 2, 3, 4]
+
+const correctionNeeded = [1, 1, 3];
+correctionNeeded.with(1, 2) // [1, 2, 3] 在指定位置，替换元素
+correctionNeeded // [1, 1, 3]
 ```
 参考链接：https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md
