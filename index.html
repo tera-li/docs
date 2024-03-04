@@ -9,13 +9,13 @@
 <body>
   <script>
     let year = 30
-    let init = 600000
+    let init = 40000
     let total = 0
     while (year > 0) {
-      init = init + init * 0.025
+      init = init + init * 0.035
       total = total + (init * 12)
       year--
-      console.log(30 - year, init);
+      console.log(30 - year * 3, init);
     }
     console.log(init);
   </script>

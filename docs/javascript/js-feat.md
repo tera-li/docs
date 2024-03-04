@@ -70,7 +70,7 @@ let {a=10,b=5} = {a:3} // a=3,b=5
 let {a:aa=10,b:bb=5} = {a:3} // aa=3,bb=5
 ```
 - **Symbol**
-```js{11,19,37}
+```js{1,11,19,37}
 // 原始数据类型Symbol，表示独一无二的值，最大的用法是用来定义对象的唯一属性名
 const sy = Symbol();
 typeof sy // symbol
@@ -212,7 +212,7 @@ str.padEnd(10,'o') // stringoooo
 `hello, ${str}` // hello, string
 ```
 - **对象**
-```js
+```js{1,16,20}
 // 对象字面量
 const [age,name] = [12,'join']
 const person = {age, name} // {age: 12, name: 'join'}
@@ -596,7 +596,7 @@ helloAsync();
 // testAwait testAwait
 ```
 ## ES2018
-```js{3,13,20,32,41,47}
+```js{3,14,22,35,45,50}
 // 标记模板文字和转义序列
 // Uncaught SyntaxError: Invalid Unicode escape sequence
 - Template
@@ -609,15 +609,17 @@ function latex(str) {
 }
 latex`\unicode`
 
-- RegExp.dotAll / RegExp.flags
 // 引入/s 修饰符，使得。可以匹配任意单个字符
+- RegExp.dotAll / RegExp.flags
+
 /foo.bar/.test('foo\nbar'); // false
 /foo.bar/s.test('foo\nbar'); // true
 // 返回一个字符串，由当前正则表达式对象的标志组成
 /foo.bar/s.flags; // s
 
-- RegExp-Named-Groups
 // 正则表达式命名捕获组，(?<year>\d{4})已?<year>进行匹配
+- RegExp-Named-Groups
+
 let re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
 let result = re.exec('2015-01-02');
 // result.groups.year === '2015';
@@ -628,6 +630,7 @@ let re = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/u;
 let result = '2015-01-02'.replace(re, '$<day>/$<month>/$<year>');
 // result === '02/01/2015'
 
+// 剩余参数 / 扩展运算
 - Object Rest / Spread
 let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
 x; // 1
@@ -637,8 +640,8 @@ z; // { a: 3, b: 4 }
 let n = { x, y, ...z };
 n; // { x: 1, y: 2, a: 3, b: 4 }
 
+// Promise 最后无论如何都会执行
 - Promise.finally
-// 最后无论如何都会执行
 Promise.resolve('resolve')
     .then(res => console.log(res))
     .finally(() => console.log('finally'))
@@ -656,57 +659,58 @@ let p3 = new Promise(resolve => { setTimeout(() => { return resolve('p3')}, 3000
 const list = [p1, p2, p3]
 process(list)
 ```
+
 ## ES2019
-```js{1,6,11,17,21,26}
-- try {} catch {}
+```js{2,7,12,18,22,27}
 // 更简易的try catch
+- try {} catch {}
 try {} catch(e) {}
 try {} catch {}
 
-- Symbol.prototype.description
 // 将定义字符串 作为 描述符
+- Symbol.prototype.description
 const sym = Symbol('The description');
 sym.description // The description
 
-- Function.prototype.toString()
 // 函数toString现在返回精确字符，包括空格和注释
+- Function.prototype.toString()
 function func() { /* 111*/  }
 func.toString() // before - function func() {}
 func.toString() // now - function func() { /* 111*/  }
 
-- Object.fromEntries
 // 与Object.entries()的反转
+- Object.fromEntries
 Object.fromEntries([['a', 0], ['b', 1]]); // { a: 0, b: 1 }
 
-- String.prototype.trimStart / String.prototype.trimEnd
 // 去除字符串首尾空白字符
+- String.prototype.trimStart / String.prototype.trimEnd
 '  1  '.trimStart(); // '1  '
 '  1  '.trimEnd();   // '  1'
 
-- Array.prototype.flat / Array.prototype.flatMap
 // 数组扁平化
+- Array.prototype.flat / Array.prototype.flatMap
 let arr = [1, 2, [3, 4]];
 arr.flat();               // [1, 2, 3, 4]
 let arr1 = [1, 2, 3, 4];
 arr1.flatMap(x => [x * 2]); // [2, 4, 6, 8]
 ```
 ## ES2020
-```js{1,6,14,24,34,38,49,57}
-- String.prototype.matchAll
+```js{2,7,15,26,35,40,50,58}
 // 返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器
+- String.prototype.matchAll
 const str = 'test1test2';
 [...str.matchAll(/test/g)]
 
-- import()
 // 动态import
+- import()
 // index.js
 export function func() { return 'index' }
 import("./index.js").then((res) => {
     res.func()
 });
 
-- BigInt
 // 表示任意大的整数
+- BigInt
 const x = Number.MAX_SAFE_INTEGER; // ↪ 9007199254740991, this is 1 less than 2^53
 const y = x + 1; // ↪ 9007199254740992, ok, checks out
 const z = x + 2; // ↪ 9007199254740992, wait, that’s the same as above!
@@ -715,9 +719,9 @@ const previousMaxSafe = BigInt(Number.MAX_SAFE_INTEGER); // ↪ 9007199254740991
 const maxPlusOne = previousMaxSafe + 1n; // ↪ 9007199254740992n
 const theFuture = previousMaxSafe + 2n; // ↪ 9007199254740993n, this works now!
 
-- Promise.allSettled
 // 返回一个在所有给定的 promise 都已经fulfilled或rejected后的 promise，并带有一个对象数组，每个对象表示对应的 promise 结果
 // 返回list，所有承诺状态都存在
+- Promise.allSettled
 const promise1 = Promise.resolve(3);
 const promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'foo'));
 const promises = [promise1, promise2];
@@ -725,13 +729,13 @@ Promise.allSettled(promises).
   then((results) => console.log(results));
   // 【{status: 'fulfilled', value: 3},{status: 'rejected', reason: 'foo'}]
 
-- globalThis
 // 包含全局的 this 值，类似于全局对象（global object）
+- globalThis
 globalThis === window
 
-- ?. 可选链运算符
 // 当尝试访问可能不存在的对象属性时，会报错TypeError
 // 使用 ?. 访问不确定存在的属性时，若不存在则返回undefined，不会报错
+- ?. 可选链运算符
 let adventurer = {
   name: 'Alice',
   cat: { name: 'Dinah' }
@@ -740,16 +744,16 @@ let dogName = adventurer.dog?.name;
 console.log(dogName);
 console.log(adventurer.someNonExistentMethod?.());
 
-- ?? 空值合并运算符
 // 当左侧的操作数为 null 或者 undefined 时，返回其右侧操作数，否则返回左侧操作数
+- ?? 空值合并运算符
 let foo = null ?? 'default string';
 console.log(foo); // expected output: "default string"
 
 const baz = 0 ?? 42;
 console.log(baz); // expected output: 0
 
-- import.meta
 // 暴露特定上下文的元数据属性的对象
+- import.meta
 <script type="module">
     import { func1 } from "./index.js";
     func1();
@@ -757,47 +761,47 @@ console.log(baz); // expected output: 0
 </script>
 ```
 ## ES2021
-```js{1,6,15,21,27,33}
-- String.prototype.replaceAll
+```js{2,8,16,22,28,34}
 // 字符串匹配替换
+- String.prototype.replaceAll
 'defd'.replaceAll(/d/g, 'f'); // 'feff'
 'defd'.replaceAll(/d/g, (e) => 'f'); // 'feff'
 
-- Promise.any
 // 该方法用于获取首个resolve的 promise 的值，如果都是reject则会报错 All promises were rejected
 // 返回list，所有承诺状态都存在
+- Promise.any
 const promise1 = Promise.resolve(3);
 const promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'foo'));
 const promises = [promise1, promise2];
 Promise.any(promises).
   then((results) => console.log(results));
 
-- x ||= y(逻辑或赋值)
 // 当左侧值为false时，将右侧的值赋值给左侧
+- x ||= y(逻辑或赋值)
 const a = { duration: false, title: '' };
 a.duration ||= 10;
 console.log(a.duration); // 10
 
-- x &&= y(逻辑与赋值)
 // 当左侧值为true时，将右侧的值赋值给左侧
+- x &&= y(逻辑与赋值)
 const a = { duration: true, title: '' };
 a.duration &&= 10;
 console.log(a.duration); // 10
 
-- x ??= y(逻辑空赋值)
 // 当左侧值为null or undefined时，将右侧的值赋值给左侧
+- x ??= y(逻辑空赋值)
 const a = { duration: null, title: '' };
 a.duration ??= 10;
 console.log(a.duration); // 10
 
-- _(数字分隔符)
 // 方便数字代码阅读
+- _(数字分隔符)
 1_000_000_000 === 1000000000 // true
 ```
 ## ES2022
-```js{1,25,42,53,62,67,82,88,101,125}
+```js{2,26,43,54,63,68,83,90,102,126}
+// 类中的私有方法只能在类中调用
 - Private instance methods and accessors
-/* 类中的私有方法只能在类中调用 */
 class ClassWithPrivateAccessor {
   #message;
   str = 'str'
@@ -820,8 +824,8 @@ privateAccessor.str; // str
 privateAccessor.#message; // Error
 privateAccessor.#getMessage() // Error
 
+// 类中的私有字段只能在类中调用
 - Class Public Instance Fields & Private Instance Fields
-/* 类中的私有字段只能在类中调用 */
 class ClassWithPrivateFields {
   #message = 'hello world';
   str = 'str'
@@ -837,8 +841,8 @@ privateFields.str; // str
 privateFields.#message; // Error
 privateFields.getMessage(); // hello world
 
+// 类中静态字段和静态方法可以直接通过类访问
 - Static class fields and private static methods
-/* 类中静态字段和静态方法可以直接通过类访问 */
 class ClassWithStaticMethod {
   static staticProperty = 'someValue';
   static staticMethod() {
@@ -848,8 +852,8 @@ class ClassWithStaticMethod {
 ClassWithStaticMethod.staticProperty; // someValue
 ClassWithStaticMethod.staticMethod(); // static method has been called.
 
-- RegExp Match Indices
 // RegExp 增加/d标志，生成记录每个组捕获的开始和结束的下标
+- RegExp Match Indices
 const re1 = /a+(?<Z>z)?/d;
 const s1 = "xaaaz";
 re1.exec(s1);
@@ -857,13 +861,13 @@ re1.exec(s1);
 indices: [[1, 5],[4, 5]]
 */
 
-- Top-level await
 // 顶级 await 模块。在使用import引入模块时可以直接使用await
+- Top-level await
 let aaa = await import("./index.js");
 aaa.func();
 
-- Ergonomic brand checks for Private Fields
 // 检测类中私有字段是否存在
+- Ergonomic brand checks for Private Fields
 class C {
   #brand;
 
@@ -877,15 +881,15 @@ class C {
 }
 C.isC(new C())
 
-- Array.prototype.at
 // 接收一个整数值并返回该索引对应的元素，允许正数和负数
+- Array.prototype.at
 const arr = [1, 2, 3]
 console.log(arr[arr.length - 1]);  // 3
 console.log(arr.at(-1));           // 3
 
-- Object.hasOwn
 // 如果指定的对象自身有指定的属性，则静态方法 Object.hasOwn() 返回 true
 // Object.hasOwn() 旨在取代 Object.hasOwnProperty()
+- Object.hasOwn
 let object = { a: 1, b: 2 }
 let hasOwnProperty = Object.prototype.hasOwnProperty
 if (hasOwnProperty.call(object, 'b')) {
@@ -896,8 +900,8 @@ if (Object.hasOwn(object, "b")) {
   console.log("has property b")
 }
 
-- Class Static Block
 // 类静态代码块
+- Class Static Block
 class Translator {
     static translations = {
         yes: 'yes value',
@@ -920,8 +924,8 @@ class Translator {
 new Translator()
 Translator.getStaticObject()
 
-- Error Cause
 // Error Constructor 新增了一个可选的参数 options: cause，接受任意 JavaScript 值
+- Error Cause
 try {
   throw new Error('Download raw resource failed', { cause: 'this is cause' });
 } catch (e) {
@@ -930,7 +934,7 @@ try {
 }
 ```
 ## ES2023
-```js{1,11}
+```js{1,11,21,31}
 - Array find from last
 const array = [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }];
 // 返回满足条件的第一个元素或元素下标
@@ -950,5 +954,34 @@ console.log(1);
     # 以前执行脚本 node hello.js
     # 有了 hashbang 之后执行脚本 ./hello.js
 */
+
+- Symbols as WeakMap keys
+// 扩展了 WeakMap API，以允许使用唯一的符号作为键
+const weak = new WeakMap();
+
+// Pun not intended: being a symbol makes it become a more symbolic key
+const key = Symbol('my ref');
+const someObject = { /* data data data */ };
+
+weak.set(key, someObject);
+
+- Change Array by copy
+// Array.prototype 将添加以下方法
+// 以下新方法返回值，为原数组操作后的拷贝值，不会改变原数组
+const sequence = [1, 2, 3];
+sequence.toReversed() // [3, 2, 1] 翻转数组元素的位置(reverse)
+sequence // [1, 2, 3]
+
+const outOfOrder = [3, 1, 2];
+outOfOrder.toSorted() // [1, 2, 3] 排序数组元素(sort)
+outOfOrder // [3, 1, 2]
+
+const array = [1, 2, 3, 4];
+array.toSpliced(1, 2, 5, 6, 7) // [1, 5, 6, 7, 4] 在指定位置，删除指定数量的元素，并插入新成员(splice)
+array // [1, 2, 3, 4]
+
+const correctionNeeded = [1, 1, 3];
+correctionNeeded.with(1, 2) // [1, 2, 3] 在指定位置，替换元素
+correctionNeeded // [1, 1, 3]
 ```
 参考链接：https://github.com/tc39/proposals/blob/HEAD/finished-proposals.md
