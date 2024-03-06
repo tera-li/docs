@@ -39,9 +39,9 @@ const sidebar = {
       collapsible: true,
       collapsed: true,
       items: [
-        { text: "TS 基础", link: "/typeScript/" },
-        { text: "TS 内置类型", link: "/typeScript/ts-inlay-type" },
-        { text: "TS 类型语言", link: "/typeScript/ts-declare" },
+        { text: "TS 基础", link: "/typescript/" },
+        { text: "TS 内置类型", link: "/typescript/ts-inlay-type" },
+        { text: "TS 类型语言", link: "/typescript/ts-declare" },
       ],
     },
     {
@@ -225,7 +225,7 @@ export default defineConfig({
   // outDir: "../public",
   // markdown配置
   markdown: {
-    theme: "monokai",
+    // theme: "monokai",
     lineNumbers: true,
   },
   // 主题配置
